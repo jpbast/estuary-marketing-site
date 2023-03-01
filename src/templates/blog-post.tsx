@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Bio from "../components/bio"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
@@ -28,7 +28,7 @@ const BlogPostTemplate = ({
         />
         <hr />
         <footer>
-          <Bio />
+          <Bio name={post.frontmatter.author_name} profile_pic={post.frontmatter.author_picture}/>
         </footer>
       </article>
       <nav className="blog-post-nav">
@@ -91,6 +91,12 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        author_name
+        author_picture {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

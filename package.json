@@ -1,12 +1,7 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "marketing-site",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
   "dependencies": {
     "@fontsource/merriweather": "^4.5.14",
     "@fontsource/montserrat": "^4.5.14",
@@ -16,6 +11,7 @@
     "gatsby-plugin-manifest": "^5.7.0",
     "gatsby-plugin-sharp": "^5.7.0",
     "gatsby-remark-images": "^7.7.0",
+    "gatsby-remark-normalize-paths": "^1.1.0",
     "gatsby-remark-prismjs": "^7.7.0",
     "gatsby-remark-responsive-iframe": "^6.7.0",
     "gatsby-source-filesystem": "^5.7.0",
@@ -28,22 +24,12 @@
   "devDependencies": {
     "prettier": "^2.8.4"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
-  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "clean": "gatsby clean"
   }
 }
