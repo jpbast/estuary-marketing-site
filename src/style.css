@@ -263,7 +263,7 @@ a:focus {
   background: #04192B;
 }
 
-.global-header-link {
+.global-header-left-link {
   display: flex;
   text-decoration: none;
   margin-left: 91px;
@@ -284,6 +284,14 @@ a:focus {
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
+}
+
+.global-header-select {
+  border: 0px;
+  outline: 0px;
+  background: #04192B;
+  color: #FFFFFF
+
 }
 
 .main-heading {

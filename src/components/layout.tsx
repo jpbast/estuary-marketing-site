@@ -8,7 +8,7 @@ const Layout = ({ location, title, children }) => {
 
   const Header = () => (
     <header className="global-header">
-      <Link className="global-header-link" to="/">
+      <Link className="global-header-left-link" to="/">
         <StaticImage 
           src="../images/estuary-icon.png" alt="estuary logo"
           width={27}
@@ -21,7 +21,18 @@ const Layout = ({ location, title, children }) => {
           <h1 className="global-header-title">Estuary</h1>
       </Link>
       <div className="global-header-wrapper">
-        header content
+        <Link to="/">
+          Home
+        </Link>
+        <select className="global-header-select" name="Product">
+          <option value="Product">Product</option>
+        </select>
+        <select className="global-header-select" name="Resources">
+          <option value="Resources">Resources</option>
+        </select>
+        <select className="global-header-select" name="Company">
+          <option value="Company">Company</option>
+        </select>
       </div>
     </header>
   )
