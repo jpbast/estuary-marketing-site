@@ -1,29 +1,34 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+
 
 const Layout = ({ location, title, children }) => {
   //@ts-ignore
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
-  let header
 
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
+  const Header = () => (
+    <header className="global-header">
+      <Link className="global-header-link" to="/">
+        <StaticImage 
+          src="../images/estuary-icon.png" alt="estuary logo"
+          width={27}
+          height={35}
+          style={{
+            margin: "34px 7px"
+          }}
+          layout="fixed"
+          />
+          <h1 className="global-header-title">Estuary</h1>
       </Link>
-    )
-  }
+      <div className="global-header-wrapper">
+        header content
+      </div>
+    </header>
+  )
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
+    <div className="global-wrapper">
+      <Header/>
       <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with

@@ -1,3 +1,26 @@
 import * as React from "react"
+import Layout from "../components/layout"
+import { useStaticQuery, graphql } from "gatsby"
 
-export default () => <div>hi ho!</div>
+const IndexPage = () => {
+
+    const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+    const siteTitle = data.site.siteMetadata?.title || `Title`
+
+
+    return (
+        <Layout location={location} title={siteTitle}>
+        </Layout>
+
+    )
+}
+
+export default IndexPage
