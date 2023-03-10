@@ -343,6 +343,10 @@ input {
   font-size: 16px;
 }
 
+.global-header-mobile-menu-wrapper {
+  display: none;
+}
+
 .section-one {
   height: 900px;
   display: flex;
