@@ -252,7 +252,7 @@ a:focus {
 }
 
 .global-header {
-  position: fixed;
+  position: relative;
   display: flex;
   flex-direction: row;
   height: 100px;
@@ -333,16 +333,63 @@ a:focus {
 }
 
 .global-footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 640px;
   background-color: #04192B;
+  padding-left: 148px;
+
+}
+
+.global-footer-logo-link {
+  display: flex;
+  text-decoration: none;
+}
+
+.global-footer-left {
+  max-width: 400px;
+}
+
+.global-footer-title {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-size: 33px;
+  line-height: 33px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  margin: 31px 0;
 }
 
 .global-footer-subtext {
-  color:#B7C6DD;
+  color: #B7C6DD;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+}
 
+.global-footer-subtext-title {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  margin-bottom: 8px;
+}
+
+.global-footer-copyright {
+  color: #B7C6DD;
+}
+
+.global-footer-copyright-link {
+  color: #B7C6DD;
+}
+
+.global-footer-divider {
+  width: 80%;
+  border: 1px solid #B7C6DD;
+  margin-bottom: 36px;
+  margin-top: 100px;
 }
 
 .main-heading {

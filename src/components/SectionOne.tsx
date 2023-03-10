@@ -2,7 +2,7 @@ import * as React from "react"
 
 const SectionOne = () => {
     return (
-        <div>section one</div>
+        <div style={{border: "1px solid red", height: "600px"}}>section one</div>
     )
 }
 
