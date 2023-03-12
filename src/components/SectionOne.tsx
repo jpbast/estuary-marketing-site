@@ -55,10 +55,7 @@ const SectionOne = () => {
                     <StaticImage
                         alt="estuary logo with other software tiles"
                         src="../images/estuary-tiles.svg"
-                        style={{
-                            marginLeft: "14vw",
-                            objectFit: "contain"
-                        }}
+                        className="section-one-right-image"
                     />
                 </div>
             </div>
@@ -67,30 +64,31 @@ const SectionOne = () => {
                     alt="flash pack logo"
                     src="../images/flashpack.svg"
                     className="section-one-bottom-logo"
+                    layout="constrained"
                 />
                 <StaticImage
-                    alt="flash pack logo"
+                    alt="coalesce pack logo"
                     src="../images/coalesce.svg"
                     className="section-one-bottom-logo"
-
+                    layout="constrained"
                 />
                 <StaticImage
-                    alt="flash pack logo"
+                    alt="fenestra logo"
                     src="../images/fenestra.svg"
                     className="section-one-bottom-logo"
-
+                    layout="constrained"
                 />
                 <StaticImage
-                    alt="flash pack logo"
+                    alt="deep sync logo"
                     src="../images/deep_sync.svg"
                     className="section-one-bottom-logo"
-
+                    layout="constrained"
                 />
                 <StaticImage
-                    alt="flash pack logo"
+                    alt="pompato logo"
                     src="../images/pompato.svg"
                     className="section-one-bottom-logo"
-
+                    layout="constrained"
                 />
             </div>
         </div>
