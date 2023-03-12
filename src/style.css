@@ -479,7 +479,7 @@ input {
   background-color: #5072EB1A;
   padding: 24px;
   margin: 12px;
-  flex-grow: 1;
+  flex: 1;
 }
 
 .section-two-tile-title {
@@ -772,6 +772,35 @@ input {
   .section-one-bottom-logo {
     margin: 16px
   }
+  .section-two-tile-wrapper {
+    flex-direction: column;
+  }
+
+  .section-two {
+    padding: 16px 0;
+    margin-top: 32px;
+  }
+
+  .section-two-header-wrapper {
+    margin: 16px;
+  }
+
+  .section-two-header {
+    font-size: 1.75rem;
+  }
+
+  .section-two-header-vectors {
+    /* width: 40px; */
+  }
+
+  .section-two-tile {
+    margin: 16px;
+  }
+
+  .section-two-header-subwrapper {
+    max-width: unset;
+  }
+
 }
 
 @media (max-width: 42rem) {
