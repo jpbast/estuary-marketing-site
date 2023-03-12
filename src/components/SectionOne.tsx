@@ -6,32 +6,32 @@ import { StaticImage } from "gatsby-plugin-image"
 
 const SectionOne = () => {
 
-//     const { mobileImage, desktopImage } = useStaticQuery(graphql`
-//     query {
-//       desktopImage: file(relativePath: { eq: "estuary-tiles.svg" }) {
-//         childImageSharp {
-//           fluid(maxWidth: 1920) {
-//             ...GatsbyImageSharpFluid
-//           }
-//         }
-//       }
-//       mobileImage: file(relativePath: { eq: "estuary-tiles.svg" }) {
-//         childImageSharp {
-//           fluid(maxWidth: 650) {
-//             ...GatsbyImageSharpFluid
-//           }
-//         }
-//       }
-//     }
-//   `)
+    //     const { mobileImage, desktopImage } = useStaticQuery(graphql`
+    //     query {
+    //       desktopImage: file(relativePath: { eq: "estuary-tiles.svg" }) {
+    //         childImageSharp {
+    //           fluid(maxWidth: 1920) {
+    //             ...GatsbyImageSharpFluid
+    //           }
+    //         }
+    //       }
+    //       mobileImage: file(relativePath: { eq: "estuary-tiles.svg" }) {
+    //         childImageSharp {
+    //           fluid(maxWidth: 650) {
+    //             ...GatsbyImageSharpFluid
+    //           }
+    //         }
+    //       }
+    //     }
+    //   `)
 
-//     const sources = [
-//         mobileImage.childImageSharp.fluid,
-//         {
-//             ...desktopImage.childImageSharp.fluid,
-//             media: `(min-width: 650px)`
-//         }
-//     ]
+    //     const sources = [
+    //         mobileImage.childImageSharp.fluid,
+    //         {
+    //             ...desktopImage.childImageSharp.fluid,
+    //             media: `(min-width: 650px)`
+    //         }
+    //     ]
 
     return (
         <div className="section-one">
@@ -52,8 +52,8 @@ const SectionOne = () => {
                     </Link>
                 </div>
                 <div className="section-one-right">
-                    <StaticImage 
-                        alt="estuary logo with other software tiles" 
+                    <StaticImage
+                        alt="estuary logo with other software tiles"
                         src="../images/estuary-tiles.svg"
                         style={{
                             marginLeft: "14vw",
@@ -63,7 +63,35 @@ const SectionOne = () => {
                 </div>
             </div>
             <div className="section-one-bottom">
+                <StaticImage
+                    alt="flash pack logo"
+                    src="../images/flashpack.svg"
+                    className="section-one-bottom-logo"
+                />
+                <StaticImage
+                    alt="flash pack logo"
+                    src="../images/coalesce.svg"
+                    className="section-one-bottom-logo"
 
+                />
+                <StaticImage
+                    alt="flash pack logo"
+                    src="../images/fenestra.svg"
+                    className="section-one-bottom-logo"
+
+                />
+                <StaticImage
+                    alt="flash pack logo"
+                    src="../images/deep_sync.svg"
+                    className="section-one-bottom-logo"
+
+                />
+                <StaticImage
+                    alt="flash pack logo"
+                    src="../images/pompato.svg"
+                    className="section-one-bottom-logo"
+
+                />
             </div>
         </div>
     )

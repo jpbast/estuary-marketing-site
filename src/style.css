@@ -351,6 +351,7 @@ input {
 .section-one {
   padding-left: 146px;
   display: flex;
+  flex-direction: column;
   background-color: #04192B;
   width: 100%;
   padding-top: 60px;
@@ -402,6 +403,15 @@ input {
 
 .section-one-right {
   display: flex;
+}
+
+.section-one-bottom {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.section-one-bottom-logo {
+  margin-right: 80px;
 }
 
 .global-footer {
