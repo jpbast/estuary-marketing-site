@@ -38,6 +38,7 @@
   --fontWeight-normal: 400;
   --fontWeight-bold: 700;
   --fontWeight-black: 900;
+  --fontWeight-white: 500;
   --fontSize-root: 16px;
   --lineHeight-none: 1;
   --lineHeight-tight: 1.1;
@@ -49,8 +50,8 @@
   --fontSize-2: 1.2rem;
   --fontSize-3: 1.44rem;
   --fontSize-4: 1.728rem;
-  --fontSize-5: 2.074rem;
-  --fontSize-6: 2.488rem;
+  --fontSize-5: 3.5rem;
+  --fontSize-6: 4.438rem;
   --fontSize-7: 2.986rem;
   --color-primary: #005b99;
   --color-text: #2e353f;
@@ -117,7 +118,7 @@ h6 {
 }
 
 h1 {
-  font-weight: var(--fontWeight-black);
+  font-weight: var(--fontWeight-white);
   font-size: var(--fontSize-6);
   color: var(--color-heading-black);
 }
@@ -348,16 +349,55 @@ input {
 }
 
 .section-one {
-  height: 900px;
+  padding-left: 146px;
   display: flex;
+  background-color: #04192B;
+  width: 100%;
+  padding-top: 60px;
 }
 
 .section-one-wrapper {
   display: flex;
+  width: 100%;
 }
 
 .section-one-left {
   display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 40%;
+}
+
+.section-one-h1 {
+  color: #FFFFFF;
+  width: 350px;
+  margin: 0px 0 10px 0;
+}
+
+.section-one-subtext-wrapper {
+  margin-top: 40px;
+  max-width: 500px;
+}
+
+.section-one-subtext {
+  color: #B7C6DD;
+}
+
+.section-one-try-it-button {
+  background-color: #5072EB;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  width: 140px;
+  height: 60px;
+  text-align: center;
+  line-height: 40px;
+  margin-top: 8px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .section-one-right {
@@ -617,7 +657,7 @@ input {
     max-width: 84px;
     height: 44px;
   }
-  
+
   .global-footer-left {
     max-width: unset;
   }
