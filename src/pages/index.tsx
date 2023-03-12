@@ -2,6 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import SectionOne from "../components/SectionOne"
 import { useStaticQuery, graphql } from "gatsby"
+import SectionTwo from "../components/SectionTwo"
 
 const IndexPage = () => {
 
@@ -20,6 +21,7 @@ const IndexPage = () => {
     return (
         <Layout location={location} title={siteTitle}>
         <SectionOne/>
+        <SectionTwo/>
         </Layout>
 
     )
