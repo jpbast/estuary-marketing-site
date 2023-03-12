@@ -42,6 +42,39 @@ const SectionTwo = () => {
                     layout="constrained"
                 />
             </div>
+            <div className="section-two-tiles-wrapper">
+                <div className="section-two-tile-wrapper">
+                    <div className="section-two-tile">
+                        <h3 className="section-two-tile-title">Tools the whole team can use</h3>
+                        <p>Make updates through either the UI or CLI.
+                            Programmatic access for the ability to easily embed and whitelabel pipelines.</p>
+                    </div>
+                    <div className="section-two-tile">
+                        <h3 className="section-two-tile-title">Automation</h3>
+                        <p>No scheduling or orchestration tools required.
+                            Automated schema generation and data deduplication.</p>
+                    </div>
+                </div>
+                <div className="section-two-tile-wrapper">
+                    <div className="section-two-tile">
+                        <h3 className="section-two-tile-title">Reliability</h3>
+                        <p>99.9% platform reliability
+                            Security by design</p>
+                    </div>
+                    <div className="section-two-tile">
+                        <h3 className="section-two-tile-title">Scale</h3>
+                        <p>Powering active workloads at 7GB/s
+                            CDC from any size DB</p>
+                    </div>
+                    <div className="section-two-tile">
+                        <h3 className="section-two-tile-title">Accuracy & Control</h3>
+                        <p>Your pipelines, how you want them. Safeguard your data products with built in, customizable schema controls.
+
+                            Idempotent, exactly once semantics</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     )
 
