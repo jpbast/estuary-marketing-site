@@ -12,6 +12,7 @@ const Header = () => {
 
     return (
         <header className="global-header">
+            <div className="global-header-padder"/>
             <Link className="global-header-logo-link" to="/">
                 <StaticImage
                     src="../images/estuary-icon.png" alt="estuary logo"
@@ -24,6 +25,7 @@ const Header = () => {
                 />
                 <h1 className="global-header-title">Estuary</h1>
             </Link>
+            <div style={{flex:"1 2 45px"}}/>
             <div className="global-header-wrapper">
                 <div className="global-header-link-wrapper">
                     <Link className="global-header-link" to="/">
@@ -54,6 +56,7 @@ const Header = () => {
                     <MenuBarsImage/>
                 </button>
             </div>
+            <div className="global-header-padder"/>
         </header>
     )
 }

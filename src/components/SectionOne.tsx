@@ -55,6 +55,7 @@ const SectionOne = () => {
                     <StaticImage
                         alt="estuary logo with other software tiles"
                         src="../images/estuary-tiles.svg"
+                        layout="constrained"
                         className="section-one-right-image"
                     />
                 </div>

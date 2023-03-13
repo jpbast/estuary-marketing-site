@@ -279,10 +279,13 @@ input {
   background: #04192B;
 }
 
+.global-header-padder {
+  flex: 1 1 6vw;
+}
+
 .global-header-logo-link {
   display: flex;
   text-decoration: none;
-  margin-left: 91px;
 }
 
 .global-header-title {
@@ -301,7 +304,6 @@ input {
   justify-content: space-between;
   flex-direction: row;
   width: 100%;
-  margin-left: 60px;
 }
 
 .global-header-link-wrapper {
@@ -316,6 +318,7 @@ input {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
+  white-space: nowrap;
 }
 
 .global-header-login-try {
@@ -343,7 +346,8 @@ input {
   height: 40px;
   text-align: center;
   line-height: 40px;
-  margin: auto 91px auto 24px;
+  margin-top: auto;
+  margin-bottom: auto;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -357,7 +361,7 @@ input {
 /* SECTION ONE */
 
 .section-one {
-  padding-left: 146px;
+  padding-left: calc(min(9%, 146px));
   display: flex;
   flex-direction: column;
   background-color: #04192B;
@@ -409,11 +413,23 @@ input {
 
 .section-one-right {
   display: flex;
+  flex: 1 1 auto;
+  justify-content: flex-end;
 }
 
 .section-one-right-image {
-  margin-left: 24vw;
-  object-fit: contain;
+  /* margin-left: 24vw; */
+  overflow:visible;
+  object-fit: contain; 
+}
+
+.section-one-right-image img {
+  overflow:visible;
+  max-height: 80vh;
+  width: calc(min(auto, 50vw));
+  left: unset;
+
+  /* object-fit: contain; */
 }
 
 .section-one-bottom {
@@ -431,8 +447,8 @@ input {
 .section-two {
   display: flex;
   flex-direction: column;
-  padding-left: 146px;
-  padding-right: 146px;
+  padding-left: calc(min(9%, 146px));
+  padding-right: calc(min(9%, 146px));
   margin-top: 100px;
 }
 
@@ -442,7 +458,7 @@ input {
 }
 
 .section-two-header-subwrapper {
-  max-width: 50%;
+  max-width: 85%;
 }
 
 .section-two-header {
@@ -585,7 +601,8 @@ input {
 .section-four {
   display: flex;
   flex-direction: column;
-  padding: 0 146px 0 146px;
+  padding-left: calc(min(9%, 146px));
+  padding-right: calc(min(9%, 146px));
   background-color: #F9FAFC;
 }
 
@@ -669,10 +686,11 @@ input {
 .section-five {
   background-color: #04192B;
   background-image: url("./images/overlay-vector-right.svg");
+  background-position: bottom right;
   background-repeat: no-repeat;
-  background-position-y: 200px;
-  background-position-x: right;
-  padding: 0 146px 0 146px;
+  background-size: 75%;
+  padding-left: calc(min(9%, 146px));
+  padding-right: calc(min(9%, 146px));
 }
 
 .section-five-header-wrapper {
@@ -736,7 +754,8 @@ input {
 .section-six {
   display: flex;
   flex-direction: column;
-  padding: 0 146px 0 146px;
+  padding-left: calc(min(9%, 146px));
+  padding-right: calc(min(2%, 146px));
   margin-bottom: 100px;
 }
 
@@ -806,9 +825,12 @@ input {
   width: 100%;
   min-height: 640px;
   background-color: #04192B;
-  padding-left: 148px;
-  padding-top: 0px;
-  padding-right: 232px;
+  padding-left: calc(min(9%, 146px));
+  padding-right: calc(min(14%, 210px));
+  background-image: url("./images/overlay-vector-right.svg");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: 75%;
 }
 
 .global-footer-wrapper {
@@ -997,10 +1019,16 @@ input {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 810px) {
   .global-header {
     justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 0;
   }
+  .global-header-padder {
+    display: none;
+  }
+  
 
   .global-header-wrapper {
     display: none;
@@ -1017,12 +1045,9 @@ input {
     background-color: #5072EB;
     background-image: url("/images/mobile-menu-bars.svg");
     background-position: 20px 20px;
+    border: none;
     background-repeat: no-repeat;
     margin: auto 16px auto 16px;
-  }
-
-  .global-header-logo-link {
-    margin-left: 16px;
   }
 
   .global-footer {
@@ -1073,8 +1098,23 @@ input {
     flex-direction: column;
   }
 
+  .section-one-right {
+    position: relative;
+    top: -4em;
+    margin-bottom: -4em;
+    justify-content: flex-end;
+  }
+
   .section-one-right-image {
     margin-left: 0px;
+  }
+
+  .section-one-right-image img {
+    overflow:visible;
+    max-height: 55vw;
+    left: unset;
+  
+    object-fit: contain;
   }
 
   .section-one-bottom {
