@@ -928,6 +928,12 @@ input {
 
 /* MEDIA QUERIES */
 
+@media (max-width: 1260px) {
+  .section-five-tile-wrapper {
+    height: 1100px;
+  }
+}
+
 @media (max-width: 960px) {
   .global-header {
     justify-content: space-between;
@@ -1101,6 +1107,15 @@ input {
 
   .section-four {
     padding: 0 16px 0 16px;
+  }
+
+  .section-five-tile-wrapper {
+    flex-direction: column;
+    flex-flow: column;
+  }
+
+  .section-five-tile {
+    width: 100%;
   }
 
 }

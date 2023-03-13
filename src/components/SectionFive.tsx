@@ -36,7 +36,7 @@ const SectionFive = () => {
                     </div>
                 </div>
                 <div className="section-five-tile">
-                    <p className="section-five-tile-text">““Estuary is the only system we’ve found that can seamlessly replicate large scale Firestore data for analytics.  After months of research and trying everything, we can confidently say that Estuary is the only company that can help us get easy, accurate analytics on our data within Snowflake.""</p>
+                    <p className="section-five-tile-text">“Estuary is the only system we’ve found that can seamlessly replicate large scale Firestore data for analytics.  After months of research and trying everything, we can confidently say that Estuary is the only company that can help us get easy, accurate analytics on our data within Snowflake."</p>
                     <div className="section-five-logo-wrapper">
                         <StaticImage
                             alt="estuary logo top"
