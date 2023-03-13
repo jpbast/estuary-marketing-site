@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import SectionOne from "../components/SectionOne"
 import { useStaticQuery, graphql } from "gatsby"
 import SectionTwo from "../components/SectionTwo"
+import SectionThree from "../components/SectionThree"
 
 const IndexPage = () => {
 
@@ -22,6 +23,7 @@ const IndexPage = () => {
         <Layout location={location} title={siteTitle}>
         <SectionOne/>
         <SectionTwo/>
+        <SectionThree/>
         </Layout>
 
     )
