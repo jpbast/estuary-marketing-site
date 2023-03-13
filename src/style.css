@@ -1109,13 +1109,27 @@ input {
     padding: 0 16px 0 16px;
   }
 
+  .section-five {
+    padding: 0 16px 0 16px;
+  }
+
   .section-five-tile-wrapper {
     flex-direction: column;
     flex-flow: column;
+    height: auto;
   }
 
   .section-five-tile {
     width: 100%;
+    margin: 12px 0;
+  }
+
+  .section-five-header {
+    font-size: 1.75rem;
+  }
+
+  .section-five-tile-text {
+    font-size: var(--fontSize-0);
   }
 
 }

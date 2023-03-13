@@ -47,8 +47,6 @@ const SectionFive = () => {
                         <p className="section-five-tile-logo-text">Coalesce</p>
                     </div>
                 </div>
-
-
                 <div className="section-five-tile">
                     <p className="section-five-tile-text">“This tool is 1000x times better than LogStash or Elastic Enterprise Data Ingestion Tool, which has many issues.”</p>
                     <div className="section-five-logo-wrapper">
