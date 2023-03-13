@@ -16,9 +16,11 @@ const SectionFive = () => {
                     <div className="section-five-logo-wrapper">
                         <StaticImage
                             alt="Flashpack"
-                            src="../images/flashpack-logo.svg"
+                            objectFit="contain"
+                            src="../images/flashpack-logo.png"
                             className="section-five-header-vector"
                             layout="fixed"
+                            imgStyle={{filter: "brightness(0) invert(1)"}}
                         />
                         <p className="section-five-tile-logo-text">Flashpack</p>
                     </div>
@@ -28,7 +30,8 @@ const SectionFive = () => {
                     <div className="section-five-logo-wrapper">
                         <StaticImage
                             alt="estuary logo top"
-                            src="../images/deepsync-logo.svg"
+                            objectFit="contain"
+                            src="../images/deepsync-logo.png"
                             className="section-five-header-vector"
                             layout="fixed"
                         />
@@ -40,7 +43,8 @@ const SectionFive = () => {
                     <div className="section-five-logo-wrapper">
                         <StaticImage
                             alt="estuary logo top"
-                            src="../images/coalesce-logo.svg"
+                            objectFit="contain"
+                            src="../images/coalesce-logo.png"
                             className="section-five-header-vector"
                             layout="fixed"
                         />
@@ -52,7 +56,8 @@ const SectionFive = () => {
                     <div className="section-five-logo-wrapper">
                         <StaticImage
                             alt="estuary logo top"
-                            src="../images/pompato-logo.svg"
+                            objectFit="contain"
+                            src="../images/pompato-logo.png"
                             className="section-five-header-vector"
                             layout="fixed"
                         />
@@ -64,7 +69,8 @@ const SectionFive = () => {
                     <div className="section-five-logo-wrapper">
                         <StaticImage
                             alt="estuary logo top"
-                            src="../images/fenestra-logo.svg"
+                            objectFit="contain"
+                            src="../images/fenestra-logo.png"
                             className="section-five-header-vector"
                             layout="fixed"
                         />
@@ -76,7 +82,8 @@ const SectionFive = () => {
                     <div className="section-five-logo-wrapper">
                         <StaticImage
                             alt="estuary logo top"
-                            src="../images/a-avatar.svg"
+                            objectFit="contain"
+                            src="../images/a-avatar.png"
                             className="section-five-header-vector"
                             layout="fixed"
                         />

@@ -64,30 +64,35 @@ const SectionOne = () => {
                 <StaticImage
                     alt="flash pack logo"
                     src="../images/flashpack.svg"
+                    imgStyle={{objectFit:"contain"}}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
                 <StaticImage
                     alt="coalesce pack logo"
-                    src="../images/coalesce.svg"
+                    src="../images/coalesce.png"
+                    imgStyle={{objectFit:"contain"}}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
                 <StaticImage
                     alt="fenestra logo"
-                    src="../images/fenestra.svg"
+                    src="../images/fenestra.png"
+                    imgStyle={{objectFit:"contain"}}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
                 <StaticImage
                     alt="deep sync logo"
-                    src="../images/deep_sync.svg"
+                    src="../images/deep_sync.png"
+                    imgStyle={{objectFit:"contain"}}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
                 <StaticImage
                     alt="pompato logo"
-                    src="../images/pompato.svg"
+                    src="../images/pompato.png"
+                    imgStyle={{objectFit:"contain"}}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
