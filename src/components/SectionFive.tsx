@@ -23,7 +23,7 @@ const SectionFive = () => {
                         <p className="section-five-tile-logo-text">Flashpack</p>
                     </div>
                 </div>
-                      <div className="section-five-tile">
+                <div className="section-five-tile">
                     <p className="section-five-tile-text">“Estuary Flow allows us to integrate low-latency CDC and connect to SaaS apps across our entire reporting stack and it’s the only solution that we’ve found that lets us do both.”</p>
                     <div className="section-five-logo-wrapper">
                         <StaticImage
@@ -47,6 +47,20 @@ const SectionFive = () => {
                         <p className="section-five-tile-logo-text">Coalesce</p>
                     </div>
                 </div>
+
+
+                <div className="section-five-tile">
+                    <p className="section-five-tile-text">“This tool is 1000x times better than LogStash or Elastic Enterprise Data Ingestion Tool, which has many issues.”</p>
+                    <div className="section-five-logo-wrapper">
+                        <StaticImage
+                            alt="estuary logo top"
+                            src="../images/pompato-logo.svg"
+                            className="section-five-header-vector"
+                            layout="fixed"
+                        />
+                        <p className="section-five-tile-logo-text">Pompato</p>
+                    </div>
+                </div>
                 <div className="section-five-tile">
                     <p className="section-five-tile-text">“We needed a platform to help us optimize marketing campaigns with low-latency.  Estuary provided an unparalleled solution to do that at terabyte scale."</p>
                     <div className="section-five-logo-wrapper">
@@ -59,21 +73,8 @@ const SectionFive = () => {
                         <p className="section-five-tile-logo-text">Fenestra</p>
                     </div>
                 </div>
-          
                 <div className="section-five-tile">
-                    <p className="section-five-tile-text">“This tool is 1000x times better than LogStash or Elastic Enterprise Data Ingestion Tool, which has many issues..”</p>
-                    <div className="section-five-logo-wrapper">
-                        <StaticImage
-                            alt="estuary logo top"
-                            src="../images/pompato-logo.svg"
-                            className="section-five-header-vector"
-                            layout="fixed"
-                        />
-                        <p className="section-five-tile-logo-text">Pompato</p>
-                    </div>
-                </div>
-                <div className="section-five-tile">
-                    <p className="section-five-tile-text">“This tool is 1000x times better than LogStash or Elastic Enterprise Data Ingestion Tool, which has many issues..”</p>
+                    <p className="section-five-tile-text">“It's very rewarding to find a cloud product actually works when the configuration is correct.”</p>
                     <div className="section-five-logo-wrapper">
                         <StaticImage
                             alt="estuary logo top"
