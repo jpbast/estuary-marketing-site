@@ -74,6 +74,26 @@ const SectionTwo = () => {
                     </div>
                 </div>
 
+                <div className="section-two-bottom-header">
+                    <div className="section-two-bottom-left">
+                        <h2 className="section-two-bottom-title">Real-time database replication</h2>
+                        <ul className="section-two-bottom-header-ul">
+                            <li>Powering exact copies of your data where you want them. Supports databases of 10TB+.</li>
+                            <li>Database connectors & real-time Salesforce integration built in-house.</li>
+                            <li>Supports airbyte protocol for batch-based connectors. Bring any airbyte connector in and run it. Access to 200+ connectors.
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="section-two-bottom-right">
+                        <StaticImage
+                            alt="estuary product screenshot"
+                            src="../images/section-two-bottom-screenshot.svg"
+                            className="section-two-second-graphic"
+                            layout="constrained"
+                        />
+                    </div>
+                </div>
+
             </div>
         </div>
     )

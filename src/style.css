@@ -199,6 +199,11 @@ li>ul {
   margin-top: calc(var(--spacing-8) / 2);
 }
 
+li {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+}
+
 blockquote {
   color: var(--color-text-light);
   margin-left: calc(-1 * var(--spacing-6));
@@ -484,6 +489,29 @@ input {
 
 .section-two-tile-title {
   font-size: 2rem;
+}
+
+.section-two-bottom-header {
+  display: flex;
+  margin-top: 100px;
+  margin-bottom: 144px;
+}
+
+.section-two-bottom-header-ul {
+  margin-left: 30px;
+  width: 75%;
+}
+
+.section-two-bottom-left {
+  width: 60%;
+}
+
+.section-two-second-graphic {
+  margin-top: 40px;
+}
+
+.section-two-bottom-title {
+  margin-top: 0px;
 }
 
 
@@ -799,6 +827,24 @@ input {
 
   .section-two-header-subwrapper {
     max-width: unset;
+  }
+
+  .section-two-bottom-header {
+    flex-direction: column;
+    margin: 32px 16px;
+  }
+
+  .section-two-bottom-left {
+    width: 100%;
+  }
+
+  .section-two-bottom-header-ul {
+    width: 100%;
+    margin-left: 15px;
+  }
+
+  .section-two-bottom-title {
+    font-size: 1.75rem;
   }
 
 }
