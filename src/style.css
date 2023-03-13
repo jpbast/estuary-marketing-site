@@ -45,7 +45,7 @@
   --lineHeight-normal: 1.5;
   --lineHeight-relaxed: 1.625;
   /* 1.200 Minor Third Type Scale */
-  --fontSize-0: 0.833rem;
+  --fontSize-0: 0.875rem;
   --fontSize-1: 1.125rem;
   --fontSize-2: 1.2rem;
   --fontSize-3: 1.44rem;
@@ -544,7 +544,7 @@ input {
   color: #625EFF;
   margin-top: 100px;
   margin-bottom: 0px;
-  font-size: 0.875rem;
+  font-size: var(--fontSize-0);
 }
 
 .section-three-product-video-wrapper {
@@ -577,6 +577,91 @@ input {
 .section-three-try-it-button-wrapper {
   display: flex;
   margin-top: 100px;
+  margin-bottom: 95px;
+}
+
+/* SECTION FOUR */
+
+.section-four {
+  display: flex;
+  flex-direction: column;
+  padding: 0 146px 0 146px;
+  background-color: #F9FAFC;
+}
+
+.section-four-header-small {
+  color: #625EFF;
+  margin-top: 100px;
+  margin-bottom: 0px;
+  font-size: var(--fontSize-0);
+}
+
+.section-four-header-vectors {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-four-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-four-tile-wrapper {
+  display: flex;
+}
+
+.section-four-tile {
+  background-color: #FFFFFF;
+  margin: 12px;
+  flex: 1;
+  padding-left: 24px;
+  padding-top: 48px;
+}
+
+.section-four-tile-icon {
+  height: 12px;
+  width: 12px;
+}
+
+.section-four-tile-title {
+  font-size: 1.5rem;
+  font-family: 600;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+}
+
+.section-four-tile-subtext {
+  font-size: var(--fontSize-1);
+}
+
+.section-four-try-it-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 94px;
+  margin-top: 40px;
+}
+
+.section-four-try-it-button {
+  background-color: #5072EB;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  width: 140px;
+  height: 60px;
+  text-align: center;
+  line-height: 40px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fontSize-1);
+}
+
+.section-four-try-it-header-text {
+  font-size: var(--fontSize-1);
+  color: #47506D;
 }
 
 
@@ -773,7 +858,7 @@ input {
   margin-bottom: var(--spacing-8);
 }
 
-/* Media queries */
+/* MEDIA QUERIES */
 
 @media (max-width: 960px) {
   .global-header {
@@ -932,13 +1017,20 @@ input {
     /* width: 250px; */
   }
 
-  .section-three-try-it-button, .section-one-try-it-button {
+  .section-three-try-it-button, .section-one-try-it-button, .section-four-try-it-button {
     width: 101px;
     height: 40px;
-    font-size: 0.875rem;
+    font-size: var(--fontSize-0);
     padding: 0 0;
   }
   
+  .section-four-tile-wrapper {
+    flex-direction: column;
+  }
+
+  .section-four {
+    padding: 0 16px 0 16px;
+  }
 
 }
 
