@@ -670,7 +670,9 @@ input {
   background-color: #04192B;
   background-image: url("./images/overlay-vector-right.svg");
   background-repeat: no-repeat;
-  background-position-y: bottom;
+  background-position-y: 200px;
+  background-position-x: right;
+  padding: 0 146px 0 146px;
 }
 
 .section-five-header-wrapper {
@@ -695,16 +697,19 @@ input {
 
 .section-five-tile-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  flex-flow: column wrap;
+  align-content: space-between;
+  margin: auto;
+  height: 800px;
 }
 
 
 .section-five-tile {
   background-color: #1E304C;
-  flex: 30%;
+  width: 32%;
+  position: relative;
   margin: 12px;
-  padding: 24px;
+  padding: 15px;
 }
 
 .section-five-tile-text {

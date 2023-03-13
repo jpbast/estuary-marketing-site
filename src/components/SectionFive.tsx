@@ -23,6 +23,18 @@ const SectionFive = () => {
                         <p className="section-five-tile-logo-text">Flashpack</p>
                     </div>
                 </div>
+                      <div className="section-five-tile">
+                    <p className="section-five-tile-text">“Estuary Flow allows us to integrate low-latency CDC and connect to SaaS apps across our entire reporting stack and it’s the only solution that we’ve found that lets us do both.”</p>
+                    <div className="section-five-logo-wrapper">
+                        <StaticImage
+                            alt="estuary logo top"
+                            src="../images/deepsync-logo.svg"
+                            className="section-five-header-vector"
+                            layout="fixed"
+                        />
+                        <p className="section-five-tile-logo-text">Deep Sync</p>
+                    </div>
+                </div>
                 <div className="section-five-tile">
                     <p className="section-five-tile-text">““Estuary is the only system we’ve found that can seamlessly replicate large scale Firestore data for analytics.  After months of research and trying everything, we can confidently say that Estuary is the only company that can help us get easy, accurate analytics on our data within Snowflake.""</p>
                     <div className="section-five-logo-wrapper">
@@ -47,18 +59,7 @@ const SectionFive = () => {
                         <p className="section-five-tile-logo-text">Fenestra</p>
                     </div>
                 </div>
-                <div className="section-five-tile">
-                    <p className="section-five-tile-text">“Estuary Flow allows us to integrate low-latency CDC and connect to SaaS apps across our entire reporting stack and it’s the only solution that we’ve found that lets us do both.”</p>
-                    <div className="section-five-logo-wrapper">
-                        <StaticImage
-                            alt="estuary logo top"
-                            src="../images/deepsync-logo.svg"
-                            className="section-five-header-vector"
-                            layout="fixed"
-                        />
-                        <p className="section-five-tile-logo-text">Deep Sync</p>
-                    </div>
-                </div>
+          
                 <div className="section-five-tile">
                     <p className="section-five-tile-text">“This tool is 1000x times better than LogStash or Elastic Enterprise Data Ingestion Tool, which has many issues..”</p>
                     <div className="section-five-logo-wrapper">
