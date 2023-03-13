@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import SectionTwo from "../components/SectionTwo"
 import SectionThree from "../components/SectionThree"
 import SectionFour from "../components/SectionFour"
+import SectionFive from "../components/SectionFive"
 
 const IndexPage = () => {
 
@@ -26,6 +27,7 @@ const IndexPage = () => {
         <SectionTwo/>
         <SectionThree/>
         <SectionFour/>
+        <SectionFive/>
         </Layout>
 
     )
