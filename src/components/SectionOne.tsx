@@ -3,9 +3,7 @@ import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
-
 const SectionOne = () => {
-
     //     const { mobileImage, desktopImage } = useStaticQuery(graphql`
     //     query {
     //       desktopImage: file(relativePath: { eq: "estuary-tiles.svg" }) {
@@ -41,10 +39,14 @@ const SectionOne = () => {
                     <h1 className="section-one-h1">data-driven</h1>
                     <h1 className="section-one-h1">decisions</h1>
                     <div className="section-one-subtext-wrapper">
-                        <p className="section-one-subtext">Managed streaming data pipelines, streaming SQL transformations and
-                            turnkey connectivity to clouds, databases, and apps.
+                        <p className="section-one-subtext">
+                            Managed streaming data pipelines, streaming SQL
+                            transformations and turnkey connectivity to clouds,
+                            databases, and apps.
                         </p>
-                        <p className="section-one-subtext">Use it free with hands-on support. Scale without bounds.
+                        <p className="section-one-subtext">
+                            Use it free with hands-on support. Scale without
+                            bounds.
                         </p>
                     </div>
                     <Link className="section-one-try-it-button" to="#">
@@ -53,6 +55,7 @@ const SectionOne = () => {
                 </div>
                 <div className="section-one-right">
                     <StaticImage
+                        placeholder="none"
                         alt="estuary logo with other software tiles"
                         src="../images/estuary-tiles.svg"
                         layout="constrained"
@@ -62,37 +65,42 @@ const SectionOne = () => {
             </div>
             <div className="section-one-bottom">
                 <StaticImage
+                    placeholder="none"
                     alt="flash pack logo"
                     src="../images/flashpack.svg"
-                    imgStyle={{objectFit:"contain"}}
+                    imgStyle={{ objectFit: "contain" }}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
                 <StaticImage
+                    placeholder="none"
                     alt="coalesce pack logo"
                     src="../images/coalesce.png"
-                    imgStyle={{objectFit:"contain"}}
+                    imgStyle={{ objectFit: "contain" }}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
                 <StaticImage
+                    placeholder="none"
                     alt="fenestra logo"
                     src="../images/fenestra.png"
-                    imgStyle={{objectFit:"contain"}}
+                    imgStyle={{ objectFit: "contain" }}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
                 <StaticImage
+                    placeholder="none"
                     alt="deep sync logo"
                     src="../images/deep_sync.png"
-                    imgStyle={{objectFit:"contain"}}
+                    imgStyle={{ objectFit: "contain" }}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />
                 <StaticImage
+                    placeholder="none"
                     alt="pompato logo"
                     src="../images/pompato.png"
-                    imgStyle={{objectFit:"contain"}}
+                    imgStyle={{ objectFit: "contain" }}
                     className="section-one-bottom-logo"
                     layout="constrained"
                 />

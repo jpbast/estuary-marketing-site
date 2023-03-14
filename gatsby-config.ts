@@ -23,6 +23,13 @@ module.exports = {
   // graphqlTypegen: true,
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/images`,
+        name: `blog_images`,
+      },
+    },
+    {
 
       resolve: `gatsby-source-contentful`,
       options: {

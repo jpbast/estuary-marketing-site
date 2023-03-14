@@ -59,6 +59,7 @@
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --background-color-primary: #04192B;
 }
 
 /* HTML elements */
@@ -319,6 +320,27 @@ input {
   font-weight: 400;
   font-size: 16px;
   white-space: nowrap;
+  cursor: pointer;
+  display: flex;
+}
+
+.global-header-menu-link {
+    text-decoration: none;
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.global-header-menu-chevron {
+    margin-left: 8px;
+    margin-right: 5px;
+}
+
+.global-header-menu-chevron-down {
+    transform: rotate(90deg);
 }
 
 .global-header-login-try {
@@ -418,7 +440,6 @@ input {
 }
 
 .section-one-right-image {
-  /* margin-left: 24vw; */
   overflow:visible;
   object-fit: contain; 
 }
@@ -428,8 +449,6 @@ input {
   max-height: 80vh;
   width: calc(min(auto, 50vw));
   left: unset;
-
-  /* object-fit: contain; */
 }
 
 .section-one-bottom {
@@ -1012,6 +1031,10 @@ input {
 
 .gatsby-highlight {
   margin-bottom: var(--spacing-8);
+}
+
+.gatsby-image-wrapper [data-main-image] {
+  transition: none;
 }
 
 /* MEDIA QUERIES */

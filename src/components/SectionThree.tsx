@@ -1,5 +1,5 @@
 import * as React from "react"
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
@@ -12,12 +12,15 @@ const SectionThree = () => {
             </div>
             <div className="section-three-product-video-wrapper">
                 <ReactPlayer
-                    light={<StaticImage
-                        alt="estuary flow product video"
-                        src="../images/homepage-product-video.svg"
-                        className="section-three-product-video-thumbnail"
-                        layout="constrained"
-                    />}
+                    light={
+                        <StaticImage
+                            placeholder="none"
+                            alt="estuary flow product video"
+                            src="../images/homepage-product-video.svg"
+                            className="section-three-product-video-thumbnail"
+                            layout="constrained"
+                        />
+                    }
                     url="https://www.youtube.com/embed/hlCh81ZbBik"
                 />
             </div>
