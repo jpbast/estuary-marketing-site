@@ -4,19 +4,20 @@ import { Link, graphql } from "gatsby"
 import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import dayjs from "dayjs"
+import { Options } from "@contentful/rich-text-react-renderer"
 import reltime from "dayjs/plugin/relativeTime"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Bio from "../components/bio"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 
 dayjs.extend(reltime)
 
 const Bold = ({ children }) => <span className="bold">{children}</span>
 const Text = ({ children }) => <p className="align-center">{children}</p>
 
-const richTextOptions = {
+const richTextOptions: Options = {
   renderMark: {
     [MARKS.BOLD]: text => <Bold>{text}</Bold>,
   },
@@ -33,12 +34,12 @@ const richTextOptions = {
       )
     },
     [BLOCKS.EMBEDDED_ASSET]: node => {
-      const { gatsbyImageData } = node.data.target
-      if (!gatsbyImageData) {
+      const imgData: IGatsbyImageData = node.data?.target?.gatsbyImageData;
+      if (!imgData) {
         // asset is not an image
         return <span>???</span>
       }
-      return <GatsbyImage image={gatsbyImageData} alt="test" />
+      return <GatsbyImage image={imgData} alt="test" />
     },
   },
 }
@@ -89,7 +90,7 @@ const BlogPostTemplate = ({
   const siteTitle = site.siteMetadata?.title || `Title`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <article
         className="blog-post"
         itemScope

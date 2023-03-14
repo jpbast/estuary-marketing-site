@@ -7,32 +7,33 @@ import SectionThree from "../components/SectionThree"
 import SectionFour from "../components/SectionFour"
 import SectionFive from "../components/SectionFive"
 import SectionSix from "../components/SectionSix"
+import Seo from "../components/seo"
 
 const IndexPage = () => {
-
-    const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-    const siteTitle = data.site.siteMetadata?.title || `Title`
-
-
     return (
-        <Layout location={location} title={siteTitle}>
-        <SectionOne/>
-        <SectionTwo/>
-        <SectionThree/>
-        <SectionFour/>
-        <SectionFive/>
-        <SectionSix/>
+        <Layout>
+            <SectionOne />
+            <SectionTwo />
+            <SectionThree />
+            <SectionFour />
+            <SectionFive />
+            <SectionSix />
         </Layout>
-
     )
+}
+
+export const Head = ({ data: { post } }) => {
+    const titleQuery = useStaticQuery(graphql`
+        query SiteTitleQuery {
+            site {
+                siteMetadata {
+                    title
+                }
+            }
+        }
+    `)
+    const siteTitle = titleQuery.site.siteMetadata?.title || `Estuary`
+    return <Seo title={siteTitle} description={"Estuary"} />
 }
 
 export default IndexPage

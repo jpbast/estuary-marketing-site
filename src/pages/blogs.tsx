@@ -1,16 +1,15 @@
 import * as React from "react"
-import { Link, graphql, PageProps } from "gatsby"
+import { Link, graphql, PageProps, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+const BlogIndex = ({ data }) => {
   const posts = data.allContentfulBlogPost.edges.map(e=>e.node)
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={siteTitle}>
+      <Layout>
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -21,7 +20,7 @@ const BlogIndex = ({ data, location }) => {
   }
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.title
@@ -65,7 +64,9 @@ export default BlogIndex
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="Blog" />
+export const Head = ({ data: { post } }) => {
+    return <Seo title={"Blog"} description={"Estuary Blog"} />
+}
 
 export const pageQuery = graphql`
   query BlogData {
