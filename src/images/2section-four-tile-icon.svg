@@ -1,0 +1,27 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M43.7031 19.8496H39.0011" stroke="#5072EB"/>
+<path d="M43.7031 27.8496H39.0011" stroke="#5072EB"/>
+<path d="M43.7031 44.8496H39.0011" stroke="#5072EB"/>
+<path d="M36.499 19.8499L32.5031 31.1956M36.499 27.3499L32.5031 31.9009M36.4987 37.3499L32.3856 32.3711M31.9154 32.7629L36.4983 45.3499" stroke="#5072EB"/>
+<path d="M43.7031 36.8496H39.0011" stroke="#5072EB"/>
+<circle cx="2.5" cy="2.5" r="2.5" transform="matrix(-1 0 0 1 40.6914 42.5264)" fill="#5072EB"/>
+<circle cx="2.5" cy="2.5" r="2.5" transform="matrix(-1 0 0 1 46.6523 16.8496)" fill="#5072EB"/>
+<circle cx="2.5" cy="2.5" r="2.5" transform="matrix(-1 0 0 1 46.6523 24.8496)" fill="#5072EB"/>
+<circle cx="2.5" cy="2.5" r="2.5" transform="matrix(-1 0 0 1 46.6914 42.5264)" fill="#5072EB"/>
+<circle cx="2.5" cy="2.5" r="2.5" transform="matrix(-1 0 0 1 40.6914 34.5264)" fill="#5072EB"/>
+<circle cx="2.5" cy="2.5" r="2.5" transform="matrix(-1 0 0 1 46.6914 34.5264)" fill="#5072EB"/>
+<circle cx="2.5" cy="2.5" r="2.5" transform="matrix(-1 0 0 1 40.6523 16.8496)" fill="#5072EB"/>
+<circle cx="2.5" cy="2.5" r="2.5" transform="matrix(-1 0 0 1 40.6523 24.8496)" fill="#5072EB"/>
+<path d="M21 22.8498H25.702" stroke="#5072EB"/>
+<path d="M19 32.8498H23.702" stroke="#5072EB"/>
+<path d="M20 41.8498H24.702" stroke="#5072EB"/>
+<path d="M27.498 23.8499L31.4971 31.1163M25.4629 32.8216H31.4971M26.998 40.3499L31.6147 32.6053" stroke="#5072EB"/>
+<circle cx="25.5" cy="41.3498" r="2.5" fill="#5072EB"/>
+<circle cx="19.5" cy="23.3498" r="2.5" fill="#5072EB"/>
+<circle cx="19.5" cy="32.3498" r="2.5" fill="#5072EB"/>
+<circle cx="19.5" cy="41.3498" r="2.5" fill="#5072EB"/>
+<circle cx="25.5" cy="23.3498" r="2.5" fill="#5072EB"/>
+<path d="M34 32.3498C34 33.7305 32.8807 34.8498 31.5 34.8498C30.1193 34.8498 29 33.7305 29 32.3498C29 30.9691 30.1193 29.8498 31.5 29.8498C32.8807 29.8498 34 30.9691 34 32.3498Z" fill="#5072EB"/>
+<circle cx="25.5" cy="32.3498" r="2.5" fill="#5072EB"/>
+<rect x="0.5" y="0.5" width="63" height="63" stroke="#D7DCE5"/>
+</svg>

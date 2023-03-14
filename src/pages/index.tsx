@@ -1,3 +1,38 @@
 import * as React from "react"
+import Layout from "../components/layout"
+import SectionOne from "../components/SectionOne"
+import { useStaticQuery, graphql } from "gatsby"
+import SectionTwo from "../components/SectionTwo"
+import SectionThree from "../components/SectionThree"
+import SectionFour from "../components/SectionFour"
+import SectionFive from "../components/SectionFive"
+import SectionSix from "../components/SectionSix"
 
-export default () => <div>hi ho!</div>
+const IndexPage = () => {
+
+    const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+    const siteTitle = data.site.siteMetadata?.title || `Title`
+
+
+    return (
+        <Layout location={location} title={siteTitle}>
+        <SectionOne/>
+        <SectionTwo/>
+        <SectionThree/>
+        <SectionFour/>
+        <SectionFive/>
+        <SectionSix/>
+        </Layout>
+
+    )
+}
+
+export default IndexPage
