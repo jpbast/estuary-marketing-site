@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     permissions:
       contents: read
       id-token: 'write'
@@ -20,6 +21,8 @@ jobs:
           node-version: '18.x'
       - run: npm install
       - run: npm run build
+        env:
+            CONTENTFUL_DELIVERY_API_KEY: ${{ secrets.CONTENTFUL_DELIVERY_API_KEY }}
       - id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
@@ -30,3 +33,4 @@ jobs:
         with:
           path: "${{ github.workspace }}/public"
           destination: "estuary-marketing"
+          parent: false
