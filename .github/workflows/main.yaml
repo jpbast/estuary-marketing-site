@@ -33,3 +33,4 @@ jobs:
         with:
           path: "${{ github.workspace }}/public"
           destination: "estuary-marketing"
+          parent: false
