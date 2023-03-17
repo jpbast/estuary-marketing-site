@@ -433,6 +433,7 @@ input {
   display: flex;
   flex: 1 1 auto;
   justify-content: flex-end;
+  max-width: 50vw;
 }
 
 .section-one-right-image {
