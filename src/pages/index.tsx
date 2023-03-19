@@ -11,7 +11,8 @@ import Seo from "../components/seo"
 
 const IndexPage = () => {
     return (
-        <Layout>
+        //@ts-ignore
+        <Layout headerTheme="dark">
             <SectionOne />
             <SectionTwo />
             <SectionThree />

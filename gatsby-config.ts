@@ -50,6 +50,7 @@ module.exports = {
             options: strapiConfig,
         },
         `gatsby-plugin-image`,
+        `gatsby-plugin-less`,
         {
             resolve: `gatsby-transformer-rehype`,
             options: {

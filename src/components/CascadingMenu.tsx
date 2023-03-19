@@ -142,7 +142,7 @@ export const NavMenuItem = ({ item }: { item: NavItem }) => {
     }
 }
 
-export const NavMenuTopLevel = ({ item }: { item: NavItem }) => {
+export const NavMenuTopLevel = ({ item }: {item: NavItem }) => {
     const popupState = usePopupState({
         popupId: `${item.title}-${item.path}`,
         variant: "popover",

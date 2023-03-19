@@ -4,6 +4,7 @@ import List from "@mui/material/List"
 import { StaticImage } from "gatsby-plugin-image"
 import { NavItem, NavMenuList, NavMenuTopLevel } from "./CascadingMenu"
 import { useState } from "react"
+import clsx from "clsx"
 
 const navItems: NavItem[] = [
     {
@@ -88,12 +89,18 @@ const MenuBarsImage = () => (
     </svg>
 )
 
-const Header = () => {
+const Header = (props: {theme: "light"|"dark"}) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    
+    const theme = props.theme;
 
     return (
         <>
-            <header className="global-header">
+        {/* @ts-ignore */}
+            <header className={clsx("global-header",{
+                "global-header-light": theme === "light",
+                "global-header-dark": theme === "dark"
+        })}>
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
                     <StaticImage
@@ -107,7 +114,7 @@ const Header = () => {
                         layout="fixed"
                         placeholder="none"
                     />
-                    <h1 className="global-header-title">Estuary</h1>
+                    <h1 className={"global-header-title"}>Estuary</h1>
                 </Link>
                 <div style={{ flex: "1 2 45px" }} />
                 <div className="global-header-wrapper">
