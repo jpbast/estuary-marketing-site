@@ -208,9 +208,7 @@ export const NavMenuList = ({ item }: { item: NavItem }) => {
             <>
                 {button}
                 <Collapse
-                    sx={{
-                        borderLeft: `4px solid white`,
-                    }}
+                    className="global-header-mobile-menu-borderLeft"
                     in={open}
                     timeout="auto"
                     unmountOnExit

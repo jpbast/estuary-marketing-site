@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 
 const ProductPage = () => {
     return (
-        <Layout theme="light">        
+        <Layout headerTheme="light">        
             <div className="product-flow">
                 <div className="product-flow-">
                     <div>Flow</div>

@@ -283,9 +283,11 @@ input {
   &.global-header {
     background: #ffffff;
   }
+
   & .global-header-title {
     color: #04192B;
   }
+
   & .global-header-link {
     color: #47506D;
   }
@@ -295,11 +297,43 @@ input {
   &.global-header {
     background: #04192B;
   }
+
   & .global-header-title {
     color: #FFFFFF;
   }
+
   & .global-header-link {
     color: #9AA8BE;
+  }
+}
+
+.global-header-mobile-menu-list {
+  width: 100%;
+}
+
+.global-header-mobile-menu-list-dark {
+  background-color: var(--background-color-primary);
+  color: #ffffff;
+
+  & .global-header-link {
+    color: #9AA8BE;
+  }
+
+  & .global-header-mobile-menu-borderLeft {
+    border-left: 4px solid #ffffff;
+  }
+}
+
+.global-header-mobile-menu-list-light {
+  background-color: #ffffff;
+  color: #47506D;
+
+  & .global-header-link {
+    color: #47506D;
+  }
+
+  & .global-header-mobile-menu-borderLeft {
+    border-left: 4px solid #47506D;
   }
 }
 
@@ -322,9 +356,7 @@ input {
   margin: 31px 0;
 }
 
-.global-header-title-light {
-  
-}
+.global-header-title-light {}
 
 .global-header-wrapper {
   display: flex;
@@ -350,22 +382,22 @@ input {
 }
 
 .global-header-menu-link {
-    text-decoration: none;
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    white-space: nowrap;
+  text-decoration: none;
+  color: black;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  white-space: nowrap;
 }
 
 .global-header-menu-chevron {
-    margin-left: 8px;
-    margin-right: 5px;
+  margin-left: 8px;
+  margin-right: 5px;
 }
 
 .global-header-menu-chevron-down {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .global-header-login-try {
@@ -465,12 +497,12 @@ input {
 }
 
 .section-one-right-image {
-  overflow:visible;
-  object-fit: contain; 
+  overflow: visible;
+  object-fit: contain;
 }
 
 .section-one-right-image img {
-  overflow:visible;
+  overflow: visible;
   max-height: 80vh;
   width: calc(min(auto, 50vw));
   left: unset;
@@ -1082,10 +1114,11 @@ input {
     padding-left: 16px;
     padding-right: 0;
   }
+
   .global-header-padder {
     display: none;
   }
-  
+
 
   .global-header-wrapper {
     display: none;
@@ -1167,10 +1200,10 @@ input {
   }
 
   .section-one-right-image img {
-    overflow:visible;
+    overflow: visible;
     max-height: 55vw;
     left: unset;
-  
+
     object-fit: contain;
   }
 
@@ -1296,7 +1329,8 @@ input {
     padding: 0 16px 0 16px;
   }
 
-  .section-six-left, .section-six-text-wrapper {
+  .section-six-left,
+  .section-six-text-wrapper {
     width: 100%;
   }
 

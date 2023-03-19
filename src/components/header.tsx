@@ -89,18 +89,18 @@ const MenuBarsImage = () => (
     </svg>
 )
 
-const Header = (props: {theme: "light"|"dark"}) => {
+const Header = (props: { theme: "light" | "dark" }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    
+
     const theme = props.theme;
 
     return (
         <>
-        {/* @ts-ignore */}
-            <header className={clsx("global-header",{
+            {/* @ts-ignore */}
+            <header className={clsx("global-header", {
                 "global-header-light": theme === "light",
                 "global-header-dark": theme === "dark"
-        })}>
+            })}>
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
                     <StaticImage
@@ -144,11 +144,10 @@ const Header = (props: {theme: "light"|"dark"}) => {
             </header>
             {mobileMenuOpen ? (
                 <List
-                    sx={{
-                        width: "100%",
-                        bgcolor: "var(--background-color-primary)",
-                        color: "white"
-                    }}
+                    className={clsx("global-header-mobile-menu-list", {
+                        "global-header-mobile-menu-list-light": theme === "light",
+                        "global-header-mobile-menu-list-dark": theme === "dark"
+                    })}
                     component="nav"
                 >
                     {navItems.map(item => (
