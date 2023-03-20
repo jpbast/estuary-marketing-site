@@ -6,7 +6,7 @@ import { StaticImage } from "gatsby-plugin-image"
 const SectionFour = () => {
     return (
         <div className="section-four">
-            <p className="section-four-header-small">FEATURES</p>
+            <p className="section-four-header-small">Features</p>
             <div className="section-four-header-wrapper">
                 <h2>A robust set of features</h2>
                 <div className="section-four-header-vectors">

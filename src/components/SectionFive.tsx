@@ -7,7 +7,7 @@ const SectionFive = () => {
     return (
         <div className="section-five">
             <div className="section-five-header-wrapper">
-                <p className="section-five-header-small">TESTIMONIALS</p>
+                <p className="section-five-header-small">Testimonials</p>
                 <h2 className="section-five-header">What our customers say</h2>
             </div>
             <div className="section-five-tile-wrapper">
