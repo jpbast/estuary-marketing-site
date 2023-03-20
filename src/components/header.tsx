@@ -50,7 +50,7 @@ const navItems: NavItem[] = [
             },
             {
                 title: "Blog",
-                path: "/blog",
+                path: "/blog/featured",
             },
             {
                 title: "Contact",
