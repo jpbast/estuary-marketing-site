@@ -1098,13 +1098,14 @@ input {
 
 .product-flow {
   display: flex;
+  width: 100%;
   color: #ffffff;
-  padding-left: ~"calc(min(9%, 146px))";
-  padding-right: ~"calc(min(9%, 146px))";
+
 }
 
 .product-flow-section-one-h1 {
   font-size: var(--fontSize-6);
+  width: 500px;
 }
 
 .product-flow-section-one {
@@ -1112,6 +1113,17 @@ input {
   justify-content: space-between;
   margin-top: 50px;
   margin-bottom: 200px;
+  width: 100%;
+  padding-left: ~"calc(min(9%, 146px))";
+  padding-right: ~"calc(min(9%, 146px))";
+}
+
+.product-flow-section-one-background-image-wrapper {
+  display: flex;
+  width: 100%;
+  background-image: url("./images/product-flow-section-one-background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .product-flow-section-one-subtext {
@@ -1138,7 +1150,6 @@ input {
 .product-flow-section-one-left {
   display: flex;
   flex-direction: column;
-  width: 60%;
 }
 
 .product-flow-section-one-right {
@@ -1393,9 +1404,7 @@ input {
     margin-bottom: 32px;
   }
 
-  .section-six-header-vectors {
-   
-  }
+  .section-six-header-vectors {}
 
   .section-six-header {
     margin-top: 8px;
