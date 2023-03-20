@@ -4,33 +4,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 const SectionOne = () => {
-    //     const { mobileImage, desktopImage } = useStaticQuery(graphql`
-    //     query {
-    //       desktopImage: file(relativePath: { eq: "estuary-tiles.svg" }) {
-    //         childImageSharp {
-    //           fluid(maxWidth: 1920) {
-    //             ...GatsbyImageSharpFluid
-    //           }
-    //         }
-    //       }
-    //       mobileImage: file(relativePath: { eq: "estuary-tiles.svg" }) {
-    //         childImageSharp {
-    //           fluid(maxWidth: 650) {
-    //             ...GatsbyImageSharpFluid
-    //           }
-    //         }
-    //       }
-    //     }
-    //   `)
-
-    //     const sources = [
-    //         mobileImage.childImageSharp.fluid,
-    //         {
-    //             ...desktopImage.childImageSharp.fluid,
-    //             media: `(min-width: 650px)`
-    //         }
-    //     ]
-
     return (
         <div className="section-one">
             <div className="section-one-wrapper">

@@ -893,12 +893,6 @@ input {
   width: 35vw;
 }
 
-/* PRODUCT FLOW */
-
-.product-flow {
-  color: #ffffff
-}
-
 /* FOOTER */
 
 .global-footer {
@@ -1100,6 +1094,61 @@ input {
   transition: none;
 }
 
+/* PRODUCT FLOW */
+
+.product-flow {
+  display: flex;
+  color: #ffffff;
+  padding-left: ~"calc(min(9%, 146px))";
+  padding-right: ~"calc(min(9%, 146px))";
+}
+
+.product-flow-section-one-h1 {
+  font-size: var(--fontSize-6);
+}
+
+.product-flow-section-one {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 200px;
+}
+
+.product-flow-section-one-subtext {
+  font-size: var(--fontSize-1);
+  color: #47506D
+}
+
+.product-flow-section-one-try-it-button {
+  background-color: #5072EB;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  width: 140px;
+  height: 60px;
+  text-align: center;
+  line-height: 40px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fontSize-1);
+}
+
+.product-flow-section-one-left {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.product-flow-section-one-right {
+  display: flex;
+}
+
+.product-flow-section-one-image {
+  width: 100px;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 1260px) {
@@ -1287,7 +1336,8 @@ input {
 
   .section-three-try-it-button,
   .section-one-try-it-button,
-  .section-four-try-it-button {
+  .section-four-try-it-button,
+  .product-section-one-try-it-button {
     width: 101px;
     height: 40px;
     font-size: var(--fontSize-0);
@@ -1344,8 +1394,7 @@ input {
   }
 
   .section-six-header-vectors {
-    width: 40px;
-    margin-top: 0px;
+   
   }
 
   .section-six-header {

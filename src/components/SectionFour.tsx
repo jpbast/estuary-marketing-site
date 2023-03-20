@@ -12,17 +12,10 @@ const SectionFour = () => {
                 <div className="section-four-header-vectors">
                     <StaticImage
                         placeholder="none"
-                        alt="estuary logo top"
-                        src="../images/estuary-top-logo-vector-2.svg"
-                        className="section-four-header-vector"
-                        layout="constrained"
-                    />
-                    <StaticImage
-                        placeholder="none"
-                        alt="estuary logo bottom"
-                        src="../images/estuary-top-logo-vector-1.svg"
-                        className="section-four-header-vector"
-                        layout="constrained"
+                        alt="estuary logo"
+                        src="../images/estuary-vertical-logo.svg"
+                        layout="fixed"
+                        className="product-flow-section-one-image"
                     />
                 </div>
             </div>

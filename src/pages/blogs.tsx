@@ -9,7 +9,7 @@ const BlogIndex = ({ data }) => {
 
     if (posts.length === 0) {
         return (
-            <Layout>
+            <Layout headerTheme="light">
                 <p>
                     No blog posts found. Add markdown posts to "content/blog"
                     (or the directory you specified for the
@@ -20,7 +20,7 @@ const BlogIndex = ({ data }) => {
     }
 
     return (
-        <Layout>
+        <Layout headerTheme="light">
             <ol style={{ listStyle: `none` }}>
                 {posts.map(post => {
                     const title = post.title
