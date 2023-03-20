@@ -4,20 +4,33 @@ import { Link, graphql, PageProps, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { StaticImage } from "gatsby-plugin-image"
+import clsx from "clsx"
+import { BlogPostCard } from "../components/BlogPostCard"
 
-const BlogIndex = ({ data }) => {
+interface BlogIndexProps {
+    data: {
+        allStrapiBlogPost: {
+            nodes: any[]
+        }
+    }
+    pageContext: {
+        blogPostIds: String[]
+        tabCategories: Array<{
+            Type: String
+            Slug: String
+            Name: String
+        }>
+        categoryTitle: String
+        categorySlug: String
+    }
+}
+
+const BlogIndex = ({
+    data,
+    pageContext: { categoryTitle, categorySlug, tabCategories, blogPostIds },
+}: BlogIndexProps) => {
+    console.log(blogPostIds)
     const posts = data.allStrapiBlogPost.nodes
-    const categories = new Set(
-        posts.flatMap(post =>
-            post.tags
-                .filter(tag => tag.Type === "category")
-                .map(tag => tag.Slug)
-        )
-    )
-
-    const postsByCategory = [...categories].map(category =>
-        posts.filter(post => post.tags.some(tag => tag.Slug === category))
-    )
 
     return (
         <Layout>
@@ -56,8 +69,24 @@ const BlogIndex = ({ data }) => {
                         </p>
                     </div>
                 </div>
+                <div className="blogs-index-tabs">
+                    {tabCategories.map(category => (
+                        <Link
+                            to={`/blog/${category.Slug}`}
+                            className={clsx("blogs-index-tab", {
+                                "blogs-index-tab-active":
+                                    category.Slug === categorySlug,
+                            })}
+                        >
+                            {category.Name}
+                        </Link>
+                    ))}
+                </div>
                 <div className="blogs-index-body">
-                    <ol style={{ listStyle: `none` }}>
+                    {posts.map(post => (
+                        <BlogPostCard {...post} />
+                    ))}
+                    {/* <ol style={{ listStyle: `none` }}>
                         {posts.map(post => {
                             const title = post.title
                             return (
@@ -96,7 +125,7 @@ const BlogIndex = ({ data }) => {
                                 </li>
                             )
                         })}
-                    </ol>
+                    </ol> */}
                 </div>
             </div>
         </Layout>
@@ -115,21 +144,23 @@ export const Head = ({ data: { post } }) => {
 }
 
 export const pageQuery = graphql`
-    query BlogData {
+    # We need to pass in IDs because we do the filtering in gatsby-node.ts
+    # because gatsby won't let us filter by elemMatch on multiple conditions
+    # i.e type: "category" AND slug: "..."
+    query BlogData($blogPostIds: [String]!) {
         site {
             siteMetadata {
                 title
             }
         }
-        allStrapiBlogPost {
+        allStrapiBlogPost(
+            filter: { id: { in: $blogPostIds } }
+            sort: [{ publishedAt: DESC }]
+        ) {
             nodes {
                 title: Title
                 slug: Slug
-                # excerpt {
-                #     childMarkdownRemark {
-                #         html
-                #     }
-                # }
+                publishedAt(formatString: "MMMM D, YYYY")
                 tags: tags {
                     Name
                     Slug
@@ -150,8 +181,9 @@ export const pageQuery = graphql`
                     localFile {
                         childImageSharp {
                             gatsbyImageData(
-                                layout: FULL_WIDTH
+                                layout: CONSTRAINED
                                 placeholder: BLURRED
+                                aspectRatio: 1.7
                                 formats: [AUTO, WEBP, AVIF]
                             )
                             # Further below in this doc you can learn how to use these response images

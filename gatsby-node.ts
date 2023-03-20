@@ -7,19 +7,24 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// Define the template for blog post
+// Define the template for blog and blog post
 const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
+const blog = path.resolve(`./src/templates/blog.tsx`)
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage, createRedirect } = actions
-    
+
     createRedirect({
         fromPath: `/blogs`,
-        toPath: `/blog`,
-      })
+        toPath: `/blog/featured`,
+    })
+    createRedirect({
+        fromPath: `/blog`,
+        toPath: `/blog/featured`,
+    })
 
     // Get all markdown blog posts sorted by date
     const result = await graphql(`
@@ -32,6 +37,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                         Name
                         Slug
                         Type
+                        IsTab
                     }
                 }
             }
@@ -48,17 +54,48 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     const allPosts = result.data.allStrapiBlogPost.nodes
 
-    const categories = new Set(
-        allPosts.flatMap(post =>
+    const categories: {
+        [key: string]: {
+            Type: string
+            Slug: string
+            Name: string
+            IsTab: string
+        }
+    } = Object.assign(
+        {},
+        ...allPosts.flatMap(post =>
             post.tags
                 .filter(tag => tag.Type === "category")
-                .map(tag => tag.Slug)
+                .map(tag => ({ [tag.Slug]: tag }))
         )
     )
 
-    const postsByCategory = [...categories].map(category =>
+    const postsByCategory = Object.keys(categories).map(category =>
         allPosts.filter(post => post.tags.some(tag => tag.Slug === category))
     )
+
+    const tabCategories = Object.values(categories)
+        .filter(cat => cat.IsTab)
+        .sort((a, b) =>
+            a.Slug === "featured" ? -999999999 : a.Name.localeCompare(b.Name)
+        )
+
+    for (const category of tabCategories) {
+        createPage({
+            path: `blog/${category.Slug}`,
+            component: blog,
+            context: {
+                blogPostIds: allPosts
+                    .filter(post =>
+                        post.tags.some(tag => tag.Slug === category.Slug)
+                    )
+                    .map(post => post.id),
+                categoryTitle: category.Name,
+                categorySlug: category.Slug,
+                tabCategories,
+            },
+        })
+    }
 
     // Create blog posts pages
     // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
