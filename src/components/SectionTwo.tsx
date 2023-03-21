@@ -32,7 +32,7 @@ const SectionTwo = () => {
                         placeholder="none"
                         alt="estuary logo"
                         src="../images/estuary-vertical-logo.svg"
-                        layout="fixed"
+                        layout="constrained"
                         className="product-flow-section-one-image"
                     />
                 </div>
