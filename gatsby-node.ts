@@ -1,3 +1,5 @@
+import type { GatsbyNode } from "gatsby"
+
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -11,10 +13,11 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 const blog = path.resolve(`./src/templates/blog.tsx`)
 
-/**
- * @type {import('gatsby').GatsbyNode['createPages']}
- */
-exports.createPages = async ({ graphql, actions, reporter }) => {
+export const createPages: GatsbyNode["createPages"] = async ({
+    graphql,
+    actions,
+    reporter,
+}) => {
     const { createPage, createRedirect } = actions
 
     createRedirect({
@@ -27,7 +30,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
 
     // Get all markdown blog posts sorted by date
-    const result = await graphql(`
+    const result = await graphql<{
+        allStrapiBlogPost: {
+            nodes: {
+                Slug: string
+                id: string
+                tags: {
+                    Name: string
+                    Slug: string
+                    Type: string
+                    IsTab: boolean
+                }[]
+            }[]
+        }
+    }>(`
         {
             allStrapiBlogPost(filter: { publishedAt: { ne: null } }) {
                 nodes {
