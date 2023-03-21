@@ -58,6 +58,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 post.hero.localFile.childImageSharp
                                     .gatsbyImageData
                             }
+                            loading="eager"
                         />
                     ) : null}
                 </header>

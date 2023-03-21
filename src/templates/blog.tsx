@@ -6,11 +6,17 @@ import Seo from "../components/seo"
 import { StaticImage } from "gatsby-plugin-image"
 import clsx from "clsx"
 import { BlogPostCard } from "../components/BlogPostCard"
+import SearchIcon from "@mui/icons-material/Search"
+import { useLunr } from "react-lunr"
 
 interface BlogIndexProps {
     data: {
         allStrapiBlogPost: {
             nodes: any[]
+        }
+        localSearchPosts: {
+            index: any
+            store: any
         }
     }
     pageContext: {
@@ -29,8 +35,17 @@ const BlogIndex = ({
     data,
     pageContext: { categoryTitle, categorySlug, tabCategories, blogPostIds },
 }: BlogIndexProps) => {
-    console.log(blogPostIds)
     const posts = data.allStrapiBlogPost.nodes
+
+    const index = React.useMemo(
+        () => JSON.parse(data.localSearchPosts.index),
+        [data.localSearchPosts.index]
+    )
+
+    const [query, setQuery] = React.useState("")
+    const results = useLunr(query.length > 0 ? query.split(" ").map(term=>`${term}~4`).join(" ") : "", index, data.localSearchPosts.store)
+
+    console.log(results)
 
     return (
         <Layout>
@@ -69,63 +84,35 @@ const BlogIndex = ({
                         </p>
                     </div>
                 </div>
-                <div className="blogs-index-tabs">
-                    {tabCategories.map(category => (
-                        <Link
-                            to={`/blog/${category.Slug}`}
-                            className={clsx("blogs-index-tab", {
-                                "blogs-index-tab-active":
-                                    category.Slug === categorySlug,
-                            })}
-                        >
-                            {category.Name}
-                        </Link>
-                    ))}
+                <div className="blogs-index-tab-bar">
+                    <div className="blogs-index-tabs">
+                        {tabCategories.map(category => (
+                            <Link
+                                to={`/blog/${category.Slug}`}
+                                className={clsx("blogs-index-tab", {
+                                    "blogs-index-tab-active":
+                                        category.Slug === categorySlug,
+                                })}
+                            >
+                                {category.Name}
+                            </Link>
+                        ))}
+                    </div>
+                    <div style={{ flexGrow: 1 }} />
+                    <div className="blogs-index-search">
+                        <SearchIcon className="blogs-index-input-adornment" />
+                        <input
+                            placeholder="Search Blog Posts"
+                            type="text"
+                            value={query}
+                            onChange={evt => setQuery(evt.target.value)}
+                        />
+                    </div>
                 </div>
                 <div className="blogs-index-body">
-                    {posts.map(post => (
+                    {(query ? results : posts).map(post => (
                         <BlogPostCard {...post} />
                     ))}
-                    {/* <ol style={{ listStyle: `none` }}>
-                        {posts.map(post => {
-                            const title = post.title
-                            return (
-                                <li key={post.slug}>
-                                    <article
-                                        className="post-list-item"
-                                        itemScope
-                                        itemType="http://schema.org/Article"
-                                    >
-                                        <header>
-                                            <h2>
-                                                <Link
-                                                    to={`/${post.slug}`}
-                                                    itemProp="url"
-                                                >
-                                                    <span itemProp="headline">
-                                                        {title}
-                                                    </span>
-                                                </Link>
-                                            </h2>
-                                            <small>{post.publishDate}</small>
-                                        </header>
-                                        <section>
-                                            {post.excerpt ? (
-                                                <p
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: post.excerpt
-                                                            .childMarkdownRemark
-                                                            .html,
-                                                    }}
-                                                    itemProp="description"
-                                                />
-                                            ) : null}
-                                        </section>
-                                    </article>
-                                </li>
-                            )
-                        })}
-                    </ol> */}
                 </div>
             </div>
         </Layout>
@@ -153,6 +140,10 @@ export const pageQuery = graphql`
                 title
             }
         }
+        localSearchPosts {
+            index
+            store
+        }
         allStrapiBlogPost(
             filter: { id: { in: $blogPostIds } }
             sort: [{ publishedAt: DESC }]
@@ -171,7 +162,7 @@ export const pageQuery = graphql`
                     picture: Picture {
                         localFile {
                             childImageSharp {
-                                gatsbyImageData(layout: CONSTRAINED)
+                                gatsbyImageData(layout: CONSTRAINED, width: 50)
                             }
                         }
                     }
@@ -182,6 +173,7 @@ export const pageQuery = graphql`
                         childImageSharp {
                             gatsbyImageData(
                                 layout: CONSTRAINED
+                                width: 400
                                 placeholder: BLURRED
                                 aspectRatio: 1.7
                                 formats: [AUTO, WEBP, AVIF]

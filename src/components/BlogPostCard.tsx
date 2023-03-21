@@ -38,6 +38,7 @@ export const BlogPostCard = (props: BlogPostCardProps) => (
             <GatsbyImage
                 alt=""
                 image={props.hero.localFile.childImageSharp.gatsbyImageData}
+                loading="eager"
             />
         ) : null}
         <p className="blogs-post-card-details">

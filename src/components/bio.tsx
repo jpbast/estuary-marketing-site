@@ -29,6 +29,7 @@ const Bio = ({ authors }) => {
                         image={image}
                         alt="Profile picture"
                         style={{ marginLeft: 8 }}
+                        loading="eager"
                     />
                 )}
                 {name && (
