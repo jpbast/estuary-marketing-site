@@ -19,8 +19,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '18.x'
-      - run: npm install
-      - run: npm run build
+      - run: yarn install
+      - run: yarn run patch-package
+      - run: yarn run build
         env:
             STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
             STRAPI_TOKEN: ${{ secrets.STRAPI_TOKEN }}
@@ -35,3 +36,22 @@ jobs:
           path: "${{ github.workspace }}/public"
           destination: "estuary-marketing"
           parent: false
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+        with:
+          version: '>= 422.0.0'
+      - name: Set cache control on HTML files
+        run: "gsutil -m setmeta -h 'cache-control: public, max-age=0, must-revalidate' 'gs://estuary-marketing/**/*.html' 'gs://estuary-marketing/**/*.json'"
+      - name: Set cache control on js assets
+        run: "gsutil -m setmeta -h 'cache-control: public, max-age=31536000, immutable' 'gs://estuary-marketing/**/*.js'"
+      - name: Set cache control on svg assets
+        run: "gsutil -m setmeta -h 'cache-control: public, max-age=31536000, immutable' 'gs://estuary-marketing/**/*.svg'"
+      - name: Set cache control on png assets
+        run: "gsutil -m setmeta -h 'cache-control: public, max-age=31536000, immutable' 'gs://estuary-marketing/**/*.png'"
+      - name: Set cache control on webp assets
+        run: "gsutil -m setmeta -h 'cache-control: public, max-age=31536000, immutable' 'gs://estuary-marketing/**/*.webp'"
+      - name: Set cache control on static assets
+        run: "gsutil -m setmeta -h 'cache-control: public, max-age=31536000, immutable' 'gs://estuary-marketing/static**/*'"
+      - name: Invalidate cache
+        if: success()
+        run: "gcloud compute url-maps invalidate-cdn-cache estuary-marketing-new --path='/*'"

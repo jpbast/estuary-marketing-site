@@ -6,6 +6,7 @@ const ImgSharpInline = ({ className, fluidimg, alt }) => (
         className={className}
         fluid={fluidimg && JSON.parse(fluidimg)}
         alt={alt}
+        loading="eager"
     />
 )
 
