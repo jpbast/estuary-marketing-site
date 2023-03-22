@@ -9,12 +9,13 @@ import Seo from "../components/seo"
 import Bio from "../components/bio"
 import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
 import { ProcessedPost } from "../components/BlogPostProcessor"
+import FlowLogo from "../svgs/flow-logo.svg"
 
 dayjs.extend(reltime)
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     return (
-        <Layout>
+        <Layout headerTheme="light">
             <article
                 className="blog-post"
                 itemScope
@@ -22,22 +23,11 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             >
                 <header>
                     <div className="blog-post-header-vectors">
-                        <StaticImage
-                            placeholder="none"
-                            alt="estuary logo top"
-                            src="../images/estuary-top-logo-vector-2.svg"
+                        <FlowLogo
                             className="blog-post-header-vector"
-                            layout="constrained"
                             style={{
                                 zIndex: 1,
                             }}
-                        />
-                        <StaticImage
-                            placeholder="none"
-                            alt="estuary logo bottom"
-                            src="../images/estuary-top-logo-vector-1.svg"
-                            className="blog-post-header-vector"
-                            layout="constrained"
                         />
                     </div>
                     <span className="blog-post-date">{post.publishedAt}</span>
