@@ -722,6 +722,7 @@ input {
   font-family: 600;
   font-family: 'Inter', sans-serif;
   font-style: normal;
+  margin: 2rem 0;
 }
 
 .section-four-tile-subtext {
@@ -1357,11 +1358,19 @@ table th {
 
 .product-flow-topic-wrapper {
   display: flex;
+  align-items: center;
   margin: 10px 0;
 }
 
-.product-flow-section-two-topic-image {
-  margin: auto 0;
+.product-flow-section-two-topic-image-wrapper {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    background-color: white;
+    border: 1px solid darkgray;
+    & svg,.product-flow-section-two-topic-image {
+        margin: auto;
+    }
 }
 
 .product-flow-topic-section-wrapper {
@@ -1406,8 +1415,7 @@ table th {
   background-color: #F9FAFC;
   margin: 12px;
   flex: 1;
-  padding-left: 24px;
-  padding-top: 24px;
+  padding: 24px;
 }
 
 .product-flow-section-three-tile-wrapper {
