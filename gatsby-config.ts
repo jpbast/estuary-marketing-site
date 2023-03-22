@@ -50,6 +50,7 @@ module.exports = {
             options: strapiConfig,
         },
         `gatsby-plugin-image`,
+        `gatsby-plugin-less`,
         {
             resolve: `gatsby-transformer-rehype`,
             options: {
@@ -163,18 +164,37 @@ module.exports = {
                 // List of keys to store and make available in your UI. The values of
                 // the keys are taken from the normalizer function below.
                 // Default: all fields
-                store: ["id", "title", "slug", "publishedAt", "tags", "authors", "hero"],
+                store: [
+                    "id",
+                    "title",
+                    "slug",
+                    "publishedAt",
+                    "tags",
+                    "authors",
+                    "hero",
+                ],
 
                 // Function used to map the result from the GraphQL query. This should
                 // return an array of items to index in the form of flat objects
                 // containing properties to index. The objects must contain the `ref`
                 // field above (default: 'id'). This is required.
                 normalizer: ({ data }) => {
-                    const allNodes = data.allStrapiBlogPost.nodes;
-                    const mappedNodes = allNodes.map(node=>({...node, searchable_tags: node.tags.map(t=>t.Name).join(" ")}));
-                    debugger;
-                    return mappedNodes;
-                }
+                    const allNodes = data.allStrapiBlogPost.nodes
+                    const mappedNodes = allNodes.map(node => ({
+                        ...node,
+                        searchable_tags: node.tags.map(t => t.Name).join(" "),
+                    }))
+                    debugger
+                    return mappedNodes
+                },
+            },
+        },
+        {
+            resolve: "gatsby-plugin-react-svg",
+            options: {
+                rule: {
+                    include: /src\/svgs/, // See below to configure properly
+                },
             },
         },
         `gatsby-transformer-sharp`,

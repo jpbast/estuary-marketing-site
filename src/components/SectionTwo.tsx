@@ -30,20 +30,10 @@ const SectionTwo = () => {
                 <div className="section-two-header-vectors">
                     <StaticImage
                         placeholder="none"
-                        alt="estuary logo top"
-                        src="../images/estuary-top-logo-vector-2.svg"
-                        className="section-two-header-vector"
+                        alt="estuary logo"
+                        src="../images/estuary-vertical-logo.svg"
                         layout="constrained"
-                        style={{
-                            zIndex: 1,
-                        }}
-                    />
-                    <StaticImage
-                        placeholder="none"
-                        alt="estuary logo bottom"
-                        src="../images/estuary-top-logo-vector-1.svg"
-                        className="section-two-header-vector"
-                        layout="constrained"
+                        className="product-flow-section-one-image"
                     />
                 </div>
             </div>

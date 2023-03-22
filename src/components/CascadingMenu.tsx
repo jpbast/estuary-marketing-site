@@ -142,7 +142,7 @@ export const NavMenuItem = ({ item }: { item: NavItem }) => {
     }
 }
 
-export const NavMenuTopLevel = ({ item }: { item: NavItem }) => {
+export const NavMenuTopLevel = ({ item }: {item: NavItem }) => {
     const popupState = usePopupState({
         popupId: `${item.title}-${item.path}`,
         variant: "popover",
@@ -208,9 +208,7 @@ export const NavMenuList = ({ item }: { item: NavItem }) => {
             <>
                 {button}
                 <Collapse
-                    sx={{
-                        borderLeft: `4px solid white`,
-                    }}
+                    className="global-header-mobile-menu-borderLeft"
                     in={open}
                     timeout="auto"
                     unmountOnExit

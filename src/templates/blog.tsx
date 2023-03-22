@@ -48,7 +48,7 @@ const BlogIndex = ({
     console.log(results)
 
     return (
-        <Layout>
+        <Layout headerTheme="light">
             <div className="blogs-index-wrapper">
                 <div className="blogs-index-header-wrapper">
                     <div className="blogs-index-header">

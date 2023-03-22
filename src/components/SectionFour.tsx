@@ -6,23 +6,16 @@ import { StaticImage } from "gatsby-plugin-image"
 const SectionFour = () => {
     return (
         <div className="section-four">
-            <p className="section-four-header-small">FEATURES</p>
+            <p className="section-four-header-small">Features</p>
             <div className="section-four-header-wrapper">
                 <h2>A robust set of features</h2>
                 <div className="section-four-header-vectors">
                     <StaticImage
                         placeholder="none"
-                        alt="estuary logo top"
-                        src="../images/estuary-top-logo-vector-2.svg"
-                        className="section-four-header-vector"
+                        alt="estuary logo"
+                        src="../images/estuary-vertical-logo.svg"
                         layout="constrained"
-                    />
-                    <StaticImage
-                        placeholder="none"
-                        alt="estuary logo bottom"
-                        src="../images/estuary-top-logo-vector-1.svg"
-                        className="section-four-header-vector"
-                        layout="constrained"
+                        className="product-flow-section-one-image"
                     />
                 </div>
             </div>
