@@ -1,5 +1,6 @@
 name: CI
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [strapi_updated]
   push:
@@ -8,6 +9,13 @@ on:
       - feature/incremental_builds
 
 jobs:
+  pre-job:
+    name: Pre-Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: technote-space/auto-cancel-redundant-workflow@v1
+      - name: Cancel redundant workflows
+        run: echo "Cancel redundant workflows finished"
   build:
     runs-on: ubuntu-latest
     
