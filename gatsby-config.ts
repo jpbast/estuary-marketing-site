@@ -49,6 +49,7 @@ module.exports = {
             resolve: `gatsby-source-strapi`,
             options: strapiConfig,
         },
+        `gatsby-transformer-inline-svg`,
         `gatsby-plugin-image`,
         `gatsby-plugin-less`,
         {

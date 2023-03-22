@@ -1,9 +1,36 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
 const SectionOne = () => {
+    const logos = useStaticQuery(graphql`
+        {
+            allStrapiVanityLogo(
+                sort: { SortOrder: DESC }
+                filter: { Enabled: { eq: true } }
+            ) {
+                nodes {
+                    enabled: Enabled
+                    logo: Logo {
+                        localFile {
+                            svg {
+                                content
+                            }
+                            name
+                            internal {
+                                mediaType
+                            }
+                            childImageSharp {
+                                gatsbyImageData(layout: FIXED, width:120)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `)
+
     return (
         <div className="section-one">
             <div className="section-one-wrapper">
@@ -37,46 +64,25 @@ const SectionOne = () => {
                 </div>
             </div>
             <div className="section-one-bottom">
-                <StaticImage
-                    placeholder="none"
-                    alt="flash pack logo"
-                    src="../images/flashpack.svg"
-                    imgStyle={{ objectFit: "contain" }}
-                    className="section-one-bottom-logo"
-                    layout="constrained"
-                />
-                <StaticImage
-                    placeholder="none"
-                    alt="coalesce pack logo"
-                    src="../images/coalesce.png"
-                    imgStyle={{ objectFit: "contain" }}
-                    className="section-one-bottom-logo"
-                    layout="constrained"
-                />
-                <StaticImage
-                    placeholder="none"
-                    alt="fenestra logo"
-                    src="../images/fenestra.png"
-                    imgStyle={{ objectFit: "contain" }}
-                    className="section-one-bottom-logo"
-                    layout="constrained"
-                />
-                <StaticImage
-                    placeholder="none"
-                    alt="deep sync logo"
-                    src="../images/deep_sync.png"
-                    imgStyle={{ objectFit: "contain" }}
-                    className="section-one-bottom-logo"
-                    layout="constrained"
-                />
-                <StaticImage
-                    placeholder="none"
-                    alt="pompato logo"
-                    src="../images/pompato.png"
-                    imgStyle={{ objectFit: "contain" }}
-                    className="section-one-bottom-logo"
-                    layout="constrained"
-                />
+                {logos.allStrapiVanityLogo.nodes.map(logo =>
+                    logo.logo.localFile.internal.mediaType === "image/svg+xml" ? (
+                        <div
+                            style={{ width: 120 }}
+                            dangerouslySetInnerHTML={{
+                                __html: logo.logo.localFile.svg.content,
+                            }}
+                        />
+                    ) : (
+                        <GatsbyImage
+                            alt={`logo`}
+                            className="section-one-bottom-logo"
+                            image={
+                                logo.logo.localFile.childImageSharp
+                                    .gatsbyImageData
+                            }
+                        />
+                    )
+                )}
             </div>
         </div>
     )
