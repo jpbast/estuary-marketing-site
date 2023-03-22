@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - master
-      - feature/incremental_builds
 
 jobs:
   pre-job:
