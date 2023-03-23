@@ -2,7 +2,7 @@ name: CI
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [strapi_updated]
+    types: [strapi_updated,database_updated]
   push:
     branches:
       - master
