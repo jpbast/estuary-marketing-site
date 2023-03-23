@@ -8,6 +8,7 @@ import clsx from "clsx"
 import { BlogPostCard } from "../components/BlogPostCard"
 import SearchIcon from "@mui/icons-material/Search"
 import { useLunr } from "react-lunr"
+import FlowLogo from "../svgs/flow-logo.svg"
 
 interface BlogIndexProps {
     data: {
@@ -43,7 +44,16 @@ const BlogIndex = ({
     )
 
     const [query, setQuery] = React.useState("")
-    const results = useLunr(query.length > 0 ? query.split(" ").map(term=>`${term}~4`).join(" ") : "", index, data.localSearchPosts.store)
+    const results = useLunr(
+        query.length > 0
+            ? query
+                  .split(" ")
+                  .map(term => `${term}~4`)
+                  .join(" ")
+            : "",
+        index,
+        data.localSearchPosts.store
+    )
 
     console.log(results)
 
@@ -53,23 +63,7 @@ const BlogIndex = ({
                 <div className="blogs-index-header-wrapper">
                     <div className="blogs-index-header">
                         <div className="blog-post-header-vectors">
-                            <StaticImage
-                                placeholder="none"
-                                alt="estuary logo top"
-                                src="../images/estuary-top-logo-vector-2.svg"
-                                className="blog-post-header-vector"
-                                layout="constrained"
-                                style={{
-                                    zIndex: 1,
-                                }}
-                            />
-                            <StaticImage
-                                placeholder="none"
-                                alt="estuary logo bottom"
-                                src="../images/estuary-top-logo-vector-1.svg"
-                                className="blog-post-header-vector"
-                                layout="constrained"
-                            />
+                            <FlowLogo className="blog-post-header-vector" />
                         </div>
                         <h2>Blog</h2>
                         <p>
