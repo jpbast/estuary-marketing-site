@@ -65,8 +65,8 @@ const ProductPage = () => {
                                 </p>
                                 <div className="product-flow-topic-section-wrapper">
                                     <div className="product-flow-topic-wrapper">
-                                        <div className="product-flow-section-two-topic-image-wrapper">
-                                            <SectionTwoDataCaptureImg1 className="product-flow-section-two-topic-image" />
+                                        <div className="icon-wrapper">
+                                            <SectionTwoDataCaptureImg1 className="icon-image" />
                                         </div>
                                         <p className="product-flow-section-two-topic-child">
                                             <span className="product-flow-bold">
@@ -78,14 +78,14 @@ const ProductPage = () => {
                                         </p>
                                     </div>
                                     <div className="product-flow-topic-wrapper">
-                                        <div className="product-flow-section-two-topic-image-wrapper">
+                                        <div className="icon-wrapper">
                                             <StaticImage
                                                 placeholder="none"
                                                 alt="salesforce logo"
                                                 src="../images/salesforce-logo.png"
                                                 width={35}
                                                 layout="fixed"
-                                                className="product-flow-section-two-topic-image"
+                                                className="icon-image"
                                             />
                                         </div>
                                         <p className="product-flow-section-two-topic-child">
@@ -97,8 +97,8 @@ const ProductPage = () => {
                                         </p>
                                     </div>
                                     <div className="product-flow-topic-wrapper">
-                                        <div className="product-flow-section-two-topic-image-wrapper">
-                                            <FlowLongtailSaas className="product-flow-section-two-topic-image" />
+                                        <div className="icon-wrapper">
+                                            <FlowLongtailSaas className="icon-image" />
                                         </div>
                                         <p className="product-flow-section-two-topic-child">
                                             <span className="product-flow-bold">
@@ -118,8 +118,8 @@ const ProductPage = () => {
                                     Powerful transformations
                                 </h2>
                                 <div className="product-flow-topic-wrapper">
-                                    <div className="product-flow-section-two-topic-image-wrapper">
-                                        <FlowPowerfulTransformations className="product-flow-section-two-topic-image" />
+                                    <div className="icon-wrapper">
+                                        <FlowPowerfulTransformations className="icon-image" />
                                     </div>
                                     <p className="product-flow-section-two-topic-child">
                                         True streaming SQL and Javascript
@@ -132,8 +132,8 @@ const ProductPage = () => {
                                     Materializations
                                 </h2>
                                 <div className="product-flow-topic-wrapper">
-                                    <div className="product-flow-section-two-topic-image-wrapper">
-                                        <FlowMaterializations className="product-flow-section-two-topic-image" />
+                                    <div className="icon-wrapper">
+                                        <FlowMaterializations className="icon-image" />
                                     </div>
                                     <p className="product-flow-section-two-topic-child">
                                         Maintain low-latency views across
@@ -168,8 +168,8 @@ const ProductPage = () => {
                     <div>
                         <div className="product-flow-section-three-tile-wrapper">
                             <div className="product-flow-section-three-tile">
-                                <div className="product-flow-section-two-topic-image-wrapper">
-                                    <FlowTesting className="product-flow-section-two-topic-image" />
+                                <div className="icon-wrapper">
+                                    <FlowTesting className="icon-image" />
                                 </div>
                                 <h3 className="section-four-tile-title">
                                     Built-in testing
@@ -181,8 +181,8 @@ const ProductPage = () => {
                                 </p>
                             </div>
                             <div className="product-flow-section-three-tile">
-                                <div className="product-flow-section-two-topic-image-wrapper">
-                                    <FlowFailure className="product-flow-section-two-topic-image" />
+                                <div className="icon-wrapper">
+                                    <FlowFailure className="icon-image" />
                                 </div>
                                 <h3 className="section-four-tile-title">
                                     Survive any failure
@@ -193,8 +193,8 @@ const ProductPage = () => {
                                 </p>
                             </div>
                             <div className="product-flow-section-three-tile">
-                                <div className="product-flow-section-two-topic-image-wrapper">
-                                    <FlowExactlyOnce className="product-flow-section-two-topic-image" />
+                                <div className="icon-wrapper">
+                                    <FlowExactlyOnce className="icon-image" />
                                 </div>
                                 <h3 className="section-four-tile-title">
                                     Exactly-once semantics
@@ -207,8 +207,8 @@ const ProductPage = () => {
                                 </p>
                             </div>
                             <div className="product-flow-section-three-tile">
-                                <div className="product-flow-section-two-topic-image-wrapper">
-                                    <FlowMinimizeLoad className="product-flow-section-two-topic-image" />
+                                <div className="icon-wrapper">
+                                    <FlowMinimizeLoad className="icon-image" />
                                 </div>
                                 <h3 className="section-four-tile-title">
                                     Minimize load on your systems
@@ -223,8 +223,8 @@ const ProductPage = () => {
                         </div>
                         <div className="product-flow-section-three-tile-wrapper">
                             <div className="product-flow-section-three-tile">
-                                <div className="product-flow-section-two-topic-image-wrapper">
-                                    <FlowScaling className="product-flow-section-two-topic-image" />
+                                <div className="icon-wrapper">
+                                    <FlowScaling className="icon-image" />
                                 </div>
                                 <h3 className="section-four-tile-title">
                                     Scaling
@@ -238,8 +238,8 @@ const ProductPage = () => {
                                 </p>
                             </div>
                             <div className="product-flow-section-three-tile">
-                                <div className="product-flow-section-two-topic-image-wrapper">
-                                    <FlowLiveReporting className="product-flow-section-two-topic-image" />
+                                <div className="icon-wrapper">
+                                    <FlowLiveReporting className="icon-image" />
                                 </div>
                                 <h3 className="section-four-tile-title">
                                     Live reporting and monitoring
@@ -250,8 +250,8 @@ const ProductPage = () => {
                                 </p>
                             </div>
                             <div className="product-flow-section-three-tile">
-                                <div className="product-flow-section-two-topic-image-wrapper">
-                                    <FlowSchemaInference className="product-flow-section-two-topic-image" />
+                                <div className="icon-wrapper">
+                                    <FlowSchemaInference className="icon-image" />
                                 </div>
                                 <h3 className="section-four-tile-title">
                                     Schema inference

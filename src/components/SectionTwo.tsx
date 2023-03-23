@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import FlowLogo from "../svgs/flow-logo.svg"
 
 const SectionTwo = () => {
     return (
@@ -28,13 +29,7 @@ const SectionTwo = () => {
                     </p>
                 </div>
                 <div className="section-two-header-vectors">
-                    <StaticImage
-                        placeholder="none"
-                        alt="estuary logo"
-                        src="../images/estuary-vertical-logo.svg"
-                        layout="constrained"
-                        className="product-flow-section-one-image"
-                    />
+                    <FlowLogo className="product-flow-section-one-image" />
                 </div>
             </div>
             <div className="section-two-first-graphic-wrapper">

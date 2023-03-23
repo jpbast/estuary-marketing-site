@@ -490,7 +490,6 @@ input {
   display: flex;
   flex: 1 1 auto;
   justify-content: flex-end;
-  max-width: 50vw;
 }
 
 .section-one-right-image {
@@ -511,11 +510,16 @@ input {
   align-items: center;
   margin: 50px 0;
   padding-right: ~"calc(min(9%, 146px))";
+  & > *:not(:first-child) {
+    margin-left: 24px;
+  }
 }
 
 .section-one-bottom-logo {
-  /* margin-right: 80px; */
   flex: 0 1 120px;
+  & img {
+    object-fit: fill !important;
+  }
 }
 
 /* SECTION TWO */
@@ -710,6 +714,7 @@ input {
   flex: 1;
   padding-left: 24px;
   padding-top: 48px;
+  padding-right: 24px;
 }
 
 .section-four-tile-icon {
@@ -795,24 +800,29 @@ input {
 
 .section-five-tile-wrapper {
   display: flex;
-  flex-flow: column wrap;
   align-content: space-between;
   margin: auto;
-  height: 800px;
+  padding-bottom: 100px;
+  flex-wrap: wrap;
+  display: flex;
 }
 
 
 .section-five-tile {
   background-color: #1E304C;
-  width: 32%;
+  min-width: 300px;
   position: relative;
   margin: 12px;
   padding: 15px;
   padding-bottom: 0;
+  flex: 1 1 23%;
+  display: flex;
+  flex-direction: column;
 }
 
 .section-five-tile-text {
   color: #B7C6DD;
+  flex-grow: 1;
 }
 
 .section-five-tile-logo-text {
@@ -1003,10 +1013,12 @@ input {
 .global-footer-bottom-wrapper {
   display: flex;
   justify-content: space-between;
+    align-items: center;
 }
 
 .global-footer-bottom-copyright {
   display: flex;
+  align-items: center;
 }
 
 .global-footer-copyright-link {
@@ -1195,6 +1207,10 @@ table th {
   margin-left: auto;
 }
 
+.blog-post-header-vector {
+    margin-left: auto;
+}
+
 .blog-post header h1 {
     margin: 1rem 15%;
 }
@@ -1362,13 +1378,13 @@ table th {
   margin: 10px 0;
 }
 
-.product-flow-section-two-topic-image-wrapper {
+.icon-wrapper {
     width: 45px;
     height: 45px;
     display: flex;
     background-color: white;
     border: 1px solid darkgray;
-    & svg,.product-flow-section-two-topic-image {
+    & svg,.icon-image {
         margin: auto;
     }
 }
@@ -1483,12 +1499,6 @@ table th {
 
 /* MEDIA QUERIES */
 
-@media (max-width: 1260px) {
-  .section-five-tile-wrapper {
-    height: 1100px;
-  }
-}
-
 @media (max-width: 810px) {
     .blogs-index-header {
         margin-top: 1rem;
@@ -1560,10 +1570,6 @@ table th {
   .global-footer-bottom-wrapper {
     flex-wrap: wrap-reverse;
     justify-content: center;
-  }
-
-  .global-footer-bottom-social {
-    margin-bottom: 34px;
   }
 
   .global-footer-right {
@@ -1728,6 +1734,8 @@ table th {
   .section-five-tile {
     width: 100%;
     margin: 12px 0;
+    min-width: unset;
+    max-width: unset;
   }
 
   .section-five-header {
