@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
 
+import { normalizeConnector } from "./src/utils"
+
 require("dotenv").config({
     path: ".env",
 })
@@ -11,7 +13,15 @@ require("dotenv").config({
 const strapiConfig = {
     apiURL: process.env.STRAPI_API_URL,
     accessToken: process.env.STRAPI_TOKEN,
-    collectionTypes: ["blog-post", "tag", "author", "connection", "connector", "testimonial", "vanity-logo"],
+    collectionTypes: [
+        "blog-post",
+        "tag",
+        "author",
+        "connection",
+        "connector",
+        "testimonial",
+        "vanity-logo",
+    ],
     singleTypes: [],
     // remoteFileHeaders: {
     //     /**
@@ -192,11 +202,91 @@ module.exports = {
             },
         },
         {
+            resolve: "gatsby-plugin-local-search",
+            options: {
+                // A unique name for the search index. This should be descriptive of
+                // what the index contains. This is required.
+                name: "connectors",
+
+                // Set the search engine to create the index. This is required.
+                // The following engines are supported: flexsearch, lunr
+                engine: "lunr",
+
+                // Provide options to the engine. This is optional and only recommended
+                // for advanced users.
+                //
+                // Note: Only the flexsearch engine supports options.
+                // engineOptions: "default",
+
+                // GraphQL query used to fetch all data for the search index. This is
+                // required.
+                query: `
+                {
+                  postgres {
+                    allConnectors(orderBy:[RECOMMENDED_DESC,CREATED_AT_DESC]) {
+                      nodes {
+                        id
+                        externalUrl
+                        imageName
+                        shortDescription
+                        longDescription
+                        title
+                        logoUrl
+                        recommended
+                        connectorTagsByConnectorIdList {
+                          protocol
+                        }
+                      }
+                    }
+                  }
+                }
+              `,
+
+                // Field used as the reference value for each document.
+                // Default: 'id'.
+                ref: "id",
+
+                // List of keys to index. The values of the keys are taken from the
+                // normalizer function below.
+                // Default: all fields
+                index: ["title", "shortDescription", "type"],
+
+                // List of keys to store and make available in your UI. The values of
+                // the keys are taken from the normalizer function below.
+                // Default: all fields
+                store: [
+                    "id",
+                    "externalUrl",
+                    "imageName",
+                    "shortDescription",
+                    "longDescription",
+                    "title",
+                    "logoUrl",
+                    "recommended",
+                    "type"
+                ],
+
+                // Function used to map the result from the GraphQL query. This should
+                // return an array of items to index in the form of flat objects
+                // containing properties to index. The objects must contain the `ref`
+                // field above (default: 'id'). This is required.
+                normalizer: ({ data }) => data.postgres.allConnectors.nodes.map(normalizeConnector)
+            },
+        },
+        {
             resolve: "gatsby-plugin-react-svg",
             options: {
                 rule: {
                     include: /src\/svgs/, // See below to configure properly
                 },
+            },
+        },
+        {
+            resolve: "gatsby-source-pg",
+            options: {
+                connectionString: `postgres://${process.env.GATSBY_DB_USER}:${process.env.GATSBY_DB_PASS}@${process.env.GATSBY_DB_HOST}:${process.env.GATSBY_DB_PORT}/${process.env.GATSBY_DB_NAME}`,
+                schema: "public",
+                //   refetchInterval: 60, // Refetch data every 60 seconds
             },
         },
         `gatsby-transformer-sharp`,

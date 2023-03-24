@@ -1082,7 +1082,6 @@ input {
 }
 
 .bio-avatar {
-  margin-right: var(--spacing-4);
   margin-left: var(--spacing-4);
   margin-bottom: var(--spacing-0);
   max-width: 50px;
@@ -1205,6 +1204,8 @@ table th {
   flex-direction: column;
   margin-bottom: -5em;
   margin-left: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .blog-post-header-vector {
@@ -1495,6 +1496,14 @@ table th {
     background-image: url("../src/images/blogs-bg.png");
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+/* CONNECTORS */
+.connector-index-header {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    padding: 0 ~"calc(min(10vw,200px))";
+    display: flex;
 }
 
 /* MEDIA QUERIES */
