@@ -37,6 +37,7 @@
     "gatsby-transformer-rehype": "^2.0.1",
     "gatsby-transformer-remark": "^6.7.0",
     "gatsby-transformer-sharp": "^5.7.0",
+    "lottie-react": "^2.4.0",
     "material-ui-popup-state": "^5.0.5",
     "patch-package": "^6.5.1",
     "prismjs": "^1.29.0",
