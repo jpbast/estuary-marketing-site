@@ -31,7 +31,7 @@ export const ProcessedPost = ({ body }: { body: string }) => {
             })
             .process(body)
             .then(file => {
-                setContent(file.result)
+                setContent(file.result as any)
             })
     }, [body])
 

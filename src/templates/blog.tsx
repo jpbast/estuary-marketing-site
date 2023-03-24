@@ -55,8 +55,6 @@ const BlogIndex = ({
         data.localSearchPosts.store
     )
 
-    console.log(results)
-
     return (
         <Layout headerTheme="light">
             <div className="blogs-index-wrapper">

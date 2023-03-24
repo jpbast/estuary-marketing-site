@@ -1,4 +1,6 @@
-import type { GatsbyNode } from "gatsby"
+import { GatsbyNode, graphql } from "gatsby"
+import { createRemoteFileNode } from "gatsby-source-filesystem"
+import { normalizeConnector } from "./src/utils"
 
 /**
  * Implement Gatsby's Node APIs in this file.
@@ -12,6 +14,8 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 // Define the template for blog and blog post
 const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 const blog = path.resolve(`./src/templates/blog.tsx`)
+
+const connector = path.resolve(`./src/templates/connector.tsx`)
 
 export const createPages: GatsbyNode["createPages"] = async ({
     graphql,
@@ -29,7 +33,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
         toPath: `/blog/featured`,
     })
 
-    // Get all markdown blog posts sorted by date
+    // Get all strapi blog posts sorted by date
     const result = await graphql<{
         allStrapiBlogPost: {
             nodes: {
@@ -113,6 +117,17 @@ export const createPages: GatsbyNode["createPages"] = async ({
         })
     }
 
+    createPage({
+        path: "blog",
+        component: blog,
+        context: {
+            blogPostIds: allPosts.map(post=>post.id),
+            categoryTitle: null,
+            categorySlug: null,
+            tabCategories
+        }
+    })
+
     // Create blog posts pages
     // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
     // `context` is available in the template as a prop and as a variable in GraphQL
@@ -136,4 +151,82 @@ export const createPages: GatsbyNode["createPages"] = async ({
             })
         }
     }
+
+    const connectors = await graphql<{
+        postgres: {
+            allConnectors: {
+                nodes: any[]
+            }
+        }
+    }>(`
+        {
+            postgres {
+                allConnectors(orderBy: [RECOMMENDED_DESC, CREATED_AT_DESC]) {
+                    nodes {
+                        id
+                        externalUrl
+                        imageName
+                        shortDescription
+                        longDescription
+                        title
+                        logoUrl
+                        recommended
+                        connectorTagsByConnectorIdList {
+                            protocol
+                        }
+                    }
+                }
+            }
+        }
+    `)
+
+    const mapped_connectors =
+        connectors.data.postgres.allConnectors.nodes.map(normalizeConnector)
+
+    for (const normalized_connector of mapped_connectors) {
+        if (!normalized_connector.slug) {
+            throw new Error(
+                `Unable to figure out a slug for the connector with image: ${normalized_connector.imageName}`
+            )
+        } else {
+            createPage({
+                path: normalized_connector.slug,
+                component: connector,
+                context: {
+                    id: normalized_connector.id,
+                    type: normalized_connector.type,
+                },
+            })
+        }
+    }
+}
+
+export const createResolvers: GatsbyNode["createResolvers"] = async ({
+    createResolvers,
+    createNodeId,
+    getCache,
+    actions: { createNode },
+}) => {
+    createResolvers({
+        PostGraphile_Connector: {
+            logo: {
+                type: "File",
+                async resolve(node) {
+                    const {id, logoUrl} = node;
+                    let usUrl = logoUrl["en-US"];
+                    if(!usUrl){
+                        return null;
+                    }
+                    const fileNode = await createRemoteFileNode({
+                        url: logoUrl?.["en-US"],
+                        parentNodeId: id,
+                        createNode,
+                        createNodeId,
+                        getCache,
+                    })
+                    return fileNode
+                },
+            },
+        },
+    })
 }

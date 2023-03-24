@@ -31,6 +31,7 @@
     "gatsby-remark-prismjs": "^7.7.0",
     "gatsby-remark-responsive-iframe": "^6.7.0",
     "gatsby-source-filesystem": "^5.7.0",
+    "gatsby-source-pg": "^1.0.0-rc.0",
     "gatsby-source-strapi": "^3.0.6",
     "gatsby-transformer-inline-svg": "^1.2.0",
     "gatsby-transformer-rehype": "^2.0.1",
@@ -56,7 +57,8 @@
   },
   "resolutions": {
     "sharp": "0.31.3",
-    "unified": "9.2.2"
+    "unified": "9.2.2",
+    "graphql": "15.8.0"
   },
   "scripts": {
     "build": "gatsby build",

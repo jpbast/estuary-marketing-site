@@ -20,7 +20,7 @@ const navItems: NavItem[] = [
             },
             {
                 title: "Integrations",
-                path: "/integrations",
+                // path: "/integrations",
                 children: [
                     {
                         title: "Sources",
@@ -51,7 +51,7 @@ const navItems: NavItem[] = [
             },
             {
                 title: "Blog",
-                path: "/blog/featured",
+                path: "/blog",
             },
             {
                 title: "Contact",

@@ -48,6 +48,11 @@ jobs:
             GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
             STRAPI_API_URL: ${{ secrets.STRAPI_API_URL }}
             STRAPI_TOKEN: ${{ secrets.STRAPI_TOKEN }}
+            GATSBY_DB_USER: ${{ secrets.GATSBY_DB_USER }}
+            GATSBY_DB_PASS: ${{ secrets.GATSBY_DB_PASS }}
+            GATSBY_DB_HOST: ${{ secrets.GATSBY_DB_HOST }}
+            GATSBY_DB_PORT: ${{ secrets.GATSBY_DB_PORT }}
+            GATSBY_DB_NAME: ${{ secrets.GATSBY_DB_NAME }}
       - id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
