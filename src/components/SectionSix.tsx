@@ -6,9 +6,11 @@ import Slider from "./Slider"
 const SectionSix = () => {
     return (
         <div className="section-six">
-            <div className="section-six-header-wrapper">
+            <div className="section-six-slider-wrapper">
                 <p className="section-four-header-small">Built for who</p>
                 <Slider />
+            </div>
+            <div className="section-six-right-wrapper">
                 <div className="section-six-header-vectors">
                     <StaticImage
                         placeholder="none"
@@ -27,9 +29,6 @@ const SectionSix = () => {
                         layout="constrained"
                     />
                 </div>
-            </div>
-            <div className="section-six-subwrapper">
-
             </div>
         </div>
     )
