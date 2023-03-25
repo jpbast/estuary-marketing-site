@@ -160,7 +160,7 @@ const ProductPage = () => {
                                 our open protocol
                             </h2>
                         </div>
-                        <div>
+                        <div className="product-flow-logo-wrapper">
                             <FlowLogo className="product-flow-section-one-image" />
                         </div>
                     </div>
