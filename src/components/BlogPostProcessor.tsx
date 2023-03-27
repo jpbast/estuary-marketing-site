@@ -23,16 +23,26 @@ export const ProcessedPost = ({ body }: { body: string }) => {
                     link: "page-toc-link", // Change the CSS class for links in the TOC
                 },
                 customizeTOC(toc) {
+                    if (
+                        toc.children?.length < 1 ||
+                        (toc?.children.length === 1 &&
+                            //@ts-ignore
+                            toc.children[0]?.children?.length === 0)
+                    ) {
+                        return false
+                    }
                     toc.children.unshift({
                         type: "element",
                         tagName: "h3",
-                        children: [{
-                            type: "text",
-                            value: "Table of Contents"
-                        }]
+                        children: [
+                            {
+                                type: "text",
+                                value: "Table of Contents",
+                            },
+                        ],
                     } as any)
 
-                    return toc;
+                    return toc
                 },
             })
             // @ts-ignore
