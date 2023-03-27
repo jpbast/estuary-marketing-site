@@ -1412,6 +1412,19 @@ table th {
   }
 }
 
+.icon-wrapper-medium-gray {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  background-color: white;
+  border: 1px solid #D7DCE5;
+
+  & svg,
+  .icon-image {
+    margin: auto;
+  }
+}
+
 .product-flow-topic-section-wrapper {
   display: flex;
   flex-direction: column;
@@ -1544,7 +1557,7 @@ table th {
 }
 
 .about-section-two {
-  padding-top: 100px;
+  padding: 100px 0 100px 0;
   background-color: #04192B;
   display: flex;
   flex-direction: column;
@@ -1598,6 +1611,130 @@ table th {
   display: flex;
   align-items: center;
   margin: 10px 0;
+}
+
+.about-section-three {
+  display: flex;
+  background-color: #F9FAFC;
+  flex-direction: column;
+  padding-left: ~"calc(min(9%, 146px))";
+  padding-right: ~"calc(min(9%, 146px))";
+  padding-top: 100px;
+}
+
+.about-section-header-top {
+  max-width: 250px;
+  margin-top: 12px;
+}
+
+.about-section-three-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-section-three-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.about-section-three-card {
+  background-color: #FFFFFF;
+  padding: 24px;
+  margin: 12px;
+  flex: 2 2 45%;
+}
+
+.about-card-title {
+  font-size: 1.5rem;
+  color: var(--background-color-primary);
+  font-weight: 600;
+}
+
+.about-referral-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #47506D;
+  text-align: center;
+}
+
+.about-section-four-current-openings {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  padding-left: ~"calc(min(9%, 146px))";
+  padding-right: ~"calc(min(9%, 146px))";
+}
+
+.about-current-openings-list {
+  display: flex;
+  flex-direction: column;
+  background-color: #F9FAFC;
+  max-width: 300px;
+  padding: 24px;
+  margin-right: 80px;
+  height: fit-content;
+}
+
+.about-current-opening-title {
+  margin-bottom: 24px;
+}
+
+.about-get-in-touch-button {
+  background-color: #5072EB;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 20px 36.5px 20px 36.5px;
+  width: 252px;
+  height: 60px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fontSize-0);
+}
+
+.about-current-openings-description-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-current-openings-title-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.about-section-current-openings-wrapper {
+  display: flex;
+}
+
+.about-current-openings-location-wrapper {
+  display: flex;
+}
+
+.about-link {
+  margin: auto 12px;
+}
+
+.about-opening-title {
+  font-size: 1.5rem;
+  color: var(--background-color-primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.about-location-text {
+  margin: 0px
+}
+
+.about-bold {
+  font-weight: 700;
+}
+
+.current-openings-divider {
+  width: 75%;
+  margin: 40px auto;
+  border: 1px solid #D7DCE5;
 }
 
 /* MEDIA QUERIES */
