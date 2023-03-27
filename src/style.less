@@ -1313,7 +1313,7 @@ table th {
   width: 100%;
   background-image: url("./images/product-flow-section-one-background.svg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .product-flow-section-one-subtext {
@@ -1581,15 +1581,23 @@ table th {
 }
 
 .solutions-section-text-wrapper {
-  width: 40%;
+  flex: 1 1 auto;
 }
 
 .solutions-logo-wrapper {
   display: flex;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-top: -3rem;
+  padding-left: 1rem;
 }
 
 .solutions-section-image-wrapper {
   display: flex;
+  flex: 1 0 40%;
+  &:first-child {
+    margin-right: 3rem;
+  }
 }
 
 .solutions-margin-bottom {
@@ -1605,13 +1613,14 @@ table th {
 .solutions-section-image-wrapper-right {
   display: flex;
   flex-direction: column;
+  flex: 1 0 40%;
 }
 
 .solutions-section-logo-right {
   display: flex;
   justify-content: flex-end;
   margin-bottom: -2em;
-  margin-right: 4em;
+  margin-right: -2em;
 }
 
 /* CONNECTORS */
@@ -2012,11 +2021,13 @@ table th {
     justify-content: flex-end;
     margin-bottom: -9em;
     margin-right: 1em;
+    margin-top: unset;
   }
 
   .solutions-section-logo-right {
-    margin-bottom: -4em;
-    margin-right: -2em;
+    margin-bottom: -1em;
+    margin-top: -4rem;
+    margin-right: 0;
     max-height: 30px;
   }
 
@@ -2030,7 +2041,8 @@ table th {
   }
 
   .solutions-section-image-wrapper {
-    // max-height: 280px;
+    max-height: 280px;
+    margin-right: 0px !important;
   }
 
 
