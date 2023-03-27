@@ -497,7 +497,7 @@ input {
   object-fit: contain;
 }
 
-.section-one-right-image img {
+.section-one-right-image svg {
   overflow: visible;
   max-height: 80vh;
   width: ~"calc(min(auto, 50vw))";
@@ -845,10 +845,14 @@ input {
 
 .section-six {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   padding-left: ~"calc(min(9%, 146px))";
   padding-right: ~"calc(min(2%, 146px))";
   margin-bottom: 100px;
+}
+
+.section-six-margin {
+  margin-top: 40px;
 }
 
 .section-six-left {
@@ -857,18 +861,18 @@ input {
   width: 50%;
 }
 
-.section-six-header-wrapper {
+.section-six-slider-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .section-six-right {
   display: flex;
 }
 
-.section-six-subwrapper {
+.section-six-right-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .section-six-text-wrapper {
@@ -891,9 +895,10 @@ input {
 
 .section-six-header-vectors {
   display: flex;
-  flex-direction: column;
-  margin-top: -30px;
+  margin-top: 100px;
   z-index: 2;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .section-six-code-shadow {
@@ -905,6 +910,39 @@ input {
 
 .section-six-header {
   width: 35vw;
+}
+
+// SLIDER 
+.navigation-wrapper {
+  position: relative;
+  width: 50vw;
+}
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: flex-start;
+  width: 100px;
+  margin-left: -5px;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #EFEFEF;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #C4C4C4;
 }
 
 /* FOOTER */
@@ -1614,8 +1652,8 @@ table th {
 
   .section-one-right {
     position: relative;
-    top: -5em;
-    margin-bottom: -8em;
+    top: -4em;
+    margin-bottom: -5em;
     margin-left: auto;
     justify-content: flex-end;
   }
@@ -1624,7 +1662,7 @@ table th {
     margin-left: 0px;
   }
 
-  .section-one-right-image img {
+  .section-one-right-image svg {
     overflow: visible;
     max-height: 55vw;
     left: unset;
@@ -1757,6 +1795,7 @@ table th {
 
   .section-six {
     padding: 0 16px 0 16px;
+    flex-direction: column;
   }
 
   .section-six-left,
@@ -1769,11 +1808,14 @@ table th {
   }
 
   .section-six-right {
-    margin-top: 100px;
+    margin-top: 45px;
     margin-bottom: 32px;
   }
 
-  .section-six-header-vectors {}
+  .section-six-header-vectors {
+    margin-top: 0px;
+    width: 90%
+  }
 
   .section-six-header {
     margin-top: 8px;
@@ -1781,6 +1823,15 @@ table th {
 
   .section-six-header {
     font-size: 1.75rem;
+    width: 100%;
+  }
+
+  .section-six-code-screenshot {
+    margin-top: -58px;
+    box-shadow: 50px 82px #5072eb1a;
+  }
+
+  .navigation-wrapper {
     width: 100%;
   }
 
@@ -1865,5 +1916,11 @@ table th {
   ul,
   ol {
     list-style-position: inside;
+  }
+}
+
+@media (min-width: 810px) {
+  .section-one-bottom {
+    margin-top: ~"calc(min(50px, max(-100px, (1100px - 100vw) / 2.5)))"
   }
 }
