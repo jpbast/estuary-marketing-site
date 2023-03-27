@@ -497,7 +497,7 @@ input {
   object-fit: contain;
 }
 
-.section-one-right-image img {
+.section-one-right-image svg {
   overflow: visible;
   max-height: 80vh;
   width: ~"calc(min(auto, 50vw))";
@@ -1652,8 +1652,8 @@ table th {
 
   .section-one-right {
     position: relative;
-    top: -5em;
-    margin-bottom: -8em;
+    top: -4em;
+    margin-bottom: -5em;
     margin-left: auto;
     justify-content: flex-end;
   }
@@ -1662,7 +1662,7 @@ table th {
     margin-left: 0px;
   }
 
-  .section-one-right-image img {
+  .section-one-right-image svg {
     overflow: visible;
     max-height: 55vw;
     left: unset;
@@ -1916,5 +1916,11 @@ table th {
   ul,
   ol {
     list-style-position: inside;
+  }
+}
+
+@media (min-width: 810px) {
+  .section-one-bottom {
+    margin-top: ~"calc(min(50px, max(-100px, (1100px - 100vw) / 2.5)))"
   }
 }

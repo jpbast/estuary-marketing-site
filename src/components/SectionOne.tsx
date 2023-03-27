@@ -3,6 +3,9 @@ import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
+import HeroAnimation from "../images/hero-animation.json"
+import Lottie from 'lottie-react';
+
 const SectionOne = () => {
     const logos = useStaticQuery(graphql`
         {
@@ -54,13 +57,7 @@ const SectionOne = () => {
                     </Link>
                 </div>
                 <div className="section-one-right">
-                    <StaticImage
-                        placeholder="none"
-                        alt="estuary logo with other software tiles"
-                        src="../images/estuary-tiles.svg"
-                        layout="constrained"
-                        className="section-one-right-image"
-                    />
+                    <Lottie animationData={HeroAnimation} className="section-one-right-image"/>
                 </div>
             </div>
             <div className="section-one-bottom">
