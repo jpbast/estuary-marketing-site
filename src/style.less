@@ -1596,6 +1596,23 @@ table th {
   font-size: var(--fontSize-1);
 }
 
+.about-current-openings-get-in-touch {
+  background-color: #5072EB;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  width: 206px;
+  height: 60px;
+  text-align: center;
+  line-height: 40px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fontSize-1);
+  margin: 60px auto 0 auto;
+}
+
 .about-careers-text {
   font-size: var(--fontSize-1);
   color: #B7C6DD;
@@ -1655,10 +1672,12 @@ table th {
   font-weight: 600;
   color: #47506D;
   text-align: center;
+  margin-bottom: 80px;
 }
 
 .about-section-four-current-openings {
   background-color: #FFFFFF;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   padding-left: ~"calc(min(9%, 146px))";
@@ -1702,6 +1721,7 @@ table th {
 .about-current-openings-title-wrapper {
   display: flex;
   width: 100%;
+  margin-bottom: 8px;
 }
 
 .about-section-current-openings-wrapper {
@@ -1720,10 +1740,9 @@ table th {
   font-size: 1.5rem;
   color: var(--background-color-primary);
   font-weight: 600;
-  margin-bottom: 8px;
 }
 
-.about-location-text {
+.about-opening-text {
   margin: 0px
 }
 
@@ -1731,10 +1750,64 @@ table th {
   font-weight: 700;
 }
 
+.about-margin-top {
+  margin-top: 30px;
+}
+
 .current-openings-divider {
-  width: 75%;
+  width: 100%;
   margin: 40px auto;
   border: 1px solid #D7DCE5;
+}
+
+.about-section-five {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F9FAFC;
+  padding: 100px 0;
+  background-image: url("./images/product-flow-vector-left.svg");
+  background-repeat: no-repeat;
+  background-position-y: 480px;
+  background-size: 35%;
+  background-position-y: 60%;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 40px 0;
+}
+
+.about-form-input {
+  height: 60px;
+  border: 1px solid#D7DCE5;
+  border-radius: 4px;
+  padding: 0 16px;
+}
+
+.about-form-input::placeholder {
+  color: #9AA8BE;
+  font-size: 1rem;
+}
+
+.form-subwrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.input-halfWidth {
+  width: calc(min(auto, 25vw));
+}
+
+.about-get-in-touch-button-mobile {
+  display: none;
+}
+
+.form-subwrapper-mobile {
+  display: none;
 }
 
 /* MEDIA QUERIES */
@@ -2096,6 +2169,10 @@ table th {
     margin-left: 75vw;
   }
 
+  .about-card-text {
+    font-size: var(--fontSize-0)
+  }
+
   .about-section-header {
     font-size: 1.75rem
   }
@@ -2113,12 +2190,104 @@ table th {
     font-size: var(--fontSize-0);
   }
 
+  .about-current-openings-get-in-touch {
+    width: 100%;
+    font-size: var(--fontSize-0);
+  }
+
   .about-careers-text-wrapper {
     padding: 0 16px;
   }
 
   .about-section-margin-bottom {
     margin-bottom: 48px;
+  }
+
+  .about-section-one-text {
+    font-size: var(--fontSize-0)
+  }
+
+  .about-card-title {
+    font-size: var(--fontSize-1);
+  }
+
+  .about-referral-text {
+    font-size: 1rem;
+    margin-bottom: 32px
+  }
+
+  .about-get-in-touch-button {
+    display: none;
+  }
+
+  .about-get-in-touch-button-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5072EB;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 12px;
+    width: 100%;
+    height: 44px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--fontSize-0);
+  }
+
+  .about-section-current-openings-wrapper {
+    flex-direction: column;
+  }
+
+  .about-current-openings-list {
+    width: 100%;
+    margin-right: 0px;
+    max-width: none;
+  }
+
+  .about-section-header-top {
+    font-size: 1.75rem;
+  }
+
+  .about-opening-title {
+    font-size: var(--fontSize-1);
+  }
+
+  .about-opening-text {
+    font-size: var(--fontSize-0);
+  }
+
+  .about-section-five-header {
+    font-size: 1.75rem;
+  }
+
+  .about-section-five-text {
+    font-size: var(--fontSize-1);
+    text-align: center;
+  }
+  
+  .form-subwrapper-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .form-subwrapper {
+    display: none;
+  }
+
+  .form-wrapper {
+    width: 100%;
+    padding: 16px;
+  }
+  
+  .about-section-five {
+    background-size: 100%;
+    background-position-y: 80%;
   }
 
 }

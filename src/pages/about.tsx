@@ -12,6 +12,58 @@ import LinkIcon from "../svgs/link-icon.svg"
 // @ts-ignore
 import { StaticImage } from "gatsby-plugin-image"
 
+const jobs = [
+    {
+        "title": "Solutions Engineer",
+        "location": "New York, NY",
+        "workEnvironment": "Hybrid or remote",
+        "description": "As Estuary’s first Solution Engineer, you will work directly with our founding team to help companies unlock the power of their real-time data. Working at the intersection of engineering, product and customers, your work will have a huge impact on Estuary’s product roadmap and help create a seamless experience for users. We’re looking for individuals with an insatiable curiosity for getting into the weeds of technical challenges and an empathetic approach to teaching others. A strong desire to work within a start-up environment without the constraints of large companies is imperative. You will be given the freedom and opportunity to chart your own path and take your career to the next level.",
+        "responsibilities": [
+            "Focus on detailed use-cases to create a great end-to-end experience for customers.",
+            "Take a lead role in understanding user pain points to develop a strategic vision of our product roadmap.",
+            "Create internal documentation of technical requirements for prospective customers.",
+            "Engage in user-support channels for questions and issues raised by Flow users.",
+            "Provide technical support through independent investigation.",
+            "Act as a trusted conduit with customers and prospects in order to influence their data strategy.",
+            "Build a perspective on customer and market trends.",
+            "Communicate technical feature requests."
+        ],
+        "qualifications": [
+            "Bachelor’s degree in computer science, data science or related field or equivalent technical & business experience.",
+            "Exceptional written and verbal communication.",
+            "Strong interpersonal and relationship building skills.",
+            "Understand the value of balancing customer-centric thinking with technical know-how.",
+            "Foundational understanding and practical ability to code with two or more modern scripting languages (e.g. Python, SQL, node.js) and/or popular programming languages (e.g. C/C++, C#).",
+            "Experience working with both technical and non-technical stakeholders."
+        ]
+    },
+    {
+        "title": "Developer Evangelist",
+        "location": "New York, NY; Columbus, OH",
+        "workEnvironment": "Hybrid or remote",
+        "description": "As Estuary’s first Solution Engineer, you will work directly with our founding team to help companies unlock the power of their real-time data. Working at the intersection of engineering, product and customers, your work will have a huge impact on Estuary’s product roadmap and help create a seamless experience for users. We’re looking for individuals with an insatiable curiosity for getting into the weeds of technical challenges and an empathetic approach to teaching others. A strong desire to work within a start-up environment without the constraints of large companies is imperative. You will be given the freedom and opportunity to chart your own path and take your career to the next level.",
+        "responsibilities": [
+            "Focus on detailed use-cases to create a great end-to-end experience for customers.",
+            "Take a lead role in understanding user pain points to develop a strategic vision of our product roadmap.",
+            "Create internal documentation of technical requirements for prospective customers.",
+            "Engage in user-support channels for questions and issues raised by Flow users.",
+            "Provide technical support through independent investigation.",
+            "Act as a trusted conduit with customers and prospects in order to influence their data strategy.",
+            "Build a perspective on customer and market trends.",
+            "Communicate technical feature requests."
+        ],
+        "qualifications": [
+            "Bachelor’s degree in computer science, data science or related field or equivalent technical & business experience.",
+            "Exceptional written and verbal communication.",
+            "Strong interpersonal and relationship building skills.",
+            "Understand the value of balancing customer-centric thinking with technical know-how.",
+            "Foundational understanding and practical ability to code with two or more modern scripting languages (e.g. Python, SQL, node.js) and/or popular programming languages (e.g. C/C++, C#).",
+            "Experience working with both technical and non-technical stakeholders."
+        ]
+    },
+]
+
+
 
 const AboutPage = () => {
     return (
@@ -71,28 +123,28 @@ const AboutPage = () => {
                             <BuildingsIcon />
                         </div>
                         <p className="about-card-title">Location</p>
-                        <p>We offer offices in both our New York City and Columbus, Ohio locations, as well as the ability to work remotely.</p>
+                        <p className="about-card-text">We offer offices in both our New York City and Columbus, Ohio locations, as well as the ability to work remotely.</p>
                     </div>
                     <div className="about-section-three-card">
                         <div className="icon-wrapper-medium-gray">
                             <BenefitsIcon />
                         </div>
                         <p className="about-card-title">Benefits</p>
-                        <p>We provide 100% employee coverage on healthcare, 401k, competitive equity, and unlimited time vacation leave.</p>
+                        <p className="about-card-text">We provide 100% employee coverage on healthcare, 401k, competitive equity, and unlimited time vacation leave.</p>
                     </div>
                     <div className="about-section-three-card">
                         <div className="icon-wrapper-medium-gray">
                             <CultureIcon />
                         </div>
                         <p className="about-card-title">Culture</p>
-                        <p>Like the product we build, our culture is forward-thinking and open. Our team operates on a foundation of trust, is resourceful, collaborative, but also independent.</p>
+                        <p className="about-card-text">Like the product we build, our culture is forward-thinking and open. Our team operates on a foundation of trust, is resourceful, collaborative, but also independent.</p>
                     </div>
                     <div className="about-section-three-card">
                         <div className="icon-wrapper-medium-gray">
                             <CommunityIcon />
                         </div>
                         <p className="about-card-title">Community</p>
-                        <p>We offer perks including team happy hours, weekly lunches, and quarterly off-sites. With our rapid growth, now’s an exciting time to come aboard.</p>
+                        <p className="about-card-text">We offer perks including team happy hours, weekly lunches, and quarterly off-sites. With our rapid growth, now’s an exciting time to come aboard.</p>
                     </div>
                 </div>
                 <p className="about-referral-text">Know somebody who would be a good fit? We offer a $2,500 referral bonus.</p>
@@ -102,8 +154,9 @@ const AboutPage = () => {
                 <h2 className="about-section-header-top">Current Openings</h2>
                 <div className="about-section-current-openings-wrapper">
                     <div className="about-current-openings-list">
-                        <p className="about-current-opening-title">Solutions Engineer</p>
-                        <p className="about-current-opening-title">Developer Evangelist</p>
+                        {jobs.length > 0 ? jobs.map(job => (
+                            <p className="about-current-opening-title">{job.title}</p>
+                        )) : null}
                         <Link
                             className="about-get-in-touch-button"
                             to="#"
@@ -112,124 +165,91 @@ const AboutPage = () => {
                         </Link>
                     </div>
                     <div className="about-current-openings-description-wrapper">
-                        <div className="about-current-openings-title-wrapper">
-                            <p className="about-opening-title">Solutions Engineer</p>
-                            <Link to="#" className="about-link">
-                                <LinkIcon />
-                            </Link>
-                        </div>
-                        <div className="about-current-openings-location-wrapper">
-                            <p className="about-location-text">Location:</p>
-                            <p className="about-location-text">&nbsp;New York, NY</p>
-                            <p className="about-location-text">; Hybrid or remote</p>
-                        </div>
-                        <div>
-                            <p>As Estuary’s first Solution Engineer, you will work directly with our founding team to help companies unlock the power of their real-time data. Working at the intersection of engineering, product and customers, your work will have a huge impact on Estuary’s product roadmap and help create a seamless experience for users. We’re looking for individuals with an insatiable curiosity for getting into the weeds of technical challenges and an empathetic approach to teaching others. A strong desire to work within a start-up environment without the constraints of large companies is imperative. You will be given the freedom and opportunity to chart your own path and take your career to the next level.</p>
-                        </div>
-                        <div>
-                            <p className="about-bold">Responsibilities</p>
-                            <ul>
-                                <li>Focus on detailed use-cases to create a great end-to-end experience for customers.
-                                </li>
-                                <li>Take a lead role in understanding user pain points to develop a strategic vision of our product roadmap.
-                                </li>
-                                <li>Create internal documentation of technical requirements for prospective customers.
-                                </li>
-                                <li>Engage in user-support channels for questions and issues raised by Flow users
-                                </li>
-                                <li>Provide technical support through independent investigation.
-                                </li>
-                                <li>Act as a trusted conduit with customers and prospects in order to influence their data strategy.
-                                </li>
-                                <li>Build a perspective on customer and market trends.
-                                </li>
-                                <li>Communicate technical feature requests.
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <p className="about-bold">Qualifications</p>
-                            <ul>
-                                <li>Bachelor’s degree in computer science, data science or related field or equivalent technical & business experience.
+                        {jobs.length > 0 ? jobs.map(job => (
+                            <>
+                                <div className="about-current-openings-title-wrapper">
+                                    <p className="about-opening-title">{job.title}</p>
+                                    <Link to="#" className="about-link">
+                                        <LinkIcon />
+                                    </Link>
+                                </div>
+                                <div className="about-current-openings-location-wrapper">
+                                    <p className="about-opening-text">Location:</p>
+                                    <p className="about-opening-text">&nbsp;{job.location}</p>
+                                    <p className="about-opening-text">; {job.workEnvironment}</p>
+                                </div>
+                                <div>
+                                    <p className="about-opening-text">{job.description}</p>
+                                </div>
+                                <div>
+                                    {job.responsibilities ? <p className="about-bold about-opening-text about-margin-top">Responsibilities</p> : null}
 
-                                </li>
-                                <li>Exceptional written and verbal communication.
-                                </li>
-                                <li>Strong interpersonal and relationship building skills.
+                                    {job.responsibilities ? job.responsibilities.map(resp => (
+                                        <ul>
+                                            <li className="about-opening-text">{resp}</li>
+                                        </ul>
+                                    )) : null}
+                                </div>
+                                <div>
+                                    <p className="about-bold about-opening-text about-margin-top">Qualifications</p>
 
-                                </li>
-                                <li>Understand the value of balancing customer-centric thinking with technical know-how.
+                                    {job.qualifications ? job.qualifications.map(qual => (
+                                        <ul>
+                                            <li className="about-opening-text">{qual}</li>
+                                        </ul>
+                                    )) : null}
+                                </div>
+                                <Link
+                                    className="about-get-in-touch-button-mobile"
+                                    to="#"
+                                >
+                                    Get in touch to apply
+                                </Link>
+                                <div className="current-openings-divider"></div>
 
-                                </li>
-                                <li>Foundational understanding and practical ability to code with two or more modern scripting languages (e.g. Python, SQL, node.js) and/or popular programming languages (e.g. C/C++, C#).
+                            </>
+                        )) : null}
 
-                                </li>
-                                <li>Experience working with both technical and non-technical stakeholders.
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="current-openings-divider"></div>
-                        <div className="about-current-openings-title-wrapper">
-                            <p className="about-opening-title">Developer Evangelist</p>
-                            <Link to="#" className="about-link">
-                                <LinkIcon />
-                            </Link>
-                        </div>
-                        <div className="about-current-openings-location-wrapper">
-                            <p className="about-location-text">Location:</p>
-                            <p className="about-location-text">&nbsp;New York, NY;</p>
-                            <p className="about-location-text"> &nbsp;Columbus, OH;</p>
-                            <p className="about-location-text">&nbsp; or remote</p>
-                        </div>
-                        <div>
-                            <p>As a Developer Evangelist, you will help fulfill Estuary's mission by connecting with other developers, contributing to open-source, and sharing your knowledge and experience about Estuary Flow and other leading technologies. You'll attend conferences and meetups, produce articles, contribute to podcasts, and engage in social media. Your work will foster a community inspired by Estuary and will drive our strategy around developer love and Estuary’s participation in the open-source ecosystem.</p>
-                        </div>
-                        <div>
-                            <p>We focus on generating awareness by rolling up our sleeves, contributing to the ecosystem, and enabling others to become evangelists outside the company as well. Not afraid to be hands-on, you might write sample code, author client libraries, provide insights to journalists, and work with strategic Estuary partners.</p>
-                        </div>
-                        <div>
-                            <p className="about-bold">Responsibilities</p>
-                            <ul>
-                                <li>Lead the conversation around the latest technology advancements and best practices in the developer community.
-
-                                </li>
-                                <li>Create engaging content, including technical talks, blog posts, demos, and videos, that educates developers on important technologies and trends.
-
-                                </li>
-                                <li>Support Estuary’s product and engineering efforts by sharing what you learn while engaging with the wider Estuary community and the tech community, at large.
-
-                                </li>
-                                <li>Conduct interviews with media representatives via phone, podcasts, video, and in-person.
-
-                                </li>
-                                <li>Be a leader within Estuary and in the wider community.
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div>
-                            <p className="about-bold">Qualifications</p>
-                            <ul>
-                                <li>Bachelor’s degree in computer science, data science or related field or equivalent technical & business experience.
-
-                                </li>
-                                <li>Exceptional written and verbal communication.
-                                </li>
-                                <li>Strong interpersonal and relationship building skills.
-
-                                </li>
-                                <li>Understand the value of balancing customer-centric thinking with technical know-how.
-
-                                </li>
-                                <li>Foundational understanding and practical ability to code with two or more modern scripting languages (e.g. Python, SQL, node.js) and/or popular programming languages (e.g. C/C++, C#).
-
-                                </li>
-                                <li>Experience working with both technical and non-technical stakeholders.
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
+            </div>
+            <div className="about-section-five">
+                <h2 className="about-section-five-header">Let's talk about your data</h2>
+                <p className="about-section-five-text">Have a specific question or comment? Send us a note and a team member will reach out to you shortly.</p>
+                <form className="form-wrapper">
+                    <div className="form-subwrapper">
+                        <input className="about-form-input input-halfWidth" placeholder="First Name">
+                        </input>
+                        <input className="about-form-input input-halfWidth" placeholder="Last Name">
+                        </input>
+                    </div>
+                    <div className="form-subwrapper">
+                        <input className="about-form-input input-halfWidth" placeholder="Company Email">
+                        </input>
+                        <input className="about-form-input input-halfWidth" placeholder="Phone Number">
+                        </input>
+                    </div>
+                    <div className="form-subwrapper-mobile">
+                        <input className="about-form-input" placeholder="First Name">
+                        </input>
+                        <input className="about-form-input" placeholder="Last Name">
+                        </input>
+                        <input className="about-form-input" placeholder="Company Email">
+                        </input>
+                        <input className="about-form-input" placeholder="Phone Number">
+                        </input>
+                    </div>
+
+                    <input className="about-form-input input-fullWidth" placeholder="Your subject"></input>
+                    <Link
+                    className="about-current-openings-get-in-touch"
+                    to="#"
+                >
+                    Get in touch
+                </Link>
+                </form>
+
+            
             </div>
         </Layout>
     )
