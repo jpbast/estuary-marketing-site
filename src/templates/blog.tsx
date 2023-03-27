@@ -48,7 +48,7 @@ const BlogIndex = ({
         query.length > 0
             ? query
                   .split(" ")
-                  .map(term => `${term}~4`)
+                  .map(term => `${term}~2`)
                   .join(" ")
             : "",
         index,
