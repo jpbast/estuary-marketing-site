@@ -34,7 +34,7 @@ export const Head = ({ data: { post } }) => {
         }
     `)
     const siteTitle = titleQuery.site.siteMetadata?.title || `Estuary`
-    return <Seo title={siteTitle} description={"Estuary"} />
+    return <Seo title={siteTitle} description={"Managed streaming data pipelines, streaming SQL & turnkey connectivity to clouds, databases, and apps"} />
 }
 
 export default IndexPage
