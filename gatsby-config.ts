@@ -49,6 +49,38 @@ module.exports = {
     // graphqlTypegen: true,
     plugins: [
         {
+            resolve: "gatsby-plugin-google-tagmanager",
+            options: {
+                id: "GTM-WK8SB2L",
+
+                // Include GTM in development.
+                //
+                // Defaults to false meaning GTM will only be loaded in production.
+                includeInDevelopment: false,
+
+                // datalayer to be set before GTM is loaded
+                // should be an object or a function that is executed in the browser
+                //
+                // Defaults to null
+                defaultDataLayer: { platform: "gatsby" },
+
+                // Specify optional GTM environment details.
+                // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
+                // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
+                // dataLayerName: "YOUR_DATA_LAYER_NAME",
+
+                // Name of the event that is triggered
+                // on every Gatsby route change.
+                //
+                // Defaults to gatsby-route-change
+                // routeChangeEventName: "YOUR_ROUTE_CHANGE_EVENT_NAME",
+                // Defaults to false
+                enableWebVitalsTracking: true,
+                // Defaults to https://www.googletagmanager.com
+                // selfHostedOrigin: "YOUR_SELF_HOSTED_ORIGIN",
+            },
+        },
+        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 path: `${__dirname}/src/images`,
@@ -263,14 +295,15 @@ module.exports = {
                     "title",
                     "logoUrl",
                     "recommended",
-                    "type"
+                    "type",
                 ],
 
                 // Function used to map the result from the GraphQL query. This should
                 // return an array of items to index in the form of flat objects
                 // containing properties to index. The objects must contain the `ref`
                 // field above (default: 'id'). This is required.
-                normalizer: ({ data }) => data.postgres.allConnectors.nodes.map(normalizeConnector)
+                normalizer: ({ data }) =>
+                    data.postgres.allConnectors.nodes.map(normalizeConnector),
             },
         },
         {
