@@ -5,7 +5,10 @@ import rehypeParse from "rehype-parse"
 import rehypeReact from "rehype-react"
 import rehypeSlug from "rehype-slug"
 import rehypeToc from "rehype-toc"
+import {visit} from "unist-util-visit";
 import ImgSharpInline from "./ImgSharp"
+
+let LANG_RE = /hljs language\-(.*)/
 
 export const ProcessedPost = ({ body }: { body: string }) => {
     const [Content, setContent] = useState<React.ReactElement>(null)
@@ -15,6 +18,26 @@ export const ProcessedPost = ({ body }: { body: string }) => {
             .data("settings", { fragment: true })
             .use(rehypeParse, { fragment: true })
             .use(rehypeHighlight, { detect: true })
+            .use(()=>(root) => {
+                visit(root, (node: any) => {
+                    if(node.type === "element" && node.properties?.className !== undefined){
+                        let match = node.properties.className.join(" ").match(LANG_RE);
+                        if(match){
+                            node.children.unshift({
+                                type: "element",
+                                tagName: "div",
+                                properties: {
+                                    className: ["language-tag"]
+                                },
+                                children: [{
+                                    type: "text",
+                                    value: match[1]
+                                }]
+                            })
+                        }
+                    }
+                })
+            })
             .use(rehypeSlug)
             .use(rehypeToc, {
                 headings: ["h1", "h2", "h3"], // Only include <h1> and <h2> headings in the TOC
