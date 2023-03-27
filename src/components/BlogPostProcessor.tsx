@@ -17,10 +17,22 @@ export const ProcessedPost = ({ body }: { body: string }) => {
             .use(rehypeHighlight, { detect: true })
             .use(rehypeSlug)
             .use(rehypeToc, {
-                headings: ["h1", "h2"], // Only include <h1> and <h2> headings in the TOC
+                headings: ["h1", "h2", "h3"], // Only include <h1> and <h2> headings in the TOC
                 cssClasses: {
-                    toc: "page-outline", // Change the CSS class for the TOC
-                    link: "page-link", // Change the CSS class for links in the TOC
+                    toc: "page-toc", // Change the CSS class for the TOC
+                    link: "page-toc-link", // Change the CSS class for links in the TOC
+                },
+                customizeTOC(toc) {
+                    toc.children.unshift({
+                        type: "element",
+                        tagName: "h3",
+                        children: [{
+                            type: "text",
+                            value: "Table of Contents"
+                        }]
+                    } as any)
+
+                    return toc;
                 },
             })
             // @ts-ignore

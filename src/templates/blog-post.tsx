@@ -13,7 +13,8 @@ import FlowLogo from "../svgs/flow-logo.svg"
 
 dayjs.extend(reltime)
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
+    const postTags = post.tags.filter(tag => tag.type === "tag")
     return (
         <Layout headerTheme="light">
             <article
@@ -59,48 +60,57 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         />
                     )}
                 </section>
-            </article>
-            <nav className="blog-post-nav">
-                <ul
-                    style={{
-                        display: `flex`,
-                        flexWrap: `wrap`,
-                        justifyContent: `space-between`,
-                        listStyle: `none`,
-                        padding: 0,
-                    }}
-                >
-                    <li>
+                {postTags?.length > 0 ? (
+                    <section>
+                        <p>
+                            Keywords: {postTags.map(tag => tag.name).join(", ")}
+                        </p>
+                    </section>
+                ) : null}
+                <nav className="blog-post-nav">
+                    <ul
+                        style={{
+                            display: `flex`,
+                            flexWrap: `wrap`,
+                            justifyContent: `space-between`,
+                            listStyle: `none`,
+                            padding: 0,
+                        }}
+                    >
                         {previous && previous.slug !== post.slug && (
-                            <Link to={previous.slug} rel="prev">
-                                ← {previous.title}
+                            <Link to={`/${previous.slug}`} rel="prev">
+                                ←<li>{previous.title}</li>
                             </Link>
                         )}
-                    </li>
-                    <li>
                         {next && next.slug !== post.slug && (
-                            <Link to={next.slug} rel="next">
-                                {next.title} →
+                            <Link to={`/${next.slug}`} rel="next">
+                                <li>{next.title}</li>→
                             </Link>
                         )}
-                    </li>
-                </ul>
-            </nav>
+                    </ul>
+                </nav>
+            </article>
         </Layout>
     )
 }
 
 export const Head = ({ data: { post } }) => {
-    return <Seo title={post.title} description={post.excerpt?.excerpt ?? ""} />
+    return <Seo title={post.title} description={post.description ?? ""} />
 }
 
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-    query BlogPostBySlug($id: String!, $previousId: String, $nextId: String) {
+    query BlogPostBySlug(
+        $id: String!
+        $previousPostId: String
+        $nextPostId: String
+    ) {
         post: strapiBlogPost(id: { eq: $id }) {
             title: Title
             publishedAt(formatString: "MMMM D, YYYY")
+            description: Description
+            slug: Slug
             body: Body {
                 data {
                     Body
@@ -133,9 +143,14 @@ export const pageQuery = graphql`
                     }
                 }
             }
+            tags: tags {
+                name: Name
+                type: Type
+            }
         }
-        previous: strapiBlogPost(id: { eq: $previousId }) {
+        previous: strapiBlogPost(id: { eq: $previousPostId }) {
             title: Title
+            slug: Slug
             authors {
                 name: Name
                 picture: Picture {
@@ -148,8 +163,9 @@ export const pageQuery = graphql`
                 link: Link
             }
         }
-        next: strapiBlogPost(id: { eq: $nextId }) {
+        next: strapiBlogPost(id: { eq: $nextPostId }) {
             title: Title
+            slug: Slug
             authors {
                 name: Name
                 picture: Picture {

@@ -18,6 +18,7 @@ import FlowLiveReporting from "../svgs/product-flow-live-reporting.svg"
 import FlowSchemaInference from "../svgs/product-flow-schema-inference.svg"
 import DataFlowAnimation from "../images/estuary-product-flow-animation.json"
 import Lottie from 'lottie-react';
+import Seo from "../components/seo"
 // import Eximage from "../images/img.png"
 
 const ProductPage = () => {
@@ -279,6 +280,10 @@ const ProductPage = () => {
             </div>
         </Layout>
     )
+}
+
+export const Head = () => {
+    return <Seo title={"Estuary Flow"} description={"Flow is the first real-time Data Operations platform. Set up pipelines with both historical and real-time data in minutes."} />
 }
 
 export default ProductPage

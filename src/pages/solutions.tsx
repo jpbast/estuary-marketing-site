@@ -2,6 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { StaticImage } from "gatsby-plugin-image"
+import Seo from "../components/seo"
 
 const SolutionsPage = () => {
     return (
@@ -186,6 +187,10 @@ const SolutionsPage = () => {
             </div>
         </Layout>
     )
+}
+
+export const Head = () => {
+    return <Seo title={"Solutions"} description={"Estuary allows enterprises of any size to deploy true real-time pipelines that scale for high-volume use cases — without making difficult trade-offs or investing in complex infrastructure."} />
 }
 
 export default SolutionsPage

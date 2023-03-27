@@ -1185,7 +1185,7 @@ input {
 
 .blog-post {
   padding: 2rem;
-  max-width: 1400px;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1202,12 +1202,38 @@ input {
 }
 
 .blog-post section {
-  margin: 0 ~"calc(min(5vw,85px))";
   font-family: 'Inter', sans-serif;
   font-style: normal;
   margin-top: var(--spacing-12);
   margin-bottom: var(--spacing-6);
   letter-spacing: -0.025em;
+}
+
+nav.blog-post-nav {
+  li {
+    max-width: 35vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    display: flex;
+
+    &> :first-child {
+      margin-right: 5px;
+    }
+
+    &> :last-child {
+      margin-left: 5px;
+    }
+  }
 }
 
 table {
@@ -1595,6 +1621,7 @@ table th {
 .solutions-section-image-wrapper {
   display: flex;
   flex: 1 0 40%;
+
   &:first-child {
     margin-right: 3rem;
   }
@@ -1653,7 +1680,7 @@ table th {
   }
 
   .blog-post section {
-    margin: 0 1rem;
+    margin: 0;
   }
 
   .blog-post header h1 {
@@ -1860,7 +1887,8 @@ table th {
     padding: 0 16px 0 16px;
   }
 
-  .section-four-header-vectors, .product-flow-logo-wrapper {
+  .section-four-header-vectors,
+  .product-flow-logo-wrapper {
     margin-top: -80px;
   }
 
@@ -2031,7 +2059,8 @@ table th {
     max-height: 30px;
   }
 
-  .solutions-subtext-bold, .solutions-subtext {
+  .solutions-subtext-bold,
+  .solutions-subtext {
     font-size: var(--fontSize-0);
     line-height: 22px;
   }
@@ -2045,7 +2074,51 @@ table th {
     margin-right: 0px !important;
   }
 
+  nav.blog-post-nav {
+    ul {
+      flex-direction: column;
+    }
+    li {
+      max-width: 80vw;
+    }
+  }
+}
 
+.page-toc {
+  background-color: #edf6ff;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+  border: 1px solid darkgray;
+  border-radius: 4px;
+
+  & h3 {
+    margin-top: 0;
+    font-size: 18pt;
+  }
+
+  .page-toc-link {
+    &:hover {
+      text-decoration: underline;
+    }
+
+    text-decoration: none;
+    color: black;
+  }
+
+  .toc-item {
+    margin-bottom: unset;
+
+    &.toc-item-h2 {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    &.toc-item-h3 {
+      font-weight: 300;
+    }
+  }
 }
 
 @media (max-width: 42rem) {
