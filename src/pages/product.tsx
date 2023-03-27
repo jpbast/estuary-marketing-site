@@ -16,6 +16,9 @@ import FlowMinimizeLoad from "../svgs/product-flow-minimize-load.svg"
 import FlowScaling from "../svgs/product-flow-scaling.svg"
 import FlowLiveReporting from "../svgs/product-flow-live-reporting.svg"
 import FlowSchemaInference from "../svgs/product-flow-schema-inference.svg"
+import DataFlowAnimation from "../images/estuary-product-flow-animation.json"
+import Lottie from 'lottie-react';
+// import Eximage from "../images/img.png"
 
 const ProductPage = () => {
     return (
@@ -48,7 +51,7 @@ const ProductPage = () => {
                         <div className="product-flow-section-two-left">
                             <FlowLogo className="product-flow-section-one-image" />
                             <div className="product-flow-section-two-gif-wrapper">
-                                <FlowCDC className="product-flow-section-two-gif" />
+                                <Lottie animationData={DataFlowAnimation}/>
                             </div>
                         </div>
                         <div className="product-flow-section-two-right">

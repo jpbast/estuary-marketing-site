@@ -1,15 +1,19 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import Slider from "./Slider"
 
 const SectionSix = () => {
     return (
         <div className="section-six">
-            <p className="section-four-header-small">Built for who</p>
-            <div className="section-six-header-wrapper">
-                <h2 className="section-six-header">
-                    Built for &#123;engineers&#125;{" "}
-                </h2>
+            <div className="section-six-slider-wrapper">
+                <p className="section-four-header-small">Built for who</p>
+                <Slider />
+                <Link className="section-four-try-it-button section-six-margin" to="#">
+                    Try it free
+                </Link>
+            </div>
+            <div className="section-six-right-wrapper">
                 <div className="section-six-header-vectors">
                     <StaticImage
                         placeholder="none"
@@ -18,21 +22,6 @@ const SectionSix = () => {
                         layout="constrained"
                         className="product-flow-section-one-image"
                     />
-                </div>
-            </div>
-            <div className="section-six-subwrapper">
-                <div className="section-six-left">
-                    <div className="section-six-text-wrapper">
-                        <p className="section-six-text">
-                            Est amet tellus aliquet malesuada senectus tellus
-                            amet massa phasellus dis viverra nibh mauris amet
-                            purus purus mass lobortis tempor malesuada dui
-                            tellus in sit elit ut bibendum a tellus.
-                        </p>
-                        <Link className="section-four-try-it-button" to="#">
-                            Try it free
-                        </Link>
-                    </div>
                 </div>
                 <div className="section-six-right">
                     <StaticImage
@@ -44,6 +33,7 @@ const SectionSix = () => {
                     />
                 </div>
             </div>
+
         </div>
     )
 }
