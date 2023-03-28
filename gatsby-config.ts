@@ -21,6 +21,7 @@ const strapiConfig = {
         "connector",
         "testimonial",
         "vanity-logo",
+        "job-posting",
     ],
     singleTypes: [],
     // remoteFileHeaders: {
@@ -101,10 +102,16 @@ module.exports = {
                 // Condition for selecting an existing GrapghQL node (optional)
                 // If not set, the transformer operates on file nodes.
                 filter: node =>
-                    node.internal.type === `STRAPI_BLOG_POST_BODY_TEXTNODE`,
+                    node.internal.type === `STRAPI_BLOG_POST_BODY_TEXTNODE` ||
+                    node.internal.type ===
+                        `STRAPI_JOB_POSTING_DESCRIPTION_TEXTNODE`,
                 // Only needed when using filter (optional, default: node.html)
                 // Source location of the html to be transformed
-                source: node => node.Body,
+                source: node =>
+                    node.internal.type ===
+                    `STRAPI_JOB_POSTING_DESCRIPTION_TEXTNODE`
+                        ? node.Description
+                        : node.Body,
                 // Additional fields of the sourced node can be added here (optional)
                 // These fields are then available on the htmlNode on `htmlNode.context`
                 contextFields: [],

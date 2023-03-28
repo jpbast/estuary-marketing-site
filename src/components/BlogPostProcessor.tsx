@@ -5,41 +5,56 @@ import rehypeParse from "rehype-parse"
 import rehypeReact from "rehype-react"
 import rehypeSlug from "rehype-slug"
 import rehypeToc from "rehype-toc"
-import {visit} from "unist-util-visit";
+import { visit } from "unist-util-visit"
 import ImgSharpInline from "./ImgSharp"
 
 let LANG_RE = /hljs language\-(.*)/
 
-export const ProcessedPost = ({ body }: { body: string }) => {
+export const ProcessedPost = ({
+    body,
+    enableToc = true,
+}: {
+    body: string
+    enableToc?: boolean
+}) => {
     const [Content, setContent] = useState<React.ReactElement>(null)
 
     useEffect(() => {
-        unified()
+        let parser = unified()
             .data("settings", { fragment: true })
             .use(rehypeParse, { fragment: true })
             .use(rehypeHighlight, { detect: true })
-            .use(()=>(root) => {
+            .use(() => root => {
                 visit(root, (node: any) => {
-                    if(node.type === "element" && node.properties?.className !== undefined){
-                        let match = node.properties.className.join(" ").match(LANG_RE);
-                        if(match){
+                    if (
+                        node.type === "element" &&
+                        node.properties?.className !== undefined
+                    ) {
+                        let match = node.properties.className
+                            .join(" ")
+                            .match(LANG_RE)
+                        if (match) {
                             node.children.unshift({
                                 type: "element",
                                 tagName: "div",
                                 properties: {
-                                    className: ["language-tag"]
+                                    className: ["language-tag"],
                                 },
-                                children: [{
-                                    type: "text",
-                                    value: match[1]
-                                }]
+                                children: [
+                                    {
+                                        type: "text",
+                                        value: match[1],
+                                    },
+                                ],
                             })
                         }
                     }
                 })
             })
             .use(rehypeSlug)
-            .use(rehypeToc, {
+
+        if (enableToc) {
+            parser = parser.use(rehypeToc, {
                 headings: ["h1", "h2", "h3"], // Only include <h1> and <h2> headings in the TOC
                 cssClasses: {
                     toc: "page-toc", // Change the CSS class for the TOC
@@ -68,7 +83,9 @@ export const ProcessedPost = ({ body }: { body: string }) => {
                     return toc
                 },
             })
-            // @ts-ignore
+        }
+        // @ts-ignore
+        parser
             .use(rehypeReact, {
                 createElement,
                 Fragment,
