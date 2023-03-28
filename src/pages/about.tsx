@@ -1,6 +1,6 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import FlowLogo from "../svgs/flow-logo.svg"
 import CareerAvatar from "../svgs/about-careers-avatar-icon.svg"
 import EstuaryLogoSmall from "../svgs/estuary-logo-small.svg"
@@ -10,61 +10,99 @@ import CultureIcon from "../svgs/about-careers-culture-icon.svg"
 import CommunityIcon from "../svgs/about-careers-community-icon.svg"
 import LinkIcon from "../svgs/link-icon.svg"
 import HubspotForm from "react-hubspot-form"
+import { ProcessedPost } from "../components/BlogPostProcessor"
 
-const jobs = [
-    {
-        title: "Solutions Engineer",
-        location: "New York, NY",
-        workEnvironment: "Hybrid or remote",
-        description:
-            "As Estuary’s first Solution Engineer, you will work directly with our founding team to help companies unlock the power of their real-time data. Working at the intersection of engineering, product and customers, your work will have a huge impact on Estuary’s product roadmap and help create a seamless experience for users. We’re looking for individuals with an insatiable curiosity for getting into the weeds of technical challenges and an empathetic approach to teaching others. A strong desire to work within a start-up environment without the constraints of large companies is imperative. You will be given the freedom and opportunity to chart your own path and take your career to the next level.",
-        responsibilities: [
-            "Focus on detailed use-cases to create a great end-to-end experience for customers.",
-            "Take a lead role in understanding user pain points to develop a strategic vision of our product roadmap.",
-            "Create internal documentation of technical requirements for prospective customers.",
-            "Engage in user-support channels for questions and issues raised by Flow users.",
-            "Provide technical support through independent investigation.",
-            "Act as a trusted conduit with customers and prospects in order to influence their data strategy.",
-            "Build a perspective on customer and market trends.",
-            "Communicate technical feature requests.",
-        ],
-        qualifications: [
-            "Bachelor’s degree in computer science, data science or related field or equivalent technical & business experience.",
-            "Exceptional written and verbal communication.",
-            "Strong interpersonal and relationship building skills.",
-            "Understand the value of balancing customer-centric thinking with technical know-how.",
-            "Foundational understanding and practical ability to code with two or more modern scripting languages (e.g. Python, SQL, node.js) and/or popular programming languages (e.g. C/C++, C#).",
-            "Experience working with both technical and non-technical stakeholders.",
-        ],
-    },
-    {
-        title: "Developer Evangelist",
-        location: "New York, NY; Columbus, OH",
-        workEnvironment: "Hybrid or remote",
-        description:
-            "As Estuary’s first Solution Engineer, you will work directly with our founding team to help companies unlock the power of their real-time data. Working at the intersection of engineering, product and customers, your work will have a huge impact on Estuary’s product roadmap and help create a seamless experience for users. We’re looking for individuals with an insatiable curiosity for getting into the weeds of technical challenges and an empathetic approach to teaching others. A strong desire to work within a start-up environment without the constraints of large companies is imperative. You will be given the freedom and opportunity to chart your own path and take your career to the next level.",
-        responsibilities: [
-            "Focus on detailed use-cases to create a great end-to-end experience for customers.",
-            "Take a lead role in understanding user pain points to develop a strategic vision of our product roadmap.",
-            "Create internal documentation of technical requirements for prospective customers.",
-            "Engage in user-support channels for questions and issues raised by Flow users.",
-            "Provide technical support through independent investigation.",
-            "Act as a trusted conduit with customers and prospects in order to influence their data strategy.",
-            "Build a perspective on customer and market trends.",
-            "Communicate technical feature requests.",
-        ],
-        qualifications: [
-            "Bachelor’s degree in computer science, data science or related field or equivalent technical & business experience.",
-            "Exceptional written and verbal communication.",
-            "Strong interpersonal and relationship building skills.",
-            "Understand the value of balancing customer-centric thinking with technical know-how.",
-            "Foundational understanding and practical ability to code with two or more modern scripting languages (e.g. Python, SQL, node.js) and/or popular programming languages (e.g. C/C++, C#).",
-            "Experience working with both technical and non-technical stakeholders.",
-        ],
-    },
-]
+// const jobs = [
+//     {
+//         id: "soln",
+//         title: "Solutions Engineer",
+//         location: "New York, NY",
+//         workEnvironment: "Hybrid or remote",
+//         description:
+//             "As Estuary’s first Solution Engineer, you will work directly with our founding team to help companies unlock the power of their real-time data. Working at the intersection of engineering, product and customers, your work will have a huge impact on Estuary’s product roadmap and help create a seamless experience for users. We’re looking for individuals with an insatiable curiosity for getting into the weeds of technical challenges and an empathetic approach to teaching others. A strong desire to work within a start-up environment without the constraints of large companies is imperative. You will be given the freedom and opportunity to chart your own path and take your career to the next level.",
+//         responsibilities: [
+//             "Focus on detailed use-cases to create a great end-to-end experience for customers.",
+//             "Take a lead role in understanding user pain points to develop a strategic vision of our product roadmap.",
+//             "Create internal documentation of technical requirements for prospective customers.",
+//             "Engage in user-support channels for questions and issues raised by Flow users.",
+//             "Provide technical support through independent investigation.",
+//             "Act as a trusted conduit with customers and prospects in order to influence their data strategy.",
+//             "Build a perspective on customer and market trends.",
+//             "Communicate technical feature requests.",
+//         ],
+//         qualifications: [
+//             "Bachelor’s degree in computer science, data science or related field or equivalent technical & business experience.",
+//             "Exceptional written and verbal communication.",
+//             "Strong interpersonal and relationship building skills.",
+//             "Understand the value of balancing customer-centric thinking with technical know-how.",
+//             "Foundational understanding and practical ability to code with two or more modern scripting languages (e.g. Python, SQL, node.js) and/or popular programming languages (e.g. C/C++, C#).",
+//             "Experience working with both technical and non-technical stakeholders.",
+//         ],
+//     },
+//     {
+//         id: "dev-evang",
+//         title: "Developer Evangelist",
+//         location: "New York, NY; Columbus, OH",
+//         workEnvironment: "Hybrid or remote",
+//         description:
+//             "As Estuary’s first Solution Engineer, you will work directly with our founding team to help companies unlock the power of their real-time data. Working at the intersection of engineering, product and customers, your work will have a huge impact on Estuary’s product roadmap and help create a seamless experience for users. We’re looking for individuals with an insatiable curiosity for getting into the weeds of technical challenges and an empathetic approach to teaching others. A strong desire to work within a start-up environment without the constraints of large companies is imperative. You will be given the freedom and opportunity to chart your own path and take your career to the next level.",
+//         responsibilities: [
+//             "Focus on detailed use-cases to create a great end-to-end experience for customers.",
+//             "Take a lead role in understanding user pain points to develop a strategic vision of our product roadmap.",
+//             "Create internal documentation of technical requirements for prospective customers.",
+//             "Engage in user-support channels for questions and issues raised by Flow users.",
+//             "Provide technical support through independent investigation.",
+//             "Act as a trusted conduit with customers and prospects in order to influence their data strategy.",
+//             "Build a perspective on customer and market trends.",
+//             "Communicate technical feature requests.",
+//         ],
+//         qualifications: [
+//             "Bachelor’s degree in computer science, data science or related field or equivalent technical & business experience.",
+//             "Exceptional written and verbal communication.",
+//             "Strong interpersonal and relationship building skills.",
+//             "Understand the value of balancing customer-centric thinking with technical know-how.",
+//             "Foundational understanding and practical ability to code with two or more modern scripting languages (e.g. Python, SQL, node.js) and/or popular programming languages (e.g. C/C++, C#).",
+//             "Experience working with both technical and non-technical stakeholders.",
+//         ],
+//     },
+// ]
 
 const AboutPage = () => {
+    const {
+        allStrapiJobPosting: { nodes: jobs },
+    } = useStaticQuery<{
+        allStrapiJobPosting: {
+            nodes: {
+                slug: string
+                title: string
+                location: string
+                description: {
+                    data: {
+                        childHtmlRehype: {
+                            html: string
+                        }
+                    }
+                }
+            }[]
+        }
+    }>(graphql`
+        {
+            allStrapiJobPosting {
+                nodes {
+                    slug
+                    title: Title
+                    location: Location
+                    description: Description {
+                        data {
+                            childHtmlRehype {
+                                html
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `)
     return (
         <Layout headerTheme="light">
             <div className="product-flow-section-one-background-image-wrapper">
@@ -216,85 +254,56 @@ const AboutPage = () => {
                     <div className="about-current-openings-list">
                         {jobs.length > 0
                             ? jobs.map(job => (
-                                  <p className="about-current-opening-title">
+                                  <a
+                                      href={`#${job.slug}`}
+                                      className="about-current-opening-title"
+                                  >
                                       {job.title}
-                                  </p>
+                                  </a>
                               ))
                             : null}
-                        <Link className="about-get-in-touch-button" to="#">
+                        <Link
+                            className="about-get-in-touch-button"
+                            to="mailto:careers@estuary.dev"
+                        >
                             Get in touch to apply
                         </Link>
                     </div>
                     <div className="about-current-openings-description-wrapper">
                         {jobs.length > 0
                             ? jobs.map(job => (
-                                  <>
+                                  <div id={job.slug}>
                                       <div className="about-current-openings-title-wrapper">
                                           <p className="about-opening-title">
                                               {job.title}
                                           </p>
-                                          <Link to="#" className="about-link">
+                                          <Link
+                                              to={`#${job.slug}`}
+                                              className="about-link"
+                                          >
                                               <LinkIcon />
                                           </Link>
                                       </div>
                                       <div className="about-current-openings-location-wrapper">
                                           <p className="about-opening-text">
-                                              Location:
-                                          </p>
-                                          <p className="about-opening-text">
-                                              &nbsp;{job.location}
-                                          </p>
-                                          <p className="about-opening-text">
-                                              ; {job.workEnvironment}
+                                              Location: <b>{job.location}</b>
                                           </p>
                                       </div>
-                                      <div>
-                                          <p className="about-opening-text">
-                                              {job.description}
-                                          </p>
-                                      </div>
-                                      <div>
-                                          {job.responsibilities ? (
-                                              <p className="about-bold about-opening-text about-margin-top">
-                                                  Responsibilities
-                                              </p>
-                                          ) : null}
-
-                                          {job.responsibilities
-                                              ? job.responsibilities.map(
-                                                    resp => (
-                                                        <ul>
-                                                            <li className="about-opening-text">
-                                                                {resp}
-                                                            </li>
-                                                        </ul>
-                                                    )
-                                                )
-                                              : null}
-                                      </div>
-                                      <div>
-                                          <p className="about-bold about-opening-text about-margin-top">
-                                              Qualifications
-                                          </p>
-
-                                          {job.qualifications
-                                              ? job.qualifications.map(qual => (
-                                                    <ul>
-                                                        <li className="about-opening-text">
-                                                            {qual}
-                                                        </li>
-                                                    </ul>
-                                                ))
-                                              : null}
-                                      </div>
+                                      <ProcessedPost
+                                          body={
+                                              job.description.data
+                                                  .childHtmlRehype.html
+                                          }
+                                          enableToc={false}
+                                      />
                                       <Link
                                           className="about-get-in-touch-button-mobile"
-                                          to="#"
+                                          to="mailto:careers@estuary.dev"
                                       >
                                           Get in touch to apply
                                       </Link>
                                       <div className="current-openings-divider"></div>
-                                  </>
+                                  </div>
                               ))
                             : null}
                     </div>
@@ -311,7 +320,6 @@ const AboutPage = () => {
                 <HubspotForm
                     portalId="8635875"
                     formId="698e6716-f38b-4bd5-9105-df9ba220e29b"
-                                                
                 />
             </div>
         </Layout>

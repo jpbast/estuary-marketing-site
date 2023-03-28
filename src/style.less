@@ -1843,7 +1843,6 @@ table th {
   flex-direction: column;
   background-color: #F9FAFC;
   max-width: 300px;
-  padding: 24px;
   margin-right: 80px;
   height: fit-content;
   position: sticky;
@@ -1852,7 +1851,15 @@ table th {
 }
 
 .about-current-opening-title {
-  margin-bottom: 24px;
+  padding: 24px;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  &:hover{
+    background-color: #5072EB;
+    color: white;
+  }
 }
 
 .about-get-in-touch-button {
@@ -1861,6 +1868,7 @@ table th {
   text-decoration: none;
   border-radius: 4px;
   padding: 20px 36.5px 20px 36.5px;
+  margin-top: 24px;
   width: 252px;
   height: 60px;
   text-align: center;
