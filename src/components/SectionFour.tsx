@@ -17,7 +17,7 @@ const SectionFour = () => {
         <div className="section-four">
             <p className="section-four-header-small">Features</p>
             <div className="section-four-header-wrapper">
-                <h2>A robust set of features</h2>
+                <h2 className="section-two-bottom-title">A robust set of features</h2>
                 <div className="section-four-header-vectors">
                     <FlowLogo className="product-flow-section-one-image" />
                 </div>

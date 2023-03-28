@@ -48,7 +48,7 @@ const BlogIndex = ({
         query.length > 0
             ? query
                   .split(" ")
-                  .map(term => `${term}~4`)
+                  .map(term => `${term}~2`)
                   .join(" ")
             : "",
         index,
@@ -119,7 +119,7 @@ export default BlogIndex
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
 export const Head = ({ data: { post } }) => {
-    return <Seo title={"Blog"} description={"Estuary Blog"} />
+    return <Seo title={"Blog"} description={"More about Estuary and related technologies, straight from the team. Our blog breaks down basic concepts and takes you into the minds of our engineers."} />
 }
 
 export const pageQuery = graphql`

@@ -497,7 +497,7 @@ input {
   object-fit: contain;
 }
 
-.section-one-right-image img {
+.section-one-right-image svg {
   overflow: visible;
   max-height: 80vh;
   width: ~"calc(min(auto, 50vw))";
@@ -847,10 +847,14 @@ input {
 
 .section-six {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   padding-left: ~"calc(min(9%, 146px))";
   padding-right: ~"calc(min(2%, 146px))";
   margin-bottom: 100px;
+}
+
+.section-six-margin {
+  margin-top: 40px;
 }
 
 .section-six-left {
@@ -859,18 +863,18 @@ input {
   width: 50%;
 }
 
-.section-six-header-wrapper {
+.section-six-slider-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .section-six-right {
   display: flex;
 }
 
-.section-six-subwrapper {
+.section-six-right-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .section-six-text-wrapper {
@@ -893,9 +897,10 @@ input {
 
 .section-six-header-vectors {
   display: flex;
-  flex-direction: column;
-  margin-top: -30px;
+  margin-top: 100px;
   z-index: 2;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .section-six-code-shadow {
@@ -907,6 +912,39 @@ input {
 
 .section-six-header {
   width: 35vw;
+}
+
+// SLIDER 
+.navigation-wrapper {
+  position: relative;
+  width: 50vw;
+}
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: flex-start;
+  width: 100px;
+  margin-left: -5px;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #EFEFEF;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #C4C4C4;
 }
 
 /* FOOTER */
@@ -1146,10 +1184,15 @@ input {
 }
 
 .blog-post {
-  padding: 2rem;
-  max-width: 1400px;
+  padding: 5rem;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
+
+  // The auto-detection isn't great so until we start tagging languages let's just hide this
+  .language-tag {
+    display: none;
+  } 
 }
 
 .blog-post header {
@@ -1164,12 +1207,38 @@ input {
 }
 
 .blog-post section {
-  margin: 0 ~"calc(min(5vw,85px))";
   font-family: 'Inter', sans-serif;
   font-style: normal;
   margin-top: var(--spacing-12);
   margin-bottom: var(--spacing-6);
   letter-spacing: -0.025em;
+}
+
+nav.blog-post-nav {
+  li {
+    max-width: 35vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    display: flex;
+
+    &> :first-child {
+      margin-right: 5px;
+    }
+
+    &> :last-child {
+      margin-left: 5px;
+    }
+  }
 }
 
 table {
@@ -1274,7 +1343,7 @@ table th {
   width: 100%;
   background-image: url("./images/product-flow-section-one-background.svg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .product-flow-section-one-subtext {
@@ -1493,6 +1562,7 @@ table th {
 
 .blogs-post-card-details {
   padding: 4px;
+  padding-left: 1rem;
   margin-bottom: 0;
   font-size: 12pt;
   color: rgb(170, 170, 170)
@@ -1503,11 +1573,18 @@ table th {
   color: rgb(170, 170, 170)
 }
 
+.blog-post-card-image {
+  margin: 1rem;
+  margin-bottom: 0;
+}
+
 .blogs-post-card-title {
   padding: 1rem;
   padding-top: 4px;
   padding-top: 0;
   text-align: center;
+  font-size: 16pt;
+  font-weight: 600;
 }
 
 .blogs-index-header {
@@ -1532,6 +1609,83 @@ table th {
   background-image: url("../src/images/blogs-bg.png");
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+// SOLUTIONS
+
+.solutions-banner-wrapper {
+  padding-left: ~"calc(min(9%, 146px))";
+  padding-right: ~"calc(min(9%, 146px))";
+  margin-top: -116px;
+}
+
+.solutions-section-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-left: ~"calc(min(9%, 146px))";
+  padding-right: ~"calc(min(9%, 146px))";
+  margin-top: 120px;
+}
+
+.solutions-subtext-bold {
+  color: #47506D;
+  font-weight: 700;
+  margin-top: 40px;
+  line-height: 30px;
+}
+
+.solutions-subtext {
+  color: #47506D;
+  margin: 25px 0px;
+  line-height: 30px;
+}
+
+.solutions-section-image {
+  width: 500px
+}
+
+.solutions-section-text-wrapper {
+  flex: 1 1 auto;
+}
+
+.solutions-logo-wrapper {
+  display: flex;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-top: -3rem;
+  padding-left: 1rem;
+}
+
+.solutions-section-image-wrapper {
+  display: flex;
+  flex: 1 0 40%;
+
+  &:first-child {
+    margin-right: 3rem;
+  }
+}
+
+.solutions-margin-bottom {
+  margin-bottom: 100px;
+}
+
+.solutions-logo-wrapper-right {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.solutions-section-image-wrapper-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 40%;
+}
+
+.solutions-section-logo-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -2em;
+  margin-right: -2em;
 }
 
 /* CONNECTORS */
@@ -1813,6 +1967,10 @@ table th {
 /* MEDIA QUERIES */
 
 @media (max-width: 810px) {
+  .blog-post {
+    padding: 2rem;
+  }
+  
   .blogs-index-header {
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -1832,7 +1990,7 @@ table th {
   }
 
   .blog-post section {
-    margin: 0 1rem;
+    margin: 0;
   }
 
   .blog-post header h1 {
@@ -1923,8 +2081,8 @@ table th {
 
   .section-one-right {
     position: relative;
-    top: -5em;
-    margin-bottom: -8em;
+    top: -4em;
+    margin-bottom: -5em;
     margin-left: auto;
     justify-content: flex-end;
   }
@@ -1933,7 +2091,7 @@ table th {
     margin-left: 0px;
   }
 
-  .section-one-right-image img {
+  .section-one-right-image svg {
     overflow: visible;
     max-height: 55vw;
     left: unset;
@@ -2039,6 +2197,11 @@ table th {
     padding: 0 16px 0 16px;
   }
 
+  .section-four-header-vectors,
+  .product-flow-logo-wrapper {
+    margin-top: -80px;
+  }
+
   .section-five {
     padding: 0 16px 0 16px;
   }
@@ -2066,6 +2229,7 @@ table th {
 
   .section-six {
     padding: 0 16px 0 16px;
+    flex-direction: column;
   }
 
   .section-six-left,
@@ -2078,11 +2242,14 @@ table th {
   }
 
   .section-six-right {
-    margin-top: 100px;
+    margin-top: 45px;
     margin-bottom: 32px;
   }
 
-  .section-six-header-vectors {}
+  .section-six-header-vectors {
+    margin-top: 0px;
+    width: 90%
+  }
 
   .section-six-header {
     margin-top: 8px;
@@ -2090,6 +2257,15 @@ table th {
 
   .section-six-header {
     font-size: 1.75rem;
+    width: 100%;
+  }
+
+  .section-six-code-screenshot {
+    margin-top: -58px;
+    box-shadow: 50px 82px #5072eb1a;
+  }
+
+  .navigation-wrapper {
     width: 100%;
   }
 
@@ -2290,6 +2466,96 @@ table th {
     background-position-y: 80%;
   }
 
+  .solutions-banner-wrapper {
+    margin-top: 32px;
+  }
+
+  .solutions-section-wrapper {
+    flex-direction: column;
+  }
+
+  .solutions-section-text-wrapper {
+    width: 100%;
+  }
+
+  .solutions-section-wrapper {
+    margin-top: 32px;
+  }
+
+  .solutions-logo-wrapper {
+    justify-content: flex-end;
+    margin-bottom: -9em;
+    margin-right: 1em;
+    margin-top: unset;
+  }
+
+  .solutions-section-logo-right {
+    margin-bottom: -1em;
+    margin-top: -4rem;
+    margin-right: 0;
+    max-height: 30px;
+  }
+
+  .solutions-subtext-bold,
+  .solutions-subtext {
+    font-size: var(--fontSize-0);
+    line-height: 22px;
+  }
+
+  .mobile-flex-direction-reverse {
+    flex-direction: column-reverse;
+  }
+
+  .solutions-section-image-wrapper {
+    max-height: 280px;
+    margin-right: 0px !important;
+  }
+
+  nav.blog-post-nav {
+    ul {
+      flex-direction: column;
+    }
+    li {
+      max-width: 80vw;
+    }
+  }
+}
+
+.page-toc {
+  background-color: #edf6ff;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+  border: 1px solid darkgray;
+  border-radius: 4px;
+
+  & h3 {
+    margin-top: 0;
+    font-size: 18pt;
+  }
+
+  .page-toc-link {
+    &:hover {
+      text-decoration: underline;
+    }
+
+    text-decoration: none;
+    color: black;
+  }
+
+  .toc-item {
+    margin-bottom: unset;
+
+    &.toc-item-h2 {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    &.toc-item-h3 {
+      font-weight: 300;
+    }
+  }
 }
 
 @media (max-width: 42rem) {
@@ -2301,5 +2567,11 @@ table th {
   ul,
   ol {
     list-style-position: inside;
+  }
+}
+
+@media (min-width: 810px) {
+  .section-one-bottom {
+    margin-top: ~"calc(min(50px, max(-100px, (1100px - 100vw) / 2.5)))"
   }
 }

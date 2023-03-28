@@ -16,6 +16,10 @@ import FlowMinimizeLoad from "../svgs/product-flow-minimize-load.svg"
 import FlowScaling from "../svgs/product-flow-scaling.svg"
 import FlowLiveReporting from "../svgs/product-flow-live-reporting.svg"
 import FlowSchemaInference from "../svgs/product-flow-schema-inference.svg"
+import DataFlowAnimation from "../images/estuary-product-flow-animation.json"
+import Lottie from 'lottie-react';
+import Seo from "../components/seo"
+// import Eximage from "../images/img.png"
 
 const ProductPage = () => {
     return (
@@ -48,7 +52,7 @@ const ProductPage = () => {
                         <div className="product-flow-section-two-left">
                             <FlowLogo className="product-flow-section-one-image" />
                             <div className="product-flow-section-two-gif-wrapper">
-                                <FlowCDC className="product-flow-section-two-gif" />
+                                <Lottie animationData={DataFlowAnimation}/>
                             </div>
                         </div>
                         <div className="product-flow-section-two-right">
@@ -160,7 +164,7 @@ const ProductPage = () => {
                                 our open protocol
                             </h2>
                         </div>
-                        <div>
+                        <div className="product-flow-logo-wrapper">
                             <FlowLogo className="product-flow-section-one-image" />
                         </div>
                     </div>
@@ -276,6 +280,10 @@ const ProductPage = () => {
             </div>
         </Layout>
     )
+}
+
+export const Head = () => {
+    return <Seo title={"Estuary Flow"} description={"Flow is the first real-time Data Operations platform. Set up pipelines with both historical and real-time data in minutes."} />
 }
 
 export default ProductPage

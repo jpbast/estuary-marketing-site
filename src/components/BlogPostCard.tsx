@@ -38,6 +38,7 @@ export const BlogPostCard = (props: BlogPostCardProps) => (
             <GatsbyImage
                 alt=""
                 image={props.hero.localFile.childImageSharp.gatsbyImageData}
+                className="blog-post-card-image"
                 loading="eager"
             />
         ) : null}
@@ -45,19 +46,6 @@ export const BlogPostCard = (props: BlogPostCardProps) => (
             {props.authors.map(author => author.name).join(", ")} ·{" "}
             {props.publishedAt}
         </p>
-        <div className="blogs-post-card-tags">
-            {props.tags
-                .filter(tag => tag.Type === "tag")
-                .slice(0, 1)
-                .map(tag =>
-                    tag.Name.split(" ")
-                        .map(word => `${word[0].toUpperCase()}${word.slice(1)}`)
-                        .join(" ")
-                )
-                .map(tag => (
-                    <div className="blogs-post-card-tag">{tag}</div>
-                ))}
-        </div>
         <div className="blogs-post-card-title">{props.title}</div>
     </Link>
 )
