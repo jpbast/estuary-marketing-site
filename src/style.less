@@ -1846,6 +1846,9 @@ table th {
   padding: 24px;
   margin-right: 80px;
   height: fit-content;
+  position: sticky;
+  top: 30px;
+  margin-bottom: 30px;
 }
 
 .about-current-opening-title {
@@ -1926,6 +1929,11 @@ table th {
   background-position-y: 480px;
   background-size: 35%;
   background-position-y: 60%;
+   & > div:last-child {
+    width: 100%;
+    padding: 3rem;
+    max-width: 50rem;
+   }
 }
 
 .form-wrapper {
@@ -2422,6 +2430,7 @@ table th {
     width: 100%;
     margin-right: 0px;
     max-width: none;
+    position: inherit;
   }
 
   .about-section-header-top {
@@ -2572,6 +2581,6 @@ table th {
 
 @media (min-width: 810px) {
   .section-one-bottom {
-    margin-top: ~"calc(min(50px, max(-100px, (1100px - 100vw) / 2.5)))"
+    margin-top: 50px;
   }
 }
