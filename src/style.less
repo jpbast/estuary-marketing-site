@@ -1721,12 +1721,14 @@ table th {
 
 .blogs-post-card {
   flex: 0 0 350px;
-  margin: 1rem;
   cursor: pointer;
   text-decoration: none;
   color: black;
   background-color: rgb(245, 245, 245);
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .blogs-post-card-tags {
@@ -1775,9 +1777,22 @@ table th {
 .blogs-index-body {
   padding: 0 ~"calc(min(3vw,200px))";
   padding-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  @media (min-width: 1px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (min-width: 1000px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (min-width: 1201px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  grid-column-gap: 24px;
+  grid-row-gap: 24px; 
 }
 
 .blogs-index-wrapper {
@@ -2208,6 +2223,17 @@ table th {
   grid-row-gap: 24px; 
 }
 
+.connectors-search {
+  padding: ~"0 calc(min(10vw,200px))";
+  margin-bottom: 2rem;
+}
+
+.connectors-search-body {
+    background-color: #F9FAFC;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
 .connector-card-top {
   display: flex;
 }
@@ -2284,6 +2310,8 @@ table th {
 
   .blogs-index-body {
     padding: 0 1rem;
+    margin-top: 1rem;
+    justify-content: center;
   }
 
   .blog-post section {

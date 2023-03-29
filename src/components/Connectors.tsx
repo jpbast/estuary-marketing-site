@@ -6,6 +6,7 @@ import { normalizeConnector } from "../utils"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import ChevronRight from "@mui/icons-material/ChevronRight"
+import SearchIcon from "@mui/icons-material/Search"
 
 export interface ConnectorsProps {
     connectorType: "capture" | "materialization"
@@ -48,7 +49,6 @@ const ConnectorCard = ({
                         image={logo.childImageSharp.gatsbyImageData}
                         className="connector-post-card-image icon-wrapper"
                         loading="eager"
-                        
                     />
                 )}
                 {recommended && (
@@ -102,7 +102,10 @@ export const Connectors = ({
                         logoUrl
                         logo {
                             childImageSharp {
-                                gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                                gatsbyImageData(
+                                    layout: CONSTRAINED
+                                    placeholder: BLURRED
+                                )
                             }
                         }
                         recommended
@@ -128,12 +131,12 @@ export const Connectors = ({
         query.length > 0
             ? query
                   .split(" ")
-                  .map(term => `${term}~2`)
+                  .map(term => `${term}* ${term}~1`)
                   .join(" ")
             : "",
         index,
         store
-    )
+    ).filter(res=>res.type===connectorType)
 
     return (
         <div className="blogs-index-wrapper" style={{ marginBottom: "10rem" }}>
@@ -148,6 +151,21 @@ export const Connectors = ({
                         className="blog-post-header-vectors"
                     >
                         <FlowLogo className="product-flow-section-one-image" />
+                    </div>
+                </div>
+
+                <div className="connectors-search">
+                    <div className="connectors-search-body">
+                        <div className="blogs-index-search" style={{marginBottom:0}}>
+                            <SearchIcon className="blogs-index-input-adornment" />
+                            <input
+                                style={{border: "1px solid #D7DCE5"}}
+                                placeholder={`Search ${title}`}
+                                type="text"
+                                value={query}
+                                onChange={evt => setQuery(evt.target.value)}
+                            />
+                        </div>
                     </div>
                 </div>
 
