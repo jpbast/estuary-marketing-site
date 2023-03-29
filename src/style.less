@@ -1582,18 +1582,18 @@ table th {
 
 .pricing-page-tiles-wrapper {
   display: flex;
-  flex-wrap: wrap;
   padding-left: ~"calc(min(9%, 146px))";
   padding-right: ~"calc(min(9%, 146px))";
   margin-top: 100px;
-  gap: 40px;
+  & > :not(:last-child){
+    margin-right: 20px;
+  }
 }
 
 .pricing-page-tile {
   display: flex;
   flex-direction: column;
   width: 380px;
-  height: 725px;
   background-color: #F7F9FC;
   padding: 24px;
   position: relative;
@@ -1602,21 +1602,29 @@ table th {
 .pricing-page-checklist-wrapper {
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
+  margin-bottom: 2rem;
 }
 
 .pricing-page-checklist-wrapper-custom {
   display: flex;
   flex-direction: column;
   margin-top: 110px;
+  flex: 1 1 auto;
 }
 
 .pricing-page-checklist-item {
-  display: flex;
   margin: 8.5px 0;
+  display: flex;
+  align-items: center;
+  & > *:last-child {
+    flex: 1;
+  }
 }
 
 .pricing-page-tile-checkmark-image {
   margin-right: 16px;
+//   flex: 1 0 auto;
 }
 
 .pricing-page-tile-coming-soon-image {
@@ -1625,7 +1633,7 @@ table th {
 
 .pricing-page-tile-checklist-item-text {
   font-size: 1rem;
-  margin-bottom: 0px;
+  margin: 0px;
 }
 
 .pricing-page-tile-name {
@@ -1662,14 +1670,12 @@ table th {
 
 .pricing-page-tile-button {
   background-color: #5072EB;
-  padding: 20px 114.5px;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
   font-size: var(--fontSize-1);
   text-decoration: none;
   color: #FFFFFF;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  position: absolute;
-  bottom: 0;
 }
 
 .pricing-page-quote-box {
@@ -2699,6 +2705,54 @@ table th {
       max-width: 80vw;
     }
   }
+
+  .pricing-page-subheader-text {
+    font-size: var(--fontSize-0);
+    margin-top: -8px;
+  }
+
+  .pricing-page-top-right {
+    display: none;
+  }
+
+  .pricing-page-tiles-wrapper {
+    margin-top: 48px;
+    flex-direction: column;
+  }
+
+  .pricing-page-tile-checklist-item-text {
+    font-size: var(--fontSize-0);
+  }
+  
+  .pricing-page-tile-price-subtext {
+    margin: 8px 0;
+  }
+
+  .pricing-page-tile-button {
+    position: unset;
+    bottom: unset;
+  }
+  
+  .pricing-page-tile {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-page-checklist-wrapper-custom{
+    margin-top: 0px;
+  }
+
+  .pricing-page-quote-box-quote {
+    font-size: 1.5rem;
+  }
+
+  .pricing-page-quote-box {
+    padding: 32px 16px;
+  }
+
+  .pricing-page-tile-graphic-quote-image {
+    width: 50px;
+  }
 }
 
 .page-toc {
@@ -2736,53 +2790,6 @@ table th {
       font-weight: 300;
     }
   }
-  .pricing-page-subheader-text {
-    font-size: var(--fontSize-0);
-    margin-top: -8px;
-  }
-
-  .pricing-page-top-right {
-    display: none;
-  }
-
-  .pricing-page-tiles-wrapper {
-    margin-top: 48px;
-  }
-
-  .pricing-page-tile-checklist-item-text {
-    font-size: var(--fontSize-0);
-  }
-  
-  .pricing-page-tile-price-subtext {
-    margin: 8px 0;
-  }
-
-  .pricing-page-tile-button {
-    position: unset;
-    bottom: unset;
-  }
-  
-  .pricing-page-tile {
-    height: auto;
-    position: unset;
-  }
-
-  .pricing-page-checklist-wrapper-custom{
-    margin-top: 0px;
-  }
-
-  .pricing-page-quote-box-quote {
-    font-size: 1.5rem;
-  }
-
-  .pricing-page-quote-box {
-    padding: 32px 16px;
-  }
-
-  .pricing-page-tile-graphic-quote-image {
-    width: 50px;
-  }
-
 }
 
 @media (max-width: 42rem) {
