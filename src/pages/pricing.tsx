@@ -1,0 +1,216 @@
+import * as React from "react"
+import Layout from "../components/layout"
+import { StaticImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+import { Slider } from "@mui/material"
+
+import FlowLogo from "../svgs/flow-logo.svg"
+import BlueCheckmark from "../svgs/blue-checkmark.svg"
+import PricingOpenSource from "../svgs/pricing-open-source.svg"
+import PricingCloud from "../svgs/pricing-cloud.svg"
+import PricingEnterprise from "../svgs/pricing-enterprise.svg"
+import ComingSoon from "../svgs/coming-soon-icon.svg"
+import GraphicQuote from "../svgs/graphic-quote.svg"
+
+function gByteLabel(gb: number) {
+    const units = ["GB", "TB"]
+
+    let unitIndex = 0
+    let scaledValue = gb
+
+    while (scaledValue >= 1000 && unitIndex < units.length - 1) {
+        unitIndex += 1
+        scaledValue /= 1000
+    }
+
+    return `${scaledValue} ${units[unitIndex]}`
+}
+
+const ChecklistItem = ({ children }) => (
+    <div className="pricing-page-checklist-item">
+        <BlueCheckmark className="pricing-page-tile-checkmark-image" />
+        <p className="pricing-page-tile-checklist-item-text">{children}</p>
+    </div>
+)
+
+// $0.75/GB up to 1000 GB / month and then we cut pricing in half after that per GB
+const calculatePrice = (gbs: number) =>
+    Math.round(Math.min(gbs, 1000) * 0.75 + Math.max(0, (gbs - 1000) * 0.375))
+
+const PricingPage = () => {
+    const [selectedGB, setSelectedGB] = React.useState(20)
+    return (
+        <Layout headerTheme="light">
+            <div className="pricing-page">
+                <div className="pricing-page-background-image-wrapper">
+                    <div className="pricing-page-top">
+                        <div className="pricing-page-top-left">
+                            <h1 className="product-flow-section-one-h1">
+                                Pricing Tiers
+                            </h1>
+                            <p className="pricing-page-subheader-text">
+                                Predictable pricing that scales with your
+                                business.
+                            </p>
+                        </div>
+                        <div className="pricing-page-top-right">
+                            <FlowLogo className="product-flow-section-one-image" />
+                        </div>
+                    </div>
+
+                    <div className="pricing-page-tiles-wrapper">
+                        <div className="pricing-page-tile">
+                            <PricingOpenSource className="pricing-page-tile-icon icon-wrapper" />
+                            <p className="pricing-page-tile-name">
+                                Open source
+                            </p>
+                            <p className="pricing-page-price">
+                                <span className="pricing-page-price-bold">
+                                    $0
+                                </span>
+                                /month
+                            </p>
+                            <p className="pricing-page-tile-price-subtext">
+                                Free with BSL
+                            </p>
+                            <div className="pricing-page-checklist-wrapper">
+                                <ChecklistItem>
+                                    <span className="pricing-page-checklist-item-text-bold">
+                                        20GB
+                                    </span>{" "}
+                                    data
+                                </ChecklistItem>
+                                <ChecklistItem>
+                                    Millisecond latency
+                                </ChecklistItem>
+                                <ChecklistItem>
+                                    CDC from DBs & 50+ APIs
+                                </ChecklistItem>
+                                <ChecklistItem>
+                                    Real-time transformations
+                                </ChecklistItem>
+
+                                <ChecklistItem>
+                                    Real-time materializations
+                                </ChecklistItem>
+
+                                <ChecklistItem>
+                                    Limitless horizontal scaling
+                                </ChecklistItem>
+
+                                <ChecklistItem>
+                                    Free support on Slack
+                                </ChecklistItem>
+                            </div>
+                            <Link className="pricing-page-tile-button" to="">
+                                Get started
+                            </Link>
+                        </div>
+                        <div className="pricing-page-tile">
+                            <PricingCloud className="pricing-page-tile-icon icon-wrapper" />
+                            <p className="pricing-page-tile-name">cloud</p>
+                            <p className="pricing-page-price">
+                                <span className="pricing-page-price-bold">
+                                    ${calculatePrice(selectedGB)}
+                                </span>
+                                /month
+                            </p>
+                            <Slider
+                                value={selectedGB}
+                                onChange={(_, val) =>
+                                    setSelectedGB(val || val[0])
+                                }
+                                min={20}
+                                max={1250}
+                                step={25}
+                                marks={[20,500,1000].map(v => ({
+                                    label: gByteLabel(v),
+                                    value: v,
+                                }))}
+                                valueLabelFormat={val => gByteLabel(val)}
+                                style={{ margin: `1rem 0 3rem 0` }}
+                            />
+
+                            <div className="pricing-page-checklist-wrapper">
+                                <ChecklistItem>
+                                    <span className="pricing-page-checklist-item-text-bold">
+                                        {gByteLabel(selectedGB)}
+                                    </span>{" "}
+                                    data
+                                </ChecklistItem>
+                                <ChecklistItem>
+                                    All in Open Source
+                                </ChecklistItem>
+                                <ChecklistItem>Cloud-hosted Flow</ChecklistItem>
+                                <ChecklistItem>99% uptime SLA</ChecklistItem>
+
+                                <ChecklistItem>Free 30-day trial</ChecklistItem>
+
+                                <ChecklistItem>
+                                    UI access for deployment, altering and
+                                    monitoring
+                                </ChecklistItem>
+                            </div>
+                            <Link className="pricing-page-tile-button" to="">
+                                Try it free
+                            </Link>
+                        </div>
+                        <div className="pricing-page-tile">
+                            <PricingEnterprise className="pricing-page-tile-icon icon-wrapper" />
+                            <p className="pricing-page-tile-name">enterprise</p>
+                            <p className="pricing-page-price">
+                                <span className="pricing-page-price-bold">
+                                    Custom
+                                </span>
+                            </p>
+                            <div className="pricing-page-checklist-wrapper-custom">
+                                <ChecklistItem>
+                                    All in Open Source and Cloud
+                                </ChecklistItem>
+                                <ChecklistItem>
+                                    24/7 hands-on support
+                                </ChecklistItem>
+                                <ChecklistItem>
+                                    Provisioned servers
+                                </ChecklistItem>
+                                <div className="pricing-page-checklist-item">
+                                    <ComingSoon className="pricing-page-tile-coming-soon-image" />
+                                    <p className="pricing-page-tile-checklist-item-text">
+                                        VPC-based deployments
+                                    </p>
+                                </div>
+                            </div>
+                            <Link className="pricing-page-tile-button" to="">
+                                Contact us
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="pricing-page-quote-box">
+                        <GraphicQuote
+                            className="pricing-page-tile-graphic-quote-image"
+                        />
+                        <p className="pricing-page-quote-box-quote">
+                            “This tool is 1000x times better than LogStash or
+                            Elastic Enterprise Data Ingestion Tool, which has
+                            many issues.”
+                        </p>
+                        <div className="pricing-page-quote-image-wrapper">
+                            <StaticImage
+                                placeholder="none"
+                                alt="data flow image"
+                                src="../images/pompato-color.svg"
+                                layout="fixed"
+                                className="pricing-page-tile-coming-soon-image"
+                            />
+                            <p className="pricing-page-quote-source-name">
+                                Pompato
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Layout>
+    )
+}
+
+export default PricingPage
