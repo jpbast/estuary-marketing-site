@@ -58,16 +58,12 @@ jobs:
         with:
           workload_identity_provider: 'projects/36109138678/locations/global/workloadIdentityPools/estuary-marketing-pool/providers/estuary-marketing-provider'
           service_account: 'estuary-marketing-ci-cd@estuary-marketing.iam.gserviceaccount.com'
-      - id: 'upload-folder'
-        uses: 'google-github-actions/upload-cloud-storage@v1'
-        with:
-          path: "${{ github.workspace }}/public"
-          destination: "estuary-marketing"
-          parent: false
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
         with:
           version: '>= 422.0.0'
+      - name: Sync build folder
+        run: "gsutil -m rsync -r -d ${{ github.workspace }}/public gs://estuary-marketing"
       - name: Set cache control on HTML files
         run: "gsutil -m setmeta -h 'cache-control: public, max-age=0, must-revalidate' 'gs://estuary-marketing/**/*.html' 'gs://estuary-marketing/**/*.json'"
       - name: Set cache control on js assets
