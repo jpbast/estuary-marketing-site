@@ -178,7 +178,7 @@ module.exports = {
                                 picture: Picture {
                                     localFile {
                                         childImageSharp {
-                                            gatsbyImageData(layout: CONSTRAINED, width: 50)
+                                            gatsbyImageData(layout: CONSTRAINED, width: 50, placeholder: BLURRED)
                                         }
                                     }
                                 }

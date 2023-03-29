@@ -124,7 +124,7 @@ export const pageQuery = graphql`
                 picture: Picture {
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(layout: CONSTRAINED)
+                            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                         }
                     }
                 }
@@ -156,7 +156,7 @@ export const pageQuery = graphql`
                 picture: Picture {
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(layout: CONSTRAINED)
+                            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                         }
                     }
                 }
@@ -171,7 +171,7 @@ export const pageQuery = graphql`
                 picture: Picture {
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(layout: CONSTRAINED)
+                            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                         }
                     }
                 }

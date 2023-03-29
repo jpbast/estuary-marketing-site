@@ -21,7 +21,7 @@ const SectionFive = () => {
                                 mediaType
                             }
                             childImageSharp {
-                                gatsbyImageData(layout: FIXED, width: 30)
+                                gatsbyImageData(layout: FIXED, width: 30, placeholder: BLURRED)
                             }
                         }
                     }

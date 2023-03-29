@@ -48,6 +48,7 @@ const ConnectorCard = ({
                         image={logo.childImageSharp.gatsbyImageData}
                         className="connector-post-card-image icon-wrapper"
                         loading="eager"
+                        
                     />
                 )}
                 {recommended && (
@@ -101,7 +102,7 @@ export const Connectors = ({
                         logoUrl
                         logo {
                             childImageSharp {
-                                gatsbyImageData(layout: CONSTRAINED)
+                                gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                             }
                         }
                         recommended

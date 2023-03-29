@@ -1183,6 +1183,11 @@ input {
 .blog-post {
   padding: 5rem;
   max-width: 60rem;
+   
+  @media(min-width: 1500px) {
+    max-width: ~"calc(min(65vw, 85rem))";
+  }
+
   margin-left: auto;
   margin-right: auto;
 
@@ -1893,6 +1898,10 @@ table th {
         align-items: center;
         color: #47506D;
     }
+}
+
+.gatsby-image-wrapper [data-main-image] {
+    transition: none;
 }
 
 // ABOUT 

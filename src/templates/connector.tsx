@@ -115,7 +115,7 @@ export const pageQuery = graphql`
                 logoUrl
                 logo {
                     childImageSharp {
-                        gatsbyImageData(layout: CONSTRAINED)
+                        gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                     }
                 }
                 recommended
