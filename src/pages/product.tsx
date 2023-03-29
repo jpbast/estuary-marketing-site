@@ -181,7 +181,7 @@ const ProductPage = () => {
                                 <p className="section-four-tile-subtext">
                                     Unit tests ensure that you can be confident
                                     your data is accurate as you evolve
-                                    pipelines
+                                    pipelines.
                                 </p>
                             </div>
                             <div className="product-flow-section-three-tile">
@@ -234,7 +234,7 @@ const ProductPage = () => {
                                     Scaling
                                 </h3>
                                 <p className="section-four-tile-subtext">
-                                    Flow is a distributed system which scales
+                                    Flow is a distributed system that scales
                                     with your data and has been operated at data
                                     volumes up to 7 GB/s. Backfill terabytes of
                                     data in minutes from your source systems
@@ -262,7 +262,7 @@ const ProductPage = () => {
                                 </h3>
                                 <p className="section-four-tile-subtext">
                                     Turn your unstructured data into structured
-                                    data
+                                    data.
                                 </p>
                             </div>
                         </div>

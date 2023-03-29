@@ -20,7 +20,7 @@ const SectionTwo = () => {
                         , without scheduling.
                     </h2>
                     <p>
-                        Capture from Clouds, Databases and SaaS apps, create
+                        Capture from clouds, databases, and SaaS apps, create
                         real-time transformations and materialized views, for a
                         consistent, exact copy of your data powering both
                         analytics and operations.
@@ -62,13 +62,13 @@ const SectionTwo = () => {
                 <div className="section-two-tile-wrapper">
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Reliability</h3>
-                        <p>99.9% platform reliability Security by design</p>
+                        <p>99.9% platform reliability. Security by design.</p>
                     </div>
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Scale</h3>
                         <p>
                             Powering active workloads at 7GB/s CDC from any size
-                            DB
+                            database.
                         </p>
                     </div>
                     <div className="section-two-tile">
@@ -78,7 +78,7 @@ const SectionTwo = () => {
                         <p>
                             Your pipelines, how you want them. Safeguard your
                             data products with built in, customizable schema
-                            controls. Idempotent, exactly once semantics
+                            controls. Idempotent, exactly once semantics.
                         </p>
                     </div>
                 </div>
@@ -98,8 +98,8 @@ const SectionTwo = () => {
                                 integration built in-house.
                             </li>
                             <li>
-                                Supports airbyte protocol for batch-based
-                                connectors. Bring any airbyte connector in and
+                                Supports Airbyte protocol for batch-based
+                                connectors. Bring any Airbyte connector in and
                                 run it. Access to 200+ connectors.
                             </li>
                         </ul>

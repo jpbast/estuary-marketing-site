@@ -44,7 +44,7 @@ const SectionOne = () => {
                     <div className="section-one-subtext-wrapper">
                         <p className="section-one-subtext">
                             Managed streaming data pipelines, streaming SQL
-                            transformations and turnkey connectivity to clouds,
+                            transformations, and turnkey connectivity to clouds,
                             databases, and apps.
                         </p>
                         <p className="section-one-subtext">
