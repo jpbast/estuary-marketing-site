@@ -36,17 +36,17 @@ const ConnectorCard = ({
     title,
     shortDescription,
     recommended,
-    logo,
+    logoUrl,
     slug,
     type,
 }: ReturnType<typeof normalizeConnector>) => (
     <Link to={`${slug}`}>
         <div className="connector-card">
             <div className="connector-card-top">
-                {logo?.childImageSharp && (
-                    <GatsbyImage
+                {logoUrl && (
+                    <img
                         alt=""
-                        image={logo.childImageSharp.gatsbyImageData}
+                        src={logoUrl}
                         className="connector-post-card-image icon-wrapper"
                         loading="eager"
                     />
@@ -100,14 +100,6 @@ export const Connectors = ({
                         longDescription
                         title
                         logoUrl
-                        logo {
-                            childImageSharp {
-                                gatsbyImageData(
-                                    layout: CONSTRAINED
-                                    placeholder: BLURRED
-                                )
-                            }
-                        }
                         recommended
                         connectorTagsByConnectorIdList {
                             protocol
