@@ -43,7 +43,7 @@ const ConnectorCard = ({
     <Link to={`${slug}`}>
         <div className="connector-card">
             <div className="connector-card-top">
-                {logo && (
+                {logo?.childImageSharp && (
                     <GatsbyImage
                         alt=""
                         image={logo.childImageSharp.gatsbyImageData}
