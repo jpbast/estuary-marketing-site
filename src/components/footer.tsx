@@ -49,15 +49,15 @@ const Footer = () => {
                         <p className="global-footer-subtext-title">
                             Quick Links
                         </p>
-                        <a className="global-footer-right-link">Blog</a>
-                        <a className="global-footer-right-link">Github</a>
-                        <a className="global-footer-right-link">Contact</a>
-                        <a className="global-footer-right-link">Docs</a>
+                        <Link to="/blog" className="global-footer-right-link">Blog</Link>
+                        <a target="_blank" href="https://github.com/estuary/flow" className="global-footer-right-link">Github</a>
+                        <Link to="/about#contact-us" className="global-footer-right-link">Contact</Link>
+                        <a target="_blank" href="https://docs.estuary.dev/" className="global-footer-right-link">Docs</a>
                     </div>
                     <div className="global-footer-right-link-wrapper">
                         <p className="global-footer-subtext-title">Services</p>
-                        <a className="global-footer-right-link">Product</a>
-                        <a className="global-footer-right-link">Careers</a>
+                        <Link to="/product" className="global-footer-right-link">Product</Link>
+                        <Link to="/about/#careers"className="global-footer-right-link">Careers</Link>
                         <a className="global-footer-right-link">Privacy</a>
                         <a className="global-footer-right-link">Terms</a>
                     </div>
@@ -68,7 +68,7 @@ const Footer = () => {
                 <div className="global-footer-divider"></div>
                 <div className="global-footer-bottom-wrapper">
                     <div className="global-footer-bottom-copyright">
-                        <p>
+                        <p className="global-footer-bottom-copyright-text">
                             © {new Date().getFullYear()} All Rights Reserved
                             -&nbsp;
                             {` `}
@@ -83,50 +83,58 @@ const Footer = () => {
                     </div>
 
                     <div className="global-footer-bottom-social">
-                        <StaticImage
-                            src="../images/slack-outline.svg"
-                            alt="slack logo"
-                            width={24}
-                            height={24}
-                            style={{
-                                margin: "0 15px",
-                            }}
-                            layout="fixed"
-                            placeholder="none"
-                        />
-                        <StaticImage
-                            src="../images/github-outline.svg"
-                            alt="github logo"
-                            width={24}
-                            height={24}
-                            style={{
-                                margin: "0 15px",
-                            }}
-                            layout="fixed"
-                            placeholder="none"
-                        />
-                        <StaticImage
-                            src="../images/linkedin-outline.svg"
-                            alt="linkedin logo"
-                            width={24}
-                            height={24}
-                            style={{
-                                margin: "0 15px",
-                            }}
-                            layout="fixed"
-                            placeholder="none"
-                        />
-                        <StaticImage
-                            src="../images/twitter-outline.svg"
-                            alt="twitter logo"
-                            width={24}
-                            height={24}
-                            style={{
-                                margin: "0 15px",
-                            }}
-                            layout="fixed"
-                            placeholder="none"
-                        />
+                        <a target="_blank" href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email">
+                            <StaticImage
+                                src="../images/slack-outline.svg"
+                                alt="slack logo"
+                                width={24}
+                                height={24}
+                                style={{
+                                    margin: "0 15px",
+                                }}
+                                layout="fixed"
+                                placeholder="none"
+                            />
+                        </a>
+                        <a target="_blank" href="https://github.com/estuary/flow">
+                            <StaticImage
+                                src="../images/github-outline.svg"
+                                alt="github logo"
+                                width={24}
+                                height={24}
+                                style={{
+                                    margin: "0 15px",
+                                }}
+                                layout="fixed"
+                                placeholder="none"
+                            />
+                        </a>
+                        <a target="_blank" href="https://www.linkedin.com/company/65266256/">
+                            <StaticImage
+                                src="../images/linkedin-outline.svg"
+                                alt="linkedin logo"
+                                width={24}
+                                height={24}
+                                style={{
+                                    margin: "0 15px",
+                                }}
+                                layout="fixed"
+                                placeholder="none"
+                            />
+                        </a>
+                        <a target="_blank" href="https://twitter.com/EstuaryDev">
+                            <StaticImage
+                                src="../images/twitter-outline.svg"
+                                alt="twitter logo"
+                                width={24}
+                                height={24}
+                                style={{
+                                    margin: "0 15px",
+                                }}
+                                layout="fixed"
+                                placeholder="none"
+                            />
+                        </a>
                     </div>
                 </div>
             </div>

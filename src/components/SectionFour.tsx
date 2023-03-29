@@ -127,9 +127,9 @@ const SectionFour = () => {
                         Use it free with hands-on support.  Scale without
                         bounds.
                     </p>
-                    <Link className="section-four-try-it-button" to="#">
+                    <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button" to="#">
                         Try it free
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>

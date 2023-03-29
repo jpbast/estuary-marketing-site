@@ -127,9 +127,9 @@ const Header = (props: { theme: "light" | "dark" }) => {
                         <Link className="global-header-link" to="#">
                             Log in
                         </Link>
-                        <Link className="global-header-try-it-button" to="#">
+                        <a target="_blank" href="https://dashboard.estuary.dev/register" className="global-header-try-it-button" >
                             Try it free
-                        </Link>
+                        </a>
                     </div>
                 </div>
                 <div className="global-header-mobile-menu-wrapper">

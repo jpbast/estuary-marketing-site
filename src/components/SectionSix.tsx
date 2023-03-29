@@ -9,9 +9,9 @@ const SectionSix = () => {
             <div className="section-six-slider-wrapper">
                 <p className="section-four-header-small">Built for who</p>
                 <Slider />
-                <Link className="section-four-try-it-button section-six-margin" to="#">
+                <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button section-six-margin">
                     Try it free
-                </Link>
+                </a>
             </div>
             <div className="section-six-right-wrapper">
                 <div className="section-six-header-vectors">

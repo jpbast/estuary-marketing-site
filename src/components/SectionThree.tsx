@@ -25,9 +25,9 @@ const SectionThree = () => {
                 />
             </div>
             <div className="section-three-try-it-button-wrapper">
-                <Link className="section-three-try-it-button" to="#">
+                <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-three-try-it-button">
                     Try it free
-                </Link>
+                </a>
             </div>
         </div>
     )

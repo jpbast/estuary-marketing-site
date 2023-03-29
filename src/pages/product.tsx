@@ -35,12 +35,12 @@ const ProductPage = () => {
                                 Use it free with hands-on support. Scale without
                                 bounds.
                             </p>
-                            <Link
+                            <a target="_blank" href="https://dashboard.estuary.dev/register"
                                 className="product-flow-section-one-try-it-button"
-                                to="#"
+                                
                             >
                                 Try it free
-                            </Link>
+                            </a>
                         </div>
                         <div className="product-flow-section-one-right">
                             <FlowLogo className="product-flow-section-one-image" />
@@ -271,9 +271,9 @@ const ProductPage = () => {
                                 Use it free with hands-on support.  Scale
                                 without bounds.
                             </p>
-                            <Link className="section-four-try-it-button" to="#">
+                            <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button">
                                 Try it free
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>

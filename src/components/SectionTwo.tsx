@@ -19,7 +19,7 @@ const SectionTwo = () => {
                         </span>
                         , without scheduling.
                     </h2>
-                    <p>
+                    <p className="section-two-subtext">
                         Capture from clouds, databases, and SaaS apps, create
                         real-time transformations and materialized views, for a
                         consistent, exact copy of your data powering both
@@ -45,7 +45,7 @@ const SectionTwo = () => {
                         <h3 className="section-two-tile-title">
                             Tools the whole team can use
                         </h3>
-                        <p>
+                        <p className="section-two-tile-text">
                             Make updates through either the UI or CLI.
                             Programmatic access for the ability to easily embed
                             and whitelabel pipelines.
@@ -53,7 +53,7 @@ const SectionTwo = () => {
                     </div>
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Automation</h3>
-                        <p>
+                        <p className="section-two-tile-text">
                             No scheduling or orchestration tools required.
                             Automated schema generation and data deduplication.
                         </p>
@@ -62,11 +62,11 @@ const SectionTwo = () => {
                 <div className="section-two-tile-wrapper">
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Reliability</h3>
-                        <p>99.9% platform reliability. Security by design.</p>
+                        <p className="section-two-tile-text">99.9% platform reliability. Security by design.</p>
                     </div>
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Scale</h3>
-                        <p>
+                        <p className="section-two-tile-text">
                             Powering active workloads at 7GB/s CDC from any size
                             database.
                         </p>
@@ -75,7 +75,7 @@ const SectionTwo = () => {
                         <h3 className="section-two-tile-title">
                             Accuracy & Control
                         </h3>
-                        <p>
+                        <p className="section-two-tile-text">
                             Your pipelines, how you want them. Safeguard your
                             data products with built in, customizable schema
                             controls. Idempotent, exactly once semantics.

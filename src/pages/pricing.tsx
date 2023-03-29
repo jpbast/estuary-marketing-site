@@ -151,9 +151,9 @@ const PricingPage = () => {
                                     monitoring
                                 </ChecklistItem>
                             </div>
-                            <Link className="pricing-page-tile-button" to="">
+                            <a target="_blank" href="https://dashboard.estuary.dev/register" className="pricing-page-tile-button">
                                 Try it free
-                            </Link>
+                            </a>
                         </div>
                         <div className="pricing-page-tile">
                             <PricingEnterprise className="pricing-page-tile-icon icon-wrapper" />
