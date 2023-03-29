@@ -271,14 +271,6 @@ module.exports = {
                                 longDescription
                                 title
                                 logoUrl
-                                logo {
-                                    childImageSharp {
-                                        gatsbyImageData(
-                                            layout: CONSTRAINED
-                                            placeholder: BLURRED
-                                        )
-                                    }
-                                }
                                 recommended
                                 connectorTagsByConnectorIdList {
                                     protocol

@@ -43,10 +43,9 @@ const Connector = ({
                         </h1>
                         <div className="connection-descriptions">
                             <div className="connection-description">
-                                <GatsbyImage
-                                    image={
-                                        mapped_source.logo?.childImageSharp
-                                            ?.gatsbyImageData
+                                <img
+                                    src={
+                                        mapped_source.logoUrl
                                     }
                                     alt={`Connector Logo`}
                                     style={{
@@ -62,10 +61,9 @@ const Connector = ({
                             </div>
                             <ColoredLogo style={{marginTop:"auto",marginBottom:"auto"}}/>
                             <div className="connection-description">
-                                <GatsbyImage
-                                    image={
-                                        mapped_destination.logo?.childImageSharp
-                                            ?.gatsbyImageData
+                                <img
+                                    src={
+                                        mapped_destination.logoUrl
                                     }
                                     alt={`Connector Logo`}
                                     style={{
@@ -143,14 +141,6 @@ export const pageQuery = graphql`
                 longDescription
                 title
                 logoUrl
-                logo {
-                    childImageSharp {
-                        gatsbyImageData(
-                            layout: CONSTRAINED
-                            placeholder: BLURRED
-                        )
-                    }
-                }
                 recommended
                 connectorTagsByConnectorIdList {
                     protocol
@@ -166,14 +156,6 @@ export const pageQuery = graphql`
                 longDescription
                 title
                 logoUrl
-                logo {
-                    childImageSharp {
-                        gatsbyImageData(
-                            layout: CONSTRAINED
-                            placeholder: BLURRED
-                        )
-                    }
-                }
                 recommended
                 connectorTagsByConnectorIdList {
                     protocol

@@ -118,11 +118,11 @@ export const createPages: GatsbyNode["createPages"] = async ({
         path: "blog",
         component: blog,
         context: {
-            blogPostIds: allPosts.map(post=>post.id),
+            blogPostIds: allPosts.map(post => post.id),
             categoryTitle: null,
             categorySlug: null,
-            tabCategories
-        }
+            tabCategories,
+        },
     })
 
     // Create blog posts pages
@@ -195,46 +195,16 @@ export const createPages: GatsbyNode["createPages"] = async ({
                 },
             })
 
-            for(const destination_connector of mapped_connectors) {
+            for (const destination_connector of mapped_connectors) {
                 createPage({
                     path: `/connection/${normalized_connector.slugified_name}/${destination_connector.slugified_name}`,
                     component: connection,
                     context: {
                         source_id: normalized_connector.id,
-                        destination_id: destination_connector.id
-                    }
+                        destination_id: destination_connector.id,
+                    },
                 })
             }
         }
     }
-}
-
-export const createResolvers: GatsbyNode["createResolvers"] = async ({
-    createResolvers,
-    createNodeId,
-    getCache,
-    actions: { createNode },
-}) => {
-    createResolvers({
-        PostGraphile_Connector: {
-            logo: {
-                type: "File",
-                async resolve(node) {
-                    const {id, logoUrl} = node;
-                    let usUrl = logoUrl?.["en-US"];
-                    if(!usUrl){
-                        return null;
-                    }
-                    const fileNode = await createRemoteFileNode({
-                        url: logoUrl?.["en-US"],
-                        parentNodeId: id,
-                        createNode,
-                        createNodeId,
-                        getCache,
-                    })
-                    return fileNode
-                },
-            },
-        },
-    })
 }
