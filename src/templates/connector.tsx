@@ -31,14 +31,17 @@ const Connector = ({
             <div className="blogs-index-wrapper">
                 <div className="blogs-index-header-wrapper">
                     <div className="connector-index-header">
-                        <div style={{flex: "1 1 50%"}}>
+                        <div style={{ flex: "1 1 50%" }}>
                             <h2>{mapped.title}</h2>
                             <p>
                                 {mapped.longDescription ??
                                     mapped.shortDescription}
                             </p>
                         </div>
-                        <div style={{flex: "1 1 50%"}} className="blog-post-header-vectors">
+                        <div
+                            style={{ flex: "1 1 50%" }}
+                            className="blog-post-header-vectors"
+                        >
                             <GatsbyImage
                                 image={
                                     mapped.logo?.childImageSharp
@@ -48,10 +51,30 @@ const Connector = ({
                                 className="blog-post-header-vector"
                                 style={{
                                     zIndex: 1,
-                                    maxWidth: 250
+                                    maxWidth: 250,
                                 }}
                             />
                         </div>
+                    </div>
+                    <div className="connector-index-bottom">
+                        <h4>
+                            Estuary helps move data{" "}
+                            {pageContext.type === "capture" ? "from" : "to"}{" "}
+                            {mapped.title} in minutes with millisecond latency.
+                        </h4>
+                        <span>
+                            Estuary builds free, open-source connectors to{" "}
+                            {pageContext.type === "capture"
+                                ? "extract data from"
+                                : "write data to"}{" "}
+                            extract data from {mapped.title} in real-time,
+                            allowing you to enable a copy of your data wherever
+                            you want.
+                        </span>
+
+                        <FlowLogo style={{marginTop:"1rem"}}/>
+                        <h2>All your data, where you need it</h2>
+                        <span>Consolidate your data into the leading warehouses, then integrate with your tools of choice.</span>
                     </div>
                 </div>
             </div>
@@ -92,7 +115,7 @@ export const pageQuery = graphql`
                 logoUrl
                 logo {
                     childImageSharp {
-                        gatsbyImageData(layout: CONSTRAINED)
+                        gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                     }
                 }
                 recommended

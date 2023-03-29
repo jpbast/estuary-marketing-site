@@ -26,11 +26,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 
     createRedirect({
         fromPath: `/blogs`,
-        toPath: `/blog/featured`,
-    })
-    createRedirect({
-        fromPath: `/blog`,
-        toPath: `/blog/featured`,
+        toPath: `/blog`,
     })
 
     // Get all strapi blog posts sorted by date
@@ -213,7 +209,7 @@ export const createResolvers: GatsbyNode["createResolvers"] = async ({
                 type: "File",
                 async resolve(node) {
                     const {id, logoUrl} = node;
-                    let usUrl = logoUrl["en-US"];
+                    let usUrl = logoUrl?.["en-US"];
                     if(!usUrl){
                         return null;
                     }
