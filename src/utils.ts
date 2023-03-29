@@ -18,6 +18,7 @@ export const normalizeConnector = (connector: any) => {
         logo: connector.logo,
         recommended: connector.recommended,
         type,
+        slugified_name: regex_result[2],
         slug: regex_result
             ? `/${type === "capture" ? "source" : "destination"}/${
                   regex_result[2]

@@ -16,6 +16,7 @@ const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 const blog = path.resolve(`./src/templates/blog.tsx`)
 
 const connector = path.resolve(`./src/templates/connector.tsx`)
+const connection = path.resolve(`./src/templates/connection.tsx`)
 
 export const createPages: GatsbyNode["createPages"] = async ({
     graphql,
@@ -193,6 +194,17 @@ export const createPages: GatsbyNode["createPages"] = async ({
                     type: normalized_connector.type,
                 },
             })
+
+            for(const destination_connector of mapped_connectors) {
+                createPage({
+                    path: `/connection/${normalized_connector.slugified_name}/${destination_connector.slugified_name}`,
+                    component: connection,
+                    context: {
+                        source_id: normalized_connector.id,
+                        destination_id: destination_connector.id
+                    }
+                })
+            }
         }
     }
 }
