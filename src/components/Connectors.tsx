@@ -136,7 +136,7 @@ export const Connectors = ({
             : "",
         index,
         store
-    ).filter(res=>res.type===connectorType)
+    ).filter(res=>(res as any).type===connectorType)
 
     return (
         <div className="blogs-index-wrapper" style={{ marginBottom: "10rem" }}>
