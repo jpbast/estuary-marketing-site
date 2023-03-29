@@ -102,7 +102,7 @@ const BlogIndex = ({
                     </div>
                 </div>
                 <div className="blogs-index-body">
-                    {(query ? results : posts).map(post => (
+                    {(query.length > 0 ? results : posts).map(post => (
                         <BlogPostCard {...post} />
                     ))}
                 </div>

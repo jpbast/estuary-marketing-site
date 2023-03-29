@@ -9,9 +9,9 @@ const Sources = () => {
             <Connectors
                 connectorType={"materialization"}
                 title={"Destinations"}
-                description={"D"}
+                description={"Estuary helps your team get the most out of the ever-expanding list of valuable databases, warehouses, and other tools so you can focus on insights instead of pipelines."}
                 bottomTitle={"Sources"}
-                bottomDescription={"S"}
+                bottomDescription={"Open-source integrations guarantee that you’re covered, and real-time, no matter whether you’re pulling data from a database, filestore, or SaaS application."}
             />
         </Layout>
     )
