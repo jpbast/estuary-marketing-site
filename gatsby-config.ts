@@ -261,23 +261,31 @@ module.exports = {
                 // required.
                 query: `
                 {
-                  postgres {
-                    allConnectors(orderBy:[RECOMMENDED_DESC,CREATED_AT_DESC]) {
-                      nodes {
-                        id
-                        externalUrl
-                        imageName
-                        shortDescription
-                        longDescription
-                        title
-                        logoUrl
-                        recommended
-                        connectorTagsByConnectorIdList {
-                          protocol
+                    postgres {
+                        allConnectors(orderBy: [RECOMMENDED_DESC, CREATED_AT_DESC]) {
+                            nodes {
+                                id
+                                externalUrl
+                                imageName
+                                shortDescription
+                                longDescription
+                                title
+                                logoUrl
+                                logo {
+                                    childImageSharp {
+                                        gatsbyImageData(
+                                            layout: CONSTRAINED
+                                            placeholder: BLURRED
+                                        )
+                                    }
+                                }
+                                recommended
+                                connectorTagsByConnectorIdList {
+                                    protocol
+                                }
+                            }
                         }
-                      }
                     }
-                  }
                 }
               `,
 
@@ -301,8 +309,10 @@ module.exports = {
                     "longDescription",
                     "title",
                     "logoUrl",
+                    "logo",
                     "recommended",
                     "type",
+                    "slug"
                 ],
 
                 // Function used to map the result from the GraphQL query. This should
