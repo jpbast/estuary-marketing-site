@@ -55,7 +55,7 @@ const navItems: NavItem[] = [
             },
             {
                 title: "Contact",
-                path: "#get-in-touch",
+                path: "/about/#contact-us",
             },
         ],
     },

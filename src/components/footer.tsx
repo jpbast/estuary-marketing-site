@@ -51,7 +51,7 @@ const Footer = () => {
                         </p>
                         <Link to="/blog" className="global-footer-right-link">Blog</Link>
                         <a target="_blank" href="https://github.com/estuary/flow" className="global-footer-right-link">Github</a>
-                        <Link to="/about#contact-us" className="global-footer-right-link">Contact</Link>
+                        <Link to="/about/#contact-us" className="global-footer-right-link">Contact</Link>
                         <a target="_blank" href="https://docs.estuary.dev/" className="global-footer-right-link">Docs</a>
                     </div>
                     <div className="global-footer-right-link-wrapper">
