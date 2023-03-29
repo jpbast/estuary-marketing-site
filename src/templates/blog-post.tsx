@@ -44,7 +44,7 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
 
                     {post.hero ? (
                         <GatsbyImage
-                            alt=""
+                            alt={post.title}
                             image={
                                 post.hero.localFile.childImageSharp
                                     .gatsbyImageData

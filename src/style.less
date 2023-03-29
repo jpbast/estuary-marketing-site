@@ -336,6 +336,7 @@ input {
 
 .global-header-logo-link {
   display: flex;
+  align-items: center;
   text-decoration: none;
 }
 
@@ -1559,6 +1560,7 @@ table th {
 .pricing-page-background-image-wrapper {
   display: flex;
   flex-direction: column;
+  background-size: contain;
   width: 100%;
   background-image: url("./images/product-flow-section-one-background.svg");
   background-repeat: no-repeat;
@@ -1591,6 +1593,7 @@ table th {
   padding-left: ~"calc(min(9%, 146px))";
   padding-right: ~"calc(min(9%, 146px))";
   margin-top: 100px;
+  justify-content: center;
   & > :not(:last-child){
     margin-right: 20px;
   }
@@ -2265,6 +2268,10 @@ table th {
 
 .connector-card-top {
   display: flex;
+}
+
+.connector-post-card-image {
+    object-fit: contain;
 }
 
 .connector-post-card-recommended {
