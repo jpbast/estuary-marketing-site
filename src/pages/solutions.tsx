@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { StaticImage } from "gatsby-plugin-image"
 import Seo from "../components/seo"
+import SolutionsBanner from "../svgs/solutions-banner.svg"
 
 const SolutionsPage = () => {
     return (
@@ -11,7 +12,7 @@ const SolutionsPage = () => {
                 <div className="product-flow-section-one">
                     <div className="product-flow-section-one-left">
                         <h1 className="product-flow-section-one-h1">
-                            Streaming ELT solutions are revolutionizing what's
+                            Streaming ETL solutions are revolutionizing what's
                             possible for data pipelines.
                         </h1>
                         <p className="product-flow-section-one-subtext">
@@ -31,12 +32,7 @@ const SolutionsPage = () => {
                 </div>
             </div>
             <div className="solutions-banner-wrapper">
-                <StaticImage
-                    placeholder="none"
-                    alt="solutions-data-diagram"
-                    src="../images/solutions-data-diagram.png"
-                    layout="fullWidth"
-                />
+                <SolutionsBanner />
             </div>
             <div className="solutions-section-wrapper">
                 <div className="solutions-section-text-wrapper">

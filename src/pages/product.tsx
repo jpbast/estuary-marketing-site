@@ -29,7 +29,7 @@ const ProductPage = () => {
                     <div className="product-flow-section-one">
                         <div className="product-flow-section-one-left">
                             <h1 className="product-flow-section-one-h1">
-                                Streaming ELT made simple
+                                Streaming ETL made simple
                             </h1>
                             <p className="product-flow-section-one-subtext">
                                 Use it free with hands-on support. Scale without
