@@ -36,7 +36,7 @@ export const BlogPostCard = (props: BlogPostCardProps) => (
     <Link to={`/${props.slug}`} className="blogs-post-card">
         {props.hero ? (
             <GatsbyImage
-                alt=""
+                alt={props.title}
                 image={props.hero.localFile.childImageSharp.gatsbyImageData}
                 className="blog-post-card-image"
                 loading="eager"

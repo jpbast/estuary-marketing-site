@@ -309,7 +309,7 @@ const AboutPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="about-section-five">
+            <div className="about-section-five" id="contact-us">
                 <h2 className="about-section-five-header">
                     Let's talk about your data
                 </h2>
