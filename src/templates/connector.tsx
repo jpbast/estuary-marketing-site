@@ -42,10 +42,9 @@ const Connector = ({
                             style={{ flex: "1 1 50%" }}
                             className="blog-post-header-vectors"
                         >
-                            <GatsbyImage
-                                image={
-                                    mapped.logo?.childImageSharp
-                                        ?.gatsbyImageData
+                            <img
+                                src={
+                                    mapped.logoUrl
                                 }
                                 alt={`Connector Logo`}
                                 className="blog-post-header-vector"
@@ -113,11 +112,6 @@ export const pageQuery = graphql`
                 longDescription
                 title
                 logoUrl
-                logo {
-                    childImageSharp {
-                        gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
-                    }
-                }
                 recommended
                 connectorTagsByConnectorIdList {
                     protocol

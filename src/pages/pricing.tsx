@@ -102,7 +102,7 @@ const PricingPage = () => {
                                     Free support on Slack
                                 </ChecklistItem>
                             </div>
-                            <Link className="pricing-page-tile-button" to="">
+                            <Link className="pricing-page-tile-button" to="https://dashboard.estuary.dev/register">
                                 Get started
                             </Link>
                         </div>
@@ -121,9 +121,9 @@ const PricingPage = () => {
                                     setSelectedGB(val || val[0])
                                 }
                                 min={20}
-                                max={1250}
+                                max={5000}
                                 step={25}
-                                marks={[20,500,1000].map(v => ({
+                                marks={[20,1000, 2500, 5000].map(v => ({
                                     label: gByteLabel(v),
                                     value: v,
                                 }))}
@@ -180,7 +180,7 @@ const PricingPage = () => {
                                     </p>
                                 </div>
                             </div>
-                            <Link className="pricing-page-tile-button" to="">
+                            <Link className="pricing-page-tile-button" to="/about#contact-us">
                                 Contact us
                             </Link>
                         </div>

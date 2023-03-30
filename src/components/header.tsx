@@ -4,6 +4,7 @@ import List from "@mui/material/List"
 import { StaticImage } from "gatsby-plugin-image"
 import { NavItem, NavMenuList, NavMenuTopLevel } from "./CascadingMenu"
 import { useState } from "react"
+import ColoredLogo from "../svgs/colored-logo.svg"
 import clsx from "clsx"
 
 const navItems: NavItem[] = [
@@ -103,17 +104,7 @@ const Header = (props: { theme: "light" | "dark" }) => {
             })}>
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
-                    <StaticImage
-                        src="../images/estuary-icon.png"
-                        alt="estuary logo"
-                        width={27}
-                        height={35}
-                        style={{
-                            margin: "34px 7px",
-                        }}
-                        layout="fixed"
-                        placeholder="none"
-                    />
+                    <ColoredLogo style={{width:27,height:35}}/>
                     <h1 className={"global-header-title"}>Estuary</h1>
                 </Link>
                 <div style={{ flex: "1 2 45px" }} />
@@ -124,7 +115,7 @@ const Header = (props: { theme: "light" | "dark" }) => {
                         ))}
                     </div>
                     <div className="global-header-login-try">
-                        <Link className="global-header-link" to="#">
+                        <Link className="global-header-link" to="https://dashboard.estuary.dev">
                             Log in
                         </Link>
                         <a target="_blank" href="https://dashboard.estuary.dev/register" className="global-header-try-it-button" >
