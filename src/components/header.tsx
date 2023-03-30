@@ -5,6 +5,8 @@ import { StaticImage } from "gatsby-plugin-image"
 import { NavItem, NavMenuList, NavMenuTopLevel } from "./CascadingMenu"
 import { useState } from "react"
 import ColoredLogo from "../svgs/colored-logo.svg"
+import SlackIcon from "../svgs/slack-outline.svg"
+import GithubIcon from "../svgs/github-outline.svg"
 import clsx from "clsx"
 
 const navItems: NavItem[] = [
@@ -120,34 +122,15 @@ const Header = (props: { theme: "light" | "dark" }) => {
                             href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email"
                             className="header-social-icon"
                         >
-                            <StaticImage
-                                src="../images/slack-outline.svg"
-                                alt="slack logo"
-                                width={24}
-                                height={24}
-                                style={{
-                                    margin: "0 15px",
-                                }}
-                                layout="fixed"
-                                placeholder="none"
-                            />
+                            <SlackIcon className="social-icon" />
+
                         </a>
                         <a
                             target="_blank"
                             href="https://github.com/estuary/flow"
                             className="header-social-icon"
                         >
-                            <StaticImage
-                                src="../images/github-outline.svg"
-                                alt="github logo"
-                                width={24}
-                                height={24}
-                                style={{
-                                    margin: "0 15px",
-                                }}
-                                layout="fixed"
-                                placeholder="none"
-                            />
+                            <GithubIcon className="social-icon" />
                         </a>
                         <Link className="global-header-link" to="https://dashboard.estuary.dev">
                             Log in

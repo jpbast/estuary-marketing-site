@@ -1,6 +1,10 @@
 import * as React from "react"
 import { Link, Script } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import SlackIcon from "../svgs/slack-outline.svg"
+import GithubIcon from "../svgs/github-outline.svg"
+import LinkedinIcon from "../svgs/slack-outline.svg"
+import TwitterIcon from "../svgs/twitter-outline.svg"
 
 const Footer = () => {
     return (
@@ -123,65 +127,25 @@ const Footer = () => {
                             target="_blank"
                             href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email"
                         >
-                            <StaticImage
-                                src="../images/slack-outline.svg"
-                                alt="slack logo"
-                                width={24}
-                                height={24}
-                                style={{
-                                    margin: "0 15px",
-                                }}
-                                layout="fixed"
-                                placeholder="none"
-                            />
+                            <SlackIcon className="social-icon" />
                         </a>
                         <a
                             target="_blank"
                             href="https://github.com/estuary/flow"
                         >
-                            <StaticImage
-                                src="../images/github-outline.svg"
-                                alt="github logo"
-                                width={24}
-                                height={24}
-                                style={{
-                                    margin: "0 15px",
-                                }}
-                                layout="fixed"
-                                placeholder="none"
-                            />
+                            <GithubIcon className="social-icon" />
                         </a>
                         <a
                             target="_blank"
                             href="https://www.linkedin.com/company/65266256/"
                         >
-                            <StaticImage
-                                src="../images/linkedin-outline.svg"
-                                alt="linkedin logo"
-                                width={24}
-                                height={24}
-                                style={{
-                                    margin: "0 15px",
-                                }}
-                                layout="fixed"
-                                placeholder="none"
-                            />
+                           <LinkedinIcon className="social-icon"/>
                         </a>
                         <a
                             target="_blank"
                             href="https://twitter.com/EstuaryDev"
                         >
-                            <StaticImage
-                                src="../images/twitter-outline.svg"
-                                alt="twitter logo"
-                                width={24}
-                                height={24}
-                                style={{
-                                    margin: "0 15px",
-                                }}
-                                layout="fixed"
-                                placeholder="none"
-                            />
+                            <TwitterIcon className="social-icon"/>
                         </a>
                     </div>
                 </div>
