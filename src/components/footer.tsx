@@ -1,10 +1,11 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, Script } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 const Footer = () => {
     return (
         <footer className="global-footer">
+            <Script src="https://js.hs-scripts.com/8635875.js" async defer id="hs-script-loader" />
             <div className="global-footer-wrapper">
                 <div className="global-footer-left">
                     <Link className="global-footer-logo-link" to="/">
@@ -35,13 +36,19 @@ const Footer = () => {
                         </p>
                     </div>
                     <div className="global-footer-subscribe">
-                        <input
-                            className="global-footer-input-email"
-                            placeholder="Email"
-                        ></input>
-                        <button className="global-footer-input-button-submit">
-                            Submit
-                        </button>
+                        <form id="newsletter-signup">
+                            <input
+                                className="global-footer-input-email"
+                                placeholder="Email"
+                                type="email"
+                            ></input>
+                            <button
+                                type="submit"
+                                className="global-footer-input-button-submit"
+                            >
+                                Submit
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <div className="global-footer-right">
@@ -49,15 +56,44 @@ const Footer = () => {
                         <p className="global-footer-subtext-title">
                             Quick Links
                         </p>
-                        <Link to="/blog" className="global-footer-right-link">Blog</Link>
-                        <a target="_blank" href="https://github.com/estuary/flow" className="global-footer-right-link">Github</a>
-                        <Link to="/about/#contact-us" className="global-footer-right-link">Contact</Link>
-                        <a target="_blank" href="https://docs.estuary.dev/" className="global-footer-right-link">Docs</a>
+                        <Link to="/blog" className="global-footer-right-link">
+                            Blog
+                        </Link>
+                        <a
+                            target="_blank"
+                            href="https://github.com/estuary/flow"
+                            className="global-footer-right-link"
+                        >
+                            Github
+                        </a>
+                        <Link
+                            to="/about/#contact-us"
+                            className="global-footer-right-link"
+                        >
+                            Contact
+                        </Link>
+                        <a
+                            target="_blank"
+                            href="https://docs.estuary.dev/"
+                            className="global-footer-right-link"
+                        >
+                            Docs
+                        </a>
                     </div>
                     <div className="global-footer-right-link-wrapper">
                         <p className="global-footer-subtext-title">Services</p>
-                        <Link to="/product" className="global-footer-right-link">Product</Link>
-                        <Link to="/about/#careers"className="global-footer-right-link">Careers</Link>
+                        <Link
+                            to="/product"
+                            className="global-footer-right-link"
+                        >
+                            Product
+                        </Link>
+                        <Link
+                            to="/about/#careers"
+                            className="global-footer-right-link"
+                        >
+                            Careers
+                        </Link>
                         <a className="global-footer-right-link">Privacy</a>
                         <a className="global-footer-right-link">Terms</a>
                     </div>
@@ -83,7 +119,10 @@ const Footer = () => {
                     </div>
 
                     <div className="global-footer-bottom-social">
-                        <a target="_blank" href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email">
+                        <a
+                            target="_blank"
+                            href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email"
+                        >
                             <StaticImage
                                 src="../images/slack-outline.svg"
                                 alt="slack logo"
@@ -96,7 +135,10 @@ const Footer = () => {
                                 placeholder="none"
                             />
                         </a>
-                        <a target="_blank" href="https://github.com/estuary/flow">
+                        <a
+                            target="_blank"
+                            href="https://github.com/estuary/flow"
+                        >
                             <StaticImage
                                 src="../images/github-outline.svg"
                                 alt="github logo"
@@ -109,7 +151,10 @@ const Footer = () => {
                                 placeholder="none"
                             />
                         </a>
-                        <a target="_blank" href="https://www.linkedin.com/company/65266256/">
+                        <a
+                            target="_blank"
+                            href="https://www.linkedin.com/company/65266256/"
+                        >
                             <StaticImage
                                 src="../images/linkedin-outline.svg"
                                 alt="linkedin logo"
@@ -122,7 +167,10 @@ const Footer = () => {
                                 placeholder="none"
                             />
                         </a>
-                        <a target="_blank" href="https://twitter.com/EstuaryDev">
+                        <a
+                            target="_blank"
+                            href="https://twitter.com/EstuaryDev"
+                        >
                             <StaticImage
                                 src="../images/twitter-outline.svg"
                                 alt="twitter logo"
