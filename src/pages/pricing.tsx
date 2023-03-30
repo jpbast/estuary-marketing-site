@@ -34,8 +34,24 @@ const ChecklistItem = ({ children }) => (
 )
 
 // $0.75/GB up to 1000 GB / month and then we cut pricing in half after that per GB
-const calculatePrice = (gbs: number) =>
-    Math.round(Math.min(gbs, 1000) * 0.75 + Math.max(0, (gbs - 1000) * 0.375))
+const calculatePrice = (gbs: number) => {
+    if (gbs <= 10) {
+        return <span className="pricing-page-price-bold">{gbs}GB Free</span>
+    } else {
+        return (
+            <>
+                <span className="pricing-page-price-bold">
+                    $
+                    {Math.round(
+                        Math.min(gbs, 1000) * 0.75 +
+                            Math.max(0, (gbs - 1000) * 0.375)
+                    )}
+                </span>
+                /month
+            </>
+        )
+    }
+}
 
 const PricingPage = () => {
     const [selectedGB, setSelectedGB] = React.useState(20)
@@ -51,6 +67,11 @@ const PricingPage = () => {
                             <p className="pricing-page-subheader-text">
                                 Predictable pricing that scales with your
                                 business.
+                            </p>
+                            <p className="pricing-page-subheader-text">
+                                No charge for storing data. Since we don't store
+                                your data, storage is in your own cloud storage
+                                bucket at low cloud storage rates
                             </p>
                         </div>
                         <div className="pricing-page-top-right">
@@ -102,7 +123,10 @@ const PricingPage = () => {
                                     Free support on Slack
                                 </ChecklistItem>
                             </div>
-                            <Link className="pricing-page-tile-button" to="https://dashboard.estuary.dev/register">
+                            <Link
+                                className="pricing-page-tile-button"
+                                to="https://dashboard.estuary.dev/register"
+                            >
                                 Get started
                             </Link>
                         </div>
@@ -110,20 +134,17 @@ const PricingPage = () => {
                             <PricingCloud className="pricing-page-tile-icon icon-wrapper" />
                             <p className="pricing-page-tile-name">cloud</p>
                             <p className="pricing-page-price">
-                                <span className="pricing-page-price-bold">
-                                    ${calculatePrice(selectedGB)}
-                                </span>
-                                /month
+                                {calculatePrice(selectedGB)}
                             </p>
                             <Slider
                                 value={selectedGB}
                                 onChange={(_, val) =>
                                     setSelectedGB(val || val[0])
                                 }
-                                min={20}
+                                min={10}
                                 max={5000}
-                                step={25}
-                                marks={[20,1000, 2500, 5000].map(v => ({
+                                step={10}
+                                marks={[10, 1000, 2500, 5000].map(v => ({
                                     label: gByteLabel(v),
                                     value: v,
                                 }))}
@@ -151,7 +172,11 @@ const PricingPage = () => {
                                     monitoring
                                 </ChecklistItem>
                             </div>
-                            <a target="_blank" href="https://dashboard.estuary.dev/register" className="pricing-page-tile-button">
+                            <a
+                                target="_blank"
+                                href="https://dashboard.estuary.dev/register"
+                                className="pricing-page-tile-button"
+                            >
                                 Try it free
                             </a>
                         </div>
@@ -180,15 +205,16 @@ const PricingPage = () => {
                                     </p>
                                 </div>
                             </div>
-                            <Link className="pricing-page-tile-button" to="/about#contact-us">
+                            <Link
+                                className="pricing-page-tile-button"
+                                to="/about#contact-us"
+                            >
                                 Contact us
                             </Link>
                         </div>
                     </div>
                     <div className="pricing-page-quote-box">
-                        <GraphicQuote
-                            className="pricing-page-tile-graphic-quote-image"
-                        />
+                        <GraphicQuote className="pricing-page-tile-graphic-quote-image" />
                         <p className="pricing-page-quote-box-quote">
                             “This tool is 1000x times better than LogStash or
                             Elastic Enterprise Data Ingestion Tool, which has
