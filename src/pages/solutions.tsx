@@ -4,6 +4,10 @@ import FlowLogo from "../svgs/flow-logo.svg"
 import { StaticImage } from "gatsby-plugin-image"
 import Seo from "../components/seo"
 import SolutionsBanner from "../svgs/solutions-banner.svg"
+import Image1 from "../svgs/solutions-1.svg"
+import Image2 from "../svgs/solutions-2.svg"
+import Image3 from "../svgs/solutions-3.svg"
+import Image4 from "../svgs/solutions-4.svg"
 
 const SolutionsPage = () => {
     return (
@@ -65,22 +69,12 @@ const SolutionsPage = () => {
                     <FlowLogo className="product-flow-section-one-image" />
                 </div>
                 <div className="solutions-section-image-wrapper">
-                    <StaticImage
-                        src="../images/solutions-image-1.png"
-                        alt="solutions image 1"
-                        layout="constrained"
-                        objectFit="contain"
-                    />
+                    <Image1/>
                 </div>
             </div>
             <div className="solutions-section-wrapper mobile-flex-direction-reverse">
                 <div className="solutions-section-image-wrapper">
-                    <StaticImage
-                        src="../images/solutions-image-2.png"
-                        alt="solutions image 2"
-                        layout="constrained"
-                        objectFit="contain"
-                    />
+                    <Image2/>
                 </div>
                 <div className="solutions-section-text-wrapper">
                     <h2 className="product-flow-section-two-topic-header">
@@ -138,23 +132,13 @@ const SolutionsPage = () => {
                         <FlowLogo className="product-flow-section-one-image" />
                     </div>
                     <div className="solutions-section-image-wrapper">
-                        <StaticImage
-                            src="../images/solutions-image-3.png"
-                            alt="solutions image 3"
-                            layout="constrained"
-                            objectFit="contain"
-                        />
+                        <Image3/>
                     </div>
                 </div>
             </div>
             <div className="solutions-section-wrapper solutions-margin-bottom mobile-flex-direction-reverse">
                 <div className="solutions-section-image-wrapper ">
-                    <StaticImage
-                        src="../images/solutions-image-4.png"
-                        alt="solutions image 4"
-                        layout="constrained"
-                        objectFit="contain"
-                    />
+                    <Image4/>
                 </div>
                 <div className="solutions-section-text-wrapper">
                     <h2 className="product-flow-section-two-topic-header">

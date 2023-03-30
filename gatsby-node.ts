@@ -87,9 +87,17 @@ export const createPages: GatsbyNode["createPages"] = async ({
         )
     )
 
-    const postsByCategory = Object.keys(categories).map(category =>
-        allPosts.filter(post => post.tags.some(tag => tag.Slug === category))
-    )
+    const postsByCategory = [
+        ...Object.keys(categories).map(category =>
+            allPosts.filter(post =>
+                post.tags.some(tag => tag.Slug === category)
+            )
+        ),
+        // Let's not forget posts that have no category!
+        allPosts.filter(post =>
+            post.tags.every(tag => tag.Type !== "category")
+        ),
+    ]
 
     const tabCategories = Object.values(categories)
         .filter(cat => cat.IsTab)

@@ -1151,7 +1151,7 @@ input {
   background: #F7F9FC;
   border: 1px solid #D7DCE5;
   border-radius: 4px;
-  overflow-x: scroll;
+  overflow-x: auto;
   white-space: nowrap;
   @media(max-width:810px) {
     width: 100%;
@@ -1899,6 +1899,7 @@ table th {
 .solutions-section-image-wrapper {
   display: flex;
   flex: 1 0 40%;
+  justify-content: right;
 
   &:first-child {
     margin-right: 3rem;
@@ -1924,8 +1925,6 @@ table th {
 .solutions-section-logo-right {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: -2em;
-  margin-right: -2em;
 }
 
 /* CONNECTORS */
@@ -2939,6 +2938,7 @@ table th {
 
   .solutions-section-text-wrapper {
     width: 100%;
+    margin-bottom: 2rem;
   }
 
   .solutions-section-wrapper {
@@ -2972,6 +2972,7 @@ table th {
   .solutions-section-image-wrapper {
     max-height: 280px;
     margin-right: 0px !important;
+    justify-content: center;
   }
 
   nav.blog-post-nav {
