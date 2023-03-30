@@ -63,7 +63,7 @@ jobs:
         with:
           version: '>= 422.0.0'
       - name: Sync build folder
-        run: "gsutil -q -m rsync -r -d ${{ github.workspace }}/public gs://estuary-marketing"
+        run: "gsutil -q -m cp -r '${{ github.workspace }}/public/*' gs://estuary-marketing"
       - name: Set cache control on HTML files
         run: "gsutil -q -m setmeta -h 'cache-control: public, max-age=0, must-revalidate' 'gs://estuary-marketing/**/*.html' 'gs://estuary-marketing/**/*.json'"
       - name: Set cache control on js assets
