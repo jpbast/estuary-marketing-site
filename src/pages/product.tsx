@@ -52,7 +52,7 @@ const ProductPage = () => {
                         <div className="product-flow-section-two-left">
                             <FlowLogo className="product-flow-section-one-image" />
                             <div className="product-flow-section-two-gif-wrapper">
-                                <Lottie animationData={DataFlowAnimation}/>
+                                <Lottie rendererSettings={{preserveAspectRatio:"xMidyMin meet"}} animationData={DataFlowAnimation}/>
                             </div>
                         </div>
                         <div className="product-flow-section-two-right">

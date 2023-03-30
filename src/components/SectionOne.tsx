@@ -55,7 +55,7 @@ const SectionOne = () => {
                     </a>
                 </div>
                 <div className="section-one-right">
-                    <Lottie animationData={HeroAnimation} className="section-one-right-image"/>
+                    <Lottie rendererSettings={{"viewBoxOnly": true, preserveAspectRatio:"xMaxYMid meet"}} animationData={HeroAnimation} className="section-one-right-image"/>
                 </div>
             </div>
             <div className="section-one-bottom">
