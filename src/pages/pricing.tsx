@@ -142,9 +142,9 @@ const PricingPage = () => {
                                     setSelectedGB(val || val[0])
                                 }
                                 min={10}
-                                max={5000}
+                                max={1000}
                                 step={10}
-                                marks={[10, 1000, 2500, 5000].map(v => ({
+                                marks={[10, 250,500,1000].map(v => ({
                                     label: gByteLabel(v),
                                     value: v,
                                 }))}
@@ -157,7 +157,7 @@ const PricingPage = () => {
                                     <span className="pricing-page-checklist-item-text-bold">
                                         {gByteLabel(selectedGB)}
                                     </span>{" "}
-                                    data
+                                    average monthly changes
                                 </ChecklistItem>
                                 <ChecklistItem>
                                     All in Open Source
