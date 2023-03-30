@@ -105,7 +105,7 @@ const SectionTwo = () => {
                         <StaticImage
                             placeholder="none"
                             alt="estuary product screenshot"
-                            src="../images/section-two-bottom-screenshot.svg"
+                            src="../images/realtime-replication.png"
                             className="section-two-second-graphic"
                             layout="constrained"
                         />
