@@ -56,7 +56,7 @@ const navItems: NavItem[] = [
             },
             {
                 title: "Contact",
-                path: "#get-in-touch",
+                path: "/about/#contact-us",
             },
         ],
     },
@@ -118,9 +118,9 @@ const Header = (props: { theme: "light" | "dark" }) => {
                         <Link className="global-header-link" to="https://dashboard.estuary.dev">
                             Log in
                         </Link>
-                        <Link className="global-header-try-it-button" to="https://dashboard.estuary.dev/register">
+                        <a target="_blank" href="https://dashboard.estuary.dev/register" className="global-header-try-it-button" >
                             Try it free
-                        </Link>
+                        </a>
                     </div>
                 </div>
                 <div className="global-header-mobile-menu-wrapper">

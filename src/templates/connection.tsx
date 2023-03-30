@@ -59,7 +59,7 @@ const Connector = ({
                                         mapped_source.shortDescription}
                                 </p>
                             </div>
-                            <ColoredLogo style={{marginTop:"auto",marginBottom:"auto"}}/>
+                            <ColoredLogo/>
                             <div className="connection-description">
                                 <img
                                     src={

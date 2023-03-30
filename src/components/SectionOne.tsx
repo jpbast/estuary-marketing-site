@@ -38,23 +38,21 @@ const SectionOne = () => {
         <div className="section-one">
             <div className="section-one-wrapper">
                 <div className="section-one-left">
-                    <h1 className="section-one-h1">Real-time</h1>
-                    <h1 className="section-one-h1">data-driven</h1>
-                    <h1 className="section-one-h1">decisions</h1>
+                    <h1 className="section-one-h1">Your data,</h1>
+                    <h1 className="section-one-h1">where you want it,</h1>
+                    <h1 className="section-one-h1">in milliseconds</h1>
                     <div className="section-one-subtext-wrapper">
                         <p className="section-one-subtext">
-                            Managed streaming data pipelines, streaming SQL
-                            transformations and turnkey connectivity to clouds,
-                            databases, and apps.
+                        Managed ETL pipelines, streaming SQL & turnkey connectivity to clouds, databases, and apps.
                         </p>
                         <p className="section-one-subtext">
                             Use it free with hands-on support. Scale without
                             bounds.
                         </p>
                     </div>
-                    <Link className="section-one-try-it-button" to="#">
+                    <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-one-try-it-button">
                         Try it free
-                    </Link>
+                    </a>
                 </div>
                 <div className="section-one-right">
                     <Lottie animationData={HeroAnimation} className="section-one-right-image"/>

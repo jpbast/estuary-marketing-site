@@ -1,6 +1,7 @@
 import * as React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import FlowLogo from "../svgs/flow-logo.svg"
+import DataFlowGraphic from "../svgs/section-two-data-graphic.svg"
 
 const SectionTwo = () => {
     return (
@@ -12,15 +13,15 @@ const SectionTwo = () => {
                         <span className="section-two-header-colortext">
                             transform your data
                         </span>{" "}
-                        from wherever it is to wherever you want it
+                        from where it is to where you want it
                         <span className="section-two-header-colortext">
                             {" "}
                             in milliseconds
                         </span>
                         , without scheduling.
                     </h2>
-                    <p>
-                        Capture from Clouds, Databases and SaaS apps, create
+                    <p className="section-two-subtext">
+                        Capture from clouds, databases, and SaaS apps, create
                         real-time transformations and materialized views, for a
                         consistent, exact copy of your data powering both
                         analytics and operations.
@@ -31,13 +32,7 @@ const SectionTwo = () => {
                 </div>
             </div>
             <div className="section-two-first-graphic-wrapper">
-                <StaticImage
-                    placeholder="none"
-                    alt="estuary data integration graphic"
-                    src="../images/section-two-first-graphic.svg"
-                    className="section-two-first-graphic"
-                    layout="constrained"
-                />
+                <DataFlowGraphic className="section-two-first-graphic" />
             </div>
             <div className="section-two-tiles-wrapper">
                 <div className="section-two-tile-wrapper">
@@ -45,40 +40,42 @@ const SectionTwo = () => {
                         <h3 className="section-two-tile-title">
                             Tools the whole team can use
                         </h3>
-                        <p>
-                            Make updates through either the UI or CLI.
-                            Programmatic access for the ability to easily embed
-                            and whitelabel pipelines.
+                        <p className="section-two-tile-text">
+                            Make updates through Flow’s UI or CLI.
+                            Programmatic access for the ability to easily embed and whitelabel pipelines.
+
                         </p>
                     </div>
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Automation</h3>
-                        <p>
+                        <p className="section-two-tile-text">
                             No scheduling or orchestration tools required.
-                            Automated schema generation and data deduplication.
+                            Automated schema management and data deduplication.
                         </p>
                     </div>
                 </div>
                 <div className="section-two-tile-wrapper">
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Reliability</h3>
-                        <p>99.9% platform reliability Security by design</p>
+                        <p className="section-two-tile-text">Proven, fault-tolerant architecture.
+                            Built upon cloud storage, extended with real-time capabilities.
+                        </p>
                     </div>
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Scale</h3>
-                        <p>
+                        <p className="section-two-tile-text">
                             Powering active workloads at 7GB/s CDC from any size
-                            DB
+                            database.
                         </p>
                     </div>
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">
                             Accuracy & Control
                         </h3>
-                        <p>
+                        <p className="section-two-tile-text">
                             Your pipelines, how you want them. Safeguard your
                             data products with built in, customizable schema
-                            controls. Idempotent, exactly once semantics
+                            controls. Idempotent, exactly once semantics.
                         </p>
                     </div>
                 </div>
@@ -98,8 +95,8 @@ const SectionTwo = () => {
                                 integration built in-house.
                             </li>
                             <li>
-                                Supports airbyte protocol for batch-based
-                                connectors. Bring any airbyte connector in and
+                                Supports Airbyte protocol for batch-based
+                                connectors. Bring any Airbyte connector in and
                                 run it. Access to 200+ connectors.
                             </li>
                         </ul>
