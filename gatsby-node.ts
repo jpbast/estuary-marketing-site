@@ -119,8 +119,8 @@ export const createPages: GatsbyNode["createPages"] = async ({
         component: blog,
         context: {
             blogPostIds: allPosts.map(post => post.id),
-            categoryTitle: null,
-            categorySlug: null,
+            categoryTitle: "All",
+            categorySlug: "",
             tabCategories,
         },
     })

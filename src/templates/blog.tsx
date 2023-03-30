@@ -37,7 +37,7 @@ interface BlogIndexProps {
 
 const BlogIndex = ({
     data,
-    pageContext: { categoryTitle, categorySlug, tabCategories, blogPostIds },
+    pageContext: { categoryTitle, categorySlug, tabCategories: realTabCategories, blogPostIds },
 }: BlogIndexProps) => {
     const posts = data.allStrapiBlogPost.nodes
 
@@ -64,6 +64,8 @@ const BlogIndex = ({
         })
         return query_result.map(r=>data.localSearchPosts.store[r.ref])
     }, [query, index, data.localSearchPosts.store])
+
+    const tabCategories = [{Slug:"",Name:"All",Type:"category"},...realTabCategories]
 
     return (
         <Layout headerTheme="light">
@@ -100,7 +102,7 @@ const BlogIndex = ({
                             </Link>
                         ))}
                     </div>
-                    <div style={{ flexGrow: 1 }} />
+                    <div className="blogs-spacer"/>
                     <div className="blogs-index-search">
                         <SearchIcon className="blogs-index-input-adornment" />
                         <input
