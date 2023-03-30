@@ -954,6 +954,30 @@ input {
   background: #C4C4C4;
 }
 
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #C4C4C4;
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: -10%;
+}
+
+.arrow--right {
+  left: auto;
+  right: 20%;
+}
+
+.arrow--disabled {
+  fill: #c4c4c44f;
+}
+
 /* FOOTER */
 
 .global-footer {
@@ -2694,9 +2718,12 @@ table th {
     flex-direction: column;
   }
 
-  .section-six-left,
-  .section-six-text-wrapper {
+  .section-six-left {
     width: 100%;
+  }
+
+  .section-six-text-wrapper {
+    width: 80%;
   }
 
   .section-six-subwrapper {
@@ -3073,6 +3100,21 @@ table th {
 
   .global-footer-input-email::placeholder {
     font-size: var(--fontSize-0);
+  }
+
+  .arrow--left {
+    left: -45px;
+  }
+  
+  .arrow--right {
+    left: auto;
+    right: 2%;
+  }
+
+  .arrow {
+  }
+  .section-six-slider-wrapper {
+    margin-left: 30px;
   }
 }
 
