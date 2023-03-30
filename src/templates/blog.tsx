@@ -9,6 +9,9 @@ import { BlogPostCard } from "../components/BlogPostCard"
 import SearchIcon from "@mui/icons-material/Search"
 import { useLunr } from "react-lunr"
 import FlowLogo from "../svgs/flow-logo.svg"
+import { useMemo } from "react"
+import type {Index} from "lunr";
+import lunr from "lunr";
 
 interface BlogIndexProps {
     data: {
@@ -38,22 +41,29 @@ const BlogIndex = ({
 }: BlogIndexProps) => {
     const posts = data.allStrapiBlogPost.nodes
 
-    const index = React.useMemo(
-        () => JSON.parse(data.localSearchPosts.index),
+    const index: Index = React.useMemo(
+        () => lunr.Index.load(JSON.parse(data.localSearchPosts.index)),
         [data.localSearchPosts.index]
     )
 
     const [query, setQuery] = React.useState("")
-    const results = useLunr(
-        query.length > 0
-            ? query
-                  .split(" ")
-                  .map(term => `${term}~2`)
-                  .join(" ")
-            : "",
-        index,
-        data.localSearchPosts.store
-    )
+
+    const results = useMemo(() => {
+        const query_result = index.query(q => {
+            const terms = query.split(" ").filter(term=>term.length>0);
+            for(const term of terms){
+                q.term(term, {
+                    wildcard: lunr.Query.wildcard.TRAILING,
+                    boost: 10
+                })
+                q.term(term, {
+                    editDistance: Math.min(Math.max(0,term.length-1), 3)
+                })
+            }
+            return q
+        })
+        return query_result.map(r=>data.localSearchPosts.store[r.ref])
+    }, [query, index, data.localSearchPosts.store])
 
     return (
         <Layout headerTheme="light">
