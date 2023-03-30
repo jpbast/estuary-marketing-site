@@ -54,7 +54,7 @@ const calculatePrice = (gbs: number) => {
 }
 
 const PricingPage = () => {
-    const [selectedGB, setSelectedGB] = React.useState(20)
+    const [selectedGB, setSelectedGB] = React.useState(10)
     return (
         <Layout headerTheme="light">
             <div className="pricing-page">
