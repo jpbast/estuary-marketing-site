@@ -179,7 +179,7 @@ const AboutPage = () => {
                         friction out of data engineering.
                     </p>
                 </div>
-                <Link className="about-current-openings-button" to="#">
+                <Link className="about-current-openings-button" to="#careers">
                     Current openings
                 </Link>
             </div>

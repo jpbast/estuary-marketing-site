@@ -1898,10 +1898,38 @@ table th {
   padding: 0 ~"calc(min(10vw,200px))";
   display: flex;
   flex-direction: column;
+  & h1 {
+    text-align: center;
+    margin-bottom: 7rem;
+    @media(max-width:810px) {
+      font-size: 30pt;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
 }
 
 .connection-descriptions {
   display: flex;
+  @media(max-width: 810px) {
+    flex-direction: column;
+  }
+  
+  & svg {
+    width: 120px;
+    margin-top: 5rem;
+    margin-bottom: auto;
+    margin-left: -1rem;
+    margin-right: -1rem;
+
+    @media(max-width: 810px) {
+        width: 75px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+    }
+  }
 }
 
 .connection-description {
@@ -1909,16 +1937,26 @@ table th {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: 1 1 50%;
 
   & p {
     font-weight: 400;
     font-size: 18px;
     line-height: 30px;
-
     align-items: center;
     text-align: center;
-
     color: #47506D;
+    @media(min-width:811px){
+        height: 5rem;
+    }
+  }
+
+  & img {
+    padding: 2rem;
+    @media(max-width: 810px){
+        width: 150px;
+        padding: 0
+    }
   }
 }
 
