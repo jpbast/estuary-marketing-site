@@ -104,7 +104,7 @@ const Header = (props: { theme: "light" | "dark" }) => {
             })}>
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
-                    <ColoredLogo style={{width:27,height:35}}/>
+                    <ColoredLogo style={{ width: 27, height: 35 }} />
                     <h1 className={"global-header-title"}>Estuary</h1>
                 </Link>
                 <div style={{ flex: "1 2 45px" }} />
@@ -115,6 +115,40 @@ const Header = (props: { theme: "light" | "dark" }) => {
                         ))}
                     </div>
                     <div className="global-header-login-try">
+                        <a
+                            target="_blank"
+                            href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email"
+                            className="header-social-icon"
+                        >
+                            <StaticImage
+                                src="../images/slack-outline.svg"
+                                alt="slack logo"
+                                width={24}
+                                height={24}
+                                style={{
+                                    margin: "0 15px",
+                                }}
+                                layout="fixed"
+                                placeholder="none"
+                            />
+                        </a>
+                        <a
+                            target="_blank"
+                            href="https://github.com/estuary/flow"
+                            className="header-social-icon"
+                        >
+                            <StaticImage
+                                src="../images/github-outline.svg"
+                                alt="github logo"
+                                width={24}
+                                height={24}
+                                style={{
+                                    margin: "0 15px",
+                                }}
+                                layout="fixed"
+                                placeholder="none"
+                            />
+                        </a>
                         <Link className="global-header-link" to="https://dashboard.estuary.dev">
                             Log in
                         </Link>

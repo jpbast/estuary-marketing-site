@@ -43,11 +43,7 @@ const SectionOne = () => {
                     <h1 className="section-one-h1">in milliseconds</h1>
                     <div className="section-one-subtext-wrapper">
                         <p className="section-one-subtext">
-                        Managed ETL pipelines, streaming SQL & turnkey connectivity to clouds, databases, and apps.
-                        </p>
-                        <p className="section-one-subtext">
-                            Use it free with hands-on support. Scale without
-                            bounds.
+                        Managed CDC and ETL pipelines with streaming SQL transforms.
                         </p>
                     </div>
                     <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-one-try-it-button">
