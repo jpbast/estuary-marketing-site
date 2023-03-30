@@ -10,6 +10,9 @@ require("dotenv").config({
     path: ".env",
 })
 
+// Disable multiple prepared statements because pgbouncer doesn't like 'em very much
+process.env["POSTGRAPHILE_PREPARED_STATEMENT_CACHE_SIZE"]="1";
+
 const strapiConfig = {
     apiURL: process.env.STRAPI_API_URL,
     accessToken: process.env.STRAPI_TOKEN,
@@ -326,7 +329,7 @@ module.exports = {
         {
             resolve: "gatsby-source-pg",
             options: {
-                connectionString: `postgres://${process.env.GATSBY_DB_USER}:${process.env.GATSBY_DB_PASS}@${process.env.GATSBY_DB_HOST}:${process.env.GATSBY_DB_PORT}/${process.env.GATSBY_DB_NAME}`,
+                connectionString: `postgres://${process.env.GATSBY_DB_USER}:${process.env.GATSBY_DB_PASS}@${process.env.GATSBY_DB_HOST}:${process.env.GATSBY_DB_PORT}/${process.env.GATSBY_DB_NAME}?pgbouncer=true`,
                 schema: "public",
                 //   refetchInterval: 60, // Refetch data every 60 seconds
             },
