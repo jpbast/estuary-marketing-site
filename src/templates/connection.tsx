@@ -6,6 +6,7 @@ import { normalizeConnector } from "../utils"
 import FlowLogo from "../svgs/flow-logo.svg"
 import ColoredLogo from "../svgs/colored-logo.svg"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { ConnectorsLink } from "../components/ConnectorsLink"
 
 export interface ConnectorProps {
     data: {
@@ -99,6 +100,9 @@ const Connector = ({
                             Consolidate your data into the leading warehouses,
                             then integrate with your tools of choice.
                         </span>
+                        <div className="connector-link-bottom">
+                            <ConnectorsLink/>
+                        </div>
                     </div>
                 </div>
             </div>

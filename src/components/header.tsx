@@ -95,25 +95,33 @@ const MenuBarsImage = () => (
 const Header = (props: { theme: "light" | "dark" }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-    const theme = props.theme;
+    const theme = props.theme
 
     return (
         <>
             {/* @ts-ignore */}
-            <header className={clsx("global-header", {
-                "global-header-light": theme === "light",
-                "global-header-dark": theme === "dark"
-            })}>
+            <header
+                className={clsx("global-header", {
+                    "global-header-light": theme === "light",
+                    "global-header-dark": theme === "dark",
+                })}
+            >
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
-                    <ColoredLogo className="global-header-logo" style={{ width: 27, height: 35 }} />
+                    <ColoredLogo
+                        className="global-header-logo"
+                        style={{ width: 27, height: 35 }}
+                    />
                     <h1 className={"global-header-title"}>Estuary</h1>
                 </Link>
                 <div style={{ flex: "1 2 45px" }} />
                 <div className="global-header-wrapper">
                     <div className="global-header-link-wrapper">
                         {navItems.map(item => (
-                            <NavMenuTopLevel item={item} />
+                            <>
+                                <NavMenuTopLevel item={item} />
+                                <div style={{ flex: "0 1 1rem" }} />
+                            </>
                         ))}
                     </div>
                     <div className="global-header-login-try">
@@ -123,7 +131,6 @@ const Header = (props: { theme: "light" | "dark" }) => {
                             className="header-social-icon"
                         >
                             <SlackIcon className="social-icon" />
-
                         </a>
                         <a
                             target="_blank"
@@ -132,10 +139,18 @@ const Header = (props: { theme: "light" | "dark" }) => {
                         >
                             <GithubIcon className="social-icon" />
                         </a>
-                        <Link className="global-header-link" to="https://dashboard.estuary.dev">
+                        <Link
+                            className="global-header-link"
+                            to="https://dashboard.estuary.dev"
+                            style={{marginRight:"1rem"}}
+                        >
                             Log in
                         </Link>
-                        <a target="_blank" href="https://dashboard.estuary.dev/register" className="global-header-try-it-button" >
+                        <a
+                            target="_blank"
+                            href="https://dashboard.estuary.dev/register"
+                            className="global-header-try-it-button"
+                        >
                             Try it free
                         </a>
                     </div>
@@ -153,8 +168,9 @@ const Header = (props: { theme: "light" | "dark" }) => {
             {mobileMenuOpen ? (
                 <List
                     className={clsx("global-header-mobile-menu-list", {
-                        "global-header-mobile-menu-list-light": theme === "light",
-                        "global-header-mobile-menu-list-dark": theme === "dark"
+                        "global-header-mobile-menu-list-light":
+                            theme === "light",
+                        "global-header-mobile-menu-list-dark": theme === "dark",
                     })}
                     component="nav"
                 >
