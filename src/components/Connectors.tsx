@@ -7,6 +7,7 @@ import FlowLogo from "../svgs/flow-logo.svg"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import ChevronRight from "@mui/icons-material/ChevronRight"
 import SearchIcon from "@mui/icons-material/Search"
+import Integrations from "./Integrations"
 
 export interface ConnectorsProps {
     connectorType: "capture" | "materialization"
@@ -122,13 +123,17 @@ export const Connectors = ({
     const results = useLunr(
         query.length > 0
             ? query
-                  .split(" ")
-                  .map(term => `${term}* ${term}~1`)
-                  .join(" ")
+                .split(" ")
+                .map(term => `${term}* ${term}~1`)
+                .join(" ")
             : "",
         index,
         store
-    ).filter(res=>(res as any).type===connectorType)
+    ).filter(res => (res as any).type === connectorType)
+
+    const formatTitle = () => {
+        return title.charAt(0).toLowerCase() + title.slice(1).slice(0,-1)
+    }
 
     return (
         <div className="blogs-index-wrapper" style={{ marginBottom: "10rem" }}>
@@ -148,16 +153,19 @@ export const Connectors = ({
 
                 <div className="connectors-search">
                     <div className="connectors-search-body">
-                        <div className="blogs-index-search" style={{marginBottom:0}}>
+                        <div className="blogs-index-search" style={{ marginBottom: 0 }}>
                             <SearchIcon className="blogs-index-input-adornment" />
                             <input
-                                style={{border: "1px solid #D7DCE5"}}
-                                placeholder={`Search ${title}`}
+                                style={{ border: "1px solid #D7DCE5" }}
+                                placeholder={`Find a data ${formatTitle()}`}
                                 type="text"
                                 value={query}
                                 onChange={evt => setQuery(evt.target.value)}
                             />
                         </div>
+                    </div>
+                    <div>
+                        <Integrations />
                     </div>
                 </div>
 
