@@ -254,13 +254,13 @@ const AboutPage = () => {
                     <div className="about-current-openings-list">
                         {jobs.length > 0
                             ? jobs.map(job => (
-                                  <a
-                                      href={`#${job.slug}`}
-                                      className="about-current-opening-title"
-                                  >
-                                      {job.title}
-                                  </a>
-                              ))
+                                <a
+                                    href={`#${job.slug}`}
+                                    className="about-current-opening-title"
+                                >
+                                    {job.title}
+                                </a>
+                            ))
                             : null}
                         <Link
                             className="about-get-in-touch-button"
@@ -272,45 +272,45 @@ const AboutPage = () => {
                     <div className="about-current-openings-description-wrapper">
                         {jobs.length > 0
                             ? jobs.map(job => (
-                                  <div id={job.slug}>
-                                      <div className="about-current-openings-title-wrapper">
-                                          <p className="about-opening-title">
-                                              {job.title}
-                                          </p>
-                                          <Link
-                                              to={`#${job.slug}`}
-                                              className="about-link"
-                                          >
-                                              <LinkIcon />
-                                          </Link>
-                                      </div>
-                                      <div className="about-current-openings-location-wrapper">
-                                          <p className="about-opening-text">
-                                              Location: <b>{job.location}</b>
-                                          </p>
-                                      </div>
-                                      <ProcessedPost
-                                          body={
-                                              job.description.data
-                                                  .childHtmlRehype.html
-                                          }
-                                          enableToc={false}
-                                      />
-                                      <Link
-                                          className="about-get-in-touch-button-mobile"
-                                          to="mailto:careers@estuary.dev"
-                                      >
-                                          Get in touch to apply
-                                      </Link>
-                                      <div className="current-openings-divider"></div>
-                                  </div>
-                              ))
+                                <div id={job.slug}>
+                                    <div className="about-current-openings-title-wrapper">
+                                        <p className="about-opening-title">
+                                            {job.title}
+                                        </p>
+                                        <Link
+                                            to={`#${job.slug}`}
+                                            className="about-link"
+                                        >
+                                            <LinkIcon />
+                                        </Link>
+                                    </div>
+                                    <div className="about-current-openings-location-wrapper">
+                                        <p className="about-opening-text">
+                                            Location: <b>{job.location}</b>
+                                        </p>
+                                    </div>
+                                    <ProcessedPost
+                                        body={
+                                            job.description.data
+                                                .childHtmlRehype.html
+                                        }
+                                        enableToc={false}
+                                    />
+                                    <Link
+                                        className="about-get-in-touch-button-mobile"
+                                        to="mailto:careers@estuary.dev"
+                                    >
+                                        Get in touch to apply
+                                    </Link>
+                                    <div className="current-openings-divider"></div>
+                                </div>
+                            ))
                             : null}
                     </div>
                 </div>
             </div>
-            <div className="about-section-five" id="contact-us">
-                <h2 className="about-section-five-header">
+            <div className="about-section-five">
+                <h2 className="about-section-five-header" id="contact-us">
                     Let's talk about your data
                 </h2>
                 <p className="about-section-five-text">

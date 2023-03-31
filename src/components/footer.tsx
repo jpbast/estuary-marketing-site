@@ -71,7 +71,7 @@ const Footer = () => {
                             Github
                         </a>
                         <Link
-                            to="/about/#contact-us"
+                            to="/about#contact-us"
                             className="global-footer-right-link"
                         >
                             Contact
@@ -93,13 +93,13 @@ const Footer = () => {
                             Product
                         </Link>
                         <Link
-                            to="/about/#careers"
+                            to="/about#careers"
                             className="global-footer-right-link"
                         >
                             Careers
                         </Link>
-                        <a className="global-footer-right-link">Privacy</a>
-                        <a className="global-footer-right-link">Terms</a>
+                        <Link to="/privacy-policy" className="global-footer-right-link">Privacy</Link>
+                        <Link to="/terms" className="global-footer-right-link">Terms</Link>
                     </div>
                 </div>
             </div>
