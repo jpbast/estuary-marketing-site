@@ -8,14 +8,9 @@ on:
       - master
 
 jobs:
-  pre-job:
-    name: Pre-Job
-    runs-on: ubuntu-latest
-    steps:
-      - uses: technote-space/auto-cancel-redundant-workflow@v1
-      - name: Cancel redundant workflows
-        run: echo "Cancel redundant workflows finished"
   build:
+    concurrency: 
+      group:  deploy-site
     runs-on: ubuntu-latest
     
     permissions:
@@ -63,7 +58,7 @@ jobs:
         with:
           version: '>= 422.0.0'
       - name: Sync build folder
-        run: "gsutil -q -m cp -r '${{ github.workspace }}/public/*' gs://estuary-marketing"
+        run: "gsutil -q -m rsync -r ${{ github.workspace }}/public gs://estuary-marketing"
       - name: Set cache control on HTML files
         run: "gsutil -q -m setmeta -h 'cache-control: public, max-age=0, must-revalidate' 'gs://estuary-marketing/**/*.html' 'gs://estuary-marketing/**/*.json'"
       - name: Set cache control on js assets
