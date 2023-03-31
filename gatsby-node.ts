@@ -205,7 +205,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 
             for (const destination_connector of mapped_connectors) {
                 createPage({
-                    path: `/connection/${normalized_connector.slugified_name}/${destination_connector.slugified_name}`,
+                    path: `/integrations/${normalized_connector.slugified_name}-to-${destination_connector.slugified_name}`,
                     component: connection,
                     context: {
                         source_id: normalized_connector.id,

@@ -5,6 +5,7 @@ import Seo from "../components/seo"
 import { normalizeConnector } from "../utils"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { ConnectorsLink } from "../components/ConnectorsLink"
 
 export interface ConnectorProps {
     data: {
@@ -31,7 +32,7 @@ const Connector = ({
             <div className="blogs-index-wrapper">
                 <div className="blogs-index-header-wrapper">
                     <div className="connector-index-header">
-                        <div style={{ flex: "1 1 50%" }}>
+                        <div style={{ flex: "1 1 2rem", alignItems: "center" }}>
                             <h2>{mapped.title}</h2>
                             <p>
                                 {mapped.longDescription ??
@@ -39,15 +40,13 @@ const Connector = ({
                             </p>
                         </div>
                         <div
-                            style={{ flex: "1 1 50%" }}
+                            style={{ flex: "1" }}
                             className="blog-post-header-vectors"
                         >
                             <img
-                                src={
-                                    mapped.logoUrl
-                                }
+                                src={mapped.logoUrl}
                                 alt={`Connector Logo`}
-                                className="blog-post-header-vector"
+                                // className="blog-post-header-vector"
                                 style={{
                                     zIndex: 1,
                                     maxWidth: 250,
@@ -71,9 +70,15 @@ const Connector = ({
                             you want.
                         </span>
 
-                        <FlowLogo style={{marginTop:"1rem"}}/>
+                        <FlowLogo style={{ marginTop: "1rem" }} />
                         <h2>All your data, where you need it</h2>
-                        <span>Consolidate your data into the leading warehouses, then integrate with your tools of choice.</span>
+                        <span>
+                            Consolidate your data into the leading warehouses,
+                            then integrate with your tools of choice.
+                        </span>
+                        <div className="connector-link-bottom">
+                            <ConnectorsLink/>
+                        </div>
                     </div>
                 </div>
             </div>

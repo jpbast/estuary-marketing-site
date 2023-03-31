@@ -377,11 +377,12 @@ input {
 
 .global-header-link-wrapper {
   display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
 }
 
 .global-header-link {
   text-decoration: none;
-  margin: auto 12px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -389,6 +390,7 @@ input {
   white-space: nowrap;
   cursor: pointer;
   display: flex;
+  align-self: center;
 }
 
 .global-header-menu-link {
@@ -1210,13 +1212,19 @@ input {
 }
 
 .blogs-index-search {
-  flex: 1 0 300px;
+  flex: 1 0 auto;
+  @media (min-width: 811px) {
+    max-width: 350px;
+  }
+  @media(max-width: 810px) {
+    min-width: 300px;
+  }
   display: flex;
   position: relative;
   border: 1px solid #D7DCE5;
   border-radius: 4px;
   overflow: hidden;
-  height: 53px;
+  min-height: 53px;
 
   & .blogs-index-input-adornment {
     position: absolute;
@@ -2048,6 +2056,7 @@ table th {
   margin-bottom: 4rem;
   padding: 0 ~"calc(min(10vw,200px))";
   display: flex;
+  flex-wrap: wrap;
 }
 
 .connector-index-bottom {
@@ -2404,6 +2413,11 @@ table th {
   background-color: #F9FAFC;
   border-radius: 4px;
   padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 .connector-card-top {
@@ -2503,6 +2517,62 @@ table th {
   width: 100%;
 }
 
+.connectors-link-wrapper {
+    display: flex;
+    gap: 1rem;
+    flex: 1 1 350px;
+    min-width: 200px;
+
+    @media(max-width: 810px) {
+        flex-wrap: wrap;
+    }
+    @media (min-width: 811px) {
+      max-width: 500px;
+    }
+}
+
+.connector-link-button {
+  justify-content: center;
+  align-items: center;
+  padding: 17px 20px;
+  background: #5072EB;
+  border: 1px solid #5072EB;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
+  text-align: center;
+  @media(max-width: 810px) {
+    width: 100%;
+  }
+}
+
+.connector-link-form-control {
+    flex: 1;
+    @media(max-width:810px){
+        min-width: 250px !important;
+    }
+}
+
+.connector-link-bottom {
+    width: 100%;
+    margin: ~"2rem calc(min(10vw,200px))"; 
+    display: flex;
+    justify-content: center;
+    text-align: initial;
+}
+
+.connectors-link-menu-item {
+    align-items: start;
+    
+}
+img.connectors-link-menu-img {
+    width: 20px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 1000px) {
@@ -2572,7 +2642,6 @@ table th {
     background-position: 20px 20px;
     border: none;
     background-repeat: no-repeat;
-    padding-left: 10px;
     margin: auto 16px auto 16px;
   }
 

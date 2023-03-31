@@ -7,6 +7,7 @@ import FlowLogo from "../svgs/flow-logo.svg"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import ChevronRight from "@mui/icons-material/ChevronRight"
 import SearchIcon from "@mui/icons-material/Search"
+import { ConnectorsLink } from "./ConnectorsLink"
 
 export interface ConnectorsProps {
     connectorType: "capture" | "materialization"
@@ -158,6 +159,7 @@ export const Connectors = ({
                                 onChange={evt => setQuery(evt.target.value)}
                             />
                         </div>
+                        <ConnectorsLink/>
                     </div>
                 </div>
 
