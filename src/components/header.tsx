@@ -58,7 +58,7 @@ const navItems: NavItem[] = [
             },
             {
                 title: "Contact",
-                path: "/about/#contact-us",
+                path: "/about#contact-us",
             },
         ],
     },
@@ -71,7 +71,7 @@ const navItems: NavItem[] = [
             },
             {
                 title: "Careers",
-                path: "/about/#careers",
+                path: "/about#careers",
             },
         ],
     },
@@ -106,7 +106,7 @@ const Header = (props: { theme: "light" | "dark" }) => {
             })}>
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
-                    <ColoredLogo style={{ width: 27, height: 35 }} />
+                    <ColoredLogo className="global-header-logo" style={{ width: 27, height: 35 }} />
                     <h1 className={"global-header-title"}>Estuary</h1>
                 </Link>
                 <div style={{ flex: "1 2 45px" }} />
