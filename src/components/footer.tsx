@@ -99,7 +99,7 @@ const Footer = () => {
                             Careers
                         </Link>
                         <Link to="/privacy-policy" className="global-footer-right-link">Privacy</Link>
-                        <a className="global-footer-right-link">Terms</a>
+                        <Link to="/terms" className="global-footer-right-link">Terms</Link>
                     </div>
                 </div>
             </div>
