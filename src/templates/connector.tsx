@@ -4,7 +4,6 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { normalizeConnector } from "../utils"
 import FlowLogo from "../svgs/flow-logo.svg"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { ConnectorsLink } from "../components/ConnectorsLink"
 
 export interface ConnectorProps {

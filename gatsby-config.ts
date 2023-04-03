@@ -96,6 +96,7 @@ module.exports = {
             options: strapiConfig,
         },
         `gatsby-plugin-sitemap`,
+        `gatsby-plugin-robots-txt`,
         `gatsby-transformer-inline-svg`,
         `gatsby-plugin-image`,
         `gatsby-plugin-less`,
