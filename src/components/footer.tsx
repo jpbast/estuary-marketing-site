@@ -3,7 +3,7 @@ import { Link, Script } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import SlackIcon from "../svgs/slack-outline.svg"
 import GithubIcon from "../svgs/github-outline.svg"
-import LinkedinIcon from "../svgs/slack-outline.svg"
+import LinkedinIcon from "../svgs/linkedin-outline.svg"
 import TwitterIcon from "../svgs/twitter-outline.svg"
 
 const Footer = () => {

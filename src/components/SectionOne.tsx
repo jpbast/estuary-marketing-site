@@ -47,7 +47,7 @@ const SectionOne = () => {
                         </p>
                     </div>
                     <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-one-try-it-button">
-                        Try it free
+                    Build a free streaming pipeline
                     </a>
                 </div>
                 <div className="section-one-right">
