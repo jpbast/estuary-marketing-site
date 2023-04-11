@@ -41,11 +41,13 @@ const strapiConfig = {
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+const siteUrl = `https://estuary.dev`;
 module.exports = {
     siteMetadata: {
         title: `Estuary`,
         description: `Estuary`,
-        siteUrl: `https://estuary.dev`,
+        siteUrl: siteUrl,
         social: {
             twitter: "estuary twitter",
         },
@@ -95,7 +97,36 @@ module.exports = {
             resolve: `gatsby-source-strapi`,
             options: strapiConfig,
         },
-        `gatsby-plugin-sitemap`,
+        {
+        resolve: `gatsby-plugin-sitemap`,
+        options: {
+            query: `
+            {
+              allSitePage {
+                nodes {
+                  path
+                }
+              }
+            }
+          `,
+            resolveSiteUrl: () => siteUrl,
+            resolvePages: ({
+              allSitePage: { nodes: allPages },
+              allWpContentNode: { nodes: allWpNodes },
+            }) => {
+    
+              return allPages.map(page => {
+                return { ...page, }
+              })
+            },
+            serialize: ({ path, modifiedGmt }) => {
+              return {
+                url: path,
+                lastmod: modifiedGmt,
+              }
+            },
+          },
+        },
         `gatsby-plugin-robots-txt`,
         `gatsby-transformer-inline-svg`,
         `gatsby-plugin-image`,
