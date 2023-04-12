@@ -49,9 +49,9 @@ export const createPages: GatsbyNode["createPages"] = async ({
         {
             allStrapiBlogPost(filter: { publishedAt: { ne: null } }) {
                 nodes {
+                    updatedAt
                     Slug
                     id
-                    updatedAt
                     tags {
                         Name
                         Slug
@@ -72,7 +72,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
     }
 
     const allPosts = result.data.allStrapiBlogPost.nodes
-    console.log(allPosts)
 
     const categories: {
         [key: string]: {
@@ -154,7 +153,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
                         id: post.id,
                         previousPostId,
                         nextPostId,
-                        lastModDate: post.updatedAt
+                        lastMod: post.updatedAt
                     },
                 })
             })
