@@ -34,6 +34,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     const result = await graphql<{
         allStrapiBlogPost: {
             nodes: {
+                updatedAt: any
                 Slug: string
                 id: string
                 tags: {
@@ -50,6 +51,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
                 nodes {
                     Slug
                     id
+                    updatedAt
                     tags {
                         Name
                         Slug
@@ -70,6 +72,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     }
 
     const allPosts = result.data.allStrapiBlogPost.nodes
+    console.log(allPosts)
 
     const categories: {
         [key: string]: {
@@ -151,6 +154,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
                         id: post.id,
                         previousPostId,
                         nextPostId,
+                        lastModDate: post.updatedAt
                     },
                 })
             })

@@ -43,6 +43,7 @@ const strapiConfig = {
  */
 
 const siteUrl = `https://estuary.dev`;
+
 module.exports = {
     siteMetadata: {
         title: `Estuary`,
@@ -112,7 +113,6 @@ module.exports = {
             resolveSiteUrl: () => siteUrl,
             resolvePages: ({
               allSitePage: { nodes: allPages },
-              allWpContentNode: { nodes: allWpNodes },
             }) => {
     
               return allPages.map(page => {
