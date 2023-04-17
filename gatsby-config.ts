@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
 
-import { GatsbyConfig } from "gatsby";
+import { GatsbyConfig } from "gatsby"
 import { normalizeConnector } from "./src/utils"
 
 require("dotenv").config({
@@ -12,7 +12,7 @@ require("dotenv").config({
 })
 
 // Disable multiple prepared statements because pgbouncer doesn't like 'em very much
-process.env["POSTGRAPHILE_PREPARED_STATEMENT_CACHE_SIZE"]="1";
+process.env["POSTGRAPHILE_PREPARED_STATEMENT_CACHE_SIZE"] = "1"
 
 const strapiConfig = {
     apiURL: process.env.STRAPI_API_URL,
@@ -53,8 +53,7 @@ const cfg: GatsbyConfig = {
         },
     },
     flags: {
-        DEV_SSR: true,
-        PARALLEL_SOURCING: true
+        PARALLEL_SOURCING: true,
     },
     // graphqlTypegen: true,
     plugins: [
@@ -104,7 +103,7 @@ const cfg: GatsbyConfig = {
         {
             resolve: `gatsby-plugin-sitemap`,
             options: {
-              query: `
+                query: `
               {
                 site {
                   siteMetadata {
@@ -119,24 +118,18 @@ const cfg: GatsbyConfig = {
                 }
               }
               `,
-              serialize: ({ path, pageContext }) => {
-                return {
-                  url: path,
-                  lastmod: pageContext?.lastMod
-                }
-              },
-          },
-        },
-        {
-            resolve: 'gatsby-plugin-zendesk-chat',
-            options: {
-              zendeskKey: '3271265c-16a8-4e0d-b1ab-72ed8fbe7e5a',
-              enableDuringDevelop: false, // Optional. Disables Zendesk chat widget when running Gatsby dev server. Defaults to true.
+                serialize: ({ path, pageContext }) => {
+                    return {
+                        url: path,
+                        lastmod: pageContext?.lastMod,
+                    }
+                },
             },
-          },
+        },
         `gatsby-plugin-robots-txt`,
         `gatsby-transformer-inline-svg`,
         `gatsby-plugin-image`,
+        // `gatsby-plugin-svgr-svgo`,
         `gatsby-plugin-less`,
         {
             resolve: `gatsby-transformer-rehype`,
@@ -346,7 +339,7 @@ const cfg: GatsbyConfig = {
                     "logo",
                     "recommended",
                     "type",
-                    "slug"
+                    "slug",
                 ],
 
                 // Function used to map the result from the GraphQL query. This should
@@ -427,4 +420,4 @@ const cfg: GatsbyConfig = {
     ],
 }
 
-module.exports = cfg;
+module.exports = cfg

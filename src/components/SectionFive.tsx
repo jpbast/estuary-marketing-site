@@ -47,6 +47,8 @@ const SectionFive = () => {
                                     node.logo.localFile.childImageSharp
                                         .gatsbyImageData
                                 }
+                                loading="eager"
+                                
                             />}
                         <p className="section-five-tile-logo-text">
                             {node.name}
