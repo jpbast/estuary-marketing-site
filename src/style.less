@@ -515,13 +515,16 @@ input {
 
 .section-one-right-image {
   width: 100%;
-}
 
-.section-one-right-image svg {
-  overflow: visible;
-  max-height: 80vh;
-  width: 100%;
-  height: 100%;
+  & > :first-child {
+    overflow: visible;
+    max-height: 80vh;
+    width: 100%;
+    height: 100%;
+  }
+  & > :not(:first-child) {
+    display: none;
+  }
 }
 
 .section-one-bottom {
@@ -2094,10 +2097,6 @@ table th {
   }
 }
 
-.gatsby-image-wrapper [data-main-image] {
-  transition: none;
-}
-
 // ABOUT 
 
 .about-section-one-h1 {
@@ -2701,16 +2700,21 @@ img.connectors-link-menu-img {
 
   .section-one-right-image {
     margin-left: 0px;
+
+    & > :first-child {
+        overflow: visible;
+        max-height: 55vw;
+        left: unset;
+        object-fit: contain;
+        & img {
+            object-fit: contain;
+        }
+    }
+    & > :not(:first-child) {
+        display: none;
+    }
   }
-
-  .section-one-right-image svg {
-    overflow: visible;
-    max-height: 55vw;
-    left: unset;
-
-    object-fit: contain;
-  }
-
+  
   .section-one-bottom {
     margin-top: 0px;
     margin-bottom: 1rem;
