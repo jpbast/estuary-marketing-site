@@ -14,6 +14,7 @@ const SectionOne = () => {
                 filter: { Enabled: { eq: true } }
             ) {
                 nodes {
+                    id
                     enabled: Enabled
                     logo: Logo {
                         localFile {
@@ -58,6 +59,7 @@ const SectionOne = () => {
                 {logos.allStrapiVanityLogo.nodes.map(logo =>
                     logo.logo.localFile.internal.mediaType === "image/svg+xml" ? (
                         <div
+                            key={logo.id}
                             style={{ width: 120 }}
                             dangerouslySetInnerHTML={{
                                 __html: logo.logo.localFile.svg.content,
@@ -65,6 +67,7 @@ const SectionOne = () => {
                         />
                     ) : (
                         <GatsbyImage
+                            key={logo.id}
                             alt={`logo`}
                             className="section-one-bottom-logo"
                             image={

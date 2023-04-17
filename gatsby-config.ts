@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
 
+import { GatsbyConfig } from "gatsby";
 import { normalizeConnector } from "./src/utils"
 
 require("dotenv").config({
@@ -42,7 +43,7 @@ const strapiConfig = {
  * @type {import('gatsby').GatsbyConfig}
  */
 
-module.exports = {
+const cfg: GatsbyConfig = {
     siteMetadata: {
         title: `Estuary`,
         description: `Estuary`,
@@ -50,6 +51,10 @@ module.exports = {
         social: {
             twitter: "estuary twitter",
         },
+    },
+    flags: {
+        DEV_SSR: true,
+        PARALLEL_SOURCING: true
     },
     // graphqlTypegen: true,
     plugins: [
@@ -421,3 +426,5 @@ module.exports = {
         // },
     ],
 }
+
+module.exports = cfg;
