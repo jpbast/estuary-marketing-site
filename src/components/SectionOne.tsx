@@ -40,12 +40,14 @@ const SectionOne = () => {
     `)
 
     const [lottieReady, setLottieReady] = React.useState(false)
-    const lottieRef: LottieRef = React.useRef();
+    const lottieRef: LottieRef = React.useRef()
 
     const handleLottieLoaded = React.useCallback(() => {
-        setLottieReady(true);
-        setTimeout(() => lottieRef.current.play(), 5000)
-    },[lottieRef])
+        setLottieReady(true)
+        setTimeout(() => {
+            lottieRef.current.play()
+        }, 2000)
+    }, [lottieRef])
 
     return (
         <div className="section-one">
@@ -69,7 +71,11 @@ const SectionOne = () => {
                     </a>
                 </div>
                 <div className="section-one-right">
-                    {!lottieReady && <div className="section-one-right-image"><div style={{height:"100px"}}/></div>}
+                    {!lottieReady && (
+                        <div className="section-one-right-image">
+                            <div />
+                        </div>
+                    )}
                     <Lottie
                         onDOMLoaded={handleLottieLoaded}
                         rendererSettings={{
@@ -80,6 +86,7 @@ const SectionOne = () => {
                         }}
                         animationData={HeroAnimation}
                         className="section-one-right-image"
+                        style={(!lottieReady && { display: "none" }) || {}}
                         autoplay={false}
                         lottieRef={lottieRef}
                     />
