@@ -19,7 +19,7 @@ export interface ConnectorProps {
     }
     pageContext: {
         source_id: string
-        destination_id
+        destination_id: string
     }
 }
 
@@ -45,9 +45,7 @@ const Connector = ({
                         <div className="connection-descriptions">
                             <div className="connection-description">
                                 <img
-                                    src={
-                                        mapped_source.logoUrl
-                                    }
+                                    src={mapped_source.logoUrl}
                                     alt={`Connector Logo`}
                                     style={{
                                         zIndex: 1,
@@ -60,12 +58,10 @@ const Connector = ({
                                         mapped_source.shortDescription}
                                 </p>
                             </div>
-                            <ColoredLogo/>
+                            <ColoredLogo />
                             <div className="connection-description">
                                 <img
-                                    src={
-                                        mapped_destination.logoUrl
-                                    }
+                                    src={mapped_destination.logoUrl}
                                     alt={`Connector Logo`}
                                     style={{
                                         zIndex: 1,
@@ -101,7 +97,10 @@ const Connector = ({
                             then integrate with your tools of choice.
                         </span>
                         <div className="connector-link-bottom">
-                            <ConnectorsLink/>
+                            <ConnectorsLink
+                                defaultSource={mapped_source.id}
+                                defaultDestination={mapped_destination.id}
+                            />
                         </div>
                     </div>
                 </div>

@@ -47,7 +47,10 @@ export const createPages: GatsbyNode["createPages"] = async ({
         }
     }>(`
         {
-            allStrapiBlogPost(filter: { publishedAt: { ne: null } }) {
+            allStrapiBlogPost(
+                sort: { publishedAt: DESC }
+                filter: { publishedAt: { ne: null } }
+            ) {
                 nodes {
                     updatedAt
                     Slug
@@ -107,33 +110,66 @@ export const createPages: GatsbyNode["createPages"] = async ({
             a.Slug === "featured" ? -999999999 : a.Name.localeCompare(b.Name)
         )
 
-    for (const category of tabCategories) {
-        createPage({
-            path: `blog/${category.Slug}`,
-            component: blog,
-            context: {
-                blogPostIds: allPosts
-                    .filter(post =>
-                        post.tags.some(tag => tag.Slug === category.Slug)
-                    )
-                    .map(post => post.id),
-                categoryTitle: category.Name,
-                categorySlug: category.Slug,
-                tabCategories,
-            },
-        })
+    const blogPageSlug = (path, page) =>
+        page > 0 ? `${path}/${page + 1}` : path
+
+    const createBlogPostPages = (
+        postIds: string[],
+        path: string,
+        title: string,
+        slug: string,
+        pageSize = 30
+    ) => {
+        const totalPages = Math.ceil(postIds.length / pageSize)
+        for (let page = 0; page < totalPages; page += 1) {
+            const pagePostIds = postIds.slice(
+                page * pageSize,
+                (page + 1) * pageSize
+            )
+
+            const calculatedPath = blogPageSlug(path, page)
+            const prevPage = page > 0 ? blogPageSlug(path, page - 1) : null
+            const nextPage =
+                page + 1 < totalPages ? blogPageSlug(path, page + 1) : null
+
+            createPage({
+                path: calculatedPath,
+                component: blog,
+                context: {
+                    blogPostIds: pagePostIds,
+                    categoryTitle: title,
+                    categorySlug: slug,
+                    pagination: {
+                        page,
+                        totalPages,
+                        nextPage,
+                        prevPage,
+                    },
+                    tabCategories,
+                },
+            })
+        }
     }
 
-    createPage({
-        path: "blog",
-        component: blog,
-        context: {
-            blogPostIds: allPosts.map(post => post.id),
-            categoryTitle: "All",
-            categorySlug: "",
-            tabCategories,
-        },
-    })
+    for (const category of tabCategories) {
+        createBlogPostPages(
+            allPosts
+                .filter(post =>
+                    post.tags.some(tag => tag.Slug === category.Slug)
+                )
+                .map(post => post.id),
+            `/blog/${category.Slug}`,
+            category.Name,
+            category.Slug
+        )
+    }
+
+    createBlogPostPages(
+        allPosts.map(post => post.id),
+        "/blog",
+        "All",
+        ""
+    )
 
     // Create blog posts pages
     // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -153,7 +189,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
                         id: post.id,
                         previousPostId,
                         nextPostId,
-                        lastMod: post.updatedAt
+                        lastMod: post.updatedAt,
                     },
                 })
             })
@@ -206,7 +242,8 @@ export const createPages: GatsbyNode["createPages"] = async ({
                 },
             })
 
-            for (const destination_connector of mapped_connectors) {
+            if(normalized_connector.type === "capture")
+            for (const destination_connector of mapped_connectors.filter(con=>con.type === "materialization")) {
                 createPage({
                     path: `/integrations/${normalized_connector.slugified_name}-to-${destination_connector.slugified_name}`,
                     component: connection,

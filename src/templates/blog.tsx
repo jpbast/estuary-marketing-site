@@ -10,8 +10,9 @@ import SearchIcon from "@mui/icons-material/Search"
 import { useLunr } from "react-lunr"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { useMemo } from "react"
-import type {Index} from "lunr";
-import lunr from "lunr";
+import type { Index } from "lunr"
+import lunr from "lunr"
+import { Divider } from "@mui/material"
 
 interface BlogIndexProps {
     data: {
@@ -32,12 +33,24 @@ interface BlogIndexProps {
         }>
         categoryTitle: String
         categorySlug: String
+        pagination: {
+            page: number
+            totalPages: number
+            nextPage?: string
+            prevPage?: string
+        }
     }
 }
 
 const BlogIndex = ({
     data,
-    pageContext: { categoryTitle, categorySlug, tabCategories: realTabCategories, blogPostIds },
+    pageContext: {
+        categoryTitle,
+        categorySlug,
+        tabCategories: realTabCategories,
+        blogPostIds,
+        pagination: { page, totalPages, nextPage, prevPage },
+    },
 }: BlogIndexProps) => {
     const posts = data.allStrapiBlogPost.nodes
 
@@ -50,22 +63,25 @@ const BlogIndex = ({
 
     const results = useMemo(() => {
         const query_result = index.query(q => {
-            const terms = query.split(" ").filter(term=>term.length>0);
-            for(const term of terms){
+            const terms = query.split(" ").filter(term => term.length > 0)
+            for (const term of terms) {
                 q.term(term, {
                     wildcard: lunr.Query.wildcard.TRAILING,
-                    boost: 10
+                    boost: 10,
                 })
                 q.term(term, {
-                    editDistance: Math.min(Math.max(0,term.length-1), 3)
+                    editDistance: Math.min(Math.max(0, term.length - 1), 3),
                 })
             }
             return q
         })
-        return query_result.map(r=>data.localSearchPosts.store[r.ref])
+        return query_result.map(r => data.localSearchPosts.store[r.ref])
     }, [query, index, data.localSearchPosts.store])
 
-    const tabCategories = [{Slug:"",Name:"All",Type:"category"},...realTabCategories]
+    const tabCategories = [
+        { Slug: "", Name: "All", Type: "category" },
+        ...realTabCategories,
+    ]
 
     return (
         <Layout headerTheme="light">
@@ -102,7 +118,7 @@ const BlogIndex = ({
                             </Link>
                         ))}
                     </div>
-                    <div className="blogs-spacer"/>
+                    <div className="blogs-spacer" />
                     <div className="blogs-index-search">
                         <SearchIcon className="blogs-index-input-adornment" />
                         <input
@@ -119,6 +135,20 @@ const BlogIndex = ({
                     ))}
                 </div>
             </div>
+            {(prevPage || nextPage) && (
+                <>
+                    <Divider />
+                    <div className="blogs-nav-wrapper">
+                        {prevPage ? (
+                            <Link to={prevPage}>← Prev Page</Link>
+                        ) : null}
+                        <div style={{ flexGrow: 1 }} />
+                        {nextPage ? (
+                            <Link to={nextPage}>Next Page →</Link>
+                        ) : null}
+                    </div>
+                </>
+            )}
         </Layout>
     )
 }
@@ -131,7 +161,14 @@ export default BlogIndex
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
 export const Head = ({ data: { post } }) => {
-    return <Seo title={"Blog"} description={"More about Estuary and related technologies, straight from the team. Our blog breaks down basic concepts and takes you into the minds of our engineers."} />
+    return (
+        <Seo
+            title={"Blog"}
+            description={
+                "More about Estuary and related technologies, straight from the team. Our blog breaks down basic concepts and takes you into the minds of our engineers."
+            }
+        />
+    )
 }
 
 export const pageQuery = graphql`
