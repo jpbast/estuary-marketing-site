@@ -9,7 +9,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import React, { useMemo, useState } from "react"
 import { normalizeConnector } from "../utils"
 
-export const ConnectorsLink = () => {
+export const ConnectorsLink = ({defaultSource, defaultDestination}: {defaultSource?: string; defaultDestination?: string}) => {
     const {
         postgres: {
             allConnectors: { nodes: connectors },
@@ -45,8 +45,8 @@ export const ConnectorsLink = () => {
         ]
     }, [connectors])
 
-    const [sourceId, setSourceId] = useState<string>(null)
-    const [destinationId, setDestinationId] = useState<string>(null)
+    const [sourceId, setSourceId] = useState<string>(defaultSource)
+    const [destinationId, setDestinationId] = useState<string>(defaultDestination)
 
     const destinationHref = useMemo(() => {
         if (sourceId && destinationId) {

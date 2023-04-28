@@ -31,7 +31,13 @@ const Connector = ({
             <div className="blogs-index-wrapper">
                 <div className="blogs-index-header-wrapper">
                     <div className="connector-index-header">
-                        <div style={{ flex: "1 1 2rem", alignItems: "center" }}>
+                        <div
+                            style={{
+                                flex: "1 1 2rem",
+                                alignItems: "center",
+                                minWidth: "20rem",
+                            }}
+                        >
                             <h2>{mapped.title}</h2>
                             <p>
                                 {mapped.longDescription ??
@@ -39,8 +45,12 @@ const Connector = ({
                             </p>
                         </div>
                         <div
-                            style={{ flex: "1" }}
-                            className="blog-post-header-vectors"
+                            style={{
+                                flex: "1",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
                         >
                             <img
                                 src={mapped.logoUrl}
@@ -76,7 +86,18 @@ const Connector = ({
                             then integrate with your tools of choice.
                         </span>
                         <div className="connector-link-bottom">
-                            <ConnectorsLink/>
+                            <ConnectorsLink
+                                defaultSource={
+                                    pageContext.type === "capture"
+                                        ? pageContext.id
+                                        : null
+                                }
+                                defaultDestination={
+                                    pageContext.type === "materialization"
+                                        ? pageContext.id
+                                        : null
+                                }
+                            />
                         </div>
                     </div>
                 </div>
