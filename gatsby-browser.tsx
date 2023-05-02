@@ -1,9 +1,5 @@
 // custom typefaces
-import * as ReactDOM from "react-dom/client"
 import * as React from "react";
-import { loadableReady } from "@loadable/component"
-import "@fontsource/montserrat/variable.css"
-import "@fontsource/merriweather"
 // normalize CSS across browsers
 import "./src/normalize.css"
 // custom CSS styles
