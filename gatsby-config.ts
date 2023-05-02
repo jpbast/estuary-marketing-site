@@ -90,6 +90,38 @@ const cfg: GatsbyConfig = {
             },
         },
         {
+            /* Include plugin */
+            resolve: "gatsby-omni-font-loader",
+
+            /* Plugin options */
+            options: {
+                /* Font loading mode */
+                mode: "async",
+
+                /* Enable font loading listener to handle FOUT */
+                enableListener: true,
+
+                /* Preconnect URL-s. This example is for Google Fonts */
+                preconnect: ["https://fonts.gstatic.com", "https://fonts.googleapis.com"],
+
+                /* Web fonts. File link should point to font CSS file. */
+                web: [
+                    {
+                        /* Exact name of the font as defied in @font-face CSS rule */
+                        name: "Merriweather",
+                        /* URL to the font CSS file with @font-face definition */
+                        file: "https://fonts.googleapis.com/css2?family=Merriweather",
+                    },
+                    {
+                        /* Exact name of the font as defied in @font-face CSS rule */
+                        name: "Montserrat",
+                        /* URL to the font CSS file with @font-face definition */
+                        file: "https://fonts.googleapis.com/css2?family=Montserrat",
+                    },
+                ],
+            },
+        },
+        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 path: `${__dirname}/src/images`,

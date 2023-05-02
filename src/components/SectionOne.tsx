@@ -29,7 +29,7 @@ const SectionOne = () => {
                                 gatsbyImageData(
                                     layout: FIXED
                                     width: 120
-                                    placeholder: BLURRED
+                                    placeholder: NONE
                                 )
                             }
                         }
@@ -73,7 +73,11 @@ const SectionOne = () => {
                 <div className="section-one-right">
                     {!lottieReady && (
                         <div className="section-one-right-image">
-                            <div />
+                            <svg
+                                viewBox="0 0 870 783"
+                                focusable="false"
+                                preserveAspectRatio="xMaxYMid meet"
+                            />
                         </div>
                     )}
                     <Lottie
