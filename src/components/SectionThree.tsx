@@ -2,7 +2,7 @@ import * as React from "react"
 import loadable from "@loadable/component"
 import { StaticImage } from "gatsby-plugin-image"
 import { useEffect, useState } from "react"
-import ReactPlayer from "react-player"
+import ReactPlayer from "react-player/lazy"
 
 const SectionThree = () => {
     const [hasWindow, setHasWindow] = useState(false)

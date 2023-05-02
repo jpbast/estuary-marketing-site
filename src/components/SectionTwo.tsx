@@ -1,7 +1,6 @@
 import * as React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import FlowLogo from "../svgs/flow-logo.svg"
-import DataFlowGraphic from "../svgs/section-two-data-graphic.svg"
 
 const SectionTwo = () => {
     return (
@@ -32,7 +31,16 @@ const SectionTwo = () => {
                 </div>
             </div>
             <div className="section-two-first-graphic-wrapper">
-                <DataFlowGraphic className="section-two-first-graphic" />
+                <StaticImage
+                    placeholder="none"
+                    alt="dataflow graphic"
+                    src="../images/section-two-data-graphic.png"
+                    layout="constrained"
+                    width={777}
+                    height={429}
+                    quality={100}
+                    className="section-two-first-graphic"
+                />
             </div>
             <div className="section-two-tiles-wrapper">
                 <div className="section-two-tile-wrapper">
@@ -41,9 +49,9 @@ const SectionTwo = () => {
                             Tools the whole team can use
                         </h3>
                         <p className="section-two-tile-text">
-                            Make updates through Flow’s UI or CLI.
-                            Programmatic access for the ability to easily embed and whitelabel pipelines.
-
+                            Make updates through Flow’s UI or CLI. Programmatic
+                            access for the ability to easily embed and
+                            whitelabel pipelines.
                         </p>
                     </div>
                     <div className="section-two-tile">
@@ -57,8 +65,9 @@ const SectionTwo = () => {
                 <div className="section-two-tile-wrapper">
                     <div className="section-two-tile">
                         <h3 className="section-two-tile-title">Reliability</h3>
-                        <p className="section-two-tile-text">Proven, fault-tolerant architecture.
-                            Built upon cloud storage, extended with real-time capabilities.
+                        <p className="section-two-tile-text">
+                            Proven, fault-tolerant architecture. Built upon
+                            cloud storage, extended with real-time capabilities.
                         </p>
                     </div>
                     <div className="section-two-tile">

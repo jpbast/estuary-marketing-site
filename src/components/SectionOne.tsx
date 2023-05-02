@@ -2,9 +2,20 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import type { LottieRef } from "lottie-react"
 
-import HeroAnimation from "../images/hero-animation.json"
-import Lottie, { LottieRef } from "lottie-react"
+const HeroAnimation = import("../images/hero-animation.json")
+const Lottie = React.lazy(() => import("lottie-react"))
+
+const animFallback = (
+    <div className="section-one-right-image">
+        <svg
+            viewBox="0 0 870 783"
+            focusable="false"
+            preserveAspectRatio="xMaxYMid meet"
+        />
+    </div>
+)
 
 const SectionOne = () => {
     const logos = useStaticQuery(graphql`
@@ -39,6 +50,16 @@ const SectionOne = () => {
         }
     `)
 
+    const [heroAnim, setHeroAnim] = React.useState<Awaited<
+        typeof HeroAnimation
+    > | null>(null)
+
+    React.useEffect(() => {
+        HeroAnimation.then(anim => {
+            setHeroAnim(anim.default as any)
+        })
+    }, [])
+
     const [lottieReady, setLottieReady] = React.useState(false)
     const lottieRef: LottieRef = React.useRef()
 
@@ -71,29 +92,27 @@ const SectionOne = () => {
                     </a>
                 </div>
                 <div className="section-one-right">
-                    {!lottieReady && (
-                        <div className="section-one-right-image">
-                            <svg
-                                viewBox="0 0 870 783"
-                                focusable="false"
-                                preserveAspectRatio="xMaxYMid meet"
+                    <React.Suspense fallback={animFallback}>
+                        {!(lottieReady && heroAnim) && animFallback}
+                        {heroAnim && (
+                            <Lottie
+                                onDOMLoaded={handleLottieLoaded}
+                                rendererSettings={{
+                                    viewBoxOnly: true,
+                                    preserveAspectRatio: "xMaxYMid meet",
+                                    progressiveLoad: true,
+                                    focusable: false,
+                                }}
+                                animationData={heroAnim}
+                                className="section-one-right-image"
+                                style={
+                                    (!lottieReady && { display: "none" }) || {}
+                                }
+                                autoplay={false}
+                                lottieRef={lottieRef}
                             />
-                        </div>
-                    )}
-                    <Lottie
-                        onDOMLoaded={handleLottieLoaded}
-                        rendererSettings={{
-                            viewBoxOnly: true,
-                            preserveAspectRatio: "xMaxYMid meet",
-                            progressiveLoad: true,
-                            focusable: false,
-                        }}
-                        animationData={HeroAnimation}
-                        className="section-one-right-image"
-                        style={(!lottieReady && { display: "none" }) || {}}
-                        autoplay={false}
-                        lottieRef={lottieRef}
-                    />
+                        )}
+                    </React.Suspense>
                 </div>
             </div>
             <div className="section-one-bottom">
