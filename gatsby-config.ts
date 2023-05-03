@@ -7,9 +7,7 @@
 import { GatsbyConfig } from "gatsby"
 import { normalizeConnector } from "./src/utils"
 
-require("dotenv").config({
-    path: ".env",
-})
+import {SUPABASE_CONNECTION_STRING} from "./config";
 
 // Disable multiple prepared statements because pgbouncer doesn't like 'em very much
 process.env["POSTGRAPHILE_PREPARED_STATEMENT_CACHE_SIZE"] = "1"
@@ -372,7 +370,7 @@ const cfg: GatsbyConfig = {
         {
             resolve: "gatsby-source-pg",
             options: {
-                connectionString: `postgres://${process.env.GATSBY_DB_USER}:${process.env.GATSBY_DB_PASS}@${process.env.GATSBY_DB_HOST}:${process.env.GATSBY_DB_PORT}/${process.env.GATSBY_DB_NAME}?pgbouncer=true`,
+                connectionString: SUPABASE_CONNECTION_STRING,
                 schema: "public",
                 //   refetchInterval: 60, // Refetch data every 60 seconds
             },

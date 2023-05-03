@@ -8,8 +8,15 @@ import {
 import { useStaticQuery, graphql } from "gatsby"
 import React, { useMemo, useState } from "react"
 import { normalizeConnector } from "../utils"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-export const ConnectorsLink = ({defaultSource, defaultDestination}: {defaultSource?: string; defaultDestination?: string}) => {
+export const ConnectorsLink = ({
+    defaultSource,
+    defaultDestination,
+}: {
+    defaultSource?: string
+    defaultDestination?: string
+}) => {
     const {
         postgres: {
             allConnectors: { nodes: connectors },
@@ -26,6 +33,15 @@ export const ConnectorsLink = ({defaultSource, defaultDestination}: {defaultSour
                         longDescription
                         title
                         logoUrl
+                        logo {
+                            childImageSharp {
+                                gatsbyImageData(
+                                    layout: CONSTRAINED
+                                    placeholder: NONE
+                                    quality: 95
+                                )
+                            }
+                        }
                         recommended
                         connectorTagsByConnectorIdList {
                             protocol
@@ -46,7 +62,8 @@ export const ConnectorsLink = ({defaultSource, defaultDestination}: {defaultSour
     }, [connectors])
 
     const [sourceId, setSourceId] = useState<string>(defaultSource)
-    const [destinationId, setDestinationId] = useState<string>(defaultDestination)
+    const [destinationId, setDestinationId] =
+        useState<string>(defaultDestination)
 
     const destinationHref = useMemo(() => {
         if (sourceId && destinationId) {
@@ -76,9 +93,11 @@ export const ConnectorsLink = ({defaultSource, defaultDestination}: {defaultSour
                             value={c.id}
                             classes={{ root: "connectors-link-menu-item" }}
                         >
-                            <img
-                                src={c.logoUrl}
-                                className={"connectors-link-menu-img"}
+                            <GatsbyImage
+                                image={c.logo?.childImageSharp?.gatsbyImageData}
+                                alt={`${c.title} Logo`}
+                                className="connectors-link-menu-img"
+                                loading="eager"
                             />
                             {c.title}
                         </MenuItem>
@@ -99,9 +118,11 @@ export const ConnectorsLink = ({defaultSource, defaultDestination}: {defaultSour
                             value={c.id}
                             classes={{ root: "connectors-link-menu-item" }}
                         >
-                            <img
-                                src={c.logoUrl}
-                                className={"connectors-link-menu-img"}
+                            <GatsbyImage
+                                image={c.logo?.childImageSharp?.gatsbyImageData}
+                                alt={`${c.title} Logo`}
+                                className="connectors-link-menu-img"
+                                loading="eager"
                             />
                             {c.title}
                         </MenuItem>

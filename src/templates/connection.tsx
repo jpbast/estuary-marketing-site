@@ -44,13 +44,13 @@ const Connector = ({
                         </h1>
                         <div className="connection-descriptions">
                             <div className="connection-description">
-                                <img
-                                    src={mapped_source.logoUrl}
-                                    alt={`Connector Logo`}
-                                    style={{
-                                        zIndex: 1,
-                                        maxWidth: 250,
-                                    }}
+                                <GatsbyImage
+                                    image={
+                                        mapped_source.logo?.childImageSharp
+                                            ?.gatsbyImageData
+                                    }
+                                    style={{ zIndex: 1, maxWidth: 250 }}
+                                    alt="Source Logo"
                                 />
                                 <h4>{mapped_source.title}</h4>
                                 <p>
@@ -60,13 +60,13 @@ const Connector = ({
                             </div>
                             <ColoredLogo />
                             <div className="connection-description">
-                                <img
-                                    src={mapped_destination.logoUrl}
-                                    alt={`Connector Logo`}
-                                    style={{
-                                        zIndex: 1,
-                                        maxWidth: 250,
-                                    }}
+                                <GatsbyImage
+                                    image={
+                                        mapped_destination.logo?.childImageSharp
+                                            ?.gatsbyImageData
+                                    }
+                                    style={{ zIndex: 1, maxWidth: 250 }}
+                                    alt="Destination Logo"
                                 />
                                 <h4>{mapped_destination.title}</h4>
                                 <p>
@@ -144,6 +144,15 @@ export const pageQuery = graphql`
                 longDescription
                 title
                 logoUrl
+                logo {
+                    childImageSharp {
+                        gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: NONE
+                            quality: 95
+                        )
+                    }
+                }
                 recommended
                 connectorTagsByConnectorIdList {
                     protocol
@@ -159,6 +168,15 @@ export const pageQuery = graphql`
                 longDescription
                 title
                 logoUrl
+                logo {
+                    childImageSharp {
+                        gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: NONE
+                            quality: 95
+                        )
+                    }
+                }
                 recommended
                 connectorTagsByConnectorIdList {
                     protocol

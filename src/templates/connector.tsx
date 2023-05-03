@@ -5,6 +5,7 @@ import Seo from "../components/seo"
 import { normalizeConnector } from "../utils"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { ConnectorsLink } from "../components/ConnectorsLink"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 export interface ConnectorProps {
     data: {
@@ -52,14 +53,12 @@ const Connector = ({
                                 alignItems: "center",
                             }}
                         >
-                            <img
-                                src={mapped.logoUrl}
-                                alt={`Connector Logo`}
-                                // className="blog-post-header-vector"
-                                style={{
-                                    zIndex: 1,
-                                    maxWidth: 250,
-                                }}
+                            <GatsbyImage
+                                image={
+                                    mapped.logo?.childImageSharp?.gatsbyImageData
+                                }
+                                style={{ zIndex: 1, maxWidth: 250 }}
+                                alt="Connector Logo"
                             />
                         </div>
                     </div>
@@ -137,6 +136,15 @@ export const pageQuery = graphql`
                 longDescription
                 title
                 logoUrl
+                logo {
+                    childImageSharp {
+                        gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: NONE
+                            quality: 100
+                        )
+                    }
+                }
                 recommended
                 connectorTagsByConnectorIdList {
                     protocol

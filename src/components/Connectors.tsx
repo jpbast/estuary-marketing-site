@@ -37,17 +37,17 @@ const ConnectorCard = ({
     title,
     shortDescription,
     recommended,
-    logoUrl,
+    logo,
     slug,
     type,
 }: ReturnType<typeof normalizeConnector>) => (
     <Link to={`${slug}`}>
         <div className="connector-card">
             <div className="connector-card-top">
-                {logoUrl && (
-                    <img
-                        alt=""
-                        src={logoUrl}
+                {logo && (
+                    <GatsbyImage
+                        image={logo?.childImageSharp?.gatsbyImageData}
+                        alt={`${title} Logo`}
                         className="connector-post-card-image icon-wrapper"
                         loading="eager"
                     />
@@ -101,6 +101,15 @@ export const Connectors = ({
                         longDescription
                         title
                         logoUrl
+                        logo {
+                            childImageSharp {
+                                gatsbyImageData(
+                                    layout: CONSTRAINED
+                                    placeholder: NONE
+                                    quality: 95
+                                )
+                            }
+                        }
                         recommended
                         connectorTagsByConnectorIdList {
                             protocol
@@ -119,6 +128,15 @@ export const Connectors = ({
         [postgres]
     )
 
+    const logosByConnectorId = useMemo(
+        () =>
+            Object.assign(
+                {},
+                ...mappedConnectors.map(con => ({ [con.id]: con.logo }))
+            ),
+        [mappedConnectors]
+    )
+
     const [query, setQuery] = useState("")
     const results = useLunr(
         query.length > 0
@@ -129,7 +147,7 @@ export const Connectors = ({
             : "",
         index,
         store
-    ).filter(res=>(res as any).type===connectorType)
+    ).filter(res => (res as any).type === connectorType)
 
     return (
         <div className="blogs-index-wrapper" style={{ marginBottom: "10rem" }}>
@@ -149,24 +167,27 @@ export const Connectors = ({
 
                 <div className="connectors-search">
                     <div className="connectors-search-body">
-                        <div className="blogs-index-search" style={{marginBottom:0}}>
+                        <div
+                            className="blogs-index-search"
+                            style={{ marginBottom: 0 }}
+                        >
                             <SearchIcon className="blogs-index-input-adornment" />
                             <input
-                                style={{border: "1px solid #D7DCE5"}}
+                                style={{ border: "1px solid #D7DCE5" }}
                                 placeholder={`Search ${title}`}
                                 type="text"
                                 value={query}
                                 onChange={evt => setQuery(evt.target.value)}
                             />
                         </div>
-                        <ConnectorsLink/>
+                        <ConnectorsLink />
                     </div>
                 </div>
 
                 <div className="connector-cards">
                     {(query.length > 0 ? results : mappedConnectors).map(
                         connector => (
-                            <ConnectorCard {...connector} />
+                            <ConnectorCard {...connector} logo={logosByConnectorId[connector.id]} />
                         )
                     )}
                 </div>
