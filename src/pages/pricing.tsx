@@ -211,7 +211,7 @@ const PricingPage = () => {
                                 </ChecklistItem>
                             </div>
                             <p className="pricing-page-tile-price-subtext">
-                                Want to try Flow for free for 30 days, with no limit on data transfer? 
+                                Want to try Flow for free for 30 days, with no limit on data transfer?
                             </p>
                             <Link
                                 className="pricing-page-tile-button"
@@ -219,6 +219,42 @@ const PricingPage = () => {
                             >
                                 Contact us
                             </Link>
+                        </div>
+                    </div>
+                    <div className="pricing-page-faq">
+                        <h2 className="pricing-page-faq-title">Frequently Asked Questions</h2>
+                        <div className="pricing-page-faq-qa-wrapper">
+                            <p className="pricing-page-faq-question">How is my monthly bill calculated?</p>
+                            <p className="pricing-page-faq-answer">Your bill is calculated based on the amount of data that is Captured, Transformed and Materialized by Flow to your destinations.  Each of these are “tasks” and activity from all tasks are summed on a monthly basis.  Unlike other platforms, Flow doesn’t store data and you’ll only pay on data that is actively moved during that month.  In the free tier, you are given 10 GB of streaming data at no charge, at which point the product will stop capturing and materializing additional data.</p>
+                        </div>
+                        <div className="pricing-page-faq-qa-wrapper">
+                            <p className="pricing-page-faq-question">How can I get Flow discounts?</p>
+                            <p className="pricing-page-faq-answer">Discounts are based on two things - volume commitments and contract duration. Please contact us to learn more about the discounts available for your use case.</p>
+                        </div>
+                        <div className="pricing-page-faq-qa-wrapper">
+                            <p className="pricing-page-faq-question">How does Pay as you Go (PAYG) pricing work?</p>
+                            <p className="pricing-page-faq-answer">For customers that are just starting out, or don’t want to commit to a specific volume of data or time commitment, you can simply use Flow and pay for actual consumption on a monthly basis. You enter your credit card information and at the end of each month, your bill is computed based on the amount of data transfer.</p>
+                        </div>
+                        <div className="pricing-page-faq-qa-wrapper">
+                            <p className="pricing-page-faq-question">How does prepay work?</p>
+                            <p className="pricing-page-faq-answer">Customers that want to pay for a fixed amount of data transfer can pay up front and then burn down that usage over time (no more than 12 months). The more data transfer that is paid for up front, the larger the discount from the PAYG price.</p>
+                        </div>
+                        <div className="pricing-page-faq-qa-wrapper">
+                            <p className="pricing-page-faq-question">How long can I trial Flow?</p>
+                            <p className="pricing-page-faq-answer">Flow can be used for free indefinitely, with the only gate that you are limited to 10 GB of data transfer each month. For customers with larger needs, we do offer a 30 day free trial upon request. Please contact us to learn more and to qualify.</p>
+                        </div>
+                        <div className="pricing-page-faq-qa-wrapper">
+                            <p className="pricing-page-faq-question">What if I need more time than 30 days to trial Flow?</p>
+                            <p className="pricing-page-faq-answer">Your bill is calculated based on the amount of data that is Captured, Transformed and Materialized by Flow to your destinations.  Each of these are “tasks” and activity from all tasks are summed on a monthly basis.  Unlike other platforms, Flow doesn’t store data and you’ll only pay on data that is actively moved during that month.  In the free tier, you are given 10 GB of streaming data at no charge, at which point the product will stop capturing and materializing additional data.</p>
+                        </div>
+                        <div className="pricing-page-faq-qa-wrapper">
+                            <p className="pricing-page-faq-question">What are my billing options?</p>
+                            <p className="pricing-page-faq-answer">The Free tier does not require a credit card or any billing information. The Standard tier can be paid via credit card, debit card (for prepay), or Invoice. The Enterprise tier is paid for via Invoice.
+                            </p>
+                        </div>
+                        <div className="pricing-page-faq-qa-wrapper">
+                            <p className="pricing-page-faq-question">How do you keep the costs down with very large data sets?</p>
+                            <p className="pricing-page-faq-answer">If your dataset is very large, we are happy to create a custom pricing to meet all of your needs.</p>
                         </div>
                     </div>
                     <div className="pricing-page-quote-box">
