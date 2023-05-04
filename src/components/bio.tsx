@@ -71,16 +71,16 @@ const Bio = ({ authors }: BioProps) => {
             )
         }
 
-        return combined
+        return <React.Fragment key={name}>combined</React.Fragment>
     })
     if (rendered.length < 1) {
         return null
     }
     return (
         <div className="bio">
-            <p style={{ display: "flex", alignItems: "center", fontSize: 19, flexWrap:"wrap", gap:8 }}>
+            <div style={{ display: "flex", alignItems: "center", fontSize: 19, flexWrap:"wrap", gap:8 }}>
                 {rendered}
-            </p>
+            </div>
         </div>
     )
 }

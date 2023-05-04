@@ -1,4 +1,4 @@
-import { createElement, Fragment, useEffect, useState } from "react"
+import { createElement, Fragment, useEffect, useMemo, useState } from "react"
 import rehypeHighlight from "rehype-highlight"
 import unified from "unified"
 import rehypeParse from "rehype-parse"
@@ -17,9 +17,7 @@ export const ProcessedPost = ({
     body: string
     enableToc?: boolean
 }) => {
-    const [Content, setContent] = useState<React.ReactElement>(null)
-
-    useEffect(() => {
+    const Content: React.ReactElement = useMemo(() => {
         let parser = unified()
             .data("settings", { fragment: true })
             .use(rehypeParse, { fragment: true })
@@ -84,18 +82,14 @@ export const ProcessedPost = ({
                 },
             })
         }
-        // @ts-ignore
-        parser
+        return parser
             .use(rehypeReact, {
                 createElement,
                 Fragment,
                 components: { "img-sharp-inline": ImgSharpInline },
             })
-            .process(body)
-            .then(file => {
-                setContent(file.result as any)
-            })
-    }, [body])
+            .processSync(body).result as any
+    }, [body, enableToc])
 
     return Content
 }
