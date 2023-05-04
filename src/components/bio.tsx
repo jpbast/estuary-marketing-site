@@ -71,7 +71,7 @@ const Bio = ({ authors }: BioProps) => {
             )
         }
 
-        return <React.Fragment key={name}>combined</React.Fragment>
+        return <React.Fragment key={name}>{combined}</React.Fragment>
     })
     if (rendered.length < 1) {
         return null
