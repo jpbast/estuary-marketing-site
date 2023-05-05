@@ -6,6 +6,8 @@ import { normalizeConnector } from "../utils"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { ConnectorsLink } from "../components/ConnectorsLink"
 import { GatsbyImage } from "gatsby-plugin-image"
+import ColoredLogo from "../svgs/colored-logo.svg"
+import DbIcon from "../svgs/db2.svg"
 
 export interface ConnectorProps {
     data: {
@@ -39,27 +41,21 @@ const Connector = ({
                                 minWidth: "20rem",
                             }}
                         >
-                            <h2>{mapped.title}</h2>
-                            <p>
-                                {mapped.longDescription ??
-                                    mapped.shortDescription}
-                            </p>
+                            <h1 className="connector-source-dest-title">Move your data</h1><h1 className="connector-source-dest-title">from <span>{mapped.title}</span></h1><h1 className="connector-source-dest-title">with millisecond</h1><h1 className="connector-source-dest-title">latency</h1>
                         </div>
-                        <div
-                            style={{
-                                flex: "1",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
-                        >
-                            <GatsbyImage
-                                image={
-                                    mapped.logo?.childImageSharp?.gatsbyImageData
-                                }
-                                style={{ zIndex: 1, maxWidth: 250 }}
-                                alt="Connector Logo"
-                            />
+                        <div className="connector-source-dest-image-wrapper">
+                            <div className="connector-source-dest-image-position-1">
+                                <GatsbyImage
+                                    image={
+                                        mapped.logo?.childImageSharp?.gatsbyImageData
+                                    }
+                                    className="connector-source-dest-image"
+                                    alt="Connector Logo"
+                                />
+                            </div>
+                            <div className="connector-source-dest-image-position-2"><ColoredLogo className="connector-source-dest-image"
+                            /></div>
+                            <div className="connector-source-dest-image-position-3"><DbIcon className="connector-source-dest-image" /></div>
                         </div>
                     </div>
                     <div className="connector-index-bottom">
