@@ -3,6 +3,7 @@ import loadable from "@loadable/component"
 import { StaticImage } from "gatsby-plugin-image"
 import { useEffect, useState } from "react"
 import ReactPlayer from "react-player/lazy"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const SectionThree = () => {
     const [hasWindow, setHasWindow] = useState(false)
@@ -34,13 +35,13 @@ const SectionThree = () => {
                 )}
             </div>
             <div className="section-three-try-it-button-wrapper">
-                <a
+                <OutboundLink
                     target="_blank"
                     href="https://dashboard.estuary.dev/register"
                     className="section-three-try-it-button"
                 >
                     Try it free
-                </a>
+                </OutboundLink>
             </div>
         </div>
     )

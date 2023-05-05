@@ -11,6 +11,7 @@ import OperationalAnalytics from "../svgs/icon-operational-analytics.svg"
 import Customer360 from "../svgs/icon-customer-360.svg"
 import RealTimeAnalytics from "../svgs/icon-real-time-analytics.svg"
 import DataSharing from "../svgs/icon-data-sharing.svg"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const SectionFour = () => {
     return (
@@ -118,9 +119,9 @@ const SectionFour = () => {
                         Use it free with hands-on support.  Scale without
                         bounds.
                     </p>
-                    <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button">
+                    <OutboundLink target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button">
                         Try it free
-                    </a>
+                    </OutboundLink>
                 </div>
             </div>
         </div>

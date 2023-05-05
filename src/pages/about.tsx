@@ -138,7 +138,7 @@ const AboutPage = () => {
                             passionate about providing data integration tools
                             for users across a spectrum of use-cases,
                             industries, and budgets. You can read more about our
-                            story <a href="https://estuary.dev/the-estuary-story-and-guiding-principles/">here.</a>
+                            story <Link to="/the-estuary-story-and-guiding-principles/">here.</Link>
                         </p>
                     </div>
                     <div className="product-flow-section-one-right">
@@ -254,12 +254,12 @@ const AboutPage = () => {
                     <div className="about-current-openings-list">
                         {jobs.length > 0
                             ? jobs.map(job => (
-                                <a
-                                    href={`#${job.slug}`}
+                                <Link
+                                    to={`#${job.slug}`}
                                     className="about-current-opening-title"
                                 >
                                     {job.title}
-                                </a>
+                                </Link>
                             ))
                             : null}
                         <Link

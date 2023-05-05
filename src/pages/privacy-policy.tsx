@@ -1,5 +1,6 @@
 import * as React from "react";
 import Layout from "../components/layout";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const PrivacyPolicy = () => {
     return (
@@ -41,10 +42,10 @@ const PrivacyPolicy = () => {
                 <p>We use one or more third–party analytics services to evaluate your use of the Services, as the case may be, by compiling reports on activity (based on their collection of IP addresses, Internet service provider, browser type, operating system and language, referring and exit pages and URLs, data and time, amount of time spent on particular pages, what sections of the Services you visit, number of links clicked, search terms and other similar data with respect to how you use the Services) and analyzing performance metrics. These third parties use cookies and other technologies to help collect, analyze, and provide us reports or other data.</p>
                 <p>By accessing and using the Services, you consent to the processing of data about you by these analytics providers in the manner and for the purposes set out in this Privacy Policy. For more information on these third parties, including how to opt out from certain data collection, please visit the sites below. Please be advised that if you opt out of any service, you may not be able to use the full functionality of the Services.</p>
 
-                <p>For Google Analytics, please visit: <a href="https://www.google.com/analytics">https://www.google.com/analytics</a></p>
-                <p>For Hotjar, please visit: <a href="https://www.hotjar.com/legal/policies/privacy/">https://www.hotjar.com/legal/policies/privacy/</a></p>
-                <p>For Mailchimp please visit: <a href="https://mailchimp.com/legal/privacy/">https://mailchimp.com/legal/privacy/</a></p>
-                <p>For Hubspot please visit: <a href="https://legal.hubspot.com/privacy-policy">https://legal.hubspot.com/privacy-policy</a></p>
+                <p>For Google Analytics, please visit: <OutboundLink href="https://www.google.com/analytics">https://www.google.com/analytics</OutboundLink></p>
+                <p>For Hotjar, please visit: <OutboundLink href="https://www.hotjar.com/legal/policies/privacy/">https://www.hotjar.com/legal/policies/privacy/</OutboundLink></p>
+                <p>For Mailchimp please visit: <OutboundLink href="https://mailchimp.com/legal/privacy/">https://mailchimp.com/legal/privacy/</OutboundLink></p>
+                <p>For Hubspot please visit: <OutboundLink href="https://legal.hubspot.com/privacy-policy">https://legal.hubspot.com/privacy-policy</OutboundLink></p>
 
                 <p className="privacy-bold">Aggregate Data</p>
                 <p>In an ongoing effort to better understand our users and the Services, we might analyze data with respect to how you use the Services, including Usage Data, alone and in combination with other data (including anonymized elements of the Customer Content), and may use such combined data in an aggregate and anonymous manner to operate, maintain, manage, and improve the Services. This aggregate information does not identify you personally. We may share this aggregate data with our affiliates, agents, and business partners. We may also disclose aggregated user statistics to describe the Services to current and prospective business partners and to other third parties for other lawful purposes.</p>

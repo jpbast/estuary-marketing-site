@@ -8,6 +8,7 @@ import ColoredLogo from "../svgs/colored-logo.svg"
 import SlackIcon from "../svgs/slack-outline.svg"
 import GithubIcon from "../svgs/github-outline.svg"
 import clsx from "clsx"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const navItems: NavItem[] = [
     {
@@ -125,20 +126,20 @@ const Header = (props: { theme: "light" | "dark" }) => {
                         ))}
                     </div>
                     <div className="global-header-login-try">
-                        <a
+                        <OutboundLink
                             target="_blank"
                             href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email"
                             className="header-social-icon"
                         >
                             <SlackIcon className="social-icon" />
-                        </a>
-                        <a
+                        </OutboundLink>
+                        <OutboundLink
                             target="_blank"
                             href="https://github.com/estuary/flow"
                             className="header-social-icon"
                         >
                             <GithubIcon className="social-icon" />
-                        </a>
+                        </OutboundLink>
                         <Link
                             className="global-header-link"
                             to="https://dashboard.estuary.dev"
@@ -146,13 +147,13 @@ const Header = (props: { theme: "light" | "dark" }) => {
                         >
                             Log in
                         </Link>
-                        <a
+                        <OutboundLink
                             target="_blank"
                             href="https://dashboard.estuary.dev/register"
                             className="global-header-try-it-button"
                         >
                             Try it free
-                        </a>
+                        </OutboundLink>
                     </div>
                 </div>
                 <div className="global-header-mobile-menu-wrapper">

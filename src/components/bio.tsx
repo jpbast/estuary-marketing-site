@@ -1,5 +1,6 @@
 import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 export interface BioAuthor {
     name: string
@@ -62,12 +63,12 @@ const Bio = ({ authors }: BioProps) => {
 
         if (link) {
             combined = (
-                <a
+                <OutboundLink
                     href={link}
                     style={{ display: "flex", alignItems: "center" }}
                 >
                     {combined}
-                </a>
+                </OutboundLink>
             )
         }
 

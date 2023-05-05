@@ -5,7 +5,7 @@ import {
     MenuItem,
     Select,
 } from "@mui/material"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import React, { useMemo, useState } from "react"
 import { normalizeConnector } from "../utils"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -129,9 +129,9 @@ export const ConnectorsLink = ({
                     ))}
                 </Select>
             </FormControl>
-            <a className="connector-link-button" href={destinationHref}>
+            <Link className="connector-link-button" to={destinationHref}>
                 Details
-            </a>
+            </Link>
         </div>
     )
 }
