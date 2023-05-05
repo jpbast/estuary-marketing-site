@@ -11,6 +11,7 @@ import PricingCloud from "../svgs/pricing-cloud.svg"
 import PricingEnterprise from "../svgs/pricing-enterprise.svg"
 import ComingSoon from "../svgs/coming-soon-icon.svg"
 import GraphicQuote from "../svgs/graphic-quote.svg"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 function gByteLabel(gb: number,maxPrec=10) {
     const units = ["GB", "TB"]
@@ -175,13 +176,13 @@ const PricingPage = () => {
                                     monitoring
                                 </ChecklistItem>
                             </div>
-                            <a
+                            <OutboundLink
                                 target="_blank"
                                 href="https://dashboard.estuary.dev/register"
                                 className="pricing-page-tile-button"
                             >
                                 Try it free
-                            </a>
+                            </OutboundLink>
                         </div>
                         <div className="pricing-page-tile">
                             <PricingEnterprise className="pricing-page-tile-icon icon-wrapper" />

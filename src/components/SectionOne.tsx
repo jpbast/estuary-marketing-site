@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import type { LottieRef } from "lottie-react"
 import { useMediaQuery, useTheme } from "@mui/material"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 
 const animFallback = (
@@ -114,13 +115,13 @@ const SectionOne = () => {
                             transforms.
                         </p>
                     </div>
-                    <a
+                    <OutboundLink
                         target="_blank"
                         href="https://dashboard.estuary.dev/register"
                         className="section-one-try-it-button"
                     >
                         Build a free streaming pipeline
-                    </a>
+                    </OutboundLink>
                 </div>
                 <div className="section-one-right">
                     {isMobile || isSmall ? animFallback : <AnimatedHero/>}

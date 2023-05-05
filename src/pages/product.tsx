@@ -19,6 +19,7 @@ import FlowSchemaInference from "../svgs/product-flow-schema-inference.svg"
 import DataFlowAnimation from "../images/estuary-product-flow-animation.json"
 import Lottie from 'lottie-react';
 import Seo from "../components/seo"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 // import Eximage from "../images/img.png"
 
 const ProductPage = () => {
@@ -35,12 +36,12 @@ const ProductPage = () => {
                                 Use it free with hands-on support. Scale without
                                 bounds.
                             </p>
-                            <a target="_blank" href="https://dashboard.estuary.dev/register"
+                            <OutboundLink target="_blank" href="https://dashboard.estuary.dev/register"
                                 className="product-flow-section-one-try-it-button"
                                 
                             >
                                 Try it free
-                            </a>
+                            </OutboundLink>
                         </div>
                         <div className="product-flow-section-one-right">
                             <FlowLogo className="product-flow-section-one-image" />
@@ -271,9 +272,9 @@ const ProductPage = () => {
                                 Use it free with hands-on support.  Scale
                                 without bounds.
                             </p>
-                            <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button">
+                            <OutboundLink target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button">
                                 Try it free
-                            </a>
+                            </OutboundLink>
                         </div>
                     </div>
                 </div>

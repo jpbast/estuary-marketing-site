@@ -5,6 +5,7 @@ import SlackIcon from "../svgs/slack-outline.svg"
 import GithubIcon from "../svgs/github-outline.svg"
 import LinkedinIcon from "../svgs/linkedin-outline.svg"
 import TwitterIcon from "../svgs/twitter-outline.svg"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const Footer = () => {
     return (
@@ -63,26 +64,26 @@ const Footer = () => {
                         <Link to="/blog" className="global-footer-right-link">
                             Blog
                         </Link>
-                        <a
+                        <OutboundLink
                             target="_blank"
                             href="https://github.com/estuary/flow"
                             className="global-footer-right-link"
                         >
                             Github
-                        </a>
+                        </OutboundLink>
                         <Link
                             to="/about#contact-us"
                             className="global-footer-right-link"
                         >
                             Contact
                         </Link>
-                        <a
+                        <OutboundLink
                             target="_blank"
                             href="https://docs.estuary.dev/"
                             className="global-footer-right-link"
                         >
                             Docs
-                        </a>
+                        </OutboundLink>
                     </div>
                     <div className="global-footer-right-link-wrapper">
                         <p className="global-footer-subtext-title">Services</p>
@@ -114,39 +115,39 @@ const Footer = () => {
                             {` `}
                         </p>
 
-                        <a
+                        <OutboundLink
                             className="global-footer-copyright-link"
                             href="https://www.estuary.dev/"
                         >
                             estuary.dev
-                        </a>
+                        </OutboundLink>
                     </div>
 
                     <div className="global-footer-bottom-social">
-                        <a
+                        <OutboundLink
                             target="_blank"
                             href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email"
                         >
                             <SlackIcon className="social-icon" />
-                        </a>
-                        <a
+                        </OutboundLink>
+                        <OutboundLink
                             target="_blank"
                             href="https://github.com/estuary/flow"
                         >
                             <GithubIcon className="social-icon" />
-                        </a>
-                        <a
+                        </OutboundLink>
+                        <OutboundLink
                             target="_blank"
                             href="https://www.linkedin.com/company/65266256/"
                         >
                            <LinkedinIcon className="social-icon"/>
-                        </a>
-                        <a
+                        </OutboundLink>
+                        <OutboundLink
                             target="_blank"
                             href="https://twitter.com/EstuaryDev"
                         >
                             <TwitterIcon className="social-icon"/>
-                        </a>
+                        </OutboundLink>
                     </div>
                 </div>
             </div>

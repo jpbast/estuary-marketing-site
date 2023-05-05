@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import Slider from "./Slider"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const SectionSix = () => {
     return (
@@ -9,9 +10,9 @@ const SectionSix = () => {
             <div className="section-six-slider-wrapper">
                 <p className="section-four-header-small">Built for who</p>
                 <Slider />
-                <a target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button section-six-margin">
+                <OutboundLink target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button section-six-margin">
                     Try it free
-                </a>
+                </OutboundLink>
             </div>
             <div className="section-six-right-wrapper">
                 <div className="section-six-header-vectors">
