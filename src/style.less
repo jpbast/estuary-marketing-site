@@ -474,12 +474,15 @@ input {
 .section-one-left {
   display: flex;
   flex-direction: column;
-}
-
-.section-one-h1 {
-  color: #FFFFFF;
-  width: 550px;
-  margin: 0px 0 10px 0;
+  & h1 {
+    color: #FFFFFF;
+    margin: 0px 0 10px 0;
+  }
+  @media(min-width:810px) and (max-width: 900px) {
+    & h1 {
+        font-size: var(--fontSize-5);
+    }
+  }
 }
 
 .section-one-subtext-wrapper {
@@ -2723,9 +2726,10 @@ table th {
         max-height: 55vw;
         min-height: 14rem;
         left: unset;
-        object-fit: contain;
+        object-fit: contain !important;
         & img {
-            object-fit: contain;
+            object-fit: contain !important;
+            object-position: right center;
         }
     }
     & > :not(:first-child) {
