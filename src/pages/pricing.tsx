@@ -57,12 +57,12 @@ const PricingPage = () => {
 
     const sliderScale = x => 1 / (1 + Math.E ** ((x * x_factor) * -1));
     const inverseSliderScale = x => Math.log(x / (1 - x)) / x_factor
-    const marks = (isMedium ? [10, 500, 1000, 5000] : [10, 250, 500, 1000, 5000]).map(v => ({
+    const marks = (isMedium ? [27, 500, 1000, 5000] : [27, 250, 500, 1000, 5000]).map(v => ({
         label: gByteLabel(v, 0),
         value: sliderScale(v),
     }));
     console.log(marks)
-    const [selectedGB, setSelectedGB] = React.useState(sliderScale(10))
+    const [selectedGB, setSelectedGB] = React.useState(sliderScale(27))
     return (
         <Layout headerTheme="light">
             <div className="pricing-page">
@@ -93,14 +93,12 @@ const PricingPage = () => {
                             <p className="pricing-page-tile-name">
                                 Free
                             </p>
+                            <p className="pricing-page-tile-price-subtext">Free for up to two tasks and 10 GB/Mo.  No credit card required.</p>
                             <p className="pricing-page-price">
                                 <span className="pricing-page-price-bold">
                                     $0
                                 </span>
                                 /month
-                            </p>
-                            <p className="pricing-page-tile-price-subtext">
-                                Use Estuary Flow for up to perform real-time transformation of up to 10 GB/mo. No credit card required.
                             </p>
                             <div className="pricing-page-checklist-wrapper">
                                 <ChecklistItem>
@@ -134,22 +132,19 @@ const PricingPage = () => {
                         </div>
                         <div className="pricing-page-tile">
                             <PricingCloud className="pricing-page-tile-icon icon-wrapper" />
-                            <p className="pricing-page-tile-name">Standard</p>
+                            <p className="pricing-page-tile-name">Cloud</p>
+                            <p className="pricing-page-tile-price-subtext">Up to 27GB/month for $20 then $0.75/GB.</p>
                             <p className="pricing-page-price">
                                 {calculatePrice(inverseSliderScale(selectedGB))}
-                            </p>
-                            <p className="pricing-page-tile-price-subtext">
-                                Use Estuary Flow starting at $0.75/GB transferred. All features in Free, plus:
                             </p>
                             <Slider
                                 value={selectedGB}
                                 onChange={(_, val) =>
                                     setSelectedGB(sliderScale(Math.round(inverseSliderScale(val || val[0]))))
                                 }
-                                min={sliderScale(10)}
-                                max={sliderScale(5000)}
-                                step={sliderScale(10) / 1000}
-                                // scale={sliderScale}
+                                min={marks[0].value}
+                                max={marks[marks.length-1].value}
+                                step={marks[0].value / 1000}
                                 marks={marks}
                                 style={{ margin: `0 0 3rem 0` }}
                             />
@@ -161,6 +156,7 @@ const PricingPage = () => {
                                     </span>{" "}
                                     average monthly changes
                                 </ChecklistItem> */}
+                                <p>Everything in Flow Free plus:</p>
                                 <ChecklistItem>99.9% SLA</ChecklistItem>
                                 <ChecklistItem>Limitless horizontal scaling</ChecklistItem>
                                 <ChecklistItem>Unlimited collections, captures and materializations</ChecklistItem>
@@ -182,13 +178,11 @@ const PricingPage = () => {
                         <div className="pricing-page-tile">
                             <PricingEnterprise className="pricing-page-tile-icon icon-wrapper" />
                             <p className="pricing-page-tile-name">Enterprise</p>
+                            <p className="pricing-page-tile-price-subtext">For large or custom deployments of Flow.</p>
                             <p className="pricing-page-price">
                                 <span className="pricing-page-price-bold">
                                     Custom
                                 </span>
-                            </p>
-                            <p className="pricing-page-tile-price-subtext">
-                                For very large deployments, and/or customers that require Flow to run in their own VPC.
                             </p>
                             <div className="pricing-page-checklist-wrapper-custom">
                                 <ChecklistItem>
