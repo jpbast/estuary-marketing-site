@@ -67,6 +67,8 @@ function initGTM() {
     script.async = true
     script.src = `https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`
 
+    window.dataLayer = window.dataLayer || []
+
     script.onload = () => {
         window.dataLayer = window.dataLayer || []
         function gtag(...args) {
