@@ -41,7 +41,21 @@ const Connector = ({
                                 minWidth: "20rem",
                             }}
                         >
-                            <h1 className="connector-source-dest-title">Move your data</h1><h1 className="connector-source-dest-title">from <span>{mapped.title}</span></h1><h1 className="connector-source-dest-title">with millisecond</h1><h1 className="connector-source-dest-title">latency</h1>
+                            <h1 className="connector-source-dest-title">Move your data</h1>
+                            <h1 className="connector-source-dest-title">from <span>{mapped.title}</span></h1>
+                            <h1 className="connector-source-dest-title">with millisecond</h1>
+                            <h1 className="connector-source-dest-title">latency</h1>
+                            <div className="connector-title-subtext">
+                                <span>
+                                    Estuary builds free, open-source connectors to{" "}
+                                    {pageContext.type === "capture"
+                                        ? "extract data from"
+                                        : "write data to"}{" "}
+                                    extract data from {mapped.title} in real-time,
+                                    allowing you to enable a copy of your data wherever
+                                    you want.
+                                </span>
+                            </div>
                         </div>
                         <div className="connector-source-dest-image-wrapper">
                             <div className="connector-source-dest-image-position-1">
@@ -64,15 +78,6 @@ const Connector = ({
                             {pageContext.type === "capture" ? "from" : "to"}{" "}
                             {mapped.title} in minutes with millisecond latency.
                         </h4>
-                        <span>
-                            Estuary builds free, open-source connectors to{" "}
-                            {pageContext.type === "capture"
-                                ? "extract data from"
-                                : "write data to"}{" "}
-                            extract data from {mapped.title} in real-time,
-                            allowing you to enable a copy of your data wherever
-                            you want.
-                        </span>
 
                         <FlowLogo style={{ marginTop: "1rem" }} />
                         <h2>All your data, where you need it</h2>
