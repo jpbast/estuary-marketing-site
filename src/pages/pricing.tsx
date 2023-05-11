@@ -10,7 +10,6 @@ import BlueBullet from "../svgs/blue-bullet.svg"
 import PricingOpenSource from "../svgs/pricing-open-source.svg"
 import PricingCloud from "../svgs/pricing-cloud.svg"
 import PricingEnterprise from "../svgs/pricing-enterprise.svg"
-import ComingSoon from "../svgs/coming-soon-icon.svg"
 import GraphicQuote from "../svgs/graphic-quote.svg"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 
@@ -175,7 +174,7 @@ const PricingPage = () => {
                                     </span>{" "}
                                     average monthly changes
                                 </ChecklistItem> */}
-                                <p>Everything in Flow Free plus:</p>
+                                <p style={{marginTop:0}}>Everything in Flow Free plus:</p>
                                 <ChecklistItem>99.9% SLA</ChecklistItem>
                                 <ChecklistItem>
                                     Limitless horizontal scaling
@@ -231,7 +230,9 @@ const PricingPage = () => {
                                     Customer Success Manager
                                 </ChecklistItem>
                                 <div className="pricing-page-checklist-item">
-                                    <ComingSoon className="pricing-page-tile-coming-soon-image" />
+                                    <div className="pricing-page-tile-coming-soon-image">
+                                        <p>Coming Soon</p>
+                                    </div>
                                 </div>
                                 <ChecklistItem bullet>
                                     Advanced SSO (OAuth / SAML / SCIM)
