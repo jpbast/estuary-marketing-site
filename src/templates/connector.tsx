@@ -53,7 +53,7 @@ const Connector = ({
                                     alt="Connector Logo"
                                 />
                             </div>
-                            <div className="connector-source-dest-image-position-2"><ColoredLogo className="connector-source-dest-image"
+                            <div className="connector-source-dest-image-position-2"><ColoredLogo style={{ maxWidth: "80px" }} className="connector-source-dest-image"
                             /></div>
                             <div className="connector-source-dest-image-position-3"><DbIcon className="connector-source-dest-image" /></div>
                         </div>

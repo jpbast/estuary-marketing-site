@@ -2613,43 +2613,60 @@ table th {
 }
 
 .connector-source-dest-image-wrapper {
-  flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .connector-source-dest-image {
-  position: absolute;
-  height: 90px;
-  width: 75px;
+  width: 75%;
+  max-width: 160px;
+  vertical-align: top;
 }
 
 .connector-source-dest-image-position-1 {
-  left: 25%;
-  z-index: 1;
-  max-width: 160px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0px 20px 0 20px;
 }
 
 .connector-source-dest-image-position-2 {
-  left: 50%;
-  top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 20px 0 20px;
 }
 
 .connector-source-dest-image-position-3 {
-  left: 75%;
-  top: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0px 20px 0 20px;
 }
 
 /* MEDIA QUERIES */
+
+@media (max-width: 1250px){
+  .connector-source-dest-image-wrapper {
+    max-height: 50vh;
+    margin-top: 10%;
+  }
+}
 
 @media (max-width: 1000px) {
   .header-social-icon {
     display: none;
   }
+  .connector-source-dest-image-wrapper {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 @media (max-width: 810px) {
+  .connector-source-dest-image-wrapper {
+    display: none;
+  }
+
   .blog-post {
     padding: 2rem;
   }
