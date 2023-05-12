@@ -106,6 +106,7 @@ const Slider = () => {
                                 onClick={() => {
                                     instanceRef.current?.moveToIdx(idx)
                                 }}
+                                aria-label="Carousel Target"
                                 className={"dot" + (currentSlide === idx ? " active" : "")}
                             ></button>
                         )
