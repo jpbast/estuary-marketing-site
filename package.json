@@ -16,10 +16,12 @@
     "@types/loadable__component": "^5.13.4",
     "@types/lunr": "^2.3.4",
     "@types/react-dom": "^18.0.11",
+    "add": "^2.0.6",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "gatsby": "^5.8.1",
+    "gatsby-background-image": "^1.6.0",
     "gatsby-image": "^3.11.0",
     "gatsby-omni-font-loader": "^2.0.2",
     "gatsby-plugin-feed": "^5.8.0",
@@ -48,6 +50,7 @@
     "gatsby-transformer-rehype": "^2.0.1",
     "gatsby-transformer-remark": "^6.8.0",
     "gatsby-transformer-sharp": "^5.8.0",
+    "intersection-observer": "^0.12.2",
     "keen-slider": "^6.8.5",
     "lottie-react": "^2.4.0",
     "lunr": "^2.3.9",
@@ -68,7 +71,8 @@
     "rehype-slug": "^5.1.0",
     "rehype-toc": "^3.0.2",
     "unified": "^9.2.2",
-    "unist-util-visit": "^4.1.2"
+    "unist-util-visit": "^4.1.2",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.30",

@@ -6,6 +6,7 @@ import { normalizeConnector } from "../utils"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { ConnectorsLink } from "../components/ConnectorsLink"
 import { GatsbyImage } from "gatsby-plugin-image"
+import BackgroundImageWrapper from "../components/BackgroundImageWrapper"
 
 export interface ConnectorProps {
     data: {
@@ -29,7 +30,7 @@ const Connector = ({
 
     return (
         <Layout headerTheme="light">
-            <div className="blogs-index-wrapper">
+            <BackgroundImageWrapper>
                 <div className="blogs-index-header-wrapper">
                     <div className="connector-index-header">
                         <div
@@ -100,7 +101,7 @@ const Connector = ({
                         </div>
                     </div>
                 </div>
-            </div>
+            </BackgroundImageWrapper>
         </Layout>
     )
 }

@@ -7,6 +7,7 @@ import FlowLogo from "../svgs/flow-logo.svg"
 import ColoredLogo from "../svgs/colored-logo.svg"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { ConnectorsLink } from "../components/ConnectorsLink"
+import BackgroundImageWrapper from "../components/BackgroundImageWrapper"
 
 export interface ConnectorProps {
     data: {
@@ -35,7 +36,7 @@ const Connector = ({
 
     return (
         <Layout headerTheme="light">
-            <div className="blogs-index-wrapper">
+            <BackgroundImageWrapper>
                 <div className="blogs-index-header-wrapper">
                     <div className="connection-index-header">
                         <h1>
@@ -104,7 +105,7 @@ const Connector = ({
                         </div>
                     </div>
                 </div>
-            </div>
+            </BackgroundImageWrapper>
         </Layout>
     )
 }
