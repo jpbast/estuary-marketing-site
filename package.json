@@ -16,7 +16,6 @@
     "@types/loadable__component": "^5.13.4",
     "@types/lunr": "^2.3.4",
     "@types/react-dom": "^18.0.11",
-    "add": "^2.0.6",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
@@ -71,8 +70,7 @@
     "rehype-slug": "^5.1.0",
     "rehype-toc": "^3.0.2",
     "unified": "^9.2.2",
-    "unist-util-visit": "^4.1.2",
-    "yarn": "^1.22.19"
+    "unist-util-visit": "^4.1.2"
   },
   "devDependencies": {
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.30",
