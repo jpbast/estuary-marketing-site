@@ -130,6 +130,7 @@ const Header = (props: { theme: "light" | "dark" }) => {
                             target="_blank"
                             href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email"
                             className="header-social-icon"
+                            aria-label="Slack Invite Link"
                         >
                             <SlackIcon className="social-icon" />
                         </OutboundLink>
@@ -137,6 +138,7 @@ const Header = (props: { theme: "light" | "dark" }) => {
                             target="_blank"
                             href="https://github.com/estuary/flow"
                             className="header-social-icon"
+                            aria-label="Github Repo Link"
                         >
                             <GithubIcon className="social-icon" />
                         </OutboundLink>

@@ -127,24 +127,28 @@ const Footer = () => {
                         <OutboundLink
                             target="_blank"
                             href="https://estuary-dev.slack.com/join/shared_invite/zt-86nal6yr-VPbv~YfZE9Q~6Zl~gmZdFQ#/shared-invite/email"
+                            aria-label="Slack Invite Link"
                         >
                             <SlackIcon className="social-icon" />
                         </OutboundLink>
                         <OutboundLink
                             target="_blank"
                             href="https://github.com/estuary/flow"
+                            aria-label="Github Repo Link"
                         >
                             <GithubIcon className="social-icon" />
                         </OutboundLink>
                         <OutboundLink
                             target="_blank"
                             href="https://www.linkedin.com/company/65266256/"
+                            aria-label="Linkedin Company Link"
                         >
                            <LinkedinIcon className="social-icon"/>
                         </OutboundLink>
                         <OutboundLink
                             target="_blank"
                             href="https://twitter.com/EstuaryDev"
+                            aria-label="Twitter Company Link"
                         >
                             <TwitterIcon className="social-icon"/>
                         </OutboundLink>
