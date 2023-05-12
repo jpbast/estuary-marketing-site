@@ -13,6 +13,7 @@ import { useMemo } from "react"
 import type { Index } from "lunr"
 import lunr from "lunr"
 import { Divider } from "@mui/material"
+import BackgroundImageWrapper from "../components/BackgroundImageWrapper"
 
 interface BlogIndexProps {
     data: {
@@ -85,7 +86,7 @@ const BlogIndex = ({
 
     return (
         <Layout headerTheme="light">
-            <div className="blogs-index-wrapper">
+            <BackgroundImageWrapper>
                 <div className="blogs-index-header-wrapper">
                     <div className="blogs-index-header">
                         <div className="blog-post-header-vectors">
@@ -134,7 +135,7 @@ const BlogIndex = ({
                         <BlogPostCard {...post} />
                     ))}
                 </div>
-            </div>
+            </BackgroundImageWrapper>
             {(prevPage || nextPage) && (
                 <>
                     <Divider />

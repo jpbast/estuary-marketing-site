@@ -8,6 +8,7 @@ import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import ChevronRight from "@mui/icons-material/ChevronRight"
 import SearchIcon from "@mui/icons-material/Search"
 import { ConnectorsLink } from "./ConnectorsLink"
+import BackgroundImageWrapper from "./BackgroundImageWrapper"
 
 export interface ConnectorsProps {
     connectorType: "capture" | "materialization"
@@ -44,14 +45,12 @@ const ConnectorCard = ({
     <Link to={`${slug}`}>
         <div className="connector-card">
             <div className="connector-card-top">
-                {logo && (
-                    <GatsbyImage
-                        image={logo?.childImageSharp?.gatsbyImageData}
-                        alt={`${title} Logo`}
-                        className="connector-post-card-image icon-wrapper"
-                        loading="eager"
-                    />
-                )}
+                <GatsbyImage
+                    image={logo.childImageSharp.gatsbyImageData}
+                    alt={`${title} Logo`}
+                    className="connector-post-card-image icon-wrapper"
+                    loading="eager"
+                />
                 {recommended && (
                     <>
                         <div style={{ flexGrow: 1 }} />
@@ -150,7 +149,7 @@ export const Connectors = ({
     ).filter(res => (res as any).type === connectorType)
 
     return (
-        <div className="blogs-index-wrapper" style={{ marginBottom: "10rem" }}>
+        <BackgroundImageWrapper style={{ marginBottom: "10rem" }}>
             <div className="blogs-index-header-wrapper">
                 <div className="connector-index-header">
                     <div style={{ maxWidth: "30rem" }}>
@@ -187,7 +186,10 @@ export const Connectors = ({
                 <div className="connector-cards">
                     {(query.length > 0 ? results : mappedConnectors).map(
                         connector => (
-                            <ConnectorCard {...connector} logo={logosByConnectorId[connector.id]} />
+                            <ConnectorCard
+                                {...connector}
+                                logo={logosByConnectorId[connector.id]}
+                            />
                         )
                     )}
                 </div>
@@ -217,6 +219,6 @@ export const Connectors = ({
                     />
                 </div>
             </div>
-        </div>
+        </BackgroundImageWrapper>
     )
 }
