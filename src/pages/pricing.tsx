@@ -125,7 +125,7 @@ const PricingPage = () => {
                                     </OutboundLink>
                                 </ChecklistItem>
                                 <ChecklistItem>
-                                One end to end data pipeline: Capture, Transformation and Materialization
+                                    Use up to 50 collections, 2 total tasks (Captures, Materializations and/or transformations)
                                 </ChecklistItem>
                                 <ChecklistItem>
                                     Up to 50 collections
@@ -168,12 +168,6 @@ const PricingPage = () => {
                             />
 
                             <div className="pricing-page-checklist-wrapper">
-                                {/* <ChecklistItem>
-                                    <span className="pricing-page-checklist-item-text-bold">
-                                        {gByteLabel(inverseSliderScale(selectedGB))}
-                                    </span>{" "}
-                                    average monthly changes
-                                </ChecklistItem> */}
                                 <p style={{marginTop:0}}>Everything in Flow Free plus:</p>
                                 <ChecklistItem>99.9% SLA</ChecklistItem>
                                 <ChecklistItem>
