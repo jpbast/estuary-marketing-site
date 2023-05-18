@@ -1926,7 +1926,7 @@ table th {
 
 .blogs-index-wrapper {
   background-image: url("../src/images/blogs-bg.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   padding-bottom: 2rem;
 }
@@ -2098,6 +2098,7 @@ table th {
   margin-top: 2rem;
   padding: 0 ~"calc(min(10vw,200px))";
   display: flex;
+  min-height: 600px;
 }
 
 .connector-features-desc-subwrapper {
@@ -2109,6 +2110,7 @@ table th {
 .connector-desc {
   background-color: #5072EB1A;
   padding: 24px;
+  height: fit-content;
 
   & p {
     color: #47506D;
@@ -2119,6 +2121,27 @@ table th {
     margin-top: 0px;
     margin-bottom: 12px;
   }
+}
+
+.connector-h2-tight-margin {
+  margin: 0 0 24px 0;
+}
+
+.connector-center {
+  margin: auto;
+}
+
+.connector-section-content {
+  width: 50%;
+}
+
+.connector-video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #04192B;
+  min-height: 400px;
+  margin-left: 6em;
 }
 
 // ABOUT 
@@ -2661,6 +2684,8 @@ table th {
 
 .connector-section-background {
   background-color: #F9FAFC;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* MEDIA QUERIES */

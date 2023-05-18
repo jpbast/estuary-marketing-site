@@ -83,66 +83,81 @@ const Connector = ({
                             <div className="connector-source-dest-image-position-3"><DbIcon className="connector-source-dest-image" /></div>
                         </div>
                     </div>
-                    <div className="connector-section-wrapper">
-                        <div className="connector-features-desc-subwrapper">
-                            <h3 className="connector-features-header">Features</h3>
-                            <div className="product-flow-topic-section-wrapper">
-                                <div className="product-flow-topic-wrapper">
-                                    <div className="icon-wrapper">
-                                        <SectionTwoDataCaptureImg1 className="icon-image" />
-                                    </div>
-                                    <p className="product-flow-section-two-topic-child">
-                                        <span className="product-flow-bold">
-                                            Real-time CDC{" "}
-                                        </span>
-                                        from databases. Built by the Estuary
-                                        team to scale and ensure exactly
-                                        once semantics.
-                                    </p>
+
+
+                </div>
+            </div>
+            <div>
+                <div className="connector-section-wrapper">
+                    <div className="connector-features-desc-subwrapper">
+                        <h3 className="connector-features-header">Features</h3>
+                        <div className="product-flow-topic-section-wrapper">
+                            <div className="product-flow-topic-wrapper">
+                                <div className="icon-wrapper">
+                                    <SectionTwoDataCaptureImg1 className="icon-image" />
                                 </div>
-                                <div className="product-flow-topic-wrapper">
-                                    <div className="icon-wrapper">
-                                        <StaticImage
-                                            placeholder="none"
-                                            alt="salesforce logo"
-                                            src="../images/salesforce-logo.png"
-                                            width={35}
-                                            layout="fixed"
-                                            className="icon-image"
-                                        />
-                                    </div>
-                                    <p className="product-flow-section-two-topic-child">
-                                        <span className="product-flow-bold">
-                                            Real-time SaaS integrations
-                                        </span>{" "}
-                                        built by the Estuary team for apps
-                                        that support streaming.
-                                    </p>
+                                <p className="product-flow-section-two-topic-child">
+                                    <span className="product-flow-bold">
+                                        Real-time CDC{" "}
+                                    </span>
+                                    from databases. Built by the Estuary
+                                    team to scale and ensure exactly
+                                    once semantics.
+                                </p>
+                            </div>
+                            <div className="product-flow-topic-wrapper">
+                                <div className="icon-wrapper">
+                                    <StaticImage
+                                        placeholder="none"
+                                        alt="salesforce logo"
+                                        src="../images/salesforce-logo.png"
+                                        width={35}
+                                        layout="fixed"
+                                        className="icon-image"
+                                    />
                                 </div>
-                                <div className="product-flow-topic-wrapper">
-                                    <div className="icon-wrapper">
-                                        <FlowLongtailSaas className="icon-image" />
-                                    </div>
-                                    <p className="product-flow-section-two-topic-child">
-                                        <span className="product-flow-bold">
-                                            Long-tail SaaS
-                                        </span>
-                                        . Integrate any Airbyte connector to
-                                        access 200+ batch-based endpoints.
-                                    </p>
+                                <p className="product-flow-section-two-topic-child">
+                                    <span className="product-flow-bold">
+                                        Real-time SaaS integrations
+                                    </span>{" "}
+                                    built by the Estuary team for apps
+                                    that support streaming.
+                                </p>
+                            </div>
+                            <div className="product-flow-topic-wrapper">
+                                <div className="icon-wrapper">
+                                    <FlowLongtailSaas className="icon-image" />
                                 </div>
+                                <p className="product-flow-section-two-topic-child">
+                                    <span className="product-flow-bold">
+                                        Long-tail SaaS
+                                    </span>
+                                    . Integrate any Airbyte connector to
+                                    access 200+ batch-based endpoints.
+                                </p>
                             </div>
                         </div>
-                        <div className="connector-features-desc-subwrapper connector-desc">
-                            <h4>{mapped.title}</h4>
-                            <p>{mapped.shortDescription}</p>
-                        </div>
                     </div>
-                    <div className="connector-section-wrapper connector-section-background">
-                        <div>
-                            <h2>Real-time data</h2>
-                            <h2>without coding</h2>
-                            <p>Estuary’s code-free streaming data operations platform enables real-time data with history and the integrations you need.</p>
+                    <div className="connector-features-desc-subwrapper connector-desc">
+                        <h4>{mapped.title}</h4>
+                        <p>{mapped.shortDescription}</p>
+                    </div>
+                </div>
+                <div className="connector-section-wrapper connector-section-background">
+                    <div className="connector-section-content connector-center">
+                        <h2 className="connector-h2-tight-margin">Real-time data</h2>
+                        <h2 className="connector-h2-tight-margin">without coding</h2>
+                        <p>Estuary’s code-free streaming data operations platform enables real-time data with history and the integrations you need.</p>
+                    </div>
+                    <div className="connector-section-content connector-center">
+                        <div className="connector-video-wrapper">
+                            <StaticImage
+                                alt="video-overlay-play-button"
+                                src="../images/video-play.png"
+                                width={128}
+                                layout="fixed"
+                                className=""
+                            />
                         </div>
                     </div>
                 </div>
