@@ -42,7 +42,7 @@ const Connector = ({
 
     return (
         <Layout headerTheme="light">
-            <div className="blogs-index-wrapper">
+            <div className="blogs-index-wrapper mobile-no-padding">
                 <div className="blogs-index-header-wrapper">
                     <div className="connector-index-header">
                         <div
@@ -94,9 +94,10 @@ const Connector = ({
                 </div>
             </div>
             <div>
-                <div className="connector-section-wrapper">
+                <div className="connector-section-wrapper vertical-mobile">
                     <div className="connector-features-desc-subwrapper">
                         <h3 className="connector-features-header">Features</h3>
+                        <p className="connector-features-subtext show-mobile">Capture your data from sources like databases and SaaS applications.</p>
                         <div className="product-flow-topic-section-wrapper">
                             <div className="product-flow-topic-wrapper">
                                 <div className="icon-wrapper">
@@ -149,11 +150,12 @@ const Connector = ({
                         <p>{mapped.shortDescription}</p>
                     </div>
                 </div>
-                <div className="connector-section-wrapper connector-section-background">
-                    <div className="connector-section-content connector-center">
-                        <h2 className="connector-h2-tight-margin">Real-time data</h2>
-                        <h2 className="connector-h2-tight-margin">without coding</h2>
-                        <p>Estuary’s code-free streaming data operations platform enables real-time data with history and the integrations you need.</p>
+                <div className="connector-section-wrapper connector-section-background vertical-mobile">
+                    <div className="connector-section-content connector-center connector-section-mobile">
+                        <h2 className="connector-h2-tight-margin hide-mobile">Real-time data</h2>
+                        <h2 className="connector-h2-tight-margin hide-mobile">without coding</h2>
+                        <h2 className="connector-h2-tight-margin">Real-time data without coding</h2>
+                        <p className="connector-h2-subtext">Estuary’s code-free streaming data operations platform enables real-time data with history and the integrations you need.</p>
                     </div>
                     <div className="connector-section-content connector-center">
                         <div className="connector-video-wrapper">
@@ -181,6 +183,16 @@ const Connector = ({
                             src="../images/logos_row2.png"
                             layout="fixed"
                             className="connector-logo-row"
+                        />
+                           <StaticImage
+                            alt="redshift logo"
+                            src="../images/logos_row1.png"
+                            className="connector-logo-row-mobile"
+                        />
+                        <StaticImage
+                            alt="data logo"
+                            src="../images/logos_row2.png"
+                            className="connector-logo-row-mobile"
                         />
                     </div>
                     <Link className="connector-destinations-button" to="/destinations">More destinations</Link>
@@ -263,7 +275,7 @@ const Connector = ({
                     </div>
                 </div>
                 <div className="connector-section-wrapper-vertical background-gray margin-top-lg">
-                    <h2 className="center-text">Real-time use cases</h2>
+                    <h2 className="center-text h2-mobile">Real-time use cases</h2>
                     <p className="connector-header-subtext">Bye bye batch hello streaming type of sentiment</p>
                     <StaticImage
                         alt="data-flow-banner-image"
@@ -271,11 +283,17 @@ const Connector = ({
                         className="connector-image-large-center"
                     />
                     <div className="automated-schema-wrapper">
-                        <p className="connector-header-small">Automated Schema Migration</p>
+                        <p className="connector-header-small hide-mobile">Automated Schema Migration</p>
                         <p className="automated-schema-text">table_accounts</p>
                         <StaticImage
                             alt="table-column-options-image"
                             src="../images/table_accounts.png"
+                            className="table-accounts"
+                        />
+                         <StaticImage
+                            alt="table-column-options-image"
+                            src="../images/table_accounts_vertical.png"
+                            className="table-accounts-vertical"
                         />
                     </div>
                 </div>
@@ -286,7 +304,7 @@ const Connector = ({
                         alt="flow-screenshot"
                         src="../images/flow-screenshot.png"
                         layout="constrained"
-                        style={{marginTop: "40px"}}
+                        style={{ marginTop: "40px" }}
                     />
                 </div>
                 <div className="connector-section-wrapper-vertical margin-top-lg">
@@ -299,7 +317,15 @@ const Connector = ({
                         alt="flow-screenshot"
                         src="../images/powerful-data-image.png"
                         layout="constrained"
-                        style={{margin: "40px 0 100px 0"}}
+                        style={{ margin: "40px 0 100px 0" }}
+                        className="powerful-data"
+                    />
+                    <StaticImage
+                        alt="flow-screenshot"
+                        src="../images/powerful-data-vertical.png"
+                        layout="fixed"
+                        style={{ margin: "40px auto" }}
+                        className="powerful-data-vertical"
                     />
                 </div>
             </div>

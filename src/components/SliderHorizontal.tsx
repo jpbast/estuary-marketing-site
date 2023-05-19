@@ -74,7 +74,7 @@ const SliderHorizontal = () => {
             </div>
 
             {loaded && instanceRef.current && (
-                <div className="dots margin-auto margin-top-med">
+                <div className="dots margin-auto margin-top-med dots-mobile">
                     {[
                         ...Array(instanceRef.current.track.details.slides.length).keys(),
                     ].map((idx) => {
