@@ -12,7 +12,13 @@ import { OutboundLink } from "gatsby-plugin-google-gtag"
 import SectionTwoDataCaptureImg1 from "../svgs/product-flow-section-two-data-capture-image1.svg"
 import FlowLongtailSaas from "../svgs/product-flow-longtail-saas.svg"
 import { StaticImage } from "gatsby-plugin-image"
-
+import SliderHorizontal from "../components/SliderHorizontal"
+import FlowExactlyOnce from "../svgs/product-flow-exactly-once.svg"
+import CareerAvatar from "../svgs/about-careers-avatar-icon.svg"
+import DataModernization from "../svgs/icon-data-modernization.svg"
+import StreamingELT from "../svgs/icon-streaming-elt.svg"
+import DataReplication from "../svgs/icon-data-replication.svg"
+import OperationalAnalytics from "../svgs/icon-operational-analytics.svg"
 
 export interface ConnectorProps {
     data: {
@@ -158,6 +164,101 @@ const Connector = ({
                                 layout="fixed"
                                 className=""
                             />
+                        </div>
+                    </div>
+                </div>
+                <div className="connector-section-wrapper-top-margin">
+                    <p className="connector-header-small">Load data directly into the destination of your choice</p>
+                    <div className="connector-image-wrapper">
+                        <StaticImage
+                            alt="redshift logo"
+                            src="../images/logos_row1.png"
+                            layout="fixed"
+                            className="connector-logo-row"
+                        />
+                        <StaticImage
+                            alt="data logo"
+                            src="../images/logos_row2.png"
+                            layout="fixed"
+                            className="connector-logo-row"
+                        />
+                    </div>
+                    <Link className="connector-destinations-button" to="/destinations">More destinations</Link>
+                    <FlowLogo className="flow-logo-100" />
+                </div>
+                <div className="connector-section-wrapper-vertical">
+                    <p className="small-uppercase-header">why estuary flow</p>
+                    <SliderHorizontal />
+                </div>
+                <div className="connector-section-wrapper-vertical">
+                    <div className="product-flow-section-three-tile-wrapper">
+                        <div className="product-flow-section-three-tile">
+                            <div className="icon-wrapper">
+                                <SectionTwoDataCaptureImg1 className="icon-image" />
+                            </div>
+                            <h3 className="section-four-tile-title">
+                                Change data capture
+                            </h3>
+                            <p className="section-four-tile-subtext">
+                                Real-time CDC from databases. Built by the Estuary team to scale and ensure exactly once semantics.
+                            </p>
+                        </div>
+                        <div className="product-flow-section-three-tile">
+                            <div className="icon-wrapper">
+                                <CareerAvatar className="icon-image" />
+                            </div>
+                            <h3 className="section-four-tile-title">
+                                Customer 360
+                            </h3>
+                            <p className="section-four-tile-subtext">
+                                Gain a unified view of your customers while your team interacts with them. Real-time with historical data.
+                            </p>
+                        </div>
+                        <div className="product-flow-section-three-tile">
+                            <div className="icon-wrapper">
+                                <OperationalAnalytics className="icon-image" />
+                            </div>
+                            <h3 className="section-four-tile-title">
+                                Operational analytics
+                            </h3>
+                            <p className="section-four-tile-subtext">
+                                Gain a unified view of your customers while your team interacts with them. Real-time with historical data.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="product-flow-section-three-tile-wrapper">
+                        <div className="product-flow-section-three-tile">
+                            <div className="icon-wrapper">
+                                <DataReplication className="icon-image" />
+                            </div>
+                            <h3 className="section-four-tile-title">
+                                Data replication & migration
+                            </h3>
+                            <p className="section-four-tile-subtext">
+                                Centralize data with real-time replication.
+                            </p>
+                        </div>
+                        <div className="product-flow-section-three-tile">
+                            <div className="icon-wrapper">
+                                <StreamingELT className="icon-image" />
+                            </div>
+                            <h3 className="section-four-tile-title">
+                                Streaming ELT
+                            </h3>
+                            <p className="section-four-tile-subtext">
+                                Centralize data with real-time replication.
+                            </p>
+                        </div>
+                        <div className="product-flow-section-three-tile">
+                            <div className="icon-wrapper">
+                                <DataModernization className="icon-image" />
+                            </div>
+                            <h3 className="section-four-tile-title">
+                                Data modernization
+                            </h3>
+                            <p className="section-four-tile-subtext">
+                                Seamlessly connect legacy systems to a modern hybrid cloud environment that’s fully extensible.
+                            </p>
                         </div>
                     </div>
                 </div>
