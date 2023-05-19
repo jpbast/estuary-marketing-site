@@ -262,6 +262,46 @@ const Connector = ({
                         </div>
                     </div>
                 </div>
+                <div className="connector-section-wrapper-vertical background-gray margin-top-lg">
+                    <h2 className="center-text">Real-time use cases</h2>
+                    <p className="connector-header-subtext">Bye bye batch hello streaming type of sentiment</p>
+                    <StaticImage
+                        alt="data-flow-banner-image"
+                        src="../images/real-time-use-cases.png"
+                        className="connector-image-large-center"
+                    />
+                    <div className="automated-schema-wrapper">
+                        <p className="connector-header-small">Automated Schema Migration</p>
+                        <p className="automated-schema-text">table_accounts</p>
+                        <StaticImage
+                            alt="table-column-options-image"
+                            src="../images/table_accounts.png"
+                        />
+                    </div>
+                </div>
+                <div className="connector-section-wrapper-vertical margin-top-lg">
+                    <h2 className="center-text connector-h2-tight-margin">Total visibility into</h2>
+                    <h2 className="center-text connector-h2-tight-margin">your data pipelines</h2>
+                    <StaticImage
+                        alt="flow-screenshot"
+                        src="../images/flow-screenshot.png"
+                        layout="constrained"
+                        style={{marginTop: "40px"}}
+                    />
+                </div>
+                <div className="connector-section-wrapper-vertical margin-top-lg">
+                    <p className="small-uppercase-header header-margin-sm margin-auto">powerful data transformations</p>
+                    <h2 className="center-text connector-h2-tight-margin">True streaming SQL and</h2>
+                    <h2 className="center-text connector-h2-tight-margin">javascript transformation</h2>
+                    <h2 className="center-text connector-h2-tight-margin">directly in your warehouse</h2>
+                    <p className="connector-header-subtext">Materialize views to your database or warehouse for greatly reduced query costs</p>
+                    <StaticImage
+                        alt="flow-screenshot"
+                        src="../images/powerful-data-image.png"
+                        layout="constrained"
+                        style={{margin: "40px 0 100px 0"}}
+                    />
+                </div>
             </div>
         </Layout>
     )
