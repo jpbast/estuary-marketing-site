@@ -184,7 +184,7 @@ const Connector = ({
                             layout="fixed"
                             className="connector-logo-row"
                         />
-                           <StaticImage
+                        <StaticImage
                             alt="redshift logo"
                             src="../images/logos_row1.png"
                             className="connector-logo-row-mobile"
@@ -290,7 +290,7 @@ const Connector = ({
                             src="../images/table_accounts.png"
                             className="table-accounts"
                         />
-                         <StaticImage
+                        <StaticImage
                             alt="table-column-options-image"
                             src="../images/table_accounts_vertical.png"
                             className="table-accounts-vertical"
@@ -303,8 +303,14 @@ const Connector = ({
                     <StaticImage
                         alt="flow-screenshot"
                         src="../images/flow-screenshot.png"
-                        layout="constrained"
-                        style={{ marginTop: "40px" }}
+                        layout="fixed"
+                        style={{ margin: "40px auto" }}
+                        className="data-pipelines-image"
+                    />
+                    <StaticImage
+                        alt="flow-screenshot"
+                        src="../images/flow-screenshot.png"
+                        className="data-pipelines-image-mobile"
                     />
                 </div>
                 <div className="connector-section-wrapper-vertical margin-top-lg">
