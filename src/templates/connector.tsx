@@ -1,11 +1,12 @@
 import { graphql, Link } from "gatsby"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { normalizeConnector } from "../utils"
 import FlowLogo from "../svgs/flow-logo.svg"
 import { ConnectorsLink } from "../components/ConnectorsLink"
 import { GatsbyImage } from "gatsby-plugin-image"
+import ReactPlayer from "react-player/lazy"
 import ColoredLogo from "../svgs/colored-logo.svg"
 import DbIcon from "../svgs/db2.svg"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
@@ -23,6 +24,7 @@ import BackgroundImageWrapper from "../components/BackgroundImageWrapper"
 import ConnectorsImageDesktop from "../components/ConnectorsImageDesktop"
 import ConnectorsImageMobile from "../components/ConnectorsImageMobile"
 import { isMobile } from "react-device-detect"
+import { Connectors } from "../components/Connectors"
 
 export interface ConnectorProps {
     data: {
@@ -49,9 +51,15 @@ const Connector = ({
     },
     pageContext,
     connectorImageSource,
-    connectorImageDestination
+    connectorImageDestination,
 }: ConnectorProps) => {
     const mapped = normalizeConnector(connector)
+    const [hasWindow, setHasWindow] = useState(false)
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setHasWindow(true)
+        }
+    }, [])
 
     return (
         <Layout headerTheme="light">
@@ -177,9 +185,21 @@ const Connector = ({
                     </div>
                     <div className="connector-features-desc-subwrapper connector-desc">
                         <h4>{mapped.title}</h4>
-                        <p>{mapped.shortDescription}</p>
+                        <p
+                            dangerouslySetInnerHTML={{
+                                __html:
+                                    mapped.longDescription ||
+                                    mapped.shortDescription,
+                            }}
+                        />
                     </div>
                 </div>
+                <div className="connector-link-bottom" style={{margin:0, marginBottom:"6rem"}}>
+                            <ConnectorsLink
+                                defaultSource={mapped.type === "capture" && mapped.id}
+                                defaultDestination={mapped.type === "materialization" && mapped.id}
+                            />
+                        </div>
                 <div className="connector-section-wrapper connector-section-background vertical-mobile">
                     <div className="connector-section-content connector-center connector-section-mobile">
                         <h2 className="connector-h2-tight-margin hide-mobile">
@@ -199,13 +219,20 @@ const Connector = ({
                     </div>
                     <div className="connector-section-content connector-center">
                         <div className="connector-video-wrapper">
-                            <StaticImage
-                                alt="video-overlay-play-button"
-                                src="../images/video-play.png"
-                                width={128}
-                                layout="fixed"
-                                className=""
-                            />
+                            {hasWindow && (
+                                <ReactPlayer
+                                    light={
+                                        <StaticImage
+                                            placeholder="none"
+                                            alt="estuary flow product video"
+                                            src="../images/homepage-product-video.svg"
+                                            className="section-three-product-video-thumbnail"
+                                            layout="constrained"
+                                        />
+                                    }
+                                    url="https://www.youtube.com/embed/hlCh81ZbBik"
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
@@ -349,7 +376,9 @@ const Connector = ({
                         <StaticImage
                             alt="table-column-options-image"
                             src="../images/table_accounts.png"
+                            layout="constrained"
                             className="table-accounts"
+                            style={{marginLeft:"auto",marginRight:"auto"}}
                         />
                         <StaticImage
                             alt="table-column-options-image"
@@ -378,7 +407,7 @@ const Connector = ({
                         className="data-pipelines-image-mobile"
                     />
                 </div>
-                <div className="connector-section-wrapper-vertical margin-top-lg">
+                <div className="connector-section-wrapper-vertical margin-top-lg" style={{marginBottom:"6rem"}}>
                     <p className="small-uppercase-header header-margin-sm margin-auto">
                         powerful data transformations
                     </p>
@@ -396,9 +425,21 @@ const Connector = ({
                         greatly reduced query costs
                     </p>
                     <div className="connectors-image-wrapper">
-                        {isMobile ?  <ConnectorsImageMobile source={connectorImageSource} destination={connectorImageDestination}/> :  <ConnectorsImageDesktop source={connectorImageSource} destination={connectorImageDestination} />}
+                        {isMobile ? (
+                            <ConnectorsImageMobile
+                                source={connectorImageSource}
+                                destination={connectorImageDestination}
+                            />
+                        ) : (
+                            <ConnectorsImageDesktop
+                                source={connectorImageSource}
+                                destination={connectorImageDestination}
+                            />
+                        )}
                     </div>
                 </div>
+
+                <Connectors connectorType={mapped.type} onlyCards/>
             </BackgroundImageWrapper>
         </Layout>
     )

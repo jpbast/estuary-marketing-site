@@ -2134,7 +2134,6 @@ table th {
   margin-top: 2rem;
   padding: 0 ~"calc(min(10vw,200px))";
   display: flex;
-  min-height: 600px;
 }
 
 .connector-section-wrapper-vertical {
@@ -2150,7 +2149,6 @@ table th {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 600px;
 }
 
 .connector-features-desc-subwrapper {
@@ -2173,6 +2171,7 @@ table th {
   background-color: #5072EB1A;
   padding: 24px;
   height: fit-content;
+  margin-bottom: 3rem;
 
   & p {
     color: #47506D;
@@ -2184,6 +2183,7 @@ table th {
     font-size: 36px;
     line-height: 48px;
     color: #04192B;
+    margin-top: 0;
   }
 
   & h2 {
@@ -2336,10 +2336,10 @@ table th {
   margin-bottom: 12px;
 }
 
-
-
 .automated-schema-wrapper {
   margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .automated-schema-text {
@@ -2347,6 +2347,7 @@ table th {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 
@@ -2836,6 +2837,7 @@ table th {
 
 .connector-source-dest-title {
   margin: 15px 0 15px 0;
+  font-size: 4rem;
 }
 
 .connector-source-dest-image-wrapper {
@@ -3700,7 +3702,8 @@ table th {
   }
 
   .automated-schema-text {
-    font-size: var(--fontSize-1)
+    font-size: var(--fontSize-1);
+    text-align: center;
   }
 
   .connector-video-wrapper {
