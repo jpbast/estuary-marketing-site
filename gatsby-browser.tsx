@@ -45,54 +45,10 @@ export const wrapPageElement = ({ element }) => {
     }
 }
 
-declare global {
-    interface Window {
-        isGTMLoaded: boolean
-        dataLayer: any[]
-    }
-}
-
-const TRACKING_ID = "G-P1PZPE4HHZ"
-
-function initGTM() {
-    if (window.isGTMLoaded) {
-        return false
-    }
-
-    window.isGTMLoaded = true
-
-    const script = document.createElement("script")
-
-    script.type = "text/javascript"
-    script.async = true
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`
-
-    script.onload = () => {
-        window.dataLayer = window.dataLayer || []
-        function gtag(...args) {
-            window.dataLayer.push(args)
-        }
-        gtag("js", new Date())
-
-        gtag("config", `${TRACKING_ID}`)
-    }
-
-    document.head.appendChild(script)
-}
-
-function loadGTM(event) {
-    initGTM()
-    event.currentTarget.removeEventListener(event.type, loadGTM)
-}
-
 export const onClientEntry = () => {
-    document.onreadystatechange = () => {
-        if (document.readyState !== "loading") {
-            setTimeout(initGTM, 3500)
-        }
+    // IntersectionObserver polyfill for gatsby-background-image (Safari, IE)
+    if (!(`IntersectionObserver` in window)) {
+        import(`intersection-observer`)
+        console.log(`# IntersectionObserver is polyfilled!`)
     }
-
-    document.addEventListener("scroll", loadGTM)
-    document.addEventListener("mousemove", loadGTM)
-    document.addEventListener("touchstart", loadGTM)
 }

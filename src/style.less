@@ -1739,7 +1739,6 @@ table th {
 .pricing-page-checklist-wrapper-custom {
   display: flex;
   flex-direction: column;
-  margin-top: 110px;
   flex: 1 1 auto;
 }
 
@@ -1759,7 +1758,16 @@ table th {
 }
 
 .pricing-page-tile-coming-soon-image {
-  margin: 1px 16px 0 0;
+  text-align: center;
+  & > p {
+    font-size: 14pt;
+    border: 1px solid #e7eafa;
+    background-color: #e7eafa;
+    padding: 6px 8px;
+    line-height: 1;
+    margin: 0;
+    margin-top: 0.5em;
+  }
 }
 
 .pricing-page-tile-checklist-item-text {
@@ -1768,9 +1776,8 @@ table th {
 }
 
 .pricing-page-tile-name {
-  font-size: var(--fontSize-0);
+  font-size: var(--fontSize-3);
   color: #04192B;
-  text-transform: uppercase;
   margin: 16px 0 8px 0;
 }
 
@@ -1795,8 +1802,9 @@ table th {
 }
 
 .pricing-page-tile-price-subtext {
-  font-size: 1rem;
-  margin: 8px 0 75px 0;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0 0;
+  min-height: 4rem;
 }
 
 .pricing-page-tile-button {
@@ -1842,6 +1850,34 @@ table th {
 
 .pricing-page-quote-image-wrapper {
   display: flex;
+}
+
+.pricing-page-faq {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-left: ~"calc(min(9%, 146px))";
+  padding-right: ~"calc(min(9%, 146px))";
+}
+
+.pricing-page-faq-title {}
+
+.pricing-page-faq-question {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.pricing-page-faq-qa-wrapper {
+  width: 100%;
+}
+
+.pricing-page-faq-question {}
+
+.pricing-page-faq-answer {
+  background-color: #F7F9FC;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .blogs-post-card {
@@ -1924,10 +1960,10 @@ table th {
   grid-row-gap: 24px;
 }
 
-.blogs-index-wrapper {
-  background-image: url("../src/images/blogs-bg.png");
-  background-size: cover;
+.background-index-wrapper {
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: top right;
   padding-bottom: 2rem;
 }
 
@@ -2144,8 +2180,25 @@ table th {
   }
 
   & h4 {
-    margin-top: 0px;
-    margin-bottom: 12px;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 48px;
+    color: #04192B;
+  }
+
+  & h2 {
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 68px;
+    color: #04192B;
+  }
+
+  &>span {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    align-items: center;
+    color: #47506D;
   }
 }
 
