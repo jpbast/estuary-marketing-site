@@ -20,6 +20,9 @@ import StreamingELT from "../svgs/icon-streaming-elt.svg"
 import DataReplication from "../svgs/icon-data-replication.svg"
 import OperationalAnalytics from "../svgs/icon-operational-analytics.svg"
 import BackgroundImageWrapper from "../components/BackgroundImageWrapper"
+import ConnectorsImageDesktop from "../components/ConnectorsImageDesktop"
+import ConnectorsImageMobile from "../components/ConnectorsImageMobile"
+import { isMobile } from "react-device-detect"
 
 export interface ConnectorProps {
     data: {
@@ -31,6 +34,13 @@ export interface ConnectorProps {
         id: string
         type: "capture" | "materialization"
     }
+    //future work if someone wants to parametrize the source and destination images
+    connectorImageSource: {
+        source: any
+    }
+    connectorImageDestination: {
+        destination: any
+    }
 }
 
 const Connector = ({
@@ -38,6 +48,8 @@ const Connector = ({
         postgres: { connector },
     },
     pageContext,
+    connectorImageSource,
+    connectorImageDestination
 }: ConnectorProps) => {
     const mapped = normalizeConnector(connector)
 
@@ -383,20 +395,9 @@ const Connector = ({
                         Materialize views to your database or warehouse for
                         greatly reduced query costs
                     </p>
-                    <StaticImage
-                        alt="flow-screenshot"
-                        src="../images/powerful-data-image.png"
-                        layout="constrained"
-                        style={{ margin: "40px 0 100px 0" }}
-                        className="powerful-data"
-                    />
-                    <StaticImage
-                        alt="flow-screenshot"
-                        src="../images/powerful-data-vertical.png"
-                        layout="fixed"
-                        style={{ margin: "40px auto" }}
-                        className="powerful-data-vertical"
-                    />
+                    <div className="connectors-image-wrapper">
+                        {isMobile ?  <ConnectorsImageMobile source={connectorImageSource} destination={connectorImageDestination}/> :  <ConnectorsImageDesktop source={connectorImageSource} destination={connectorImageDestination} />}
+                    </div>
                 </div>
             </BackgroundImageWrapper>
         </Layout>

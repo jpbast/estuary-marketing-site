@@ -2292,11 +2292,13 @@ table th {
   font-size: var(--fontSize-8);
   text-align: center;
 }
-
-.powerful-data-vertical {
-  display: none;
+.connectors-image-wrapper {
+  display: flex;
+  margin: auto;
+  & > svg {
+    width: 100%;
+  }
 }
-
 .data-pipelines-image-mobile {
   display: none;
 }
@@ -3614,9 +3616,9 @@ table th {
     margin-top: 40px;
   }
 
-  .powerful-data {
-    display: none;
-  }
+  // .powerful-data {
+  //   display: none;
+  // }
 
   .connector-features-header {
     font-weight: 500;
@@ -3641,9 +3643,9 @@ table th {
     display: flex;
   }
 
-  .powerful-data-vertical {
-    display: block;
-  }
+  // .powerful-data-vertical {
+  //   display: block;
+  // }
 
   .data-pipelines-image-mobile {
     display: flex;
