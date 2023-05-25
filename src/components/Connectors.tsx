@@ -12,10 +12,11 @@ import BackgroundImageWrapper from "./BackgroundImageWrapper"
 
 export interface ConnectorsProps {
     connectorType: "capture" | "materialization"
-    title: string
-    description: string
-    bottomTitle: string
-    bottomDescription: string
+    title?: string
+    description?: string
+    bottomTitle?: string
+    bottomDescription?: string
+    onlyCards?: boolean
 }
 
 const truncate = (val: string, max: number) => {
@@ -80,6 +81,7 @@ export const Connectors = ({
     description,
     bottomTitle,
     bottomDescription,
+    onlyCards = false,
 }: ConnectorsProps) => {
     const {
         postgres,
@@ -149,39 +151,42 @@ export const Connectors = ({
     ).filter(res => (res as any).type === connectorType)
 
     return (
-        <BackgroundImageWrapper style={{ marginBottom: "10rem" }}>
+        <BackgroundImageWrapper>
             <div className="blogs-index-header-wrapper">
-                <div className="connector-index-header">
-                    <div style={{ maxWidth: "30rem" }}>
-                        <h2>{title}</h2>
-                        <p>{description}</p>
-                    </div>
-                    <div
-                        style={{ display: "block" }}
-                        className="blog-post-header-vectors"
-                    >
-                        <FlowLogo className="product-flow-section-one-image" />
-                    </div>
-                </div>
-
-                <div className="connectors-search">
-                    <div className="connectors-search-body">
-                        <div
-                            className="blogs-index-search"
-                            style={{ marginBottom: 0 }}
-                        >
-                            <SearchIcon className="blogs-index-input-adornment" />
-                            <input
-                                style={{ border: "1px solid #D7DCE5" }}
-                                placeholder={`Search ${title}`}
-                                type="text"
-                                value={query}
-                                onChange={evt => setQuery(evt.target.value)}
-                            />
+                {!onlyCards && (
+                    <div className="connector-index-header">
+                        <div style={{ maxWidth: "30rem" }}>
+                            <h2>{title}</h2>
+                            <p>{description}</p>
                         </div>
-                        <ConnectorsLink />
+                        <div
+                            style={{ display: "block" }}
+                            className="blog-post-header-vectors"
+                        >
+                            <FlowLogo className="product-flow-section-one-image" />
+                        </div>
                     </div>
-                </div>
+                )}
+                {!onlyCards && (
+                    <div className="connectors-search">
+                        <div className="connectors-search-body">
+                            <div
+                                className="blogs-index-search"
+                                style={{ marginBottom: 0 }}
+                            >
+                                <SearchIcon className="blogs-index-input-adornment" />
+                                <input
+                                    style={{ border: "1px solid #D7DCE5" }}
+                                    placeholder={`Search ${title}`}
+                                    type="text"
+                                    value={query}
+                                    onChange={evt => setQuery(evt.target.value)}
+                                />
+                            </div>
+                            <ConnectorsLink />
+                        </div>
+                    </div>
+                )}
 
                 <div className="connector-cards">
                     {(query.length > 0 ? results : mappedConnectors).map(
@@ -195,30 +200,34 @@ export const Connectors = ({
                 </div>
             </div>
 
-            <div className="connector-index-bottom">
-                <h2>All your data, where you need it</h2>
-                <span>
-                    Consolidate your data into the leading warehouses, then
-                    integrate with your tools of choice.
-                </span>
-            </div>
+            {!onlyCards && (
+                <>
+                    <div className="connector-index-bottom">
+                        <h2>All your data, where you need it</h2>
+                        <span>
+                            Consolidate your data into the leading warehouses,
+                            then integrate with your tools of choice.
+                        </span>
+                    </div>
 
-            <div className="connector-index-header">
-                <div style={{ maxWidth: "30rem" }}>
-                    <h2>{bottomTitle}</h2>
-                    <p>{bottomDescription}</p>
-                </div>
-                <div
-                    style={{ display: "block" }}
-                    className="blog-post-header-vectors"
-                >
-                    <StaticImage
-                        src="../images/connectors-bottom.png"
-                        alt={bottomTitle}
-                        width={500}
-                    />
-                </div>
-            </div>
+                    <div className="connector-index-header">
+                        <div style={{ maxWidth: "30rem" }}>
+                            <h2>{bottomTitle}</h2>
+                            <p>{bottomDescription}</p>
+                        </div>
+                        <div
+                            style={{ display: "block" }}
+                            className="blog-post-header-vectors"
+                        >
+                            <StaticImage
+                                src="../images/connectors-bottom.png"
+                                alt={bottomTitle}
+                                width={500}
+                            />
+                        </div>
+                    </div>
+                </>
+            )}
         </BackgroundImageWrapper>
     )
 }
