@@ -194,12 +194,17 @@ const Connector = ({
                         />
                     </div>
                 </div>
-                <div className="connector-link-bottom" style={{margin:0, marginBottom:"6rem"}}>
-                            <ConnectorsLink
-                                defaultSource={mapped.type === "capture" && mapped.id}
-                                defaultDestination={mapped.type === "materialization" && mapped.id}
-                            />
-                        </div>
+                <div
+                    className="connector-link-bottom"
+                    style={{ margin: 0, marginBottom: "6rem" }}
+                >
+                    <ConnectorsLink
+                        defaultSource={mapped.type === "capture" && mapped.id}
+                        defaultDestination={
+                            mapped.type === "materialization" && mapped.id
+                        }
+                    />
+                </div>
                 <div className="connector-section-wrapper connector-section-background vertical-mobile">
                     <div className="connector-section-content connector-center connector-section-mobile">
                         <h2 className="connector-h2-tight-margin hide-mobile">
@@ -373,18 +378,24 @@ const Connector = ({
                             Automated Schema Migration
                         </p>
                         <p className="automated-schema-text">table_accounts</p>
-                        <StaticImage
-                            alt="table-column-options-image"
-                            src="../images/table_accounts.png"
-                            layout="constrained"
-                            className="table-accounts"
-                            style={{marginLeft:"auto",marginRight:"auto"}}
-                        />
-                        <StaticImage
-                            alt="table-column-options-image"
-                            src="../images/table_accounts_vertical.png"
-                            className="table-accounts-vertical"
-                        />
+                        {isMobile ? (
+                            <StaticImage
+                                alt="table-column-options-image"
+                                src="../images/table_accounts_vertical.png"
+                                className="table-accounts-vertical"
+                            />
+                        ) : (
+                            <StaticImage
+                                alt="table-column-options-image"
+                                src="../images/table_accounts.png"
+                                layout="constrained"
+                                className="table-accounts"
+                                style={{
+                                    marginLeft: "auto",
+                                    marginRight: "auto",
+                                }}
+                            />
+                        )}
                     </div>
                 </div>
                 <div className="connector-section-wrapper-vertical margin-top-lg">
@@ -394,20 +405,26 @@ const Connector = ({
                     <h2 className="center-text connector-h2-tight-margin">
                         your data pipelines
                     </h2>
-                    <StaticImage
-                        alt="flow-screenshot"
-                        src="../images/flow-screenshot.png"
-                        layout="fixed"
-                        style={{ margin: "40px auto" }}
-                        className="data-pipelines-image"
-                    />
-                    <StaticImage
-                        alt="flow-screenshot"
-                        src="../images/flow-screenshot.png"
-                        className="data-pipelines-image-mobile"
-                    />
+                    {isMobile ? (
+                        <StaticImage
+                            alt="flow-screenshot"
+                            src="../images/flow-screenshot.png"
+                            className="data-pipelines-image"
+                        />
+                    ) : (
+                        <StaticImage
+                            alt="flow-screenshot"
+                            src="../images/flow-screenshot.png"
+                            layout="fixed"
+                            style={{ margin: "40px auto" }}
+                            className="data-pipelines-image"
+                        />
+                    )}
                 </div>
-                <div className="connector-section-wrapper-vertical margin-top-lg" style={{marginBottom:"6rem"}}>
+                <div
+                    className="connector-section-wrapper-vertical margin-top-lg"
+                    style={{ marginBottom: "6rem" }}
+                >
                     <p className="small-uppercase-header header-margin-sm margin-auto">
                         powerful data transformations
                     </p>
@@ -439,7 +456,7 @@ const Connector = ({
                     </div>
                 </div>
 
-                <Connectors connectorType={mapped.type} onlyCards/>
+                <Connectors connectorType={mapped.type} onlyCards />
             </BackgroundImageWrapper>
         </Layout>
     )
