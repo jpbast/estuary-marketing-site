@@ -455,8 +455,8 @@ const Connector = ({
                         )}
                     </div>
                 </div>
-
-                <Connectors connectorType={mapped.type} onlyCards />
+                {/* removed Connectors component as it looked like a duplicate/error, commented if it was intentional :)  */}
+                {/* <Connectors connectorType={mapped.type} onlyCards /> */}
             </BackgroundImageWrapper>
         </Layout>
     )
