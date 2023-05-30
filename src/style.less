@@ -1759,7 +1759,8 @@ table th {
 
 .pricing-page-tile-coming-soon-image {
   text-align: center;
-  & > p {
+
+  &>p {
     font-size: 14pt;
     border: 1px solid #e7eafa;
     background-color: #e7eafa;
@@ -2130,6 +2131,47 @@ table th {
   flex-wrap: wrap;
 }
 
+.connector-bottom-link {
+  margin-bottom: 14rem;
+  padding: 0 ~"calc(min(10vw,200px))";
+  display: flex;
+  flex-wrap: wrap;
+
+  @media(max-width: 810px) {
+    h2 {
+      font-size: 1.75rem;
+    }
+    p {
+      font-size: var(--fontSize-0);    
+    }
+  }
+}
+
+.connector-bottom-flow {
+  margin-top: 20em;
+  margin-right: -8em;
+
+  @media(max-width: 810px) {
+    margin-right: -4.75em;
+    margin-top: 55%;
+    width: 50px;
+  }
+}
+
+.connector-bottom-vector {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -10em;
+  margin-right: 1rem;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+
+  @media(max-width: 810px) {
+    text-align: center;
+  }
+}
+
 .connector-section-wrapper {
   margin-top: 2rem;
   padding: 0 ~"calc(min(10vw,200px))";
@@ -2165,6 +2207,46 @@ table th {
 .connector-logo-row {
   margin: 24px 0;
   height: 135px;
+}
+
+.connector-onlycards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 12.5rem auto;
+  max-width: 500px;
+
+  & h2 {
+    margin: 10px 0 0 0;
+  }
+
+  & p {
+    text-align: center;
+  }
+}
+
+.connector-onlycards-background-image {
+  display: flex;
+  background-image: url("./images/overlay-vector-left-no-fill.svg");
+  background-repeat: no-repeat;
+  background-position-x: -50px;
+  background-size: 33%;
+  background-position-y: center;
+
+  @media(max-width: 810px) {
+    background-size: 60%;
+
+    & h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    & p {
+      font-size: var(--fontSize-0);
+      margin: 12px 40px;
+    }
+  }
 }
 
 .connector-desc {
@@ -2292,13 +2374,16 @@ table th {
   font-size: var(--fontSize-8);
   text-align: center;
 }
+
 .connectors-image-wrapper {
   display: flex;
   margin: auto;
-  & > svg {
+
+  &>svg {
     width: 100%;
   }
 }
+
 .data-pipelines-image-mobile {
   display: none;
 }

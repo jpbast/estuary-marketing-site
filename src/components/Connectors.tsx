@@ -202,23 +202,29 @@ export const Connectors = ({
 
             {!onlyCards && (
                 <>
-                    <div className="connector-index-bottom">
-                        <h2>All your data, where you need it</h2>
-                        <span>
-                            Consolidate your data into the leading warehouses,
-                            then integrate with your tools of choice.
-                        </span>
+                    <div className="connector-onlycards-background-image">
+                        <div className="connector-onlycards">
+                            <h2>All your data, </h2>
+                            <h2>where you need it</h2>
+                            <p>
+                                Consolidate your data into the leading warehouses,
+                                then integrate with your tools of choice.
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="connector-index-header">
+
+                    <div className="connector-bottom-link">
                         <div style={{ maxWidth: "30rem" }}>
                             <h2>{bottomTitle}</h2>
                             <p>{bottomDescription}</p>
                         </div>
                         <div
                             style={{ display: "block" }}
-                            className="blog-post-header-vectors"
+                            className="connector-bottom-vector"
                         >
+                            <FlowLogo className="connector-bottom-flow"/>
+
                             <StaticImage
                                 src="../images/connectors-bottom.png"
                                 alt={bottomTitle}
