@@ -246,28 +246,37 @@ const Connector = ({
                         Load data directly into the destination of your choice
                     </p>
                     <div className="connector-image-wrapper">
-                        <StaticImage
-                            alt="redshift logo"
-                            src="../images/logos_row1.png"
-                            layout="fixed"
-                            className="connector-logo-row"
-                        />
-                        <StaticImage
-                            alt="data logo"
-                            src="../images/logos_row2.png"
-                            layout="fixed"
-                            className="connector-logo-row"
-                        />
-                        <StaticImage
-                            alt="redshift logo"
-                            src="../images/logos_row1.png"
-                            className="connector-logo-row-mobile"
-                        />
-                        <StaticImage
-                            alt="data logo"
-                            src="../images/logos_row2.png"
-                            className="connector-logo-row-mobile"
-                        />
+                        {isMobile ? (
+                            <>
+                                <StaticImage
+                                    alt="row of logos"
+                                    src="../images/logos_row1.png"
+                                />
+                                <StaticImage
+                                    alt="row of logos"
+                                    src="../images/logos_row2.png"
+                                    
+                                />
+                            </>
+
+                        ) : (
+                            <>
+                                <StaticImage
+                                    alt="row of logos"
+                                    src="../images/logos_row1.png"
+                                    layout="fixed"
+                                    className="connector-logo-row"
+                                />
+                                <StaticImage
+                                    alt="data logo"
+                                    src="../images/logos_row2.png"
+                                    layout="fixed"
+                                    className="connector-logo-row"
+                                />
+                            </>
+
+                        )}
+
                     </div>
                     <Link
                         className="connector-destinations-button"
@@ -455,8 +464,7 @@ const Connector = ({
                         )}
                     </div>
                 </div>
-                {/* removed Connectors component as it looked like a duplicate/error, commented if it was intentional :)  */}
-                {/* <Connectors connectorType={mapped.type} onlyCards /> */}
+                <Connectors connectorType={mapped.type} onlyCards />
             </BackgroundImageWrapper>
         </Layout>
     )
