@@ -3,6 +3,9 @@
 const CONNECTOR_IMAGE_RE = /(source|materialize)-([a-z\-]+)/
 
 export const normalizeConnector = (connector: any) => {
+    if(!connector) {
+        return connector
+    }
     const regex_result = connector.imageName.match(CONNECTOR_IMAGE_RE)
     const type = connector.connectorTagsByConnectorIdList?.[0]?.protocol as
         | "capture"

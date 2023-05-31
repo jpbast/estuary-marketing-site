@@ -5,10 +5,10 @@ export interface ConnectorImageProps {
     destination: any,
 }
 
-const ConnectorsImageMobile = (props: ConnectorImageProps) => {
+const ConnectorsImageMobile = () => {
     //future work if you want to parametrize the source and destination images
-    const source = props.source;
-    const destination = props.destination;
+    // const source = props.source;
+    // const destination = props.destination;
 
     return (
         <svg width="320" height="691" viewBox="0 0 320 691" fill="none" xmlns="http://www.w3.org/2000/svg">
