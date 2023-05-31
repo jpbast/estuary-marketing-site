@@ -2889,6 +2889,28 @@ table th {
   }
 }
 
+.connector-bottom-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 186px;
+  padding: 17px 10px;
+  background: #5072EB;
+  border: 1px solid #5072EB;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+  @media(max-width:810px) {
+    width: 167px;
+    height: 44px;
+    font-size: var(--fontSize-0);
+  }
+}
+
 .connector-link-form-control {
   flex: 1;
 
@@ -3007,6 +3029,10 @@ table th {
 
 @media (max-width: 810px) {
   .connector-source-dest-image-wrapper {
+    display: none;
+  }
+
+  .dont-show {
     display: none;
   }
 

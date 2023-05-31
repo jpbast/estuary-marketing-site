@@ -9,6 +9,7 @@ import ChevronRight from "@mui/icons-material/ChevronRight"
 import SearchIcon from "@mui/icons-material/Search"
 import { ConnectorsLink } from "./ConnectorsLink"
 import BackgroundImageWrapper from "./BackgroundImageWrapper"
+import { isMobile } from "react-device-detect"
 
 export interface ConnectorsProps {
     connectorType: "capture" | "materialization"
@@ -163,7 +164,8 @@ export const Connectors = ({
                             style={{ display: "block" }}
                             className="blog-post-header-vectors"
                         >
-                            <FlowLogo className="product-flow-section-one-image" />
+                        {isMobile ? <span className="dont-show"></span> : <FlowLogo className="product-flow-section-one-image" />}
+                            
                         </div>
                     </div>
                 )}
@@ -218,6 +220,9 @@ export const Connectors = ({
                         <div style={{ maxWidth: "30rem" }}>
                             <h2>{bottomTitle}</h2>
                             <p>{bottomDescription}</p>
+                            <Link to={`/${bottomTitle.toLowerCase()}`} className="connector-bottom-button">
+                                See all {bottomTitle.toLowerCase()}
+                            </Link>
                         </div>
                         <div
                             style={{ display: "block" }}
