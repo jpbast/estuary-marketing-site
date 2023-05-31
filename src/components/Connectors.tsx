@@ -18,6 +18,7 @@ export interface ConnectorsProps {
     bottomTitle?: string
     bottomDescription?: string
     onlyCards?: boolean
+    showAllConnectors?: boolean
 }
 
 const truncate = (val: string, max: number) => {
@@ -83,6 +84,7 @@ export const Connectors = ({
     bottomTitle,
     bottomDescription,
     onlyCards = false,
+    showAllConnectors = false
 }: ConnectorsProps) => {
     const {
         postgres,
@@ -130,6 +132,15 @@ export const Connectors = ({
         [postgres]
     )
 
+    const mappedConnectorsAll = useMemo(
+        () =>
+            postgres.allConnectors.nodes
+                .map(normalizeConnector)
+                .filter(connector => connector.type === connectorType),
+        [postgres]
+    )
+
+
     const logosByConnectorId = useMemo(
         () =>
             Object.assign(
@@ -164,8 +175,8 @@ export const Connectors = ({
                             style={{ display: "block" }}
                             className="blog-post-header-vectors"
                         >
-                        {isMobile ? <span className="dont-show"></span> : <FlowLogo className="product-flow-section-one-image" />}
-                            
+                            {isMobile ? <span className="dont-show"></span> : <FlowLogo className="product-flow-section-one-image" />}
+
                         </div>
                     </div>
                 )}
@@ -191,6 +202,7 @@ export const Connectors = ({
                 )}
 
                 <div className="connector-cards">
+                    {/* //insert showAllConnectors prop here to swap out mappedConnectors for mappedConnectorsAll */}
                     {(query.length > 0 ? results : mappedConnectors).map(
                         connector => (
                             <ConnectorCard
@@ -228,7 +240,7 @@ export const Connectors = ({
                             style={{ display: "block" }}
                             className="connector-bottom-vector"
                         >
-                            <FlowLogo className="connector-bottom-flow"/>
+                            <FlowLogo className="connector-bottom-flow" />
 
                             <StaticImage
                                 src="../images/connectors-bottom.png"
