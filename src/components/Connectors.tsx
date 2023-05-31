@@ -44,7 +44,8 @@ const ConnectorCard = ({
     logo,
     slug,
     type,
-}: ReturnType<typeof normalizeConnector>) => (
+    showType = false,
+}: ReturnType<typeof normalizeConnector> & { showType?: boolean }) => (
     <Link to={`${slug}`}>
         <div className="connector-card">
             <div className="connector-card-top">
@@ -54,12 +55,22 @@ const ConnectorCard = ({
                     className="connector-post-card-image icon-wrapper"
                     loading="eager"
                 />
+                {(recommended || showType) && <div style={{ flexGrow: 1 }} />}
                 {recommended && (
                     <>
-                        <div style={{ flexGrow: 1 }} />
                         <div>
                             <p className="connector-post-card-recommended">
                                 RECOMMENDED
+                            </p>
+                        </div>
+                    </>
+                )}
+                {showType && (
+                    <>
+                        {recommended && <div style={{ flexBasis: 4 }} />}
+                        <div>
+                            <p className="connector-post-card-recommended">
+                                {type === "capture" ? "SOURCE" : "DESTINATION"}
                             </p>
                         </div>
                     </>
@@ -84,7 +95,7 @@ export const Connectors = ({
     bottomTitle,
     bottomDescription,
     onlyCards = false,
-    showAllConnectors = false
+    showAllConnectors = false,
 }: ConnectorsProps) => {
     const {
         postgres,
@@ -130,7 +141,24 @@ export const Connectors = ({
                 .map(normalizeConnector)
                 .filter(connector =>
                     connectorType ? connector.type === connectorType : true
-                ),
+                )
+                .sort((a,b) => {
+                    // Sort by recommended, alphabetically
+                    // then show all captures, sorted alphabetically
+                    // then show all destinations, sorted alphabetically
+                    let alpha_sort = a.title.toUpperCase() < b.title.toUpperCase() ? -1 : 1;
+                    if(a.recommended && b.recommended) {
+                        return alpha_sort
+                    } else if(a.recommended) {
+                        return -1
+                    } else if(b.recommended){
+                        return 1
+                    } else if (a.type === b.type) {
+                        return alpha_sort
+                    } else if (a.type === "capture") {
+                        return -1
+                    }
+                }),
         [postgres]
     )
 
@@ -143,34 +171,19 @@ export const Connectors = ({
         [mappedConnectors]
     )
 
-    const mappedConnectorsAll = useMemo(
-        () =>
-            postgres.allConnectors.nodes
-                .map(normalizeConnector),
-        [postgres]
-    )
-
-    const logosByConnectorIdAll = useMemo(
-        () =>
-            Object.assign(
-                {},
-                ...mappedConnectorsAll.map(con => ({ [con.id]: con.logo }))
-            ),
-        [mappedConnectorsAll]
-    )
-
-
     const [query, setQuery] = useState("")
     const results = useLunr(
         query.length > 0
             ? query
-                .split(" ")
-                .map(term => `${term}* ${term}~1`)
-                .join(" ")
+                  .split(" ")
+                  .map(term => `${term}* ${term}~1`)
+                  .join(" ")
             : "",
         index,
         store
-    ).filter(res => (res as any).type === connectorType)
+    ).filter(res =>
+        showAllConnectors ? true : (res as any).type === connectorType
+    )
 
     return (
         <BackgroundImageWrapper>
@@ -185,8 +198,11 @@ export const Connectors = ({
                             style={{ display: "block" }}
                             className="blog-post-header-vectors"
                         >
-                            {isMobile ? <span className="dont-show"></span> : <FlowLogo className="product-flow-section-one-image" />}
-
+                            {isMobile ? (
+                                <span className="dont-show"></span>
+                            ) : (
+                                <FlowLogo className="product-flow-section-one-image" />
+                            )}
                         </div>
                     </div>
                 )}
@@ -212,20 +228,12 @@ export const Connectors = ({
                 )}
 
                 <div className="connector-cards">
-                    {showAllConnectors === true ? (
-                        (query.length > 0 ? results : mappedConnectorsAll).map(
-                            connector => (
-                                <ConnectorCard
-                                    {...connector}
-                                    logo={logosByConnectorIdAll[connector.id]}
-                                />
-                            )
-                        )
-                    ) : (query.length > 0 ? results : mappedConnectors).map(
+                    {(query.length > 0 ? results : mappedConnectors).map(
                         connector => (
                             <ConnectorCard
                                 {...connector}
                                 logo={logosByConnectorId[connector.id]}
+                                showType={showAllConnectors}
                             />
                         )
                     )}
@@ -239,20 +247,22 @@ export const Connectors = ({
                             <h2>All your data, </h2>
                             <h2>where you need it</h2>
                             <p>
-                                Consolidate your data into the leading warehouses,
-                                then integrate with your tools of choice.
+                                Consolidate your data into the leading
+                                warehouses, then integrate with your tools of
+                                choice.
                             </p>
                         </div>
                     </div>
 
-                    {showAllConnectors === true ? (
-                        null
-                    ) : (
+                    {showAllConnectors === true ? null : (
                         <div className="connector-bottom-link">
                             <div style={{ maxWidth: "30rem" }}>
                                 <h2>{bottomTitle}</h2>
                                 <p>{bottomDescription}</p>
-                                <Link to={`/${bottomTitle.toLowerCase()}`} className="connector-bottom-button">
+                                <Link
+                                    to={`/${bottomTitle.toLowerCase()}`}
+                                    className="connector-bottom-button"
+                                >
                                     See all {bottomTitle.toLowerCase()}
                                 </Link>
                             </div>
@@ -270,7 +280,6 @@ export const Connectors = ({
                             </div>
                         </div>
                     )}
-
                 </>
             )}
         </BackgroundImageWrapper>
