@@ -12,7 +12,7 @@ import BackgroundImageWrapper from "./BackgroundImageWrapper"
 import { isMobile } from "react-device-detect"
 
 export interface ConnectorsProps {
-    connectorType: "capture" | "materialization"
+    connectorType?: "capture" | "materialization"
     title?: string
     description?: string
     bottomTitle?: string
@@ -132,15 +132,6 @@ export const Connectors = ({
         [postgres]
     )
 
-    const mappedConnectorsAll = useMemo(
-        () =>
-            postgres.allConnectors.nodes
-                .map(normalizeConnector)
-                .filter(connector => connector.type === connectorType),
-        [postgres]
-    )
-
-
     const logosByConnectorId = useMemo(
         () =>
             Object.assign(
@@ -149,6 +140,23 @@ export const Connectors = ({
             ),
         [mappedConnectors]
     )
+
+    const mappedConnectorsAll = useMemo(
+        () =>
+            postgres.allConnectors.nodes
+                .map(normalizeConnector),
+        [postgres]
+    )
+
+    const logosByConnectorIdAll = useMemo(
+        () =>
+            Object.assign(
+                {},
+                ...mappedConnectorsAll.map(con => ({ [con.id]: con.logo }))
+            ),
+        [mappedConnectorsAll]
+    )
+
 
     const [query, setQuery] = useState("")
     const results = useLunr(
@@ -202,8 +210,16 @@ export const Connectors = ({
                 )}
 
                 <div className="connector-cards">
-                    {/* //insert showAllConnectors prop here to swap out mappedConnectors for mappedConnectorsAll */}
-                    {(query.length > 0 ? results : mappedConnectors).map(
+                    {showAllConnectors === true ? (
+                        (query.length > 0 ? results : mappedConnectorsAll).map(
+                            connector => (
+                                <ConnectorCard
+                                    {...connector}
+                                    logo={logosByConnectorIdAll[connector.id]}
+                                />
+                            )
+                        )
+                    ) : (query.length > 0 ? results : mappedConnectors).map(
                         connector => (
                             <ConnectorCard
                                 {...connector}
@@ -227,28 +243,32 @@ export const Connectors = ({
                         </div>
                     </div>
 
+                    {showAllConnectors === true ? (
+                        null
+                    ) : (
+                        <div className="connector-bottom-link">
+                            <div style={{ maxWidth: "30rem" }}>
+                                <h2>{bottomTitle}</h2>
+                                <p>{bottomDescription}</p>
+                                <Link to={`/${bottomTitle.toLowerCase()}`} className="connector-bottom-button">
+                                    See all {bottomTitle.toLowerCase()}
+                                </Link>
+                            </div>
+                            <div
+                                style={{ display: "block" }}
+                                className="connector-bottom-vector"
+                            >
+                                <FlowLogo className="connector-bottom-flow" />
 
-                    <div className="connector-bottom-link">
-                        <div style={{ maxWidth: "30rem" }}>
-                            <h2>{bottomTitle}</h2>
-                            <p>{bottomDescription}</p>
-                            <Link to={`/${bottomTitle.toLowerCase()}`} className="connector-bottom-button">
-                                See all {bottomTitle.toLowerCase()}
-                            </Link>
+                                <StaticImage
+                                    src="../images/connectors-bottom.png"
+                                    alt={bottomTitle}
+                                    width={500}
+                                />
+                            </div>
                         </div>
-                        <div
-                            style={{ display: "block" }}
-                            className="connector-bottom-vector"
-                        >
-                            <FlowLogo className="connector-bottom-flow" />
+                    )}
 
-                            <StaticImage
-                                src="../images/connectors-bottom.png"
-                                alt={bottomTitle}
-                                width={500}
-                            />
-                        </div>
-                    </div>
                 </>
             )}
         </BackgroundImageWrapper>
