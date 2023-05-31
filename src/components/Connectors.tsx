@@ -128,7 +128,9 @@ export const Connectors = ({
         () =>
             postgres.allConnectors.nodes
                 .map(normalizeConnector)
-                .filter(connector => connector.type === connectorType),
+                .filter(connector =>
+                    connectorType ? connector.type === connectorType : true
+                ),
         [postgres]
     )
 
