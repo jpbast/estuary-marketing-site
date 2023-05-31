@@ -269,32 +269,37 @@ export const ConnectorPage = ({
                     Load data directly into the destination of your choice
                 </p>
                 <div className="connector-image-wrapper">
-                    <StaticImage
-                        quality={100}
-                        alt="redshift logo"
-                        src="../images/logos_row1.png"
-                        layout="fixed"
-                        className="connector-logo-row"
-                    />
-                    <StaticImage
-                        quality={100}
-                        alt="data logo"
-                        src="../images/logos_row2.png"
-                        layout="fixed"
-                        className="connector-logo-row"
-                    />
-                    <StaticImage
-                        quality={100}
-                        alt="redshift logo"
-                        src="../images/logos_row1.png"
-                        className="connector-logo-row-mobile"
-                    />
-                    <StaticImage
-                        quality={100}
-                        alt="data logo"
-                        src="../images/logos_row2.png"
-                        className="connector-logo-row-mobile"
-                    />
+                    {isMobile ? (
+                        <>
+                            <StaticImage
+                                quality={100}
+                                alt="row of logos"
+                                src="../images/logos_row1.png"
+                            />
+                            <StaticImage
+                                quality={100}
+                                alt="row of logos"
+                                src="../images/logos_row2.png"
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <StaticImage
+                                quality={100}
+                                alt="row of logos"
+                                src="../images/logos_row1.png"
+                                layout="fixed"
+                                className="connector-logo-row"
+                            />
+                            <StaticImage
+                                quality={100}
+                                alt="data logo"
+                                src="../images/logos_row2.png"
+                                layout="fixed"
+                                className="connector-logo-row"
+                            />
+                        </>
+                    )}
                 </div>
                 <Link
                     className="connector-destinations-button"
