@@ -11,7 +11,7 @@ import { ConnectorsLink } from "./ConnectorsLink"
 import BackgroundImageWrapper from "./BackgroundImageWrapper"
 
 export interface ConnectorsProps {
-    connectorType: "capture" | "materialization"
+    connectorType?: "capture" | "materialization"
     title?: string
     description?: string
     bottomTitle?: string
@@ -125,7 +125,9 @@ export const Connectors = ({
         () =>
             postgres.allConnectors.nodes
                 .map(normalizeConnector)
-                .filter(connector => connector.type === connectorType),
+                .filter(connector =>
+                    connectorType ? connector.type === connectorType : true
+                ),
         [postgres]
     )
 
