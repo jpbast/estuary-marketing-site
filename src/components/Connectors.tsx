@@ -122,6 +122,7 @@ export const Connectors = ({
                                     layout: CONSTRAINED
                                     placeholder: NONE
                                     quality: 95
+                                    width: 53
                                 )
                             }
                         }
