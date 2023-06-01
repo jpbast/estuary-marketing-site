@@ -32,6 +32,7 @@ const BackgroundImageWrapper = (
             className={"background-index-wrapper"}
             fluid={imageData}
             
+            
             {...{ ...props, children: undefined }}
         >
             {props.children}

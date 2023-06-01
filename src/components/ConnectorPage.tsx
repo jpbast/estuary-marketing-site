@@ -23,8 +23,9 @@ import OperationalAnalytics from "../svgs/icon-operational-analytics.svg"
 import BackgroundImageWrapper from "../components/BackgroundImageWrapper"
 import ConnectorsImageDesktop from "../components/ConnectorsImageDesktop"
 import ConnectorsImageMobile from "../components/ConnectorsImageMobile"
-import { isMobile } from "react-device-detect"
+import { isMobile as isRealMobile} from "react-device-detect"
 import { Connectors } from "../components/Connectors"
+import { useMediaQuery, useTheme } from "@mui/material"
 
 export interface ConnectorPageProps {
     source_connector: any
@@ -41,6 +42,9 @@ export const ConnectorPage = ({
         source_connector && normalizeConnector(source_connector)
     const dest_mapped = dest_connector && normalizeConnector(dest_connector)
 
+    const theme = useTheme();
+    const isMobile = isRealMobile || useMediaQuery(theme.breakpoints.down("sm"));
+
     const [hasWindow, setHasWindow] = useState(false)
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -49,7 +53,7 @@ export const ConnectorPage = ({
     }, [])
 
     return (
-        <BackgroundImageWrapper>
+        <>
             <div className="blogs-index-header-wrapper">
                 <div className="connector-index-header">
                     <div
@@ -158,7 +162,7 @@ export const ConnectorPage = ({
                         <div className="product-flow-topic-wrapper">
                             <div className="icon-wrapper">
                                 <StaticImage
-                                    quality={100}
+                                    quality={90}
                                     placeholder="none"
                                     alt="salesforce logo"
                                     src="../images/salesforce-logo.png"
@@ -250,7 +254,7 @@ export const ConnectorPage = ({
                             <ReactPlayer
                                 light={
                                     <StaticImage
-                                        quality={100}
+                                        quality={80}
                                         placeholder="none"
                                         alt="estuary flow product video"
                                         src="../images/homepage-product-video.svg"
@@ -272,12 +276,12 @@ export const ConnectorPage = ({
                     {isMobile ? (
                         <>
                             <StaticImage
-                                quality={100}
+                                quality={90}
                                 alt="row of logos"
                                 src="../images/logos_row1.png"
                             />
                             <StaticImage
-                                quality={100}
+                                quality={90}
                                 alt="row of logos"
                                 src="../images/logos_row2.png"
                             />
@@ -285,14 +289,14 @@ export const ConnectorPage = ({
                     ) : (
                         <>
                             <StaticImage
-                                quality={100}
+                                quality={90}
                                 alt="row of logos"
                                 src="../images/logos_row1.png"
                                 layout="fixed"
                                 className="connector-logo-row"
                             />
                             <StaticImage
-                                quality={100}
+                                quality={90}
                                 alt="data logo"
                                 src="../images/logos_row2.png"
                                 layout="fixed"
@@ -484,6 +488,6 @@ export const ConnectorPage = ({
             </div>
 
             <Connectors connectorType={connector_type} onlyCards />
-        </BackgroundImageWrapper>
+        </>
     )
 }
