@@ -47,6 +47,9 @@ const PrivacyPolicy = () => {
                 <p>For Mailchimp please visit: <OutboundLink href="https://mailchimp.com/legal/privacy/">https://mailchimp.com/legal/privacy/</OutboundLink></p>
                 <p>For Hubspot please visit: <OutboundLink href="https://legal.hubspot.com/privacy-policy">https://legal.hubspot.com/privacy-policy</OutboundLink></p>
 
+                <p className="privacy-bold">Third-Party OAuth Providers</p>
+                <p>We use third party OAuth services including Googles.  When doing so we comply with the Google API Services User Data Policy, including the Limited Use requirements which can be found <OutboundLink href="https://developers.google.com/terms/api-services-user-data-policy">here</OutboundLink></p>
+                
                 <p className="privacy-bold">Aggregate Data</p>
                 <p>In an ongoing effort to better understand our users and the Services, we might analyze data with respect to how you use the Services, including Usage Data, alone and in combination with other data (including anonymized elements of the Customer Content), and may use such combined data in an aggregate and anonymous manner to operate, maintain, manage, and improve the Services. This aggregate information does not identify you personally. We may share this aggregate data with our affiliates, agents, and business partners. We may also disclose aggregated user statistics to describe the Services to current and prospective business partners and to other third parties for other lawful purposes.</p>
 
