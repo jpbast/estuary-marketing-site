@@ -3907,3 +3907,410 @@ table th {
     margin-top: 50px;
   }
 }
+
+/*LP Podcast start*/
+.lp-podcast-wrap {
+    background: #fff;
+    .podcast-hero {
+      background: url(./images/lp-podcast/img-bg.png) no-repeat center / cover;
+      padding: 90px 0 240px;
+      @media (max-width: 991px) {
+        background: url(./images/lp-podcast/img-bg.png) no-repeat center right / cover;
+      }
+      @media (max-width: 767px) {
+        padding: 10px 0 16px;
+      }
+      .hero-container {
+        max-width: 1220px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: 1260px) {
+          max-width: calc(100% - 40px);
+        }
+        @media (max-width: 767px) {
+          max-width: calc(100% - 32px);
+          flex-direction: column;
+        }
+      }
+      .hero-left {
+        max-width: 700px;
+        width: 100%;
+        @media (max-width: 767px) {
+          margin-bottom: 16px;
+        }
+        .hero-heading {
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: 71px;
+          line-height: 86px;
+          color: #04192b;
+          margin-bottom: 40px;
+          @media (max-width: 767px) {
+            font-size: 48px;
+            line-height: 60px;
+            margin-bottom: 16px;
+          }
+        }
+        .hero-subheading {
+          font-family: 'Inter', sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 30px;
+          color: #47506d;
+          @media (max-width: 767px) {
+            font-size: 14px;
+            line-height: 22px;
+          }
+        }
+      }
+      .hero-right {
+        @media (max-width: 767px) {
+          max-width: 50%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        svg{
+            @media(max-width: 767px){
+                width: 100%;
+                height: auto;
+            }
+        }
+      }
+    }
+    .episodes-wrap {
+      max-width: 1220px;
+      margin: -200px auto 0;
+      padding-bottom: 100px;
+      @media (max-width: 1260px) {
+        max-width: calc(100% - 40px);
+      }
+      @media (max-width: 767px) {
+        max-width: calc(100% - 32px);
+        margin-top: 16px;
+        padding-bottom: 32px;
+      }
+      .episodes-heading {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 48px;
+        color: #04192b;
+        margin-bottom: 24px;
+        @media (max-width: 767px) {
+          font-size: 28px;
+          line-height: 36px;
+          margin-bottom: 16px;
+        }
+      }
+      .episode-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 48px;
+        @media (max-width: 767px) {
+          flex-direction: column;
+          border-bottom: 1px solid #d7dce5;
+          padding-bottom: 16px;
+          margin-bottom: 16px;
+        }
+        &:last-child {
+          margin-bottom: 0;
+          border-bottom: none;
+          padding-bottom: 0;
+          margin-bottom: 0;
+        }
+        .episode-left {
+          max-width: 582px;
+          width: 100%;
+          background: #ffffff;
+          border: 1px solid #d7dce5;
+          padding: 16px;
+          @media (max-width: 767px) {
+            max-width: 550px;
+            margin-bottom: 16px;
+          }
+        }
+        .episode-right {
+          max-width: 638px;
+          width: 100%;
+          padding-left: 48px;
+          @media (max-width: 767px) {
+            max-width: 100%;
+            padding-left: 0;
+          }
+          .episode-heading {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 30px;
+            color: #47506d;
+            margin-bottom: 12px;
+            @media (max-width: 767px) {
+              font-size: 18px;
+              line-height: 26px;
+            }
+          }
+          .episode-description {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 30px;
+            color: #47506d;
+            margin-bottom: 40px;
+            @media (max-width: 767px) {
+              font-size: 14px;
+              line-height: 22px;
+              margin-bottom: 32px;
+            }
+          }
+          .links-wrap {
+            display: flex;
+            flex-direction: column;
+            @media (max-width: 767px) {
+              align-items: center;
+            }
+            a {
+              margin-bottom: 24px;
+              &:hover{
+                opacity: 0.9;
+              }
+              &:last-child {
+                margin-bottom: 0;
+              }
+              svg {
+                @media (max-width: 767px) {
+                  width: 190px;
+                  height: auto;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .subscribe {
+      background: #f9fafc;
+      padding: 100px 0 135px;
+      @media (max-width: 767px) {
+        padding: 32px 0;
+      }
+      .subscribe-wrap {
+        max-width: 1220px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: 1260px) {
+          max-width: calc(100% - 40px);
+        }
+        @media (max-width: 767px) {
+          max-width: calc(100% - 32px);
+        }
+      }
+      .subscribe-left {
+        max-width: 640px;
+        width: 100%;
+        @media (max-width: 991px) {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      .subscribe-right {
+        @media (max-width: 991px) {
+          display: none;
+        }
+      }
+      .subscribe-heading {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 56px;
+        line-height: 68px;
+        color: #04192b;
+        margin-bottom: 40px;
+        @media (max-width: 767px) {
+          font-size: 24px;
+          line-height: 36px;
+          text-align: center;
+          margin-bottom: 16px;
+        }
+      }
+      .subscribe-youtube {
+        max-width: 640px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%;
+        color: #47506d;
+        margin-bottom: 40px;
+        @media (max-width: 767px) {
+          flex-direction: column;
+          font-size: 14px;
+          line-height: 22px;
+          margin-bottom: 32px;
+        }
+        span {
+          @media (max-width: 767px) {
+            margin-bottom: 16px;
+          }
+        }
+        a {
+          img {
+            @media (max-width: 767px) {
+              max-width: 165px;
+            }
+          }
+        }
+      }
+      .subscribe-subheading {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%;
+        color: #47506d;
+        margin-bottom: 24px;
+        @media (max-width: 767px) {
+          font-size: 14px;
+          line-height: 22px;
+          text-align: center;
+          margin-bottom: 16px;
+        }
+      }
+      .input-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        input {
+          font-family: 'Inter', sans-serif;
+          max-width: calc(100% - 130px);
+          width: 100%;
+          height: 60px;
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 60px;
+          color: #47506d;
+          padding-left: 14px;
+          background: #ffffff;
+          border: 1px solid #9aa8be;
+          border-radius: 4px;
+          @media (max-width: 767px) {
+            height: 44px;
+            font-size: 14px;
+            line-height: 44px;
+          }
+          &::placeholder {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 60px;
+            color: #9aa8be;
+            @media (max-width: 767px) {
+              font-size: 14px;
+              line-height: 44px;
+            }
+          }
+        }
+        button {
+          width: 117px;
+          height: 60px;
+          background: #5072eb;
+          box-shadow: 0px 4px 10px rgba(20, 20, 43, 0.04);
+          border-radius: 4px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 60px;
+          color: #ffffff;
+          border: 1px solid transparent;
+          outline: none;
+          cursor: pointer;
+          @media (max-width: 767px) {
+            height: 44px;
+            font-size: 16px;
+            line-height: 44px;
+          }
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+    .signup {
+      padding: 100px 0;
+      @media (max-width: 767px) {
+        padding: 32px 0;
+      }
+      .signup-bg {
+        background: #04192b url(./images/lp-podcast/signup-bg.png) no-repeat center / cover;
+        max-width: 1220px;
+        width: 100%;
+        height: auto;
+        padding: 100px 0;
+        margin: 0 auto;
+        @media (max-width: 1260px) {
+          max-width: calc(100% - 40px);
+        }
+        @media (max-width: 767px) {
+          background: #04192b url(./images/lp-podcast/signup-bg.png) no-repeat center / contain;
+          padding: 32px 24px;
+          max-width: calc(100% - 32px);
+        }
+      }
+      .signup-heading {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 56px;
+        line-height: 68px;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 40px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        @media (max-width: 767px) {
+          font-size: 28px;
+          line-height: 36px;
+        }
+        span {
+          color: #5072eb;
+        }
+      }
+      .cta-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 287px;
+        margin: 0 auto;
+        width: 100%;
+        @media (max-width: 767px) {
+          max-width: 208px;
+        }
+        a {
+          background: #5072eb;
+          border-radius: 6px;
+          padding: 20px 28px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 20px;
+          text-align: center;
+          color: #ffffff;
+          text-decoration: none;
+          @media (max-width: 767px) {
+            padding: 12px 18px;
+            font-size: 14px;
+            line-height: 20px;
+          }
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+/*LP Podcast end*/
