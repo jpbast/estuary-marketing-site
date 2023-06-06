@@ -58,6 +58,10 @@ const navItems: NavItem[] = [
                 path: "/blog",
             },
             {
+                title: "Podcasts",
+                path: "/podcasts",
+            },
+            {
                 title: "Contact",
                 path: "/about#contact-us",
             },
