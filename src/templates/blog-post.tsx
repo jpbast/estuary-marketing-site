@@ -10,6 +10,7 @@ import Bio from "../components/bio"
 import { GatsbyImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image"
 import { ProcessedPost } from "../components/BlogPostProcessor"
 import FlowLogo from "../svgs/flow-logo.svg"
+import logoUrl from "../images/combination-mark__multi-blue.png";
 
 dayjs.extend(reltime)
 
@@ -95,8 +96,53 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
     )
 }
 
-export const Head = ({ data: { post } }) => {
-    return <Seo title={post.title} description={post.description ?? ""} />
+export const Head = ({
+    data: {
+        post,
+        site: {
+            siteMetadata: { siteUrl },
+        },
+    },
+}) => {
+    const mappedAuthors = post.authors.map(author => ({
+        name: author.name,
+        url: author.link,
+        image: {
+            "@type": "ImageObject",
+            url: `${siteUrl}/${author.picture.localFile.childImageSharp.fixed.src}`
+        }
+    }))
+
+    const postTags = post.tags.filter(tag => tag.type === "tag").map(t=>t.name)
+    return (
+        <>
+            <Seo title={post.title} description={post.description ?? ""} />
+            <script type="application/ld+json">
+                {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "BlogPosting",
+                    mainEntityOfPage: {
+                        "@type": "WebPage",
+                        "@id": `${siteUrl}/${post.slug}`,
+                    },
+                    headline: post.title,
+                    description: post.description ?? "",
+                    image: `${siteUrl}${post.hero.localFile.childImageSharp.fixed.src}`,
+                    author: post.authors.length > 1 ? mappedAuthors : mappedAuthors[0],
+                    keywords: postTags,
+                    publisher: {
+                        "@type": "Organization",
+                        name: "Estuary",
+                        logo: {
+                            "@type": "ImageObject",
+                            url: `${siteUrl}${logoUrl}`,
+                        },
+                    },
+                    datePublished: post.machineReadablePublishDate,
+                })}
+            </script>
+        </>
+    )
 }
 
 export default BlogPostTemplate
@@ -107,9 +153,15 @@ export const pageQuery = graphql`
         $previousPostId: String
         $nextPostId: String
     ) {
+        site {
+            siteMetadata {
+                siteUrl
+            }
+        }
         post: strapiBlogPost(id: { eq: $id }) {
             title: Title
             publishedAt(formatString: "MMMM D, YYYY")
+            machineReadablePublishDate: publishedAt(formatString: "YYYY-MM-DD")
             description: Description
             slug: Slug
             body: Body {
@@ -129,6 +181,9 @@ export const pageQuery = graphql`
                                 layout: CONSTRAINED
                                 placeholder: BLURRED
                             )
+                            fixed(width:60) {
+                                src
+                            }
                         }
                     }
                 }
@@ -143,6 +198,9 @@ export const pageQuery = graphql`
                             # aspectRatio: 2
                             formats: [AUTO, WEBP, AVIF]
                         )
+                        fixed(width:800) {
+                            src
+                        }
                         # Further below in this doc you can learn how to use these response images
                     }
                 }
