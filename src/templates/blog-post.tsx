@@ -107,7 +107,7 @@ export const Head = ({
     const mappedAuthors = post.authors.map(author => ({
         name: author.name,
         url: author.link,
-        image: {
+        image: author.picture && {
             "@type": "ImageObject",
             url: `${siteUrl}/${author.picture.localFile.childImageSharp.fixed.src}`
         }
@@ -127,7 +127,7 @@ export const Head = ({
                     },
                     headline: post.title,
                     description: post.description ?? "",
-                    image: `${siteUrl}${post.hero.localFile.childImageSharp.fixed.src}`,
+                    image: post.hero && `${siteUrl}${post.hero.localFile.childImageSharp.fixed.src}`,
                     author: post.authors.length > 1 ? mappedAuthors : mappedAuthors[0],
                     keywords: postTags,
                     publisher: {
