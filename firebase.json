@@ -3,6 +3,38 @@
         "public": "public",
         "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
         "cleanUrls": true,
+        "redirects": [
+            {
+                "source": "/blogs",
+                "destination": "/blog",
+                "type": 301
+            },
+            {
+                "source": "/products",
+                "destination": "/product",
+                "type": 301
+            },
+            {
+                "source": "/data-pipeline-basics-for-modern-organizations",
+                "destination": "/data-pipeline",
+                "type": 301
+            },
+            {
+                "source": "/etl-vs-elt-breaking-down-the-split-paradigm",
+                "destination": "/etl-vs-elt",
+                "type": 301
+            },
+            {
+                "source": "/salesforce-change-data-capture-tutorial",
+                "destination": "/salesforce-change-data-capture",
+                "type": 301
+            },
+            {
+                "source": "/real-time-and-batch-data-processing-an-introduction",
+                "destination": "/batch-data-processing",
+                "type": 301
+            }
+        ],
         "headers": [
             {
                 "source": "**/*",
@@ -23,7 +55,7 @@
                 ]
             },
             {
-                "source": "**/*.@(css|js)",
+                "source": "**/*.@(css|js|svg|webp|png)",
                 "headers": [
                     {
                         "key": "cache-control",
