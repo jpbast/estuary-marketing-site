@@ -199,7 +199,7 @@ const EstuaryVsDebezium = () => {
                         })}
                     </div>
                 </section>
-                <div className="cta-wrap">
+                <div className="cta-wrap-single">
                     <a href="https://dashboard.estuary.dev/register">
                         Build a pipeline
                     </a>
@@ -209,10 +209,10 @@ const EstuaryVsDebezium = () => {
                         See how Estuary compares to others
                     </div>
                     <div className="comparison-links">
-                        <Link to="">
+                        <Link to="" aria-label="fivertran">
                             <FiverTran />
                         </Link>
-                        <Link to="">
+                        <Link to="" aria-label="striim">
                             <StaticImage
                                 placeholder="none"
                                 alt="Striim logo"
@@ -224,10 +224,10 @@ const EstuaryVsDebezium = () => {
                                 quality={100}
                             />
                         </Link>
-                        <Link to="">
+                        <Link to="" aria-label="confluent">
                             <Confluent />
                         </Link>
-                        <Link to="">
+                        <Link to="" aria-label="airbyte">
                             <Airbyte />
                         </Link>
                     </div>
