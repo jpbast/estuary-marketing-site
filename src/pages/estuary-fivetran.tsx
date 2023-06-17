@@ -205,10 +205,10 @@ const EstuaryVsFivetran = () => {
                         See how Estuary compares to others
                     </div>
                     <div className="comparison-links">
-                        <Link to="" aria-label="fivetran">
+                        <Link to="/estuary-fivetran" aria-label="fivetran">
                             <FiveTran />
                         </Link>
-                        <Link to="" aria-label="striim">
+                        <Link to="/estuary-striim" aria-label="striim">
                             <StaticImage
                                 placeholder="none"
                                 alt="Striim logo"
@@ -220,10 +220,10 @@ const EstuaryVsFivetran = () => {
                                 quality={100}
                             />
                         </Link>
-                        <Link to="" aria-label="confluent">
+                        <Link to="/estuary-confluent" aria-label="confluent">
                             <Confluent />
                         </Link>
-                        <Link to="" aria-label="airbyte">
+                        <Link to="/estuary-airbyte" aria-label="airbyte">
                             <Airbyte />
                         </Link>
                     </div>

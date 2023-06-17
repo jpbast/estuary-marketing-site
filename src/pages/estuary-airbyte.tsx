@@ -31,8 +31,7 @@ const comparisonContent = [
         featureName: "Latency",
         estuaryValue:
             "<100ms. Only constraint is frequency of updates from the source, or what the destination can handle.",
-        competitorValue:
-            "Minimum possible latency is 5 minutes",
+        competitorValue: "Minimum possible latency is 5 minutes",
         mattersValue:
             "Faster data leads to 2x better marketing outcomes (Gartner) and enables real-time ML and insights.",
     },
@@ -68,7 +67,8 @@ const comparisonContent = [
     {
         featureName: "Schema Migrations",
         estuaryValue: "Automated Schema Evolution",
-        competitorValue: "Monitors for schema evolution every 24 hours and alerts users on changes. Modifications not propagated downstream",
+        competitorValue:
+            "Monitors for schema evolution every 24 hours and alerts users on changes. Modifications not propagated downstream",
         mattersValue:
             "If source data rarely changes, no problem. If it changes often, there will be manual work to update each consumer schema",
     },
@@ -193,10 +193,10 @@ const EstuaryVsAirbyte = () => {
                         See how Estuary compares to others
                     </div>
                     <div className="comparison-links">
-                        <Link to="" aria-label="fivetran">
+                        <Link to="/estuary-fivetran" aria-label="fivetran">
                             <FiveTran />
                         </Link>
-                        <Link to="" aria-label="striim">
+                        <Link to="/estuary-striim" aria-label="striim">
                             <StaticImage
                                 placeholder="none"
                                 alt="Striim logo"
@@ -208,10 +208,10 @@ const EstuaryVsAirbyte = () => {
                                 quality={100}
                             />
                         </Link>
-                        <Link to="" aria-label="confluent">
+                        <Link to="/estuary-confluent" aria-label="confluent">
                             <Confluent />
                         </Link>
-                        <Link to="" aria-label="airbyte">
+                        <Link to="/estuary-airbyte" aria-label="airbyte">
                             <Airbyte />
                         </Link>
                     </div>
