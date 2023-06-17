@@ -2,8 +2,8 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import SignUp from "../components/signup"
-import HeroImageDesktop from "../svgs/estuary-striim.svg"
-import HeroImageMobile from "../svgs/estuary-striim-mobile.svg"
+import HeroImageDesktop from "../svgs/estuary-confluent.svg"
+import HeroImageMobile from "../svgs/estuary-confluent-mobile.svg"
 import FiveTran from "../svgs/fivetran-logo.svg"
 import Confluent from "../svgs/confluent-logo.svg"
 import Airbyte from "../svgs/airbyte-logo.svg"
@@ -15,7 +15,7 @@ const comparisonContent = [
         estuaryValue:
             "Self-serve streaming data platform for building real-time pipelines. Company behind <a href='https://github.com/gazette/core' target='_blank'>Gazette</a> and <a href='https://github.com/estuary/flow' target='_blank'>Estuary Flow OSS</a>",
         competitorValue:
-            "Provider of enterprise streaming database replication software with a historical focus in on-prem database CDC",
+            "Company behind Apache Kafka. They offer managed Kafka and connectors into and out of Kafka.",
         mattersValue: "n/a",
     },
     {
@@ -23,25 +23,25 @@ const comparisonContent = [
         estuaryValue:
             "Open-Source, or predictably priced pipelines at $1.50 / GB of change events with 10gb free",
         competitorValue:
-            "Requires a <a href='https://www.striim.com/pricing/'>contract for credits</a>. Pricing then based on credit usage, compute, and data transfer fees",
-        mattersValue: "Estuary is cheaper at scale?",
+            "<a href='https://www.confluent.io/confluent-cloud/connect-pricing/'>Pricing</a> based on data transferred ($0.20/gb) and cluster usage ($0.20/gb). and cost per hour??? ",
+        mattersValue: "Estuary is priced solely on change events, which ... ",
     },
     {
         featureName: "Latency",
         estuaryValue:
             "<100ms. Only constraint is frequency of updates from the source, or what the destination can handle.",
-        competitorValue: "End-to-end latency <200ms. Provide latency SLAs.",
+        competitorValue: "<100ms. Based on their own version of Kafka.",
         mattersValue:
             "Faster data leads to 2x better marketing outcomes (Gartner) and enables real-time ML and insights.",
     },
     {
         featureName: "Connectors",
         estuaryValue:
-            "100+ connectors. Also HTTP file, webhook, and ability to spin up most new connectors within a week",
+            "<a href='https://estuary.dev/integrations/'>100+ connectors</a>. Also HTTP file, webhook, and ability to spin up most new connectors within a week",
         competitorValue:
-            "<a href='https://www.striim.com/docs/en/sources.html'>60+</a> connectors. Core strength is in on-premise databases (e.g. Oracle). Also offer file-based ingestion, webhooks, IoT, and message queues.",
+            "<a href='https://www.confluent.io/product/connectors/'>60+ connectors</a> with half built in-house and half open-source. No exact characteristics on materialization connectors nor reductions.",
         mattersValue:
-            "Estuary onboards SaaS connectors and NoSQL databases faster, while Striim is a better fit for those with on-prem databases",
+            "Best for Kafka users. CDC connectors are fully-managed <a href='https://estuary.dev/debezium-alternatives/'>Debezium w/ associated tradeoffs</a>",
     },
     {
         featureName: "On-Prem",
@@ -52,14 +52,15 @@ const comparisonContent = [
     {
         featureName: "Delivery",
         estuaryValue: "Exactly-Once",
-        competitorValue: "Exactly-Once",
+        competitorValue: "At-least Once",
         mattersValue:
-            "Duplicates can be created in the consumer, creating excess cost. Else, each consumer will need a de-dupe step added",
+            "Duplicates can be created in the consumer, creating excess cost. Else, each consumer will need de-dupe step",
     },
     {
         featureName: "Schema Migrations",
         estuaryValue: "Automated Schema Evolution",
-        competitorValue: "Automated Schema Evolution",
+        competitorValue:
+            "Users manually manage the <a href='https://docs.confluent.io/platform/current/schema-registry/index.html#schemaregistry-intro'>Schema Registry</a> to validate and evolve data and schema",
         mattersValue:
             "If source data rarely changes, no problem. If it changes often, there will be manual work to update each consumer schema",
     },
@@ -68,7 +69,7 @@ const comparisonContent = [
         estuaryValue:
             "Ingested data stored in a <a href='https://docs.estuary.dev/concepts/collections/'>real-time data lake</a> in customers cloud storage",
         competitorValue:
-            "Every new pipeline is made from scratch, and begins with a new ingest",
+            "Data is stored in the Kafka Kafka topic or persisted to a batch layer. Joining the two layers is difficult though.",
         mattersValue:
             "By storing data in a real-time data lake, you can endlessly distribute off one ingest... saving you egress fees, credits, and source system stress",
     },
@@ -76,9 +77,10 @@ const comparisonContent = [
         featureName: "Transforms",
         estuaryValue:
             "Streaming SQL transforms and joins on both real-time and history data. DBT as a destination",
-        competitorValue: "Streaming SQL transforms and joins on both real-time and history data (with windowing required). DBT as a destination",
+        competitorValue:
+            "<a href='https://www.morling.dev/blog/single-message-transforms-swiss-army-knife-of-kafka-connect/'>Single-Message Transforms</a> can perform basic transforms of a single message or can use ksql for broader streaming joins",
         mattersValue:
-            "If data needs to be joined in flight, you'll need additional stream processing platform",
+            "If data needs to be joined in flight or you need to do more than simple transforms, you'll need additional stream processing platform",
     },
     {
         featureName: "Vector DBs & AI",
@@ -87,14 +89,16 @@ const comparisonContent = [
         mattersValue: "Teams quickly demanding support for vector DBs",
     },
     {
-        featureName: "Requires Windowing to join streaming/batch pipelines",
+        featureName: "Requires Windowing",
         estuaryValue: "No",
-        competitorValue: "<a href='https://www.striim.com/docs/en/striim-concepts.html#window'>Yes</a>",
-        mattersValue: "Rows will be incomplete as some data that could be joined will be missed due to the windowing. Also more complex to implement.",
-    }
+        competitorValue:
+            "Joins are done in <a href='https://www.jesse-anderson.com/2019/10/why-i-recommend-my-clients-not-use-ksql-and-kafka-streams/'>ksql</a> and <a href='https://www.jesse-anderson.com/2019/10/why-i-recommend-my-clients-not-use-ksql-and-kafka-streams/'>require windowing</a>",
+        mattersValue:
+            "Streaming and batch joins are more complex to implement and with likely lower join rates when defining windows on the datasets is required",
+    },
 ]
 
-const EstuaryVsStriim = () => {
+const EstuaryVsConfluent = () => {
     const [isMobile, setMobile] = React.useState(false)
     const checkIfMobile = () =>
         typeof window !== "undefined" && window.innerWidth < 845
@@ -120,11 +124,10 @@ const EstuaryVsStriim = () => {
                             <div className="hero-heading">
                                 Estuary Flow
                                 <br /> vs
-                                <br /> Striim
+                                <br /> Confluent
                             </div>
                             <div className="hero-subheading">
-                                A COMPARISON OF FULLY-MANAGED STREAMING
-                                PLATFORMS
+                                A COMPARISON OF STREAMING PLATFORMS
                             </div>
                         </div>
                         <div className="hero-right">
@@ -140,7 +143,7 @@ const EstuaryVsStriim = () => {
                     <div className="table-heading">
                         <div className="heading-item">FEATURES</div>
                         <div className="heading-item">ESTUARY</div>
-                        <div className="heading-item">STRIIM</div>
+                        <div className="heading-item">CONFLUENT</div>
                         <div className="heading-item">Why it matters</div>
                     </div>
                     <div className="table-data">
@@ -263,4 +266,4 @@ export const Head = () => {
     )
 }
 
-export default EstuaryVsStriim
+export default EstuaryVsConfluent
