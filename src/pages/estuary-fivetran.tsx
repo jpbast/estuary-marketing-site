@@ -2,8 +2,8 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import SignUp from "../components/signup"
-import HeroImageDesktop from "../svgs/estuary-vs-debezium-hero.svg"
-import HeroImageMobile from "../svgs/estuary-vs-debezium-hero-mobile.svg"
+import HeroImageDesktop from "../svgs/estuary-vs-fivetran.svg"
+import HeroImageMobile from "../svgs/estuary-vs-fivetran-mobile.svg"
 import FiveTran from "../svgs/fivetran-logo.svg"
 import Confluent from "../svgs/confluent-logo.svg"
 import Airbyte from "../svgs/airbyte-logo.svg"
@@ -15,92 +15,88 @@ const comparisonContent = [
         estuaryValue:
             "Self-serve streaming data platform for building real-time pipelines. Company behind <a href='https://github.com/gazette/core' target='_blank'>Gazette</a> and <a href='https://github.com/estuary/flow' target='_blank'>Estuary Flow OSS</a>",
         competitorValue:
-            "<a href='https://debezium.io/' target='_blank'>Open-Source</a> project for streaming change data into (primarily) Apache Kafka.",
+            "Early Modern Data Stack  vendor of batch ETL software for SaaS data pipelines",
         mattersValue: "n/a",
     },
     {
         featureName: "Price",
         estuaryValue:
-            "Open-Source, or Fully-Managed pipelines at $1.50 per GB of change events with 10gb free",
+            "Open-Source, or predictably priced pipelines at $1.50 / GB of change events with 10gb free",
         competitorValue:
-            "Open-Source. Typically requires 2-3 full-time senior resources for production grade pipelines.",
+            "Based on volume of 'Monthly Active Rows' which can be highly vlatile",
         mattersValue:
-            "Ask the CFO :). But really, open-source may or may not be cheaper all. With Debezium, you'll need to run the hardware and hire the team to support it.",
+            "Estuary is less than half the price for the same pipeline. Fivetran bills you exponentially for normalizing your data. (Read Fivetran pricing breakdown)",
     },
     {
-        featureName: "Pre-reqs",
-        estuaryValue: "Logical Decoding for Write-Ahead Log or Binlog enabled",
-        competitorValue:
-            "Replication Slots to WAL/binlog, Kafka (usually), Kafka Connect, ZooKeeper",
-        mattersValue:
-            "The team should be highly proficient in Java to properly manage these packages",
-    },
-    {
-        featureName: "CDC Connectors",
+        featureName: "Latency",
         estuaryValue:
-            "MongoDB, MySQL,PostgreSQL, SQL Server, Salesforce, Firestore + <a href='https://estuary.dev/integrations/' target='_blank'>80 others</a> sources and destinations",
-        competitorValue: "MongoDB, MySQL, PostgreSQL, SQL Server, Oracle, DB2",
+            "<100ms. Only constraint is frequency of updates from the source, or what the destination can handle.",
+        competitorValue:
+            "Latency depends on plan/price. Minimum possible latency is 5 minutes, which is <a href='https://www.fivetran.com/pricing'>2x the price</a> of the 1 hour latency.",
         mattersValue:
-            "Debezium support limited to databases and no SaaS APIs. Estuary does not support Oracle/DB2",
+            "Faster data leads to 2x better marketing outcomes (Gartner) and enables real-time ML and insights.",
+    },
+    {
+        featureName: "Connectors",
+        estuaryValue:
+            "<a href='https://estuary.dev/integrations/'>100+ connectors</a>. Also HTTP file, webhook, and ability to spin up most new connectors within a week",
+        competitorValue:
+            "<a href='https://www.fivetran.com/connectors'>340+</a> connectors. Also file-based ingestion and webhooks. Custom connector builder available. ",
+        mattersValue:
+            "Fivetran has more connectors ready today, but new requests are added to a long queue. Even popular ones like S3 took <a href='https://support.fivetran.com/hc/en-us/community/posts/1500000583602-New-Destination-AWS-S3-destination'>over 2 years</a>.",
     },
     {
         featureName: "On-Prem",
-        estuaryValue: "Fall 2023",
+        estuaryValue: "Coming Fall 2023",
         competitorValue: "Yes",
         mattersValue: "Diff tools for on-prem needed if using Estuary Flow",
     },
     {
-        featureName: "Dev Ops",
-        estuaryValue: "No resource management as Flow will manage the shards",
-        competitorValue:
-            "<a href='https://estuary.dev/debezium-alternatives/' target='_blank'>Requires allocating CPU resources continuously</a>",
-        mattersValue:
-            "<a href='https://estuary.dev/debezium-alternatives/' target='_blank'>Data can be throttled, if not fully lost, depending on Topic retention window) if insufficient resources are available.</a>",
-    },
-    {
         featureName: "Delivery",
         estuaryValue: "Exactly-Once",
-        competitorValue:
-            "<a href='https://debezium.io/documentation/faq/#why_must_consuming_applications_expect_duplicate_events' target='_blank'>At-least Once</a>",
+        competitorValue: "Exactly-Once",
         mattersValue:
-            "Duplicates can be created in the consumer, creating excess cost. Else, each consumer will need de-dupe step",
-    },
-    {
-        featureName: "Scalability",
-        estuaryValue:
-            "Estuary manages partitioning of tables and communicates with replication slot. This avoids DB memory problems that would otherwise put a limit on uptake.",
-        competitorValue:
-            "A connector <a href='https://instaclustr.medium.com/change-data-capture-cdc-with-kafka-connect-and-the-debezium-postgresql-source-connector-13a48eabfcb2' target='_blank'>handles 7K change events/second.</a> Tables can be manually partitioned and multiple connectors created for more scalability.",
-        mattersValue:
-            "For teams working with large tables, there will be significant addl .overhead in deployment. Manual partition and added multiple connectors will be req.",
+            "Duplicates can be created in the consumer without exactly once, creating excess cost",
     },
     {
         featureName: "Schema Migrations",
-        estuaryValue: "Automated schema evolution",
-        competitorValue:
-            "Row-level data capture, but downstream consumers will have to be manually updated",
+        estuaryValue: "Automated Schema Evolution",
+        competitorValue: "Automated Schema Evolution",
         mattersValue:
             "If source data rarely changes, no problem. If it changes often, there will be manual work to update each consumer schema",
     },
     {
-        featureName: "Backfills",
-        estuaryValue:
-            "Data stored in a <a href='https://docs.estuary.dev/concepts/collections/' target='_blank'>real-time data lake</a>, no manual backfills",
-        competitorValue:
-            "Manually triggered backfills to replay log from a point in time for a new consumer",
+        featureName: "ETL",
+        estuaryValue: "Yes",
+        competitorValue: "ELT Only.",
         mattersValue:
-            "You will have to kickstart a backfill with a manual operation",
+            "Extraneous data loaded to warehouse driving more compute expense ",
+    },
+    {
+        featureName: "Data Lake",
+        estuaryValue:
+            "Ingested data stored in a <a href='https://docs.estuary.dev/concepts/collections/'>real-time data lake</a> in customers cloud storage",
+        competitorValue:
+            "Every new pipeline is made from scratch and requires creating a new ingest",
+        mattersValue:
+            "By storing data in a real-time data lake, you can endlessly distribute off one ingest... saving you egress fees, MAR, and source system stress",
     },
     {
         featureName: "Transforms",
         estuaryValue:
-            "Streaming stateful SQL transforms and joins on both real-time and history data",
-        competitorValue:
-            "<a href='https://www.morling.dev/blog/single-message-transforms-swiss-army-knife-of-kafka-connect/' target='_blank'>Single-Message Transforms</a> can perform basic transforms of a single message",
+            "Streaming SQL transforms and joins on both real-time and history data. DBT as a destination",
+        competitorValue: "SQL transforms and DBT integration",
         mattersValue:
-            "You'll need an additional stream processing platform for more complex transformations",
+            "If data needs to be joined in flight, you'll need additional stream processing platform",
+    },
+    {
+        featureName: "Vector DBs & AI",
+        estuaryValue: "Pinecone",
+        competitorValue: "None",
+        mattersValue: "Teams quickly demanding support for vector DBs",
     },
 ]
+
 const EstuaryVsDebezium = () => {
     const [isMobile, setMobile] = React.useState(false)
     const checkIfMobile = () =>
@@ -127,10 +123,10 @@ const EstuaryVsDebezium = () => {
                             <div className="hero-heading">
                                 Estuary Flow
                                 <br /> vs
-                                <br /> Debezium
+                                <br /> Fivetran
                             </div>
                             <div className="hero-subheading">
-                                A COMPARISON OF STREAMING CDC DEPLOYS
+                                A COMPARISON OF ETL/ELT PLATFORMS
                             </div>
                         </div>
                         <div className="hero-right">
@@ -146,10 +142,10 @@ const EstuaryVsDebezium = () => {
                             placeholder="none"
                             alt="Reality of Debezium"
                             loading="lazy"
-                            src="../images/lp-comparison/reality-of-debezium.webp"
+                            src="../images/lp-comparison/pricing-comparison-estuary-fivetran.png"
                             layout="constrained"
-                            width={900}
-                            height={275}
+                            width={1266}
+                            height={581}
                             quality={100}
                         />
                     </div>
@@ -158,7 +154,7 @@ const EstuaryVsDebezium = () => {
                     <div className="table-heading">
                         <div className="heading-item">FEATURES</div>
                         <div className="heading-item">ESTUARY</div>
-                        <div className="heading-item">DEBEZIUM</div>
+                        <div className="heading-item">FIVETRAN</div>
                         <div className="heading-item">Why it matters</div>
                     </div>
                     <div className="table-data">
@@ -241,19 +237,23 @@ const EstuaryVsDebezium = () => {
                         </div>
                         <p className="about-content">
                             We're creating a new kind of DataOps platform that
-                            <b>empowers data teams</b> to build <b>real-time,</b>
+                            <b>empowers data teams</b> to build{" "}
+                            <b>real-time,</b>
                             data-intensive pipelines and applications, at scale,
-                            <b>with minimal friction,</b> in a <b>UI or CLI</b>. We aim to
-                            make real-time data <b>accessible to the analyst</b>, while
-                            bringing power tooling to the streaming enthusiast.
-                            Flow <b>unifies</b> a team's databases, pub/sub systems,
+                            <b>with minimal friction,</b> in a <b>UI or CLI</b>.
+                            We aim to make real-time data{" "}
+                            <b>accessible to the analyst</b>, while bringing
+                            power tooling to the streaming enthusiast. Flow{" "}
+                            <b>unifies</b> a team's databases, pub/sub systems,
                             and SaaS around their data, without requiring new
                             investments in infrastructure or development.
                         </p>
                         <p className="about-content">
-                            Estuary <b>develops in the open</b> to produce both the
-                            runtime for our managed service and an ecosystem of
-                            <b>open-source</b> connectors. You can read more about{" "}
+                            Estuary <b>develops in the open</b> to produce both
+                            the runtime for our managed service and an ecosystem
+                            of
+                            <b>open-source</b> connectors. You can read more
+                            about{" "}
                             <Link to="/the-estuary-story-and-guiding-principles">
                                 our story here.
                             </Link>
