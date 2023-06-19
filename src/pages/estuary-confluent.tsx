@@ -5,8 +5,8 @@ import SignUp from "../components/signup"
 import HeroImageDesktop from "../svgs/estuary-confluent.svg"
 import HeroImageMobile from "../svgs/estuary-confluent-mobile.svg"
 import FiveTran from "../svgs/fivetran-logo.svg"
-import Confluent from "../svgs/confluent-logo.svg"
 import Airbyte from "../svgs/airbyte-logo.svg"
+import Debezium from "../svgs/debezium-logo.svg"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 const comparisonContent = [
@@ -209,8 +209,8 @@ const EstuaryVsConfluent = () => {
                                 quality={100}
                             />
                         </Link>
-                        <Link to="/estuary-confluent" aria-label="confluent">
-                            <Confluent />
+                        <Link to="/estuary-debezium" aria-label="debezium">
+                            <Debezium />
                         </Link>
                         <Link to="/estuary-airbyte" aria-label="airbyte">
                             <Airbyte />

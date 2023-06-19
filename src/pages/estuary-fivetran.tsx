@@ -4,9 +4,9 @@ import Seo from "../components/seo"
 import SignUp from "../components/signup"
 import HeroImageDesktop from "../svgs/estuary-vs-fivetran.svg"
 import HeroImageMobile from "../svgs/estuary-vs-fivetran-mobile.svg"
-import FiveTran from "../svgs/fivetran-logo.svg"
 import Confluent from "../svgs/confluent-logo.svg"
 import Airbyte from "../svgs/airbyte-logo.svg"
+import Debezium from "../svgs/debezium-logo.svg"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 const comparisonContent = [
@@ -205,8 +205,8 @@ const EstuaryVsFivetran = () => {
                         See how Estuary compares to others
                     </div>
                     <div className="comparison-links">
-                        <Link to="/estuary-fivetran" aria-label="fivetran">
-                            <FiveTran />
+                        <Link to="/estuary-debezium" aria-label="debezium">
+                            <Debezium />
                         </Link>
                         <Link to="/estuary-striim" aria-label="striim">
                             <StaticImage
