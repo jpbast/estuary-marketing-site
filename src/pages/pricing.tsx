@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import {
+    Box,
     Divider,
     FormControl,
     FormControlLabel,
@@ -50,21 +51,22 @@ const ChecklistItem = ({ children, bullet = false }) => (
 )
 
 const currencyFormatter = Intl.NumberFormat("en-US", {
-    style:"currency",
-    currency:"USD",
+    style: "currency",
+    currency: "USD",
 })
 
-const roundTo = (num:number,decimals:number) => Math.round((num + Number.EPSILON)*(10**decimals))/(10**decimals)
+const roundTo = (num: number, decimals: number) =>
+    Math.round((num + Number.EPSILON) * 10 ** decimals) / 10 ** decimals
 
-const calculateDataPrice = (gbs: number):number => {
+const calculateDataPrice = (gbs: number): number => {
     let gb_calc: string | number =
         Math.min(1000, gbs) * 0.75 + Math.max(0, (gbs - 1001) * 0.2)
-    return roundTo(gb_calc,2)
+    return roundTo(gb_calc, 2)
 }
 
 // $0.75/GB up to 1000 GB / month, then $0.20 after
 const calculatePrice = (tasks: number, gbs: number) => {
-    let gb_calc = roundTo(tasks * calculateDataPrice(gbs),2);
+    let gb_calc = roundTo(tasks * calculateDataPrice(gbs), 2)
 
     let task_calc = tasks * 50
     return (
@@ -173,9 +175,8 @@ const PricingPage = () => {
                             <p className="pricing-page-tile-price-subtext">
                                 <b>Tasks</b>: $0.07/hr - $50/month
                                 <br />
-                                <b>Data</b>: $0.75/GB per task up to 1TB, then $0.20/GB 
-                                <Divider orientation="horizontal" style={{margin:"1em 0"}}/>
-                                A <b>task</b> is either a <b>source</b>, <b>transformation</b>, or <b>destination</b>. At least two are required for a functional flow.
+                                <b>Data</b>: $0.75/GB per task up to 1TB, then
+                                $0.20/GB
                             </p>
                             <p className="pricing-page-price">
                                 {calculatePrice(
@@ -183,15 +184,26 @@ const PricingPage = () => {
                                     inverseSliderScale(selectedGB)
                                 )}
                             </p>
-                            <Stack margin="1rem 0 2rem 0" justifyContent="center">
+                            <Stack
+                                margin="1rem 0 2rem 0"
+                                justifyContent="center"
+                            >
                                 <Stack
                                     spacing={2}
                                     alignItems="center"
-                                    direction="row"
-                                    marginBottom={"1em"}
+                                    direction="column"
+                                    marginBottom={"2em"}
                                 >
-                                    <Typography width="5em" gutterBottom>
-                                        Tasks
+                                    <Typography component="div">
+                                        Tasks:{" "}
+                                        <Typography
+                                            display="inline"
+                                            fontWeight="bold"
+                                        >
+                                            {currencyFormatter.format(
+                                                selectedTasks * 50
+                                            )}
+                                        </Typography>
                                     </Typography>
                                     <Slider
                                         value={selectedTasks}
@@ -202,29 +214,41 @@ const PricingPage = () => {
                                                     : val[0]
                                             )
                                         }
-                                        marks={[2,3,4,5,6,7,8,9,10].map(id => ({
-                                            value: id,
-                                            label: id,
-                                        }))}
+                                        marks={[2, 3, 4, 5, 6, 7, 8, 9, 10].map(
+                                            id => ({
+                                                value: id,
+                                                label: id,
+                                            })
+                                        )}
                                         min={2}
                                         max={10}
                                         step={1}
                                         valueLabelDisplay="auto"
-                                        valueLabelFormat={v=>`${v} tasks`}
+                                        valueLabelFormat={v => `${v} tasks`}
+                                        style={{ marginTop: 0 }}
                                     />
-                                    <Typography width="6em">
-                                        <b>{currencyFormatter.format(selectedTasks*50)}</b>
-                                    </Typography>
                                 </Stack>
-                                <Typography variant="h4" textAlign="center">+</Typography>
                                 <Stack
                                     spacing={2}
                                     alignItems="center"
-                                    direction="row"
+                                    direction="column"
                                     marginBottom="1.75rem"
                                 >
-                                    <Typography width="5em" gutterBottom>
-                                        Data
+                                    <Typography>
+                                        Data:{" "}
+                                        <Typography
+                                            display="inline"
+                                            fontWeight="bold"
+                                        >
+                                            {currencyFormatter.format(
+                                                selectedTasks *
+                                                    calculateDataPrice(
+                                                        inverseSliderScale(
+                                                            selectedGB
+                                                        )
+                                                    )
+                                            )}
+                                        </Typography>
                                     </Typography>
                                     <Slider
                                         value={selectedGB}
@@ -244,13 +268,21 @@ const PricingPage = () => {
                                         step={marks[0].value / 1000}
                                         marks={marks}
                                         valueLabelDisplay="auto"
-                                        valueLabelFormat={v=>gByteLabel(inverseSliderScale(v))}
+                                        valueLabelFormat={v =>
+                                            gByteLabel(inverseSliderScale(v))
+                                        }
+                                        style={{marginTop: 0}}
                                     />
-                                    <Typography width="6em">
-                                        <b>{currencyFormatter.format(selectedTasks * calculateDataPrice(inverseSliderScale(selectedGB)))}</b>
-                                    </Typography>
                                 </Stack>
-                                <Typography variant="caption" style={{lineHeight:"1.1",letterSpacing:"0.02133em"}}>*This is an approximation assuming every task uses the same amount of data. Data usage will differ between tasks composing different flows.</Typography>
+                                <Typography
+                                    variant="caption"
+                                    style={{
+                                        lineHeight: "1.1",
+                                        letterSpacing: "0.02133em",
+                                    }}
+                                >
+                                    *A task represents a source, destination or transformation.
+                                </Typography>
                             </Stack>
                             <div className="pricing-page-checklist-wrapper">
                                 <p style={{ marginTop: 0 }}>
