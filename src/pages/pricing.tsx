@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import {
+    Divider,
     FormControl,
     FormControlLabel,
     Slider,
@@ -58,7 +59,7 @@ const calculateDataPrice = (gbs: number):number => {
 
 // $0.75/GB up to 1000 GB / month, then $0.20 after
 const calculatePrice = (tasks: number, gbs: number) => {
-    let gb_calc = calculateDataPrice(gbs);
+    let gb_calc = tasks * calculateDataPrice(gbs);
 
     let task_calc = tasks * 50
     return (
@@ -147,7 +148,7 @@ const PricingPage = () => {
                                 </ChecklistItem>
                                 <ChecklistItem>
                                     Use up to 50 collections, 2 total tasks
-                                    (Captures, Materializations and/or
+                                    (sources, sestinations and/or
                                     transformations)
                                 </ChecklistItem>
                                 <ChecklistItem>
@@ -165,9 +166,11 @@ const PricingPage = () => {
                             <PricingCloud className="pricing-page-tile-icon icon-wrapper" />
                             <p className="pricing-page-tile-name">Cloud</p>
                             <p className="pricing-page-tile-price-subtext">
-                                $50/task/month, billed per hour
+                                <b>Tasks</b>: $0.07/hr - $50/month
                                 <br />
-                                $0.75/GB/task data movement
+                                <b>Data</b>: $0.75/GB per task up to 1TB, then $0.20/GB 
+                                <Divider orientation="horizontal" style={{margin:"1em 0"}}/>
+                                A <b>task</b> is either a <b>source</b>, <b>transformation</b>, or <b>destination</b>. At least two are required for a functional flow.
                             </p>
                             <p className="pricing-page-price">
                                 {calculatePrice(
@@ -237,7 +240,7 @@ const PricingPage = () => {
                                         valueLabelFormat={v=>gByteLabel(inverseSliderScale(v))}
                                     />
                                     <Typography width="3em">
-                                        $<b>{calculateDataPrice(inverseSliderScale(selectedGB))}</b>
+                                        $<b>{selectedTasks * calculateDataPrice(inverseSliderScale(selectedGB))}</b>
                                     </Typography>
                                 </Stack>
                             </Stack>
@@ -250,8 +253,8 @@ const PricingPage = () => {
                                     Limitless horizontal scaling
                                 </ChecklistItem>
                                 <ChecklistItem>
-                                    Unlimited collections, captures and
-                                    materializations
+                                    Unlimited collections, sources and
+                                    destinations
                                 </ChecklistItem>
                                 <ChecklistItem>
                                     Pay as you go, monthly and annual payment
