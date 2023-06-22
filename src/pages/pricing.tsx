@@ -66,7 +66,7 @@ const calculateDataPrice = (gbs: number): number => {
 
 // $0.75/GB up to 1000 GB / month, then $0.20 after
 const calculatePrice = (tasks: number, gbs: number) => {
-    let gb_calc = roundTo(tasks * calculateDataPrice(gbs), 2)
+    let gb_calc = roundTo(calculateDataPrice(gbs), 2)
 
     let task_calc = tasks * 50
     return (
@@ -241,12 +241,11 @@ const PricingPage = () => {
                                             fontWeight="bold"
                                         >
                                             {currencyFormatter.format(
-                                                selectedTasks *
-                                                    calculateDataPrice(
-                                                        inverseSliderScale(
-                                                            selectedGB
-                                                        )
+                                                calculateDataPrice(
+                                                    inverseSliderScale(
+                                                        selectedGB
                                                     )
+                                                )
                                             )}
                                         </Typography>
                                     </Typography>
@@ -271,7 +270,7 @@ const PricingPage = () => {
                                         valueLabelFormat={v =>
                                             gByteLabel(inverseSliderScale(v))
                                         }
-                                        style={{marginTop: 0}}
+                                        style={{ marginTop: 0 }}
                                     />
                                 </Stack>
                                 <Typography
@@ -281,7 +280,8 @@ const PricingPage = () => {
                                         letterSpacing: "0.02133em",
                                     }}
                                 >
-                                    *A task represents a source, destination or transformation.
+                                    *A task represents a source, destination or
+                                    transformation.
                                 </Typography>
                             </Stack>
                             <div className="pricing-page-checklist-wrapper">
