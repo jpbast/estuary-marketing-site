@@ -2,7 +2,15 @@ import * as React from "react"
 import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
-import { Slider, useMediaQuery, useTheme } from "@mui/material"
+import {
+    FormControl,
+    FormControlLabel,
+    Slider,
+    Stack,
+    Typography,
+    useMediaQuery,
+    useTheme,
+} from "@mui/material"
 
 import FlowLogo from "../svgs/flow-logo.svg"
 import BlueCheckmark from "../svgs/blue-checkmark.svg"
@@ -24,7 +32,7 @@ function gByteLabel(gb: number, maxPrec = 10) {
         scaledValue /= 1000
     }
 
-    return `${scaledValue.toFixed(Math.min(unitIndex, maxPrec))} ${
+    return `${scaledValue.toFixed(Math.min(unitIndex, maxPrec))}${
         units[unitIndex]
     }`
 }
@@ -39,14 +47,25 @@ const ChecklistItem = ({ children, bullet = false }) => (
         <p className="pricing-page-tile-checklist-item-text">{children}</p>
     </div>
 )
-// $0.75/GB up to 1000 GB / month and then we cut pricing in half after that per GB
-const calculatePrice = (gbs: number) => {
-    let calc: string | number =
-        Math.min(1000, gbs) * 0.75 + Math.max(0, (gbs - 1001) * 0.375)
-    calc = Math.round(calc)
+
+const calculateDataPrice = (gbs: number):number => {
+    let gb_calc: string | number =
+        Math.min(1000, gbs) * 0.75 + Math.max(0, (gbs - 1001) * 0.2)
+    gb_calc = Math.round((gb_calc + Number.EPSILON)*100)/100;
+
+    return gb_calc;
+}
+
+// $0.75/GB up to 1000 GB / month, then $0.20 after
+const calculatePrice = (tasks: number, gbs: number) => {
+    let gb_calc = calculateDataPrice(gbs);
+
+    let task_calc = tasks * 50
     return (
         <>
-            <span className="pricing-page-price-bold">${calc}</span>
+            <span className="pricing-page-price-bold">
+                ${task_calc + gb_calc}
+            </span>
             /month
         </>
     )
@@ -56,18 +75,20 @@ const PricingPage = () => {
     const theme = useTheme()
     const isMedium = useMediaQuery(theme.breakpoints.between("sm", "lg"))
 
-    const x_factor = isMedium ? 0.0022 : 0.0028
+    const x_factor = isMedium ? 0.0022 : 0.0024
 
     const sliderScale = x => 1 / (1 + Math.E ** (x * x_factor * -1))
     const inverseSliderScale = x => Math.log(x / (1 - x)) / x_factor
     const marks = (
-        isMedium ? [27, 500, 1000, 5000] : [27, 250, 500, 1000, 5000]
+        isMedium ? [1, 500, 1000, 5000] : [1, 250, 600, 1000, 5000]
     ).map(v => ({
         label: gByteLabel(v, 0),
         value: sliderScale(v),
     }))
     console.log(marks)
-    const [selectedGB, setSelectedGB] = React.useState(sliderScale(27))
+    const [selectedGB, setSelectedGB] = React.useState(sliderScale(1))
+    const [selectedTasks, setSelectedTasks] = React.useState(2)
+
     return (
         <Layout headerTheme="light">
             <div className="pricing-page">
@@ -125,7 +146,9 @@ const PricingPage = () => {
                                     </OutboundLink>
                                 </ChecklistItem>
                                 <ChecklistItem>
-                                    Use up to 50 collections, 2 total tasks (Captures, Materializations and/or transformations)
+                                    Use up to 50 collections, 2 total tasks
+                                    (Captures, Materializations and/or
+                                    transformations)
                                 </ChecklistItem>
                                 <ChecklistItem>
                                     Up to 50 collections
@@ -142,33 +165,86 @@ const PricingPage = () => {
                             <PricingCloud className="pricing-page-tile-icon icon-wrapper" />
                             <p className="pricing-page-tile-name">Cloud</p>
                             <p className="pricing-page-tile-price-subtext">
-                                Up to 27GB/month for $20 then $0.75/GB.
+                                $50/task/month, billed per hour
+                                <br />
+                                $0.75/GB/task data movement
                             </p>
                             <p className="pricing-page-price">
-                                {calculatePrice(inverseSliderScale(selectedGB))}
+                                {calculatePrice(
+                                    selectedTasks,
+                                    inverseSliderScale(selectedGB)
+                                )}
                             </p>
-                            <Slider
-                                value={selectedGB}
-                                onChange={(_, val) =>
-                                    setSelectedGB(
-                                        sliderScale(
-                                            Math.round(
-                                                inverseSliderScale(
-                                                    val || val[0]
+                            <Stack margin="1rem 0 2rem 0" justifyContent="center">
+                                <Stack
+                                    spacing={2}
+                                    alignItems="center"
+                                    direction="row"
+                                >
+                                    <Typography width="5em" gutterBottom>
+                                        Tasks
+                                    </Typography>
+                                    <Slider
+                                        value={selectedTasks}
+                                        onChange={(_, val) =>
+                                            setSelectedTasks(
+                                                typeof val === "number"
+                                                    ? val
+                                                    : val[0]
+                                            )
+                                        }
+                                        marks={[].fill(50).map((_, id) => ({
+                                            value: id * 2,
+                                            label: `${id * 2}`,
+                                        }))}
+                                        min={2}
+                                        max={100}
+                                        step={1}
+                                        valueLabelDisplay="auto"
+                                        valueLabelFormat={v=>`${v} tasks`}
+                                    />
+                                    <Typography width="3em">
+                                        $<b>{selectedTasks*50}</b>
+                                    </Typography>
+                                </Stack>
+                                <Typography variant="h4" textAlign="center">+</Typography>
+                                <Stack
+                                    spacing={2}
+                                    alignItems="center"
+                                    direction="row"
+                                >
+                                    <Typography width="5em" gutterBottom>
+                                        Data
+                                    </Typography>
+                                    <Slider
+                                        value={selectedGB}
+                                        onChange={(_, val) =>
+                                            setSelectedGB(
+                                                sliderScale(
+                                                    Math.round(
+                                                        inverseSliderScale(
+                                                            val || val[0]
+                                                        )
+                                                    )
                                                 )
                                             )
-                                        )
-                                    )
-                                }
-                                min={marks[0].value}
-                                max={marks[marks.length - 1].value}
-                                step={marks[0].value / 1000}
-                                marks={marks}
-                                style={{ margin: `0 0 3rem 0` }}
-                            />
-
+                                        }
+                                        min={marks[0].value}
+                                        max={marks[marks.length - 1].value}
+                                        step={marks[0].value / 1000}
+                                        marks={marks}
+                                        valueLabelDisplay="auto"
+                                        valueLabelFormat={v=>gByteLabel(inverseSliderScale(v))}
+                                    />
+                                    <Typography width="3em">
+                                        $<b>{calculateDataPrice(inverseSliderScale(selectedGB))}</b>
+                                    </Typography>
+                                </Stack>
+                            </Stack>
                             <div className="pricing-page-checklist-wrapper">
-                                <p style={{marginTop:0}}>Everything in Flow Free plus:</p>
+                                <p style={{ marginTop: 0 }}>
+                                    Everything in Flow Free plus:
+                                </p>
                                 <ChecklistItem>99.9% SLA</ChecklistItem>
                                 <ChecklistItem>
                                     Limitless horizontal scaling
