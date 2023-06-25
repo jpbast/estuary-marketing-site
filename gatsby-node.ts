@@ -16,6 +16,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 // Define the template for blog and blog post
 const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 const blog = path.resolve(`./src/templates/blog.tsx`)
+const comparisonTemplate = path.resolve(`./src/templates/product-comparison.tsx`)
 
 const connector = path.resolve(`./src/templates/connector.tsx`)
 const connection = path.resolve(`./src/templates/connection.tsx`)
@@ -68,7 +69,81 @@ export const createPages: GatsbyNode["createPages"] = async ({
         }
     `)
 
-    if (result.errors) {
+    // Get all strapi comparison pages
+    const comparisonPages = await graphql<{
+        allStrapiProductComparisonPage: {
+            nodes: {
+                Slug : string
+                their_name : string
+                logo: {
+                  url: string
+                  name: string
+                }
+                id: string
+                comparisons: {
+                  feature_name: string
+                  our_feature_desc: {
+                    data: {
+                      our_feature_desc: string
+                    }
+                  }
+                  their_feature_desc: {
+                    data: {
+                      their_feature_desc: string
+                    }
+                  }
+                  why_it_matters: {
+                    data: {
+                      why_it_matters: string
+                    }
+                  }
+                }[]
+                Body: {
+                    data: {
+                      Body: string
+                    }
+                }
+            }[]
+        }
+    }>(`
+        {
+            allStrapiProductComparisonPage {
+                nodes {
+                  Slug
+                  their_name
+                  logo {
+                    url
+                    name
+                  }
+                  id
+                  comparisons {
+                    feature_name
+                    our_feature_desc {
+                      data {
+                        our_feature_desc
+                      }
+                    }
+                    their_feature_desc {
+                      data {
+                        their_feature_desc
+                      }
+                    }
+                    why_it_matters {
+                      data {
+                        why_it_matters
+                      }
+                    }
+                  }
+                  Body {
+                    data {
+                      Body
+                    }
+                  }
+                }
+              }
+        }
+    `)
+    if (result.errors || comparisonPages.errors) {
         reporter.panicOnBuild(
             `There was an error loading your blog posts`,
             result.errors
@@ -77,6 +152,21 @@ export const createPages: GatsbyNode["createPages"] = async ({
     }
 
     const allPosts = result.data.allStrapiBlogPost.nodes
+    const allComparisonPages = comparisonPages.data.allStrapiProductComparisonPage.nodes
+    
+    allComparisonPages.forEach(node => {
+        createPage({
+            path: node.Slug,
+            component: comparisonTemplate,
+            context: {
+                competitorName: node.their_name,
+                logoName: node.logo.name,
+                comparisonFeatures: node.comparisons,
+                heroSubheading: node.Body.data.Body
+            }
+
+        })
+    })
 
     const categories: {
         [key: string]: {
@@ -105,7 +195,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
             post.tags.every(tag => tag.Type !== "category")
         ),
     ]
-
+    
     const tabCategories = Object.values(categories)
         .filter(cat => cat.IsTab)
         .sort((a, b) =>
@@ -172,6 +262,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
         "All",
         ""
     )
+    
 
     // Create blog posts pages
     // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
