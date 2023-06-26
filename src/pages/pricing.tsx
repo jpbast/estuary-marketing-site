@@ -95,7 +95,7 @@ const PricingPage = () => {
     }))
     console.log(marks)
     const [selectedGB, setSelectedGB] = React.useState(1)
-    const [selectedTasks, setSelectedTasks] = React.useState(2)
+    const [selectedTasks, setSelectedTasks] = React.useState(1)
 
     return (
         <Layout headerTheme="light">
@@ -214,13 +214,13 @@ const PricingPage = () => {
                                                     : val[0]
                                             )
                                         }
-                                        marks={[2, 3, 4, 5, 6, 7, 8, 9, 10].map(
+                                        marks={[1,2, 3, 4, 5, 6, 7, 8, 9, 10].map(
                                             id => ({
                                                 value: id,
                                                 label: id,
                                             })
                                         )}
-                                        min={2}
+                                        min={1}
                                         max={10}
                                         step={1}
                                         valueLabelDisplay="auto"
