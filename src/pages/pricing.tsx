@@ -60,7 +60,7 @@ const roundTo = (num: number, decimals: number) =>
 
 const calculateDataPrice = (gbs: number): number => {
     let gb_calc: string | number =
-        Math.min(1000, gbs) * 0.75 + Math.max(0, (gbs - 1001) * 0.2)
+        Math.min(1000, gbs) * 0.5 + Math.max(0, (gbs - 1001) * 0.2)
     return roundTo(gb_calc, 2)
 }
 
@@ -68,7 +68,7 @@ const calculateDataPrice = (gbs: number): number => {
 const calculatePrice = (tasks: number, gbs: number) => {
     let gb_calc = roundTo(calculateDataPrice(gbs), 2)
 
-    let task_calc = tasks * 50
+    let task_calc = tasks * 100
     return (
         <>
             <span className="pricing-page-price-bold">
@@ -81,7 +81,7 @@ const calculatePrice = (tasks: number, gbs: number) => {
 
 const PricingPage = () => {
     const theme = useTheme()
-    const isMedium = useMediaQuery(theme.breakpoints.between("sm", "lg"))
+    const isMedium = useMediaQuery(theme.breakpoints.between(811,1100))
 
     const x_factor = isMedium ? 0.0016 : 0.0024
 
@@ -94,7 +94,7 @@ const PricingPage = () => {
         value: sliderScale(v),
     }))
     console.log(marks)
-    const [selectedGB, setSelectedGB] = React.useState(sliderScale(1))
+    const [selectedGB, setSelectedGB] = React.useState(1)
     const [selectedTasks, setSelectedTasks] = React.useState(2)
 
     return (
@@ -173,15 +173,15 @@ const PricingPage = () => {
                             <PricingCloud className="pricing-page-tile-icon icon-wrapper" />
                             <p className="pricing-page-tile-name">Cloud</p>
                             <p className="pricing-page-tile-price-subtext">
-                                <b>Tasks</b>: $0.07/hr - $50/month
+                                <b>Sources & Destinations</b>: $0.14/hr - $100/month
                                 <br />
-                                <b>Data</b>: $0.75/GB per task up to 1TB, then
+                                <b>Data</b>: $0.50/GB per task up to 1TB, then
                                 $0.20/GB
                             </p>
                             <p className="pricing-page-price">
                                 {calculatePrice(
                                     selectedTasks,
-                                    inverseSliderScale(selectedGB)
+                                    selectedGB
                                 )}
                             </p>
                             <Stack
@@ -195,13 +195,13 @@ const PricingPage = () => {
                                     marginBottom={"2em"}
                                 >
                                     <Typography component="div">
-                                        Tasks:{" "}
+                                        {isMedium ? "Tasks" : "Sources & Destinations"}:{" "}
                                         <Typography
                                             display="inline"
                                             fontWeight="bold"
                                         >
                                             {currencyFormatter.format(
-                                                selectedTasks * 50
+                                                selectedTasks * 100
                                             )}
                                         </Typography>
                                     </Typography>
@@ -242,24 +242,20 @@ const PricingPage = () => {
                                         >
                                             {currencyFormatter.format(
                                                 calculateDataPrice(
-                                                    inverseSliderScale(
                                                         selectedGB
-                                                    )
                                                 )
                                             )}
                                         </Typography>
                                     </Typography>
                                     <Slider
-                                        value={selectedGB}
+                                        value={sliderScale(selectedGB)}
                                         onChange={(_, val) =>
                                             setSelectedGB(
-                                                sliderScale(
                                                     Math.round(
                                                         inverseSliderScale(
                                                             val || val[0]
                                                         )
                                                     )
-                                                )
                                             )
                                         }
                                         min={marks[0].value}
