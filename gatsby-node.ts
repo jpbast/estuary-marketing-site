@@ -76,8 +76,10 @@ export const createPages: GatsbyNode["createPages"] = async ({
                 Slug : string
                 their_name : string
                 logo: {
-                  url: string
-                  name: string
+                    localFile: {
+                        childImageSharp: {
+                        }
+                      }
                 }
                 id: string
                 comparisons: {
@@ -112,8 +114,11 @@ export const createPages: GatsbyNode["createPages"] = async ({
                   Slug
                   their_name
                   logo {
-                    url
-                    name
+                    localFile {
+                        childImageSharp {
+                            gatsbyImageData(quality: 95, layout: CONSTRAINED, width: 140)
+                          }
+                    }
                   }
                   id
                   comparisons {
@@ -160,9 +165,10 @@ export const createPages: GatsbyNode["createPages"] = async ({
             component: comparisonTemplate,
             context: {
                 competitorName: node.their_name,
-                logoName: node.logo.name,
+                logoData: node.logo.localFile.childImageSharp,
                 comparisonFeatures: node.comparisons,
-                heroSubheading: node.Body.data.Body
+                heroSubheading: node.Body.data.Body,
+                allData: allComparisonPages
             }
 
         })

@@ -3,31 +3,12 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import SignUp from "../components/signup"
-import HeroConfluentDesktop from '../svgs/estuary-confluent.svg'
-import HeroConfluentMobile from '../svgs/estuary-confluent-mobile.svg'
-import HeroStriimDesktop from '../svgs/estuary-striim.svg'
-import HeroStriimMobile from '../svgs/estuary-striim-mobile.svg'
-import HeroDebeziumDesktop from '../svgs/estuary-debezium.svg'
-import HeroDebeziumMobile from '../svgs/estuary-debezium-mobile.svg'
-import HeroAirbyteDesktop from '../svgs/estuary-airbyte.svg'
-import HeroAirbyteMobile from '../svgs/estuary-airbyte-mobile.svg'
-import HeroFivetranDesktop from '../svgs/estuary-fivetran.svg'
-import HeroFivetranMobile from '../svgs/estuary-fivetran-mobile.svg'
-import FiveTran from "../svgs/fivetran-logo.svg"
-import Debezium from "../svgs/debezium-logo.svg"
-import Confluent from "../svgs/confluent-logo.svg"
-import Airbyte from "../svgs/airbyte-logo.svg"
-import { StaticImage } from "gatsby-plugin-image"
+import {GatsbyImage} from "gatsby-plugin-image"
 
+import EstuaryLogo from '../svgs/colored-logo.svg'
 
 const ComparisonPageTemplate = ({ pageContext }) => {
-    const renderHeroLogo = (name) => {
-        if(name === 'Confluent') return isMobile  ? <HeroConfluentMobile /> : <HeroConfluentDesktop/>
-        if(name === 'Striim') return isMobile  ? <HeroStriimMobile /> : <HeroStriimDesktop/>
-        if(name === 'Debezium') return isMobile  ? <HeroDebeziumMobile /> : <HeroDebeziumDesktop/>
-        if(name === 'Fivetran') return isMobile  ? <HeroFivetranMobile /> : <HeroFivetranDesktop/>
-        if(name === 'Airbyte') return isMobile ? <HeroAirbyteMobile /> : <HeroAirbyteDesktop/>
-    }
+    console.log(pageContext)
     const [isMobile, setMobile] = React.useState(false)
     const checkIfMobile = () =>
         typeof window !== "undefined" && window.innerWidth < 845
@@ -62,20 +43,17 @@ const ComparisonPageTemplate = ({ pageContext }) => {
                             />
                         </div>
                         <div className="hero-right">
-                            {renderHeroLogo(pageContext.competitorName)}
+                            <EstuaryLogo className="hero-logo estuary"/> 
+                            <span>VS</span>
+                            <GatsbyImage
+                                image={pageContext.logoData.gatsbyImageData}
+                                alt={`${pageContext.competitorName} logo`}
+                                className="hero-logo competitor"
+                                loading="eager"
+                            />
                         </div>
                     </div>
                     <div className="hero-image-wrap">
-                        <StaticImage
-                            placeholder="none"
-                            alt="Reality of Debezium"
-                            loading="lazy"
-                            src="../images/lp-comparison/reality-of-debezium.webp"
-                            layout="constrained"
-                            width={900}
-                            height={275}
-                            quality={100}
-                        />
                     </div>
                 </section>
                 <section className="comparison-table">
@@ -131,30 +109,17 @@ const ComparisonPageTemplate = ({ pageContext }) => {
                         See how Estuary compares to others
                     </div>
                     <div className="comparison-links">
-                        {pageContext.competitorName !== 'Fivetran' && <Link to="/us-fivetran" aria-label="fivetran">
-                            <FiveTran />
-                        </Link>}
-                        {pageContext.competitorName !== 'Striim' && <Link to="/us-striim" aria-label="striim">
-                            <StaticImage
-                                placeholder="none"
-                                alt="Striim logo"
-                                loading="lazy"
-                                src="../images/lp-comparison/Striim-Logo-Dark.png"
-                                layout="constrained"
-                                width={167}
-                                height={64}
-                                quality={100}
-                            />
-                        </Link>}
-                        {pageContext.competitorName !== 'Confluent' && <Link to="/us-confluent" aria-label="confluent">
-                            <Confluent />
-                        </Link>}
-                        {pageContext.competitorName !== 'Airbyte' && <Link to="/us-airbyte" aria-label="airbyte">
-                            <Airbyte />
-                        </Link>}
-                        {pageContext.competitorName !== 'Debezium' && <Link to="/us-debezium" aria-label="airbyte">
-                            <Debezium />
-                        </Link>}
+                        {pageContext.allData.map((item, index)=>{
+                            return(
+                                item.their_name !== pageContext.competitorName && <Link to={`/${item.Slug}`} key={index}>
+                                    <GatsbyImage
+                                        image={item.logo.localFile.childImageSharp.gatsbyImageData}
+                                        alt={`${pageContext.competitorName} logo`}
+                                        loading="eager"
+                                    />
+                                </Link>
+                            )
+                        })}
                     </div>
                 </section>
                 <section className="about-estuary">

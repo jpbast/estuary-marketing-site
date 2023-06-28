@@ -4339,7 +4339,7 @@ table th {
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: stretch;
             @media (max-width: 1260px) {
                 max-width: calc(100% - 40px);
             }
@@ -4385,15 +4385,51 @@ table th {
             }
         }
         .hero-right {
+            max-width: 492px;
+            width: 100%;
+            position: relative;
+            color: #000;
+            font-size: 36px;
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+            line-height: 48px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
             @media (max-width: 767px) {
                 max-width: 100%;
                 margin-left: auto;
                 margin-right: auto;
             }
-            svg {
-                @media (max-width: 767px) {
-                    width: 100%;
+            @media(max-width: 845px){
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 250px;
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+            span {
+                @media (min-width: 846px) {
+                    position: absolute;
+                    top: calc(50% - 20px);
+                    left: calc(50% - 24px);
+                }
+            }
+            .hero-logo {
+                width: 70px;
+                height: auto;
+                @media (min-width: 846px) {
+                    position: absolute;
+                    width: 140px;
                     height: auto;
+                }
+                &.estuary {
+                    left: 0;
+                    top: 0;
+                }
+                &.competitor {
+                    bottom: 0;
+                    right: 0;
                 }
             }
         }
@@ -4471,7 +4507,7 @@ table th {
                 color: #47506d;
                 text-decoration: underline;
             }
-            p{
+            p {
                 margin: 0;
             }
         }
@@ -4620,7 +4656,7 @@ table th {
             max-width: 1220px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             gap: 25px;
             flex-wrap: wrap;
@@ -4631,6 +4667,8 @@ table th {
             a {
                 svg,
                 img {
+                    height: 50px;
+                    width: auto;
                     @media (max-width: 575px) {
                         height: 32px;
                     }
