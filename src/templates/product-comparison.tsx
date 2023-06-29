@@ -113,7 +113,7 @@ const ComparisonPageTemplate = ({ pageContext }) => {
                             return(
                                 item.their_name !== pageContext.competitorName && <Link to={`/${item.Slug}`} key={index}>
                                     <GatsbyImage
-                                        image={item.logo.localFile.childImageSharp.gatsbyImageData}
+                                        image={item.Picture.localFile.childImageSharp.gatsbyImageData}
                                         alt={`${pageContext.competitorName} logo`}
                                         loading="eager"
                                     />

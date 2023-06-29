@@ -105,6 +105,13 @@ export const createPages: GatsbyNode["createPages"] = async ({
                       Body: string
                     }
                 }
+                Picture: {
+                    localFile: {
+                      childImageSharp: {
+                    
+                      }
+                    }
+                  }
             }[]
         }
     }>(`
@@ -142,6 +149,13 @@ export const createPages: GatsbyNode["createPages"] = async ({
                   Body {
                     data {
                       Body
+                    }
+                  }
+                  Picture {
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData(quality: 95, layout: CONSTRAINED, height: 50)
+                      }
                     }
                   }
                 }
