@@ -255,11 +255,6 @@ export const pageQuery = graphql`
                     }
                 }
             }
-            Body {
-                data {
-                    Body
-                }
-            }
             DescriptivePicture {
                 localFile {
                     childImageSharp {

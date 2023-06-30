@@ -74,44 +74,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
         allStrapiProductComparisonPage: {
             nodes: {
                 Slug : string
-                their_name : string
-                logo: {
-                    localFile: {
-                        childImageSharp: {
-                        }
-                      }
-                }
                 id: string
-                comparisons: {
-                  feature_name: string
-                  our_feature_desc: {
-                    data: {
-                      our_feature_desc: string
-                    }
-                  }
-                  their_feature_desc: {
-                    data: {
-                      their_feature_desc: string
-                    }
-                  }
-                  why_it_matters: {
-                    data: {
-                      why_it_matters: string
-                    }
-                  }
-                }[]
-                Body: {
-                    data: {
-                      Body: string
-                    }
-                }
-                Picture: {
-                    localFile: {
-                      childImageSharp: {
-                    
-                      }
-                    }
-                  }
             }[]
         }
     }>(`
