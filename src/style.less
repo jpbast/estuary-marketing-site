@@ -4323,30 +4323,24 @@ table th {
 /*Signup component end*/
 /*Estuary-vs-... temaple*/
 .lp-comparison-wrap {
-    background: #fff;
-    .hero-section {
-        background: url(./images/lp-podcast/img-bg.png) no-repeat center / cover;
-        padding: 90px 0 0;
+        background: url(./images/lp-podcast/img-bg.png) no-repeat;
         @media (max-width: 991px) {
-            background: url(./images/lp-podcast/img-bg.png) no-repeat center
-                right / cover;
+            background: url(./images/lp-podcast/img-bg.png) no-repeat;
+            background-size: contain;
         }
+        background-size: contain;
+    .hero-section {
+        padding: 90px 0 0;
+        margin: 0 4rem;
         @media (max-width: 767px) {
+            margin: 0 1rem;
             padding: 10px 0 16px;
         }
         .hero-container {
-            max-width: 1220px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: stretch;
-            @media (max-width: 1260px) {
-                max-width: calc(100% - 40px);
-            }
-            @media (max-width: 845px) {
-                max-width: calc(100% - 32px);
-                flex-direction: column;
-            }
         }
         .hero-left {
             max-width: 700px;
@@ -4435,15 +4429,14 @@ table th {
         }
         .hero-image-wrap {
             text-align: center;
-            margin-top: 90px;
+            margin-top: 3rem;
             @media (max-width: 767px) {
                 display: none;
             }
         }
     }
     .comparison-table {
-        max-width: 1220px;
-        margin: 93px auto 0;
+        margin: 3rem 3rem;
         @media (max-width: 767px) {
             margin-top: 0;
             padding: 0 16px;

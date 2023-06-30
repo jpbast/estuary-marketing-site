@@ -118,47 +118,9 @@ export const createPages: GatsbyNode["createPages"] = async ({
         {
             allStrapiProductComparisonPage {
                 nodes {
-                  Slug
-                  their_name
-                  logo {
-                    localFile {
-                        childImageSharp {
-                            gatsbyImageData(quality: 95, layout: CONSTRAINED, width: 140)
-                          }
-                    }
-                  }
-                  id
-                  comparisons {
-                    feature_name
-                    our_feature_desc {
-                      data {
-                        our_feature_desc
-                      }
-                    }
-                    their_feature_desc {
-                      data {
-                        their_feature_desc
-                      }
-                    }
-                    why_it_matters {
-                      data {
-                        why_it_matters
-                      }
-                    }
-                  }
-                  Body {
-                    data {
-                      Body
-                    }
-                  }
-                  Picture {
-                    localFile {
-                      childImageSharp {
-                        gatsbyImageData(quality: 95, layout: CONSTRAINED, height: 50)
-                      }
-                    }
-                  }
-                }
+                    id
+                    Slug
+                } 
               }
         }
     `)
@@ -178,13 +140,8 @@ export const createPages: GatsbyNode["createPages"] = async ({
             path: node.Slug,
             component: comparisonTemplate,
             context: {
-                competitorName: node.their_name,
-                logoData: node.logo.localFile.childImageSharp,
-                comparisonFeatures: node.comparisons,
-                heroSubheading: node.Body.data.Body,
-                allData: allComparisonPages
+                id: node.id,
             }
-
         })
     })
 
