@@ -16,6 +16,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 // Define the template for blog and blog post
 const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 const blog = path.resolve(`./src/templates/blog.tsx`)
+const comparisonTemplate = path.resolve(`./src/templates/product-comparison.tsx`)
 
 const connector = path.resolve(`./src/templates/connector.tsx`)
 const connection = path.resolve(`./src/templates/connection.tsx`)
@@ -68,7 +69,25 @@ export const createPages: GatsbyNode["createPages"] = async ({
         }
     `)
 
-    if (result.errors) {
+    // Get all strapi comparison pages
+    const comparisonPages = await graphql<{
+        allStrapiProductComparisonPage: {
+            nodes: {
+                Slug : string
+                id: string
+            }[]
+        }
+    }>(`
+        {
+            allStrapiProductComparisonPage {
+                nodes {
+                    id
+                    Slug
+                } 
+              }
+        }
+    `)
+    if (result.errors || comparisonPages.errors) {
         reporter.panicOnBuild(
             `There was an error loading your blog posts`,
             result.errors
@@ -77,6 +96,17 @@ export const createPages: GatsbyNode["createPages"] = async ({
     }
 
     const allPosts = result.data.allStrapiBlogPost.nodes
+    const allComparisonPages = comparisonPages.data.allStrapiProductComparisonPage.nodes
+    
+    allComparisonPages.forEach(node => {
+        createPage({
+            path: node.Slug,
+            component: comparisonTemplate,
+            context: {
+                id: node.id,
+            }
+        })
+    })
 
     const categories: {
         [key: string]: {
@@ -105,7 +135,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
             post.tags.every(tag => tag.Type !== "category")
         ),
     ]
-
+    
     const tabCategories = Object.values(categories)
         .filter(cat => cat.IsTab)
         .sort((a, b) =>
@@ -172,6 +202,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
         "All",
         ""
     )
+    
 
     // Create blog posts pages
     // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)

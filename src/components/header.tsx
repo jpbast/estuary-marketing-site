@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import List from "@mui/material/List"
 import { StaticImage } from "gatsby-plugin-image"
 import { NavItem, NavMenuList, NavMenuTopLevel } from "./CascadingMenu"
@@ -10,7 +10,17 @@ import GithubIcon from "../svgs/github-outline.svg"
 import clsx from "clsx"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 
-const navItems: NavItem[] = [
+const useNavItems = (): NavItem[] => {
+    const comparisons = useStaticQuery(graphql` 
+        query GetAllProductComparisons {
+            allStrapiProductComparisonPage {
+                nodes {
+                    Slug
+                    their_name
+                }
+            }
+        }`)
+    return [
     {
         title: "Home",
         path: "/",
@@ -58,6 +68,13 @@ const navItems: NavItem[] = [
                 path: "/blog",
             },
             {
+                title: "Comparisons",
+                children: comparisons.allStrapiProductComparisonPage.nodes.map(comparison => ({
+                    title: comparison.their_name,
+                    path: `/${comparison.Slug}`
+                }))
+            },
+            {
                 title: "Podcasts",
                 path: "/podcasts",
             },
@@ -81,6 +98,7 @@ const navItems: NavItem[] = [
         ],
     },
 ]
+};
 
 const MenuBarsImage = () => (
     <svg
@@ -99,6 +117,7 @@ const MenuBarsImage = () => (
 
 const Header = (props: { theme: "light" | "dark" }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const navItems = useNavItems();
 
     const theme = props.theme
 
