@@ -20,11 +20,12 @@ jobs:
         with:
           path: |
             node_modules
-          key: ${{ runner.os }}-gatsby-build-preview-${{ github.run_id }}
+            .cache
+            public
+          key: ${{ runner.os }}-gatsby-build-preview-${{github.head_ref}}-${{ github.run_id }}
           restore-keys: |
-            ${{ runner.os }}-gatsby-build-preview
+            ${{ runner.os }}-gatsby-build-preview-${{github.head_ref}}-
       - run: yarn install
-      - run: yarn run patch-package
       - run: yarn run build --log-pages
         env:
             CI: true
@@ -36,8 +37,10 @@ jobs:
             GATSBY_DB_PORT: ${{ secrets.GATSBY_DB_PORT }}
             GATSBY_DB_NAME: ${{ secrets.GATSBY_DB_NAME }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
+        id: firebase
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           expires: 30d
           projectId: estuary-marketing
+      - run: echo ${{steps.firebase.outputs.urls}}

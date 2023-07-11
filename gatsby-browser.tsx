@@ -7,18 +7,27 @@ import "./src/normalize.css"
 // custom CSS styles
 import "./src/style.less"
 import "./src/highlighting-atom-one-dark.css"
+import { isMobile } from "react-device-detect"
 
 // Highlighting for code blocks
 // import "prismjs/themes/prism.css"
 
 import { Script, ScriptStrategy } from "gatsby"
+import { useState } from "react"
 
 const ZD_KEY = "3271265c-16a8-4e0d-b1ab-72ed8fbe7e5a"
 
 export const wrapPageElement = ({ element }) => {
+    const [dimensions,setDimensions] = useState({width:0,height:0})
+    React.useEffect(() => {
+        const subscriber = ()=>setDimensions({width: window.innerWidth, height: window.innerHeight})
+        window.addEventListener('load',subscriber)
+        return () => window.removeEventListener('load', subscriber)
+    }, [])
     if (
         process.env.NODE_ENV === "development" ||
-        (window?.innerWidth ?? 9999) < 768
+        isMobile ||
+        dimensions.width < 768
     ) {
         return element
     } else {

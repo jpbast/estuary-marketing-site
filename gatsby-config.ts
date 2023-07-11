@@ -6,6 +6,7 @@
 
 import { GatsbyConfig } from "gatsby"
 import { normalizeConnector } from "./src/utils"
+import path from "path"
 
 import { SUPABASE_CONNECTION_STRING } from "./config"
 
@@ -38,6 +39,19 @@ const strapiConfig = {
     // },
 }
 
+const rehypeSelectors = {
+    [`STRAPI_BLOG_POST_BODY_TEXTNODE`]: {
+        extractor: node => node.Body,
+        pluginOpts: {
+            enableToc: true,
+        },
+    },
+    [`STRAPI_JOB_POSTING_DESCRIPTION_TEXTNODE`]: {
+        extractor: node => {debugger; return node.Description},
+        pluginOpts: { enableToc: false },
+    },
+}
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -60,9 +74,7 @@ const cfg: GatsbyConfig = {
             resolve: `gatsby-plugin-google-gtag`,
             options: {
                 // You can add multiple tracking ids and a pageview event will be fired for all of them.
-                trackingIds: [
-                    "G-P1PZPE4HHZ",
-                ],
+                trackingIds: ["G-P1PZPE4HHZ"],
                 // This object gets passed directly to the gtag config command
                 // This config will be shared across all trackingIds
                 gtagConfig: {
@@ -72,7 +84,7 @@ const cfg: GatsbyConfig = {
                 // This object is used for configuration specific to this plugin
                 pluginConfig: {
                     head: true,
-                    respectDNT: true
+                    respectDNT: true,
                 },
             },
         },
@@ -135,16 +147,10 @@ const cfg: GatsbyConfig = {
                 // Condition for selecting an existing GrapghQL node (optional)
                 // If not set, the transformer operates on file nodes.
                 filter: node =>
-                    node.internal.type === `STRAPI_BLOG_POST_BODY_TEXTNODE` ||
-                    node.internal.type ===
-                        `STRAPI_JOB_POSTING_DESCRIPTION_TEXTNODE`,
+                    Object.keys(rehypeSelectors).includes(node.internal.type),
                 // Only needed when using filter (optional, default: node.html)
                 // Source location of the html to be transformed
-                source: node =>
-                    node.internal.type ===
-                    `STRAPI_JOB_POSTING_DESCRIPTION_TEXTNODE`
-                        ? node.Description
-                        : node.Body,
+                source: node => rehypeSelectors[node.internal.type].extractor(node),
                 // Additional fields of the sourced node can be added here (optional)
                 // These fields are then available on the htmlNode on `htmlNode.context`
                 contextFields: [],
@@ -161,14 +167,26 @@ const cfg: GatsbyConfig = {
                     {
                         resolve: `@draftbox-co/gatsby-rehype-inline-images`,
                         // all options are optional and can be omitted
-                        options: {
+                        pluginOptions: {
                             // all images larger are scaled down to maxWidth (default: maxWidth = imageWidth)
                             // maxWidth: 2000,
-                            withWebp: true,
                             // disable, if you need to save memory
                             useImageCache: true,
                             quality: 100,
                         },
+                    },
+                    {
+                        // Can't use require.resolve
+                        // https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#requireresolve
+                        resolve: path.resolve(
+                            "./plugins/estuary-rehype-transformers"
+                        ),
+                        pluginOptions: Object.assign(
+                            {},
+                            ...Object.entries(rehypeSelectors).map(
+                                ([k, { pluginOpts }]) => ({ [k]: pluginOpts })
+                            )
+                        ),
                     },
                 ],
             },

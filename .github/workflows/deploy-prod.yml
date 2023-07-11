@@ -25,11 +25,12 @@ jobs:
         with:
           path: |
             node_modules
+            .cache
+            public
           key: ${{ runner.os }}-gatsby-build-prod-${{ github.run_id }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-prod-
       - run: yarn install
-      - run: yarn run patch-package
       - run: yarn run build --log-pages
         env:
             CI: true
