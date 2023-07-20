@@ -20,10 +20,10 @@ const SectionTwo = () => {
                         , without scheduling.
                     </h2>
                     <p className="section-two-subtext">
-                        Capture from clouds, databases, and SaaS apps, create
-                        real-time transformations and materialized views, for a
-                        consistent, exact copy of your data powering both
-                        analytics and operations.
+                        Capture from clouds, databases, and SaaS apps using
+                        real-time ETL, create real-time transformations and
+                        materialized views, for a consistent, exact copy of your
+                        data powering both analytics and operations.
                     </p>
                 </div>
                 <div className="section-two-header-vectors">
@@ -104,9 +104,9 @@ const SectionTwo = () => {
                                 integration built in-house.
                             </li>
                             <li>
-                                Supports Airbyte protocol for batch-based
-                                connectors. Bring any Airbyte connector in and
-                                run it. Access to 200+ connectors.
+                                Supports open source batch-based connectors.
+                                Bring any Airbyte connector in and run it
+                                enabling access to 200+ connectors.
                             </li>
                         </ul>
                     </div>

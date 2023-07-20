@@ -176,8 +176,7 @@ const PricingPage = () => {
                             <p className="pricing-page-tile-price-subtext">
                                 <b>Sources & Destinations</b>: $0.14/hr - $100/month
                                 <br />
-                                <b>Data</b>: $0.50/GB per task up to 1TB, then
-                                $0.20/GB
+                                <b>Data</b>: $0.50/GB up to 1TB, then $0.20/GB
                             </p>
                             <p className="pricing-page-price">
                                 {calculatePrice(

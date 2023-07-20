@@ -18,7 +18,9 @@ const SectionFour = () => {
         <div className="section-four">
             <p className="section-four-header-small">Features</p>
             <div className="section-four-header-wrapper">
-                <h2 className="section-two-bottom-title">A robust set of features</h2>
+                <h2 className="section-two-bottom-title">
+                    A robust set of features
+                </h2>
                 <div className="section-four-header-vectors">
                     <FlowLogo className="product-flow-section-one-image" />
                 </div>
@@ -44,7 +46,8 @@ const SectionFour = () => {
                             Streaming ETL
                         </h3>
                         <p className="section-four-tile-subtext">
-                            ETL in real-time for always-up-to-date data in your warehouse of choice.
+                            Real-time ETL for always-up-to-date data in your
+                            warehouse of choice.
                         </p>
                     </div>
                     <div className="section-four-tile">
@@ -55,7 +58,8 @@ const SectionFour = () => {
                             Data Modernization
                         </h3>
                         <p className="section-four-tile-subtext">
-                            Seamlessly connect legacy systems to a modern hybrid cloud environment that’s fully extensible.
+                            Seamlessly connect legacy systems to a modern hybrid
+                            cloud environment that’s fully extensible.
                         </p>
                     </div>
                     <div className="section-four-tile">
@@ -64,7 +68,8 @@ const SectionFour = () => {
                         </div>
                         <h3 className="section-four-tile-title">Data mesh</h3>
                         <p className="section-four-tile-subtext">
-                            Power your data mesh in real time with tools that your entire company can use.
+                            Power your data mesh in real time with tools that
+                            your entire company can use.
                         </p>
                     </div>
                 </div>
@@ -77,7 +82,8 @@ const SectionFour = () => {
                             Operational analytics
                         </h3>
                         <p className="section-four-tile-subtext">
-                            Understand the performance impact of your real-time analytical workloads.
+                            Understand the performance impact of your real-time
+                            analytical workloads.
                         </p>
                     </div>
                     <div className="section-four-tile">
@@ -88,7 +94,9 @@ const SectionFour = () => {
                             Customer 360
                         </h3>
                         <p className="section-four-tile-subtext">
-                            Gain a unified view of your customers while your team interacts with them. Real-time with historical data.
+                            Gain a unified view of your customers while your
+                            team interacts with them. Real-time with historical
+                            data.
                         </p>
                     </div>
                     <div className="section-four-tile">
@@ -99,7 +107,8 @@ const SectionFour = () => {
                             Real-time analytics
                         </h3>
                         <p className="section-four-tile-subtext">
-                            Use plain old SQL for streaming analytics on your data to react to business events in real time.
+                            Use plain old SQL for streaming analytics on your
+                            data to react to business events in real time.
                         </p>
                     </div>
                     <div className="section-four-tile">
@@ -110,7 +119,9 @@ const SectionFour = () => {
                             Data sharing
                         </h3>
                         <p className="section-four-tile-subtext">
-                            Securely allow other users access to your realtime data products, and materialize them into whatever destination system they want.
+                            Securely allow other users access to your realtime
+                            data products, and materialize them into whatever
+                            destination system they want.
                         </p>
                     </div>
                 </div>
@@ -119,7 +130,11 @@ const SectionFour = () => {
                         Use it free with hands-on support.  Scale without
                         bounds.
                     </p>
-                    <OutboundLink target="_blank" href="https://dashboard.estuary.dev/register" className="section-four-try-it-button">
+                    <OutboundLink
+                        target="_blank"
+                        href="https://dashboard.estuary.dev/register"
+                        className="section-four-try-it-button"
+                    >
                         Try it free
                     </OutboundLink>
                 </div>
