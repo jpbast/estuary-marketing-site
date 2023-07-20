@@ -111,8 +111,7 @@ const SectionOne = () => {
                     <h1>in <span style={{wordBreak:"break-word", hyphens:"auto"}}>milliseconds</span></h1>
                     <div className="section-one-subtext-wrapper">
                         <p className="section-one-subtext">
-                            Managed CDC and ETL pipelines with streaming SQL
-                            transforms.
+                            Managed CDC and Real-time ETL pipelines with streaming SQL transforms.
                         </p>
                     </div>
                     <OutboundLink
