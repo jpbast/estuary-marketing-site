@@ -1346,14 +1346,14 @@ nav.blog-post-nav {
         &:last-child {
             text-overflow: "→";
         }
-        @media (max-width:800px) {
+        @media (max-width: 800px) {
             width: 100%;
             &:last-child {
                 text-align: right;
                 text-overflow: "→";
             }
         }
-        @media (min-width: 801px){
+        @media (min-width: 801px) {
             max-width: calc(50% - 10px);
         }
 
@@ -1802,9 +1802,9 @@ table th {
 }
 
 .pricing-page-price {
-  font-size: var(--fontSize-1);
-  margin: 8px 0;
-  text-align: center;
+    font-size: var(--fontSize-1);
+    margin: 8px 0;
+    text-align: center;
 }
 
 .pricing-page-price-bold {
@@ -4333,12 +4333,12 @@ table th {
 /*Signup component end*/
 /*Estuary-vs-... temaple*/
 .lp-comparison-wrap {
+    background: url(./images/lp-podcast/img-bg.png) no-repeat;
+    @media (max-width: 991px) {
         background: url(./images/lp-podcast/img-bg.png) no-repeat;
-        @media (max-width: 991px) {
-            background: url(./images/lp-podcast/img-bg.png) no-repeat;
-            background-size: contain;
-        }
         background-size: contain;
+    }
+    background-size: contain;
     .hero-section {
         padding: 90px 0 0;
         max-width: 80rem;
@@ -4353,10 +4353,10 @@ table th {
             display: flex;
             justify-content: space-between;
             align-items: stretch;
-            @media(max-width: 1199px){
+            @media (max-width: 1199px) {
                 max-width: calc(100% - 32px);
             }
-            @media(max-width: 575px){
+            @media (max-width: 575px) {
                 flex-direction: column;
             }
         }
@@ -4412,7 +4412,7 @@ table th {
                 margin-left: auto;
                 margin-right: auto;
             }
-            @media(max-width: 845px){
+            @media (max-width: 845px) {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -4760,3 +4760,231 @@ table th {
     }
 }
 /*Estuary-vs-... temaple end*/
+/*Why Estuary*/
+.why-estuary {
+    display: flex;
+    .sidebar-wrap {
+        max-width: 340px;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        height: 100vh;
+        padding: 62px 52px 50px 56px;
+        position: relative;
+        .sidebar-logo {
+            h1 {
+                color: #fff;
+            }
+        }
+        .sidebar-nav {
+            .nav-item {
+                color: #979797;
+                font-family: "Inter", sans-serif;
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                padding: 15px 0;
+                cursor: pointer;
+                &.active,
+                &:hover {
+                    color: #fff;
+                }
+            }
+            .item-steps {
+                margin: 0;
+                padding: 0 0 0 21px;
+                list-style: none;
+                li {
+                    color: #979797;
+                    font-family: "Inter", sans-serif;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 210%;
+                }
+            }
+        }
+        .ctas-wrap {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            .pipeline-link {
+                max-width: 195px;
+                margin-left: auto;
+                margin-right: auto;
+                background: #5072eb;
+                border-radius: 6px;
+                color: #fff;
+                font-family: Inter, sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 20px;
+                padding: 14px 30px;
+                text-align: center;
+                text-decoration: none;
+                margin-bottom: 20px;
+            }
+            .doc-link {
+                color: #fff;
+                text-align: center;
+                font-family: "Inter", sans-serif;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-decoration-line: underline;
+            }
+        }
+    }
+    .main-content-wrap {
+        background: url(./images/product-demo-background.png) no-repeat top
+            center / cover;
+        max-width: calc(100% - 340px);
+        width: 100%;
+        padding: 132px 124px;
+    }
+    .mac-bg-1 {
+        max-width: 1180px;
+        height: 720px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        background: url(./images/welcome-bg.png) no-repeat center / cover;
+        padding: 123px 45px 47px 254px;
+        //box-shadow: 10px 10px 60px 0px rgba(210, 210, 210, 0.25);
+    }
+    .step-welcome {
+        max-width: 863px;
+        width: 100%;
+        margin: 0 auto;
+        background: #fff;
+        padding: 59px 73px 112px;
+        .step-content {
+            background: #111;
+            padding: 63px 0 48px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .step-heading {
+            color: #fff;
+            text-align: center;
+            font-family: "Roboto", sans-serif;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .step-subheading {
+            p {
+                color: #fff;
+                font-family: "Roboto", sans-serif;
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 25px;
+            }
+        }
+        .steps-cta {
+            max-width: 195px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #5072eb;
+            border-radius: 6px;
+            color: #fff;
+            font-family: Inter, sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 20px;
+            padding: 14px 30px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+    }
+    .step-pricing {
+        max-width: 863px;
+        width: 100%;
+        margin: 0 auto;
+        background: #fff;
+        padding: 59px 73px 112px;
+        .step-content {
+            background: #111;
+            padding: 63px 0 48px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .step-heading {
+            color: #fff;
+            text-align: center;
+            font-family: "Roboto", sans-serif;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 30px;
+        }
+        ul {
+            padding: 0;
+            margin: 0 0 46px;
+            max-width: 300px;
+            list-style: none;
+            margin-left: auto;
+            margin-right: auto;
+            li {
+                color: #fff;
+                text-align: center;
+                font-family: "Roboto", sans-serif;
+                font-size: 25px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 42px;
+                &::before {
+                    content: "•";
+                    margin-right: 10px;
+                }
+            }
+        }
+        .step-ctas {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 473px;
+            margin: 0 auto;
+            .pipeline-link {
+                max-width: 195px;
+                margin-left: auto;
+                margin-right: auto;
+                background: #5072eb;
+                border-radius: 6px;
+                color: #fff;
+                font-family: Inter, sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 20px;
+                padding: 14px 30px;
+                text-align: center;
+                text-decoration: none;
+            }
+            .compare-link {
+                color: #fff;
+                text-align: center;
+                font-family: "Inter", sans-serif;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-decoration-line: underline;
+            }
+        }
+    }
+}
+/*Why Estuary end*/
