@@ -4769,7 +4769,7 @@ table th {
         height: 100%;
         background: #000;
         height: 100vh;
-        padding: 62px 52px 50px 56px;
+        padding: 62px 42px 50px 56px;
         position: relative;
         .sidebar-logo {
             h1 {
@@ -4802,6 +4802,17 @@ table th {
                     font-style: normal;
                     font-weight: 500;
                     line-height: 210%;
+                    cursor: pointer;
+                    transition: all 0.25s linear;
+                    &:hover,
+                    &.active {
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 600;
+                        color: #fff;
+                        transition: all 0.25s linear;
+                        text-decoration: underline;
+                    }
                 }
             }
         }
@@ -4980,6 +4991,54 @@ table th {
             line-height: normal;
         }
     }
+    .steps-controls {
+        max-width: 375px;
+        width: 100%;
+        margin: 60px auto 0;
+        padding: 0 21px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .prev-step,
+        .next-step {
+            color: #4a4a4a;
+            font-family: "Inter", sans-serif;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            cursor: pointer;
+            span {
+                text-decoration-line: underline;
+            }
+        }
+        .prev-step {
+            &:before {
+                border-style: solid;
+                border-width: 0.1em 0.1em 0 0;
+                content: "";
+                display: inline-block;
+                height: 0.45em;
+                transform: rotate(-135deg);
+                vertical-align: middle;
+                width: 0.45em;
+                margin-right: 24px;
+            }
+        }
+        .next-step {
+            &:after {
+                border-style: solid;
+                border-width: 0.1em 0.1em 0 0;
+                content: "";
+                display: inline-block;
+                height: 0.45em;
+                transform: rotate(45deg);
+                vertical-align: middle;
+                width: 0.45em;
+                margin-left: 24px;
+            }
+        }
+    }
     .step-0 {
         max-width: 863px;
         width: 100%;
@@ -5078,7 +5137,7 @@ table th {
             }
         }
     }
-    .step-8 {
+    .step-7 {
         max-width: 863px;
         width: 100%;
         margin: 0 auto;

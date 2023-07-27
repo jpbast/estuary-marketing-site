@@ -170,43 +170,99 @@ const WhyEstuary = () => {
                     </Link>
                 </div>
                 <div className="sidebar-nav">
-                    <div className="nav-item" onClick={() => setActivePage(0)}>
+                    <div
+                        className={`nav-item ${
+                            activePage === 0 ? "active" : ""
+                        }`}
+                        onClick={() => setActivePage(0)}
+                    >
                         Welcome
                     </div>
-                    <div className="nav-item" onClick={() => setActivePage(1)}>
+                    <div
+                        className={`nav-item ${
+                            activePage === 1 ||
+                            activePage === 2 ||
+                            activePage === 3
+                                ? "active"
+                                : ""
+                        }`}
+                        onClick={() => setActivePage(1)}
+                    >
                         Extract
                     </div>
                     <ul className="item-steps">
-                        <li onClick={() => setActivePage(1)}>Create Capture</li>
-                        <li onClick={() => setActivePage(2)}>
+                        <li
+                            className={`${activePage === 1 ? "active" : ""}`}
+                            onClick={() => setActivePage(1)}
+                        >
+                            Create Capture
+                        </li>
+                        <li
+                            className={`${activePage === 2 ? "active" : ""}`}
+                            onClick={() => setActivePage(2)}
+                        >
                             Discover Schema
                         </li>
-                        <li onClick={() => setActivePage(3)}>Monitoring</li>
+                        <li
+                            className={`${activePage === 3 ? "active" : ""}`}
+                            onClick={() => setActivePage(3)}
+                        >
+                            Monitoring
+                        </li>
                     </ul>
-                    <div className="nav-item" onClick={() => setActivePage(4)}>
+                    <div
+                        className={`nav-item ${
+                            activePage === 4 || activePage === 5 ? "active" : ""
+                        }`}
+                        onClick={() => setActivePage(4)}
+                    >
                         Manage
                     </div>
                     <ul className="item-steps">
-                        <li onClick={() => setActivePage(4)}>
+                        <li
+                            className={`${activePage === 4 ? "active" : ""}`}
+                            onClick={() => setActivePage(4)}
+                        >
                             Store history & real-time
                         </li>
-                        <li onClick={() => setActivePage(5)}>
+                        <li
+                            className={`${activePage === 5 ? "active" : ""}`}
+                            onClick={() => setActivePage(5)}
+                        >
                             Streaming SQL Transforms
                         </li>
                     </ul>
-                    <div className="nav-item" onClick={() => setActivePage(6)}>
+                    <div
+                        className={`nav-item ${
+                            activePage === 6 ? "active" : ""
+                        }`}
+                        onClick={() => setActivePage(6)}
+                    >
                         Load
                     </div>
                     <ul className="item-steps">
-                        <li onClick={() => setActivePage(6)}>
+                        <li
+                            className={`${activePage === 6 ? "active" : ""}`}
+                            onClick={() => setActivePage(6)}
+                        >
                             Stream to destination
                         </li>
                     </ul>
-                    <div className="nav-item" onClick={() => setActivePage(7)}>
+                    <div
+                        className={`nav-item ${
+                            activePage === 7 ? "active" : ""
+                        }`}
+                        onClick={() => setActivePage(7)}
+                    >
                         Pricing
                     </div>
                     <ul className="item-steps">
-                        <li onClick={() => setActivePage(7)}>Flat Pricing</li>
+                        <li
+                            className={`${activePage === 7 ? "active" : ""}`}
+                            onClick={() => setActivePage(7)}
+                        >
+                            Flat Pricing
+                        </li>
                     </ul>
                 </div>
                 <div className="ctas-wrap">
@@ -253,6 +309,28 @@ const WhyEstuary = () => {
                         />
                     )}
                     {activePage === 7 && <Step7 activePage={activePage} />}
+                </div>
+                <div className="steps-controls">
+                    <div
+                        className="prev-step"
+                        onClick={() =>
+                            activePage === 0
+                                ? setActivePage(0)
+                                : setActivePage(activePage - 1)
+                        }
+                    >
+                        <span>Previous</span>
+                    </div>
+                    <div
+                        className="next-step"
+                        onClick={() =>
+                            activePage === 7
+                                ? setActivePage(7)
+                                : setActivePage(activePage + 1)
+                        }
+                    >
+                        <span>Next</span>
+                    </div>
                 </div>
             </div>
         </main>
