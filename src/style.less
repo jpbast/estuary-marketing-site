@@ -4847,22 +4847,155 @@ table th {
         width: 100%;
         padding: 132px 124px;
     }
-    .mac-bg-1 {
+    .mac-bg {
         max-width: 1180px;
         height: 720px;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
-        background: url(./images/welcome-bg.png) no-repeat center / cover;
         padding: 123px 45px 47px 254px;
-        //box-shadow: 10px 10px 60px 0px rgba(210, 210, 210, 0.25);
+
+        &.step-bg-0 {
+            background: url(./images/welcome-bg.png) no-repeat center / cover;
+        }
+        &.step-bg-1 {
+            background: url(./images/flow-images/step1-bg.png) no-repeat center /
+                cover;
+        }
+        &.step-bg-2 {
+            background: url(./images/flow-images/step1-bg.png) no-repeat center /
+                cover;
+        }
     }
-    .step-welcome {
+    .zoom-in-out-circle {
+        width: 46px;
+        height: 46px;
+        filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5));
+        background: #5073eb;
+        animation: zoom-in-zoom-out 2s ease infinite;
+        border-radius: 100%;
+        position: absolute;
+        &:before {
+            content: "";
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background: #5173ed;
+            border-radius: 100%;
+            border: 1px solid #71d4d7;
+            left: 5px;
+            top: 5px;
+        }
+    }
+    @keyframes zoom-in-zoom-out {
+        0% {
+            transform: scale(1, 1);
+        }
+        50% {
+            transform: scale(1.2, 1.2);
+        }
+        100% {
+            transform: scale(1, 1);
+        }
+    }
+    .button-tooltip {
+        max-width: 334px;
+        width: 100%;
+        padding: 8px 15px 11px 20px;
+        background: #111;
+        position: absolute;
+        border-radius: 6px;
+        &.left {
+            &::before {
+                content: "";
+                position: absolute;
+                left: -10px;
+                width: 0;
+                height: 0;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid #111;
+            }
+        }
+        &.right {
+            &::before {
+                content: "";
+                position: absolute;
+                right: -10px;
+                width: 0;
+                height: 0;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-left: 10px solid #111;
+            }
+        }
+        &.top {
+            &::before {
+                content: "";
+                position: absolute;
+                top: -10px;
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid #111;
+            }
+        }
+        &.bottom {
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid #111;
+            }
+        }
+        .tooltip-heading {
+            color: #fff;
+            font-family: "Inter", sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 5px;
+        }
+        .tooltip-description {
+            color: #fff;
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px;
+            margin-bottom: 20px;
+        }
+        .tooltip-action {
+            color: #888;
+            font-family: "Inter", sans-serif;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+    .step-0 {
         max-width: 863px;
         width: 100%;
         margin: 0 auto;
         background: #fff;
         padding: 59px 73px 112px;
+        .mac-bg-1 {
+            max-width: 1180px;
+            height: 720px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            background: url(./images/welcome-bg.png) no-repeat center / cover;
+            padding: 123px 45px 47px 254px;
+            //box-shadow: 10px 10px 60px 0px rgba(210, 210, 210, 0.25);
+        }
         .step-content {
             background: #111;
             padding: 63px 0 48px;
@@ -4910,7 +5043,42 @@ table th {
             margin-top: 30px;
         }
     }
-    .step-pricing {
+    .step-1 {
+        position: relative;
+        .zoom-in-out-circle {
+            left: calc(50% - 23px);
+            top: calc(50% - 23px);
+        }
+        .button-tooltip {
+            left: calc(50% + 40px);
+            top: calc(50% - 82px);
+            &::before {
+                content: "";
+                position: absolute;
+                top: calc(50% - 5px);
+                width: 0;
+                height: 0;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid #111;
+            }
+        }
+    }
+    .step-2 {
+        position: relative;
+        .zoom-in-out-circle {
+            right: 130px;
+            top: 30px;
+        }
+        .button-tooltip {
+            top: 100px;
+            right: 100px;
+            &::before {
+                right: 41px;
+            }
+        }
+    }
+    .step-8 {
         max-width: 863px;
         width: 100%;
         margin: 0 auto;
