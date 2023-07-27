@@ -200,6 +200,35 @@ export const Step5 = ({ activePage, setState }) => {
         </div>
     )
 }
+export const Step6 = ({ activePage, setState }) => {
+    return (
+        <div className={`step-${activePage}`}>
+            <div className="step-content">
+                <StaticImage
+                    placeholder="none"
+                    alt="Data Engineering Podcast"
+                    loading="lazy"
+                    src="../images/flow-images/step6-image.png"
+                    layout="constrained"
+                    width={949}
+                    height={597}
+                    quality={100}
+                />
+                <div
+                    className="zoom-in-out-circle"
+                    onClick={() => setState(activePage + 1)}
+                ></div>
+                <div className="button-tooltip right">
+                    <div className="tooltip-heading">Materialize Data</div>
+                    <div className="tooltip-description">
+                        Stream collections to your destinations with sub-second
+                        latency and exactly-once processing guarantees.
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 export const Step7 = ({ activePage }) => {
     return (
         <div className={`step-${activePage}`}>
@@ -392,6 +421,12 @@ const WhyEstuary = () => {
                     )}
                     {activePage === 5 && (
                         <Step5
+                            activePage={activePage}
+                            setState={setActivePage}
+                        />
+                    )}
+                    {activePage === 6 && (
+                        <Step6
                             activePage={activePage}
                             setState={setActivePage}
                         />
