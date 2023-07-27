@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env:
-          MESSAGE: ${{ github.event.client_payload }}
+          MESSAGE: ${{ toJson(github.event.client_payload) }}
         run: echo PAYLOAD $MESSAGE
       - name: Checkout
         uses: actions/checkout@v2
