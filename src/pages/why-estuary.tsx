@@ -20,7 +20,7 @@ export const Step0 = ({ activePage, setState }) => {
                 </div>
                 <div
                     className="steps-cta start-start"
-                    onClick={() => setState(1)}
+                    onClick={() => setState(activePage + 1)}
                 >
                     Start Tour
                 </div>
@@ -44,7 +44,7 @@ export const Step1 = ({ activePage, setState }) => {
                 />
                 <div
                     className="zoom-in-out-circle"
-                    onClick={() => setState(2)}
+                    onClick={() => setState(activePage + 1)}
                 ></div>
                 <div className="button-tooltip left">
                     <div className="tooltip-heading">Connect Source</div>
@@ -76,7 +76,7 @@ export const Step2 = ({ activePage, setState }) => {
                 />
                 <div
                     className="zoom-in-out-circle"
-                    onClick={() => setState(2)}
+                    onClick={() => setState(activePage + 1)}
                 ></div>
                 <div className="button-tooltip top">
                     <div className="tooltip-heading">Automated Schema</div>
@@ -100,7 +100,47 @@ export const Step3 = ({ activePage, setState }) => {
                     placeholder="none"
                     alt="Data Engineering Podcast"
                     loading="lazy"
-                    src="../images/flow-images/step2-image.png"
+                    src="../images/flow-images/step3-image.png"
+                    layout="constrained"
+                    width={950}
+                    height={597}
+                    quality={100}
+                />
+                <div className="button-tooltip left">
+                    <div className="tooltip-heading">Success!</div>
+                    <div className="tooltip-description">
+                        You'll never have to connect that data source again!
+                    </div>
+                    <div className="tooltip-description">
+                        Whether you need 1-millisecond or 1-hour syncs, building
+                        pipelines on our event-driven architecture gives you:
+                    </div>
+                    <ul className="tooltip-list">
+                        <li>
+                            Greater <b>cost efficiency</b> since only
+                            incremental data is processed.
+                        </li>
+                        <li>
+                            <b>Boundless horizontal scalability.</b>
+                        </li>
+                        <li>
+                            <b>Resilient and fault tolerant</b> pipelines.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    )
+}
+export const Step4 = ({ activePage, setState }) => {
+    return (
+        <div className={`step-${activePage}`}>
+            <div className="step-content">
+                <StaticImage
+                    placeholder="none"
+                    alt="Data Engineering Podcast"
+                    loading="lazy"
+                    src="../images/flow-images/step4-image.png"
                     layout="constrained"
                     width={950}
                     height={597}
@@ -108,16 +148,22 @@ export const Step3 = ({ activePage, setState }) => {
                 />
                 <div
                     className="zoom-in-out-circle"
-                    onClick={() => setState(2)}
+                    onClick={() => setState(activePage + 1)}
                 ></div>
-                <div className="button-tooltip top">
-                    <div className="tooltip-heading">Automated Schema</div>
-                    <div className="tooltip-description">
-                        Flow infers and automatically evolves the best schemas
-                        for your source data tables, streams, or API objects.
+                <div className="button-tooltip left">
+                    <div className="tooltip-heading">
+                        Your Data 'Collections'
                     </div>
                     <div className="tooltip-description">
-                        You're free to make changes, but you'll rarely want to.
+                        Flow stores data from your extracts as collections:
+                        groups of cleaned, de-duped, and validated, JSON files
+                        in your cloud storage. Both your real-time and
+                        historical data live here.
+                    </div>
+                    <div className="tooltip-description">
+                        You can stream these collections to destinations with
+                        sub-second latency, or add an in-flight transformation
+                        step first.
                     </div>
                 </div>
             </div>
@@ -304,6 +350,12 @@ const WhyEstuary = () => {
                     )}
                     {activePage === 3 && (
                         <Step3
+                            activePage={activePage}
+                            setState={setActivePage}
+                        />
+                    )}
+                    {activePage === 4 && (
+                        <Step4
                             activePage={activePage}
                             setState={setActivePage}
                         />

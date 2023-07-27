@@ -4877,6 +4877,14 @@ table th {
             background: url(./images/flow-images/step1-bg.png) no-repeat center /
                 cover;
         }
+        &.step-bg-3 {
+            background: url(./images/flow-images/step1-bg.png) no-repeat center /
+                cover;
+        }
+        &.step-bg-4 {
+            background: url(./images/flow-images/step4-bg.png) no-repeat center /
+                cover;
+        }
     }
     .zoom-in-out-circle {
         width: 46px;
@@ -4912,7 +4920,7 @@ table th {
     .button-tooltip {
         max-width: 334px;
         width: 100%;
-        padding: 8px 15px 11px 20px;
+        padding: 15px 15px 11px 20px;
         background: #111;
         position: absolute;
         border-radius: 6px;
@@ -4989,6 +4997,18 @@ table th {
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+        }
+        .tooltip-list {
+            padding: 0 0 0 20px;
+            margin: 0;
+            li {
+                color: #fff;
+                font-family: "Inter", sans-serif;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 18px;
+            }
         }
     }
     .steps-controls {
@@ -5135,6 +5155,24 @@ table th {
             &::before {
                 right: 41px;
             }
+        }
+    }
+    .step-3 {
+        position: relative;
+        .button-tooltip {
+            top: 235px;
+            right: 165px;
+        }
+    }
+    .step-4 {
+        position: relative;
+        .zoom-in-out-circle {
+            left: 130px;
+            top: 140px;
+        }
+        .button-tooltip {
+            top: 145px;
+            left: 215px;
         }
     }
     .step-7 {
