@@ -4771,6 +4771,9 @@ table th {
         height: 100vh;
         padding: 62px 42px 50px 56px;
         position: relative;
+        @media (max-width: 1199px) {
+            display: none;
+        }
         .sidebar-logo {
             h1 {
                 color: #fff;
@@ -4854,9 +4857,21 @@ table th {
     .main-content-wrap {
         background: url(./images/product-demo-background.png) no-repeat top
             center / cover;
-        max-width: calc(100% - 340px);
         width: 100%;
-        padding: 132px 124px;
+        padding: 132px calc((100% - 1180px - 340px) / 2);
+        @media (max-width: 1560px) and (min-width: 1200px) {
+            padding: 132px 32px;
+        }
+        @media (max-width: 1119px) {
+            padding: 65px 32px;
+        }
+        @media (min-height: 815px) {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
     }
     .mac-bg {
         max-width: 1180px;
@@ -4865,34 +4880,41 @@ table th {
         margin-left: auto;
         margin-right: auto;
         padding: 123px 45px 47px 254px;
-
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
         &.step-bg-0,
         &.step-bg-7 {
-            background: url(./images/welcome-bg.png) no-repeat center / cover;
+            background-image: url(./images/welcome-bg.png);
         }
         &.step-bg-1 {
-            background: url(./images/flow-images/step1-bg.png) no-repeat center /
-                cover;
+            background-image: url(./images/flow-images/step1-bg.png);
         }
         &.step-bg-2 {
-            background: url(./images/flow-images/step1-bg.png) no-repeat center /
-                cover;
+            background-image: url(./images/flow-images/step1-bg.png);
         }
         &.step-bg-3 {
-            background: url(./images/flow-images/step1-bg.png) no-repeat center /
-                cover;
+            background-image: url(./images/flow-images/step1-bg.png);
         }
         &.step-bg-4 {
-            background: url(./images/flow-images/step4-bg.png) no-repeat center /
-                cover;
+            background-image: url(./images/flow-images/step4-bg.png);
         }
         &.step-bg-5 {
-            background: url(./images/flow-images/step4-bg.png) no-repeat center /
-                cover;
+            background-image: url(./images/flow-images/step4-bg.png);
         }
         &.step-bg-6 {
-            background: url(./images/flow-images/step6-bg.png) no-repeat center /
-                cover;
+            background-image: url(./images/flow-images/step6-bg.png);
+        }
+        @media (max-width: 1560px) {
+            background-position: top left;
+            background-size: contain;
+            padding: 10% 4% 12% 20%;
+        }
+        @media(max-width: 1119px){
+            padding: 10% 4% 6% 20%;
+        }
+        @media (max-width: 1024px) {
+            height: auto;
         }
     }
     .zoom-in-out-circle {
@@ -5028,6 +5050,9 @@ table th {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        @media (max-width: 1199px) {
+            margin-top: 30px;
+        }
         .prev-step,
         .next-step {
             color: #4a4a4a;
@@ -5074,6 +5099,12 @@ table th {
         margin: 0 auto;
         background: #fff;
         padding: 59px 73px 112px;
+        @media (max-width: 1560px) and (min-width: 1200px) {
+            padding: 30px 35px 35px;
+        }
+        @media (max-width: 1119px) {
+            padding: 30px 35px 35px;
+        }
         .mac-bg-1 {
             max-width: 1180px;
             height: 720px;
@@ -5089,6 +5120,12 @@ table th {
             padding: 63px 0 48px;
             border-radius: 6px;
             text-align: center;
+            @media (max-width: 1360px) and (min-width: 1200px) {
+                padding: 30px 0;
+            }
+            @media (max-width: 1119px) {
+                padding: 30px 0;
+            }
         }
         .step-heading {
             color: #fff;
@@ -5102,6 +5139,12 @@ table th {
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            @media (max-width: 1360px) and (min-width: 1200px) {
+                font-size: 28px;
+            }
+            @media (max-width: 1119px) {
+                font-size: 28px;
+            }
         }
         .step-subheading {
             p {
@@ -5111,6 +5154,12 @@ table th {
                 font-style: normal;
                 font-weight: 400;
                 line-height: 25px;
+                @media (max-width: 1360px) and (min-width: 1200px) {
+                    font-size: 18px;
+                }
+                @media (max-width: 1119px) {
+                    font-size: 18px;
+                }
             }
         }
         .steps-cta {
@@ -5212,11 +5261,23 @@ table th {
         margin: 0 auto;
         background: #fff;
         padding: 59px 73px 112px;
+        @media (max-width: 1560px) and (min-width: 1200px) {
+            padding: 30px 35px 35px;
+        }
+        @media (max-width: 1119px) {
+            padding: 30px 35px 35px;
+        }
         .step-content {
             background: #111;
             padding: 63px 0 48px;
             border-radius: 6px;
             text-align: center;
+            @media (max-width: 1360px) and (min-width: 1200px) {
+                padding: 30px 0;
+            }
+            @media (max-width: 1119px) {
+                padding: 30px 0;
+            }
         }
         .step-heading {
             color: #fff;
@@ -5227,6 +5288,12 @@ table th {
             font-weight: 700;
             line-height: normal;
             margin-bottom: 30px;
+            @media (max-width: 1360px) and (min-width: 1200px) {
+                font-size: 28px;
+            }
+            @media (max-width: 1119px) {
+                font-size: 28px;
+            }
         }
         ul {
             padding: 0;
@@ -5243,6 +5310,12 @@ table th {
                 font-style: normal;
                 font-weight: 400;
                 line-height: 42px;
+                @media (max-width: 1360px) and (min-width: 1200px) {
+                    font-size: 18px;
+                }
+                @media (max-width: 1119px) {
+                    font-size: 18px;
+                }
                 &::before {
                     content: "•";
                     margin-right: 10px;
