@@ -4910,10 +4910,13 @@ table th {
             background-size: contain;
             padding: 10% 4% 12% 20%;
         }
-        @media(max-width: 1119px){
+        @media (max-width: 1119px) {
             padding: 10% 4% 6% 20%;
         }
         @media (max-width: 1024px) {
+            height: 584px;
+        }
+        @media (max-width: 850px) {
             height: auto;
         }
     }
@@ -4955,6 +4958,9 @@ table th {
         background: #111;
         position: absolute;
         border-radius: 6px;
+        @media (max-width: 1024px) {
+            max-width: 250px;
+        }
         &.left {
             &::before {
                 content: "";
@@ -5011,6 +5017,9 @@ table th {
             font-weight: 700;
             line-height: normal;
             margin-bottom: 5px;
+            @media (max-width: 1024px) {
+                font-size: 20px;
+            }
         }
         .tooltip-description {
             color: #fff;
@@ -5020,6 +5029,9 @@ table th {
             font-weight: 400;
             line-height: 22px;
             margin-bottom: 20px;
+            @media (max-width: 1024px) {
+                font-size: 12px;
+            }
         }
         .tooltip-action {
             color: #888;
@@ -5145,6 +5157,10 @@ table th {
             @media (max-width: 1119px) {
                 font-size: 28px;
             }
+            @media (max-width: 850px) {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
         }
         .step-subheading {
             p {
@@ -5159,6 +5175,9 @@ table th {
                 }
                 @media (max-width: 1119px) {
                     font-size: 18px;
+                }
+                @media (max-width: 850px) {
+                    font-size: 16px;
                 }
             }
         }
@@ -5206,10 +5225,18 @@ table th {
         .zoom-in-out-circle {
             right: 130px;
             top: 30px;
+            @media (max-width: 1024px) {
+                right: 17%;
+                top: 1%;
+            }
         }
         .button-tooltip {
             top: 100px;
             right: 100px;
+            @media (max-width: 1024px) {
+                top: 20%;
+                right: 12%;
+            }
             &::before {
                 right: 41px;
             }
@@ -5220,6 +5247,15 @@ table th {
         .button-tooltip {
             top: 235px;
             right: 165px;
+            @media(max-width: 1280px){
+                top: 40%;
+                right: 0;
+            }
+            @media (max-width: 1024px) {
+                top: 41%;
+                right: 0;
+                max-width: 350px;
+            }
         }
     }
     .step-4 {
@@ -5231,6 +5267,9 @@ table th {
         .button-tooltip {
             top: 145px;
             left: 215px;
+            @media(max-width: 1024px) {
+                max-width: 350px;
+            }
         }
     }
     .step-5 {
@@ -5238,10 +5277,18 @@ table th {
         .zoom-in-out-circle {
             right: 280px;
             bottom: 102px;
+            @media(max-width: 1024px) {
+                right: 33%;
+                bottom: 20%;
+            }
         }
         .button-tooltip {
             bottom: 0;
             right: 341px;
+            @media(max-width: 1024px) {
+                bottom: -35px;
+                right: 45%;
+            }
         }
     }
     .step-6 {
@@ -5249,10 +5296,19 @@ table th {
         .zoom-in-out-circle {
             left: 320px;
             bottom: 162px;
+            @media(max-width: 1475px){
+                left: 39%;
+                bottom: 31%;
+            }
         }
         .button-tooltip {
             bottom: 66px;
             left: -35px;
+            @media(max-width: 1475px){
+                bottom: 12%;
+                left: auto;
+                right: 63%;
+            }
         }
     }
     .step-7 {
@@ -5293,6 +5349,7 @@ table th {
             }
             @media (max-width: 1119px) {
                 font-size: 28px;
+                margin-bottom: 15px;
             }
         }
         ul {
@@ -5315,6 +5372,8 @@ table th {
                 }
                 @media (max-width: 1119px) {
                     font-size: 18px;
+                    line-height: normal;
+
                 }
                 &::before {
                     content: "•";
@@ -5328,6 +5387,9 @@ table th {
             justify-content: space-between;
             max-width: 473px;
             margin: 0 auto;
+            @media(max-width: 1024px){
+                padding: 0 20px;
+            }
             .pipeline-link {
                 max-width: 195px;
                 margin-left: auto;
@@ -5342,6 +5404,9 @@ table th {
                 padding: 14px 30px;
                 text-align: center;
                 text-decoration: none;
+                @media(max-width: 1360px){
+                    margin-left: 0;
+                }
             }
             .compare-link {
                 color: #fff;
