@@ -4774,6 +4774,10 @@ table th {
         @media (max-width: 1199px) {
             display: none;
         }
+        @media(max-height: 900px){
+            height: auto;
+            padding-top: 31px;
+        }
         .sidebar-logo {
             h1 {
                 color: #fff;
@@ -4789,6 +4793,9 @@ table th {
                 line-height: normal;
                 padding: 15px 0;
                 cursor: pointer;
+                @media(max-height: 900px){
+                    padding-top: 0;
+                }
                 &.active,
                 &:hover {
                     color: #fff;
@@ -4826,6 +4833,10 @@ table th {
             bottom: 50px;
             left: 0;
             width: 100%;
+            @media(max-height: 900px){
+                position: unset;
+                margin-top: 50px;
+            }
             .pipeline-link {
                 max-width: 195px;
                 margin-left: auto;
@@ -4858,14 +4869,15 @@ table th {
         background: url(./images/product-demo-background.png) no-repeat top
             center / cover;
         width: 100%;
-        padding: 132px calc((100% - 1180px - 340px) / 2);
+        padding: 66px calc((100% - 1180px - 340px) / 2);
         @media (max-width: 1560px) and (min-width: 1200px) {
             padding: 132px 32px;
         }
         @media (max-width: 1119px) {
             padding: 65px 32px;
         }
-        @media (min-height: 815px) {
+        @media (min-height: 900px) {
+            padding: 132px calc((100% - 1180px - 340px) / 2);
             height: 100vh;
             display: flex;
             align-items: center;
