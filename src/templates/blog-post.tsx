@@ -24,9 +24,9 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                 itemType="http://schema.org/Article"
             >
                 <header>
-                    <div class="header-info">
+                    <div className="header-info">
                         {postTags?.length > 0 ? (
-                            <section class="tags-wrap">
+                            <section className="tags-wrap">
                                 {postTags.map(tag => {
                                     return (
                                         <span class="blog-tag">{tag.name}</span>
@@ -42,7 +42,7 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                         </h1>
                         <Bio authors={post.authors} />
                     </div>
-                    <div class="hero-image">
+                    <div className="hero-image">
                         {post.hero ? (
                             <GatsbyImage
                                 alt={post.title}
@@ -55,13 +55,12 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                         ) : null}
                     </div>
                 </header>
-                <section>
+                <div className="post-description">{post && post.description}</div>
                     {post.body && (
                         <ProcessedPost
                             body={post.body.data.childHtmlRehype.html}
                         />
                     )}
-                </section>
                 <nav className="blog-post-nav">
                     {previous && previous.slug !== post.slug && (
                         <Link to={`/${previous.slug}`} rel="prev">
@@ -170,6 +169,7 @@ export const pageQuery = graphql`
                       }
                 }
             }
+            Description
             authors {
                 name: Name
                 picture: Picture {

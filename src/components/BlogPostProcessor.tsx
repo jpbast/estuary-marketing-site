@@ -25,7 +25,7 @@ export const ProcessedPost = ({
             }) 
     })
     return (
-        <div className="blog-post-content">
+        <section className="blog-post-content">
             <div className="post-sidebar">
                 <div className="table-of-contents">
                     <h3>Table of Contents</h3>
@@ -103,6 +103,6 @@ export const ProcessedPost = ({
                 </div>
             </div>
             <div className="post-content" dangerouslySetInnerHTML={{__html: body}} />
-        </div>
+        </section>
     )
 }
