@@ -59,8 +59,6 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                     {post.body && (
                         <ProcessedPost
                             body={post.body.data.childHtmlRehype.html}
-                            tableOfContents={post.body.data.childHtmlRehype.tableOfContents}
-                            slug={post.slug}
                         />
                     )}
                 </section>
@@ -167,7 +165,9 @@ export const pageQuery = graphql`
             slug: Slug
             body: Body {
                 data {
-                    Body
+                    childHtmlRehype {
+                        html
+                      }
                 }
             }
             authors {

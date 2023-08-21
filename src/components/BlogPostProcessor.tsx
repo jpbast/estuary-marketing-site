@@ -9,11 +9,6 @@ export const ProcessedPost = ({
     body
 }: {
     body: string,
-    slug: string,
-    tableOfContents: {
-        id: string,
-        heading: string
-    }[]
 }) => {
     // return (JSON.stringify(body,null,4))
     const parser = new DOMParser();
