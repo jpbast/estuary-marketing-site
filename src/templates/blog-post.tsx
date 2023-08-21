@@ -18,69 +18,64 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
     const postTags = post.tags.filter(tag => tag.type === "tag")
     return (
         <Layout headerTheme="light">
-            <div className="blog-post-header-vectors">
-                <FlowLogo
-                    className="blog-post-header-vector"
-                    style={{
-                        zIndex: 1,
-                    }}
-                />
-            </div>
-
             <article
                 className="blog-post"
                 itemScope
                 itemType="http://schema.org/Article"
             >
                 <header>
-                    <h1
-                        style={{
-                            textAlign: "left",
-                            color: "black",
-                        }}
-                    >
-                        {post.title}
-                    </h1>
-                    <Bio authors={post.authors} />
-                    <span className="blog-post-date">{post.publishedAt}</span>
-
-                    {post.hero ? (
-                        <GatsbyImage
-                            alt={post.title}
-                            image={
-                                post.hero.localFile.childImageSharp
-                                    .gatsbyImageData
-                            }
-                            loading="eager"
-                        />
-                    ) : null}
+                    <div class="header-info">
+                        {postTags?.length > 0 ? (
+                            <section class="tags-wrap">
+                                {postTags.map(tag => {
+                                    return (
+                                        <span class="blog-tag">{tag.name}</span>
+                                    )
+                                })}
+                            </section>
+                        ) : null}
+                        <span className="blog-post-date">
+                            Date: {post.publishedAt}
+                        </span>
+                        <h1>
+                            {post.title}
+                        </h1>
+                        <Bio authors={post.authors} />
+                    </div>
+                    <div class="hero-image">
+                        {post.hero ? (
+                            <GatsbyImage
+                                alt={post.title}
+                                image={
+                                    post.hero.localFile.childImageSharp
+                                        .gatsbyImageData
+                                }
+                                loading="eager"
+                            />
+                        ) : null}
+                    </div>
                 </header>
                 <section>
                     {post.body && (
                         <ProcessedPost
                             body={post.body.data.childHtmlRehype.html}
+                            tableOfContents={post.body.data.childHtmlRehype.tableOfContents}
+                            slug={post.slug}
                         />
                     )}
                 </section>
-                {postTags?.length > 0 ? (
-                    <section>
-                        <p>
-                            Keywords: {postTags.map(tag => tag.name).join(", ")}
-                        </p>
-                    </section>
-                ) : null}
                 <nav className="blog-post-nav">
-                        {previous && previous.slug !== post.slug && (
-                            <Link to={`/${previous.slug}`} rel="prev">
-                                ← {previous.title}
-                            </Link>
-                        )}
-                        <div style={{flexGrow: 1, flexBasis:20}}/>
-                        {next && next.slug !== post.slug && (
-                            <Link to={`/${next.slug}`} rel="next">
-                                {next.title}→
-                            </Link>
-                        )}
+                    {previous && previous.slug !== post.slug && (
+                        <Link to={`/${previous.slug}`} rel="prev">
+                            ← {previous.title}
+                        </Link>
+                    )}
+                    <div style={{ flexGrow: 1, flexBasis: 20 }} />
+                    {next && next.slug !== post.slug && (
+                        <Link to={`/${next.slug}`} rel="next">
+                            {next.title}→
+                        </Link>
+                    )}
                 </nav>
             </article>
         </Layout>
@@ -175,6 +170,7 @@ export const pageQuery = graphql`
                     Body
                     childHtmlRehype {
                         html
+                        tableOfContents
                     }
                 }
             }

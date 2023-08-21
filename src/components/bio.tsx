@@ -56,7 +56,7 @@ const Bio = ({ authors }: BioProps) => {
                     alignItems: "center",
                 }}
             >
-                {rendered_img}
+                {/* {rendered_img} */}
                 {rendered_name}
             </div>
         )
@@ -72,7 +72,7 @@ const Bio = ({ authors }: BioProps) => {
             )
         }
 
-        return <React.Fragment key={name}>{combined}</React.Fragment>
+        return <React.Fragment key={name}>Author: {combined}</React.Fragment>
     })
     if (rendered.length < 1) {
         return null
