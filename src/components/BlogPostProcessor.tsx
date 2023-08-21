@@ -6,11 +6,11 @@ import ImgSharpInline from "../../plugins/estuary-rehype-transformers/src/ImgSha
 import { Link } from "gatsby"
 
 export const ProcessedPost = ({
-    body, slug, tableOfContents
+    body
 }: {
     body: string,
     slug: string,
-    tableOfContents: { // we have an option to render table of Contents using this(only main elements) or extract subnav evelement from html string see implemented below
+    tableOfContents: {
         id: string,
         heading: string
     }[]

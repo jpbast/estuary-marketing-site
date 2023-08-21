@@ -168,10 +168,6 @@ export const pageQuery = graphql`
             body: Body {
                 data {
                     Body
-                    childHtmlRehype {
-                        html
-                        tableOfContents
-                    }
                 }
             }
             authors {
