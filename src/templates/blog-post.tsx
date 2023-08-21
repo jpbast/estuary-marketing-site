@@ -74,6 +74,67 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                         </Link>
                     )}
                 </nav>
+                <div className="popular-articles mobile-only">
+                    <h3>Popular Articles</h3>
+                    <ul>
+                        <li>
+                            <StaticImage
+                                quality={90}
+                                placeholder="none"
+                                alt="debezium alternatives"
+                                src="../images/popular-articles/debezium_alternatives_cover_image_748007bac5.avif"
+                                width={48}
+                                height={48}
+                                layout="fixed"
+                                className="icon-image"
+                            />
+                            <Link to="/debezium-alternatives">Why you should re-consider Debezium: Challenges & Alts</Link>
+                        </li>
+                        <li>
+                            <StaticImage
+                                quality={90}
+                                placeholder="none"
+                                alt="Guide to SQL Server CDC"
+                                src="../images/popular-articles/eccbd3_sql_server_cdc_8a24e6c7c2.avif"
+                                width={48}
+                                height={48}
+                                layout="fixed"
+                                className="icon-image"
+                            />
+                            <Link to="/guide-change-data-capture-sql-server">Guide to SQL Server CDC</Link>
+                        </li>
+                        <li>
+                            <StaticImage
+                                quality={90}
+                                placeholder="none"
+                                alt="The Real-time Data Landscape"
+                                src="../images/popular-articles/16eed6_Real_time_Data_Landscape_3_78206a6d80.avif"
+                                width={48}
+                                height={48}
+                                layout="fixed"
+                                className="icon-image"
+                            />
+                            <Link to="/the-real-time-data-landscape">The Real-time Data Landscape</Link>
+                        </li>
+                        <li>
+                            <StaticImage
+                                quality={90}
+                                placeholder="none"
+                                alt="Don't Use Kafka as a Data Lake"
+                                src="../images/popular-articles/c5ca61_kafka_as_data_lake_a361174828.avif"
+                                width={48}
+                                height={48}
+                                layout="fixed"
+                                className="icon-image"
+                            />
+                            <Link to="/kafka-as-data-lake">Don't Use Kafka as a Data Lake, Do this instead</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className="sidebar-cta mobile-only">
+                    <h3>Start streaming your data for free</h3>
+                    <Link to="https://dashboard.estuary.dev/register" className="pipeline-link">Build a Pipeline</Link>
+                </div>
             </article>
         </Layout>
     )
