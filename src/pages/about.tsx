@@ -12,6 +12,8 @@ import LinkIcon from "../svgs/link-icon.svg"
 import HubspotForm from "react-hubspot-form"
 import { ProcessedPost } from "../components/BlogPostProcessor"
 import Seo from "../components/seo"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 // const jobs = [
 //     {
@@ -67,43 +69,77 @@ import Seo from "../components/seo"
 //         ],
 //     },
 // ]
+// export const pageQuery = graphql`
+//   query {
 
+//   }
+// `
 const AboutPage = () => {
     const {
         allStrapiJobPosting: { nodes: jobs },
+        allStrapiEmployee: { nodes: employees },
     } = useStaticQuery<{
         allStrapiJobPosting: {
             nodes: {
-                slug: string
-                title: string
-                location: string
+                slug: string;
+                title: string;
+                location: string;
                 description: {
                     data: {
                         childHtmlRehype: {
-                            html: string
+                            html: string;
+                        };
+                    };
+                };
+            }[];
+        };
+        allStrapiEmployee: {
+            nodes: {
+                name: string;
+                ProfilePic: {
+                    localFile: {
+                        childImageSharp: {
+                            gatsbyImageData: any
                         }
                     }
-                }
-            }[]
-        }
+                };
+                title: string
+            }[];
+        };
     }>(graphql`
         {
-            allStrapiJobPosting {
-                nodes {
-                    slug
-                    title: Title
-                    location: Location
-                    description: Description {
-                        data {
-                            childHtmlRehype {
-                                html
-                            }
-                        }
-                    }
+          allStrapiJobPosting {
+            nodes {
+              slug
+              title: Title
+              location: Location
+              description: Description {
+                data {
+                  childHtmlRehype {
+                    html
+                  }
                 }
+              }
             }
+          }
+          allStrapiEmployee {
+            nodes {
+              name: Name
+              title: Title
+              ProfilePic {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
         }
-    `)
+      `);
+
+    console.log('employees', employees)
+
     return (
         <Layout headerTheme="light">
             <div className="product-flow-section-one-background-image-wrapper">
@@ -114,20 +150,12 @@ const AboutPage = () => {
                             data integration solutions.
                         </h1>
                         <p className="about-section-one-text">
-                            We’re creating a new kind of DataOps platform that{" "}
+                            We're creating a new kind of DataOps platform that{" "}
                             <span className="about-text-bold">
                                 empowers engineering teams
                             </span>{" "}
-                            to build real-time, data-intensive applications at
-                            scale with minimal friction. This platform{" "}
-                            <span className="about-text-bold">unifies</span> a
-                            team’s databases, pub/sub systems, and SaaS around
-                            their data,{" "}
-                            <span className="about-text-bold">
-                                without requiring new investments in
-                                infrastructure
-                            </span>{" "}
-                            or development.
+                            to build real-time, data-intensive pipelines and applications at
+                            scale, with minimal friction, in a UI or CLI. We aim to make real-time data accessible to the analyst, while bringing power tooling to the streaming enthusiast. Flow <span className="about-text-bold">unifies</span> a team's databases, pub/sub systems, and SaaS around their data, <span className="about-text-bold">without requiring new investments in infrastructure</span> or development.
                         </p>
                         <p className="about-section-one-text about-section-margin-bottom">
                             Estuary{" "}
@@ -135,11 +163,10 @@ const AboutPage = () => {
                                 develops in the open
                             </span>{" "}
                             to produce both the runtime for our managed service
-                            and an ecosystem of open-source connectors. We’re
-                            passionate about providing data integration tools
-                            for users across a spectrum of use-cases,
-                            industries, and budgets. You can read more about our
-                            story <Link to="/the-estuary-story-and-guiding-principles/">here.</Link>
+                            and an ecosystem of open-source connectors. You can read more about{" "}
+                            <Link to="/the-estuary-story-and-guiding-principles/">
+                                our story here.
+                            </Link>
                         </p>
                     </div>
                     <div className="product-flow-section-one-right">
@@ -147,6 +174,186 @@ const AboutPage = () => {
                     </div>
                 </div>
             </div>
+            <section className="about-history">
+                <div className="history-wrap">
+                    <div className="history-left">
+                        <div className="image-heading">
+                            9 years of real-time innovation
+                        </div>
+                        <div className="image-wrap">
+                            <StaticImage
+                                placeholder="none"
+                                alt="Estuary history"
+                                loading="lazy"
+                                src="../images/timeline-img.png"
+                                layout="constrained"
+                                width={508}
+                                height={526}
+                                quality={100}
+                            />
+                        </div>
+                    </div>
+                    <div className="history-right">
+                        <p className="product-flow-section-two-header-small">
+                            about us
+                        </p>
+                        <h2 className="about-section-header-top">History</h2>
+                        <p>
+                            We didn't start at trying to make real-time data
+                            flows more accessible by abstracting away the
+                            low-level work… it is just what happened.
+                        </p>
+                        <p>
+                            Our team researched streaming frameworks while
+                            working with billions of daily events, and
+                            ultimately realized that we'd have to build our own
+                            (
+                            <a href="https://gazette.readthedocs.io/en/latest/">
+                                Gazette
+                            </a>
+                            ) to have a scalable distributed streaming framework
+                            that is built with kappa architectures in mind,
+                            required less continuous resource management, and
+                            could unify both our batch and real-time pipelines.
+                        </p>
+                        <p>
+                            We've been innovating to make real-time data more
+                            accessible to all ever since.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section className="about-media">
+                <p className="product-flow-section-two-header-small">
+                    what’s happening
+                </p>
+                <h2 className="about-section-header-top">In the Media</h2>
+                <FlowLogo className="media-logo" />
+                <div className="media-wrap">
+                    <div className="media-item">
+                        <StaticImage
+                            placeholder="none"
+                            alt="Engineering podcast"
+                            loading="lazy"
+                            src="../images/engineering-podcast.png"
+                            layout="constrained"
+                            width={342}
+                            height={179}
+                            quality={100}
+                        />
+                        <div className="item-heading">
+                            <OutboundLink
+                                target="_blank"
+                                href="https://podcasts.apple.com/us/podcast/data-engineering-podcast/id1193040557"
+                                aria-label="media item link"
+                            >
+                                Data Engineering Podcast
+                            </OutboundLink>
+                        </div>
+                        <div className="item-description">
+                            Johnny, Dave, and Tobias discuss why we built
+                            Gazette, the growth of streaming, and the rise of
+                            the real-time data lake.
+                        </div>
+                    </div>
+                    <div className="media-item">
+                        <StaticImage
+                            placeholder="none"
+                            alt="FirstMark invests in Estuary"
+                            loading="lazy"
+                            src="../images/firstmark-estuary.png"
+                            layout="constrained"
+                            width={342}
+                            height={179}
+                            quality={100}
+                        />
+                        <div className="item-heading">
+                            <OutboundLink
+                                target="_blank"
+                                href="https://venturebeat.com/business/how-estuary-helps-enterprises-harness-historical-and-real-time-data-pipelines/"
+                                aria-label="media item link"
+                            >
+                                FirstMark invests in Estuary
+                            </OutboundLink>
+                        </div>
+                        <div className="item-description">
+                            Matt Turck of FirstMark announces their $7 million
+                            Series A investment in Estuary to simplify streaming
+                            + batch unification.
+                        </div>
+                    </div>
+                    <div className="media-item">
+                        <StaticImage
+                            placeholder="none"
+                            alt="Data landscape"
+                            loading="lazy"
+                            src="../images/data-landscape.png"
+                            layout="constrained"
+                            width={342}
+                            height={179}
+                            quality={100}
+                        />
+                        <div className="item-heading">
+                            <OutboundLink
+                                target="_blank"
+                                href="https://www.linkedin.com/feed/update/urn:li:activity:6980910741046382592/"
+                                aria-label="media item link"
+                            >
+                                Real-Time Data Landscape
+                            </OutboundLink>
+                        </div>
+                        <div className="item-description">
+                            LinkedIn post from our Founder Dave Yaffe where he
+                            (and 50+ others) chart out the evolving ecosystem of
+                            real-time data integration players
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="meet-the-team">
+                <p className="product-flow-section-two-header-small">
+                    say hello
+                </p>
+                <h2 className="about-section-header-top">Meet Our Team</h2>
+                <div className="team-wrap">
+                    {employees?.map((employee, index) => (
+                        <div className="team-item employee-list" key={index}>
+                            <GatsbyImage
+                                image={employee.ProfilePic.localFile?.childImageSharp?.gatsbyImageData}
+                                alt="debezium alternatives"
+                                className="employee-img"
+                            />
+                            <div className="item-name">{employee.name}</div>
+                            <div className="item-position">{employee.title}</div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+            <section className="investors">
+                <h2 className="investors-heading">Our Investors</h2>
+                <div className="investors-wrap">
+                    <StaticImage
+                        placeholder="none"
+                        alt="Firstmark"
+                        loading="lazy"
+                        src="../images/firstmark-logo.png"
+                        layout="constrained"
+                        width={180}
+                        height={48}
+                        quality={100}
+                    />
+                    <StaticImage
+                        placeholder="none"
+                        alt="Operator"
+                        loading="lazy"
+                        src="../images/operator-logo.png"
+                        layout="constrained"
+                        width={180}
+                        height={48}
+                        quality={100}
+                    />
+                </div>
+            </section>
             <div className="about-section-two">
                 <p className="product-flow-section-two-header-small">
                     Come work with us
@@ -327,7 +534,15 @@ const AboutPage = () => {
 }
 
 export const Head = () => {
-    return <Seo title={"About"} description={"Estuary helps your team get the most out of the ever-expanding list of valuable databases, warehouses, and other tools so you can focus on insights instead of pipelines."} />
+    return (
+        <Seo
+            title={"About"}
+            description={
+                "Estuary helps your team get the most out of the ever-expanding list of valuable databases, warehouses, and other tools so you can focus on insights instead of pipelines."
+            }
+        />
+    )
 }
 
 export default AboutPage
+

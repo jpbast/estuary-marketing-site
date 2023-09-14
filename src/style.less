@@ -2476,10 +2476,18 @@ table th {
 
 .about-section-one-h1 {
     width: 600px;
+    color: #04192b;
 }
 
 .about-section-one-text {
     font-size: 1.25rem;
+    color: #47506d;
+}
+
+.about-section-one-text a {
+    color: #47506d;
+    font-size: 1.25rem;
+    text-decoration-line: underline;
 }
 
 .about-text-bold {
@@ -2570,7 +2578,7 @@ table th {
 }
 
 .about-section-header-top {
-    max-width: 250px;
+    color: #04192b;
     margin-top: 12px;
 }
 
@@ -2631,7 +2639,7 @@ table th {
     margin: 0;
     text-decoration: none;
     cursor: pointer;
-    color: inherit;
+    color: #47506d;
 
     &:hover {
         background-color: #5072eb;
@@ -2652,12 +2660,23 @@ table th {
     font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: var(--fontSize-0);
+    font-size: 18px;
 }
 
 .about-current-openings-description-wrapper {
     display: flex;
     flex-direction: column;
+}
+
+.about-current-openings-description-wrapper p,
+.about-current-openings-description-wrapper ul li {
+    color: #47506d;
+}
+
+.about-current-openings-description-wrapper h3 {
+    font-size: 18px;
+    color: #47506d;
+    margin-bottom: 0;
 }
 
 .about-current-openings-title-wrapper {
@@ -2668,6 +2687,7 @@ table th {
 
 .about-section-current-openings-wrapper {
     display: flex;
+    margin-top: 16px;
 }
 
 .about-current-openings-location-wrapper {
@@ -2682,10 +2702,12 @@ table th {
     font-size: 1.5rem;
     color: var(--background-color-primary);
     font-weight: 600;
+    color: #47506d;
 }
 
 .about-opening-text {
     margin: 0px;
+    color: #47506d;
 }
 
 .about-bold {
@@ -2719,6 +2741,16 @@ table th {
         width: 100%;
         padding: 3rem;
         max-width: 50rem;
+    }
+    .about-section-five-header{
+        color: #04192B;
+    }
+    .about-section-five-text{
+        max-width: 670px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #47506D;
+        text-align: center;
     }
 }
 
@@ -4279,6 +4311,7 @@ table th {
     }
 }
 /*LP Podcast end*/
+
 /*Signup component*/
 .signup {
     padding: 100px 0;
@@ -4355,6 +4388,7 @@ table th {
     }
 }
 /*Signup component end*/
+
 /*Estuary-vs-... temaple*/
 .lp-comparison-wrap {
     background: url(./images/lp-podcast/img-bg.png) no-repeat;
@@ -4784,6 +4818,281 @@ table th {
     }
 }
 /*Estuary-vs-... temaple end*/
+
+/*About section updates*/
+.about-history {
+    background: #f9fafc;
+    padding: 122px 0 190px;
+    background-image: url("./images/product-flow-vector-left.svg");
+    background-repeat: no-repeat;
+    background-position-y: 480px;
+    background-size: 35%;
+    background-position-y: 60%;
+    @media (max-width: 811px) {
+        background-image: none;
+        padding: 32px 0;
+    }
+    .history-wrap {
+        max-width: 1220px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-between;
+        @media (max-width: 1512px) {
+            max-width: 100%;
+            padding-left: ~"calc(min(9%, 146px))";
+            padding-right: ~"calc(min(9%, 146px))";
+        }
+        @media (max-width: 811px) {
+            flex-direction: column-reverse;
+        }
+    }
+    .history-left {
+        max-width: 556px;
+        width: 100%;
+        @media (max-width: 811px) {
+            max-width: 100%;
+        }
+        .image-heading {
+            font-family: "Inter", sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #47506d;
+            margin-bottom: 24px;
+            @media (max-width: 811px) {
+                font-size: 11.622px;
+                line-height: 15px;
+            }
+        }
+    }
+    .history-right {
+        max-width: 560px;
+        width: 100%;
+        @media (max-width: 1350px) {
+            padding-left: 50px;
+        }
+        @media (max-width: 811px) {
+            padding-left: 0;
+            margin-bottom: 32px;
+        }
+        p {
+            @media (max-width: 811px) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            a {
+                color: #47506d;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+.about-media {
+    padding: 125px 0 63px;
+    position: relative;
+    @media (max-width: 811px) {
+        padding: 32px 0;
+    }
+    .media-logo {
+        position: absolute;
+        top: 125px;
+        right: calc(50% - 610px);
+        @media (max-width: 1512px) {
+            right: ~"calc(min(9%, 146px))";
+        }
+        @media (max-width: 811px) {
+            max-width: 35px;
+            top: 30px;
+        }
+    }
+    .product-flow-section-two-header-small {
+        max-width: 1220px;
+        margin-left: auto;
+        margin-right: auto;
+        @media (max-width: 1512px) {
+            max-width: 100%;
+            padding-left: ~"calc(min(9%, 146px))";
+            padding-right: ~"calc(min(9%, 146px))";
+        }
+    }
+    h2 {
+        max-width: 1220px;
+        margin-left: auto;
+        margin-right: auto;
+        @media (max-width: 1512px) {
+            max-width: 100%;
+            padding-left: ~"calc(min(9%, 146px))";
+            padding-right: ~"calc(min(9%, 146px))";
+        }
+    }
+    .media-wrap {
+        max-width: 1220px;
+        width: 100%;
+        margin: 50px auto 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 24px;
+        grid-row-gap: 0px;
+        @media (max-width: 1512px) {
+            max-width: 100%;
+            padding-left: ~"calc(min(9%, 146px))";
+            padding-right: ~"calc(min(9%, 146px))";
+        }
+        @media (max-width: 811px) {
+            grid-template-columns: repeat(1, 1fr);
+            grid-row-gap: 16px;
+        }
+        .media-item {
+            background: #f9fafc;
+            padding: 25px 24px;
+            @media (max-width: 811px) {
+                max-width: 390px;
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        .item-heading {
+            font-family: "Inter", sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 30px;
+            text-decoration-line: underline;
+            color: #04192b;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            @media (max-width: 811px) {
+                font-size: 18px;
+                line-height: 26px;
+                margin-top: 12px;
+            }
+            a {
+                color: #04192b;
+            }
+        }
+        .item-description {
+            font-family: "Inter", sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 30px;
+            color: #47506d;
+            @media (max-width: 811px) {
+                font-size: 14px;
+                line-height: 22px;
+            }
+        }
+    }
+}
+.meet-the-team {
+    padding: 63px 0;
+    @media (max-width: 811px) {
+        padding: 32px 0;
+    }
+    p,
+    h2 {
+        max-width: 100%;
+        text-align: center;
+    }
+    .team-wrap {
+        max-width: 1220px;
+        margin: 35px auto 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 24px;
+        grid-row-gap: 48px;
+        @media (max-width: 1512px) {
+            max-width: 100%;
+            padding-left: ~"calc(min(9%, 146px))";
+            padding-right: ~"calc(min(9%, 146px))";
+        }
+        @media (max-width: 811px) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-row-gap: 40px;
+        }
+        .team-item {
+            text-align: center;
+            .gatsby-image-wrapper {
+                @media (max-width: 811px) {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+            .item-name {
+                font-family: "Inter", sans-serif;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 30px;
+                text-align: center;
+                color: #04192b;
+                margin-top: 15px;
+                margin-bottom: 12px;
+                @media (max-width: 811px) {
+                    font-size: 18px;
+                    line-height: 26px;
+                    margin-bottom: 12px;
+                    margin-top: 10px;
+                }
+            }
+            .item-position {
+                font-family: "Inter", sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 30px;
+                text-align: center;
+                color: #47506d;
+                @media (max-width: 811px) {
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+            }
+        }
+        .employee-list{
+            .employee-img{
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+.investors {
+    padding: 37px 0 123px;
+    @media (max-width: 811px) {
+        padding: 32px 0 40px;
+    }
+    h2 {
+        text-align: center;
+        margin-top: 28px;
+        @media (max-width: 811px) {
+            font-size: 28px;
+            line-height: 36px;
+        }
+    }
+    .investors-wrap {
+        max-width: 432px;
+        margin: 40px auto 0;
+        display: flex;
+        justify-content: space-between;
+        @media (max-width: 811px) {
+            flex-direction: column;
+            margin-top: 26px;
+            max-width: 180px;
+            margin-bottom: 17px;
+        }
+    }
+}
+/*About section updates end*/
 /*Why Estuary*/
 .why-estuary {
     display: flex;
