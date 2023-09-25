@@ -1098,8 +1098,11 @@ input {
 }
 
 .global-footer-subscribe {
-    width: 410px;
+    width: 408px;
     height: 40px;
+    @media (max-width: 767px) {
+        width: 330px;
+    }
 }
 
 .global-footer-input-email {
@@ -3270,6 +3273,8 @@ table th {
     }
 
     .section-two {
+        margin: auto;
+        width: 100%;
         padding: 16px 0;
         margin-top: 32px;
     }
@@ -3297,6 +3302,7 @@ table th {
     .section-two-bottom-header {
         flex-direction: column;
         margin: 32px 16px;
+        width: 90%;
     }
 
     .section-two-bottom-left {
