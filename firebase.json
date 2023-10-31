@@ -3,6 +3,13 @@
         "public": "public",
         "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
         "cleanUrls": true,
+        "redirects": [
+            {
+                "type": 301,
+                "source": "/how-to-create-data-pipeline-automation",
+                "destination": "/data-pipeline-automation"
+            }
+        ],
         "headers": [
             {
                 "source": "**/*",
