@@ -44,16 +44,14 @@ export const PopularArticles = () => {
             <ul>
                 {popularArticles?.nodes &&
                     popularArticles?.nodes?.map((article: any, index: number) => (
-                        <>
-                            <li key={index}>
-                                <GatsbyImage
-                                    image={article?.hero?.localFile?.childImageSharp?.gatsbyImageData}
-                                    alt="debezium alternatives"
-                                    className="icon-image popular-articles-image"
-                                />
-                                <Link to={`/${article?.slug}`}>{article?.title}</Link>
-                            </li>
-                        </>
+                        <li key={index}>
+                            <GatsbyImage
+                                image={article?.hero?.localFile?.childImageSharp?.gatsbyImageData}
+                                alt="debezium alternatives"
+                                className="icon-image popular-articles-image"
+                            />
+                            <Link to={`/${article?.slug}`}>{article?.title}</Link>
+                        </li>
                     ))
                 }
             </ul>

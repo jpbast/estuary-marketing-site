@@ -19,8 +19,8 @@ const RenderTocItem = ({ item, depth }: { item: TocItem; depth: number }) => {
             </li>
             {item.items?.length > 0 && (
                 <ul>
-                    {item.items.map(child => (
-                        <RenderTocItem item={child} depth={depth + 1} />
+                    {item.items.map((child, index) => (
+                        <RenderTocItem item={child} key={index} depth={depth + 1} />
                     ))}
                 </ul>
             )}
@@ -31,8 +31,8 @@ const RenderTocItem = ({ item, depth }: { item: TocItem; depth: number }) => {
 export const RenderToc = ({ items }: { items: TocItem[] }) => (
     <div className="table-of-contents">
         <ul>
-            {items.map(item => (
-                <RenderTocItem item={item} depth={0} />
+            {items.map((item, index) => (
+                <RenderTocItem item={item} key={index} depth={0} />
             ))}
         </ul>
     </div>
