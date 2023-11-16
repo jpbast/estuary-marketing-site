@@ -118,8 +118,8 @@ export const NavMenuItem = ({ item }: { item: NavItem }) => {
                 title={item.title}
                 popupId={`${item.title}-${item.path}`}
             >
-                {item.children.map(child => (
-                    <NavMenuItem item={child} />
+                {item.children.map((child, index) => (
+                    <NavMenuItem item={child} key={index} />
                 ))}
             </CascadingSubmenu>
         )
@@ -166,7 +166,7 @@ export const NavMenuTopLevel = ({ item }: { item: NavItem }) => {
                     anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                     transformOrigin={{ vertical: "top", horizontal: "left" }}
                 >
-                    {item.children.map(child => (
+                    {item.children.map((child) => (
                         <NavMenuItem key={`${child.path}-${child.title}`} item={child} />
                     ))}
                 </CascadingMenu>
@@ -214,8 +214,8 @@ export const NavMenuList = ({ item }: { item: NavItem }) => {
                     unmountOnExit
                 >
                     <List component="div" disablePadding>
-                        {item.children.map(child => (
-                            <NavMenuList item={child} />
+                        {item.children.map((child, index) => (
+                            <NavMenuList item={child} key={index} />
                         ))}
                     </List>
                 </Collapse>
