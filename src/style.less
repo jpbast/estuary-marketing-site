@@ -5851,6 +5851,183 @@ table th {
 }
 /*Why Estuary end*/
 /*Blog post template updates*/
+
+.sided-panel-cta-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    order: 1;
+
+    @media(max-width: 767px){
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    & .sided-panel-cta {
+        display: flex;
+        gap: 20px;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+        border-radius: 6px;
+        border: 1px solid #D5DAE1;
+        background: #FFF;
+        box-shadow: 0px 1px 2px 0px rgba(105, 81, 255, 0.05);
+
+        @media(max-width: 767px){
+            width: 100%;
+            max-width: 232px;
+            margin: 0 auto;
+        }
+
+        & .text-content {
+            text-align: center;
+            flex: 1;
+        }
+    
+        & p {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 16px;
+            margin: 0;
+        }
+    
+        & a {
+            color: #47506D;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 14px;
+            text-decoration-line: underline;
+            margin: 0;
+        }
+
+        & .icon-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        & .social-icon {
+            width: 26px;
+            height: 26px;
+            margin: 0;
+        }
+    }
+
+
+    & .sided-panel-stream {
+        text-align: center;
+
+        & p {
+            color: #333F51;
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 28px
+        }
+
+        & a {
+            color: #B7C6DD;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 4px;
+            border: 1px solid #B7C6DD;
+            background-color: #04192B;
+            box-shadow: 0px 4px 10px 0px rgba(20, 20, 43, 0.04);
+
+            @media(max-width: 767px){
+                padding: 10px 50px;
+            }
+        }
+    }
+}
+
+.related-post {
+    .heading {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+
+        @media(max-width: 767px){
+            justify-content: start;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+
+            @media(max-width: 767px){
+                font-size: 16px;
+            }
+        }
+    }
+
+    .related-index-body {
+        padding-top: 2rem;
+        display: grid;
+        grid-column-gap: 24px;
+        grid-row-gap: 24px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        @media(max-width: 767px){
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            padding-top: 1rem;
+        }
+
+        .related-post-card {
+            box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.10);
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            background-color: rgba(255, 255, 255, 0.70);
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+
+        .related-post-image {
+            height: 277px;
+            box-shadow: 6px 8px 1px 1px #D9D9D9;
+        }
+
+        .related-post-card-title {
+            color: #000;
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 26px;
+
+            @media(max-width: 767px){
+                font-size: 20px;
+                margin-top: 20px;
+            }
+        }
+
+        .related-post-card-description {
+            color: rgba(51, 63, 81, 0.70);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height:  19.6px;
+            margin-top: 15px;
+
+            @media(max-width: 767px){
+                font-size: 12px;
+                line-height:  17px;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
 .blog-post{
     max-width: 1448px;
     width: 100%;
@@ -5949,9 +6126,16 @@ table th {
         padding-top: 48px;
         margin-top: 24px;
         border-top: 1px solid #EEF0F3;
+        padding-right: 10px;
+        padding-left: 10px;
         @media(max-width: 767px){
             padding-top: 32px;
             flex-direction: column;
+            gap: 25px;
+
+            & .dynamic-html {
+                order: 3;
+            }
         }
         h2{
             line-height: normal;
@@ -6020,7 +6204,7 @@ table th {
             overflow: hidden;
         }
     }
-    .post-sidebar{
+    .post-sidebar, .post-sidebar-right{
         max-width: 215px;
         width: 100%;
         @media(max-width: 991px){
@@ -6031,6 +6215,9 @@ table th {
             padding-right: 0;
             position: relative !important;
         }
+    }
+    .post-sidebar-right {
+        max-width: 180px;
     }
     .post-content{
         max-width: calc(100% - 422px);
@@ -6158,11 +6345,22 @@ table th {
             margin: 0;
             padding: 0 16px;
 
+            @media(max-width: 767px){
+                padding: 20px 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
             li{
                 list-style: none;
                 opacity: 0.7;
                 position: relative;
                 margin: 0;
+
+                @media(max-width: 767px){
+                    opacity: 1;
+                }
 
                 & .progress {
                     background-color: #D9D9D9;
@@ -6171,6 +6369,10 @@ table th {
                     bottom: 0;
                     right: -16px;
                     width: 3px;
+
+                    @media(max-width: 767px){
+                        display: none;
+                    }
                 }
 
                 &:not(.sub-item) {

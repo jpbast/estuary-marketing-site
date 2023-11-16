@@ -2,6 +2,7 @@ import React from "react"
 import StickyBox from "react-sticky-box"
 
 import RenderToc from "../../../components/BlogPostToc"
+import PanelCTA from "../../../components/PanelCTA"
 import { ProcessedPost } from "../../../components/BlogPostProcessor"
 
 const BlogPostBody = ({ data, sticky }) => {
@@ -24,7 +25,16 @@ const BlogPostBody = ({ data, sticky }) => {
                 body={data.childHtmlRehype.html}
             />
 
-            <div />
+            {sticky && (
+                <StickyBox
+                    offsetBottom={16}
+                    offsetTop={16}
+                    className="post-sidebar-right"
+                >
+                    <PanelCTA />
+                </StickyBox>
+            )}
+            {!sticky && <PanelCTA />}
         </section>
     )
 }

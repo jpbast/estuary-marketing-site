@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import dayjs from "dayjs"
 import reltime from "dayjs/plugin/relativeTime"
@@ -7,11 +7,11 @@ import reltime from "dayjs/plugin/relativeTime"
 import Body from "./Body"
 import Wrapper from "./Wrapper"
 
-import { PopularArticles } from "../../components/BlogPopularArticles"
+import RelatedPosts from "../../components/RelatedPosts"
 
 dayjs.extend(reltime)
 
-const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
+const BlogPostTemplate = ({ data: { previous, next, post, allStrapiBlogPost, allStrapiProductComparisonPage }, pageContext }) => {
     const [windowWidth, setWindowWidth] = useState(
         typeof window === "undefined" ? 1500 : window.innerWidth
     )
@@ -28,20 +28,7 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
     return (
         <Wrapper post={post}>
             <Body data={post?.body?.data} sticky={windowWidth > 767} />
-            {windowWidth <= 767 && (
-                <div className="popular-articles mobile-only">
-                    <PopularArticles />
-                </div>
-            )}
-            <div className="sidebar-cta mobile-only">
-                <h3>Start streaming your data for free</h3>
-                <Link
-                    to="https://dashboard.estuary.dev/register"
-                    className="pipeline-link"
-                >
-                    Build a Pipeline
-                </Link>
-            </div>
+            <RelatedPosts />
         </Wrapper>
     )
 }
