@@ -366,7 +366,7 @@ const PricingPage = () => {
                                 </div>
                                 <Link
                                     className="pricing-page-tile-button"
-                                    to="https://github.com/estuary/flow"
+                                    to="https://dashboard.estuary.dev/register"
                                 >
                                     Get started
                                 </Link>
@@ -764,7 +764,7 @@ const PricingPage = () => {
                                 </OutboundLink>
                                 <OutboundLink
                                     target="_blank"
-                                    href="/why"
+                                    href="/about#contact-us"
                                     className="demo-button"
                                 >
                                     Contact Us
