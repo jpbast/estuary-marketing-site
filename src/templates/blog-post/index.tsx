@@ -11,7 +11,7 @@ import RelatedPosts from "../../components/RelatedPosts"
 
 dayjs.extend(reltime)
 
-const BlogPostTemplate = ({ data: { previous, next, post, allStrapiBlogPost, allStrapiProductComparisonPage }, pageContext }) => {
+const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
     const [windowWidth, setWindowWidth] = useState(
         typeof window === "undefined" ? 1500 : window.innerWidth
     )
