@@ -65,7 +65,15 @@
                 "source": "/elt-processes-cdc/", 
                 "destination": "/streaming-etl-processes-cdc/",
                 "type": 301
-            }      
+            },
+                "source": "/data-lake-architecture%20/", 
+                "destination": "/data-lake-architecture/",
+                "type": 301
+            },
+                "source": "/the-complete-change-capture-guide-for-postgresql/", 
+                "destination": "/the-complete-change-data-capture-guide-for-postgresql/",
+                "type": 301     
+            }  
         ],
         "public": "public",
         "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
