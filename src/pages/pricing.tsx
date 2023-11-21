@@ -550,11 +550,7 @@ const PricingPage = () => {
                                                 <ContextToolTip
                                                     placement="top-start"
                                                     title={(<Typography className="context-tooltip-text">
-                                                        ‘Change Data’ is defined as any incremental
-                                                        upsert event. You are only billed on the bytes
-                                                        of moving that particular new event. For example, a single
-                                                        database row being backfilled or updated will be billed based on the total size of
-                                                        the corresponding JSON document. One connector can operate on many tables inside a DB.
+                                                        Competitor pricing estimates are based on publicly available data as of October 2023.
                                                     </Typography>)} >
                                                     <QuestionMarkIcon id="change-data" className="question-mark-dark" />
                                                 </ContextToolTip>
