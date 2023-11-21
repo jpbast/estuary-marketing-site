@@ -25,15 +25,6 @@ const PanelCTA = () => {
                     <SlackIcon className="social-icon" />
                 </div>
             </div>
-            <div className="sided-panel-stream">
-                <p>Start streaming your data for free</p>
-                <OutboundLink
-                    href="https://dashboard.estuary.dev/register"
-                    className="pipeline-link"
-                >
-                    Try it Free
-                </OutboundLink>
-            </div>
         </div>
     )
 }
