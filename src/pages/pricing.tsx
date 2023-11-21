@@ -25,8 +25,8 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import PricingExampleTwo from "../svgs/pricing_example_graphic_1.svg"
-import PricingExampleOne from "../svgs/illustration1.svg"
+import PricingExampleTwo from "../svgs/graphic_parent_2.svg"
+import PricingExampleOne from "../svgs/graphic_parent.svg"
 import { Check } from "@mui/icons-material"
 import PlanTabs from "../components/PlanTabs"
 
@@ -579,13 +579,8 @@ const PricingPage = () => {
                         <h2 className="pricing-comparison-header">Pricing Examples</h2>
                         {isSmall ? (
                             <div className="pricing-comparison-row">
-                                <div>
-                                    <StaticImage
-                                        placeholder="none"
-                                        alt="pricing logo"
-                                        src="../svgs/pricing__example_1.png"
-                                        layout="constrained"
-                                        className="pricing-example-image" />
+                                <div className="no-box-shadow">
+                                    <PricingExampleOne/>
                                 </div>
 
                                 <div>
@@ -597,13 +592,8 @@ const PricingPage = () => {
                                 </div>
 
 
-                                <div>
-                                    <StaticImage
-                                        placeholder="none"
-                                        alt="pricing logo"
-                                        src="../svgs/pricing__example_1.png"
-                                        layout="constrained"
-                                        className="pricing-example-image" />
+                                <div className="no-box-shadow">
+                                   <PricingExampleTwo/>
                                 </div>
                                 <div>
                                     <div className="pricing-comparison-text">
@@ -617,24 +607,11 @@ const PricingPage = () => {
                             </div>
                         ) : (
                             <div className="pricing-comparison-row">
-                                <div>
-                                    <StaticImage
-                                        placeholder="none"
-                                        alt="pricing logo"
-                                        src="../svgs/pricing__example_1.png"
-                                        layout="fixed"
-                                        className="pricing-example-image" />
+                                <div className="no-box-shadow">
+                                <PricingExampleOne />
                                 </div>
-                                <div>
-                                    {/* <PricingExampleOne /> */}
-                                    {/* <PricingExampleTwo className="pricing-example-image" /> */}
-
-                                    <StaticImage
-                                        placeholder="none"
-                                        alt="pricing logo"
-                                        src="../svgs/pricing_example__2.png"
-                                        layout="fixed"
-                                        className="pricing-example-image" />
+                                <div className="no-box-shadow">
+                                    <PricingExampleOne />
                                 </div>
                                 <div>
                                     <div className="pricing-comparison-text">

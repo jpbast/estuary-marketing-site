@@ -7778,11 +7778,15 @@ table th {
 
     .pricing-comparison-row>div {
         display: flex;
-        flex-basis: calc(50% - 40px);
+        flex-basis: calc(50% - 52px);
         justify-content: center;
         box-shadow: 0px 4px 10px rgba(20, 20, 43, 0.14);
-        margin: 20px;
-        height: 330px;
+        margin: auto;
+        width: fit-content;
+    }
+
+    .no-box-shadow {
+        box-shadow: none !important;
     }
 
     .pricing-comparison-text {
@@ -7791,6 +7795,7 @@ table th {
         justify-content: center;
         align-items: center;
         padding: 30px;
+        max-width: 568px;
     }
 
     .pricing-comparison-card-header {
