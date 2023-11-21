@@ -59,7 +59,7 @@ const useNavItems = (): NavItem[] => {
     },
     {
         title: "Connectors",
-        path: "https://estuary.dev/sources/",
+        path: "https://estuary.dev/integrations/",
     },
     {
         title: "Resources",

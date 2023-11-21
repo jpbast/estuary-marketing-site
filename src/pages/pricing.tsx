@@ -1,28 +1,85 @@
 import * as React from "react"
+import { useState } from "react"
 import Layout from "../components/layout"
-import { StaticImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
-import {
-    Box,
-    Divider,
-    FormControl,
-    FormControlLabel,
-    Slider,
-    Stack,
-    Typography,
-    useMediaQuery,
-    useTheme,
-} from "@mui/material"
-
-import FlowLogo from "../svgs/flow-logo.svg"
-import BlueCheckmark from "../svgs/blue-checkmark.svg"
-import BlueBullet from "../svgs/blue-bullet.svg"
-import PricingOpenSource from "../svgs/pricing-open-source.svg"
-import PricingCloud from "../svgs/pricing-cloud.svg"
-import PricingEnterprise from "../svgs/pricing-enterprise.svg"
-import GraphicQuote from "../svgs/graphic-quote.svg"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { Slider, SvgIconProps, Typography, createSvgIcon, styled, useMediaQuery, useTheme, Stack } from "@mui/material"
+import BlackCheckmark from "../svgs/checkmark-black.svg"
+import WhiteCheckmark from "../svgs/light-checkmark.svg"
+import QuestionMarkSvg from "../svgs/question-mark.svg"
+import QuestionMarkSvgWhite from "../svgs/question-mark-white.svg"
+import PricingComparisonOne from "../svgs/pricing-comparison-1.svg"
+import PlusSign from "../svgs/plus-sign.svg"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import Seo from "../components/seo"
+import { Link, graphql, useStaticQuery } from "gatsby"
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import { ContextToolTip } from "../components/ContextTooltip"
+import PricingOpenSource from "../svgs/pricing-page-open-source.svg"
+import PurpleRectangle from "../svgs/purple_rectangle.svg"
+import WhiteRectangle from "../svgs/white_rectangle.svg"
+import PricingCloud from "../svgs/cloud-pricing.svg"
+import PricingEnterprise from "../svgs/pricing-page-enterprise.svg"
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import PricingExampleTwo from "../svgs/pricing_example_graphic_1.svg"
+import PricingExampleOne from "../svgs/illustration1.svg"
+import { Check } from "@mui/icons-material"
+import PlanTabs from "../components/PlanTabs"
+
+
+const QuestionIcon = createSvgIcon(QuestionMarkSvg({}), "Question Mark");
+const QuestionIconWhite = createSvgIcon(QuestionMarkSvgWhite({}), "Question Mark");
+const QuestionMarkIcon = React.forwardRef((props: SvgIconProps, ref: React.Ref<SVGSVGElement>) => <QuestionIcon ref={ref} viewBox="0 0 32 32" {...props} />)
+const QuestionMarkIconWhite = React.forwardRef((props: SvgIconProps, ref: React.Ref<SVGSVGElement>) => <QuestionIconWhite ref={ref} viewBox="0 0 32 32" {...props} />)
+
+
+const SliderComponent = styled(Slider)({
+    color: "#5272EB",
+    width: "87%",
+    margin: "auto",
+    borderRadius: "3px",
+    marginLeft: "25px",
+    marginTop: "50px",
+    "& .MuiSlider-thumb": {
+        height: 36,
+        width: 36,
+        backgroundColor: "#5272EB",
+        border: "6px solid white",
+        boxShadow: "0px 2px 7px rgba(0, 0, 0, 0.25)",
+        "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
+            boxShadow: "0px 2px 7px rgba(0, 0, 0, 0.25)",
+        },
+        "&:before": {
+            display: "none",
+        },
+    },
+    '& .MuiSlider-track': {
+        height: 28,
+    },
+    '& .MuiSlider-rail': {
+        color: '#D9D9D9',
+        opacity: 1,
+        height: 28,
+        width: '100.5%'
+    },
+    '& .MuiSlider-mark': {
+        color: '#D9D9D9',
+        backgroundColor: '#D9D9D9 !important',
+        height: '15px',
+        width: '3px',
+        top: '-20%',
+        "@media(max-width: 1250px)": {
+            top: "6%"
+        }
+    },
+    '& .MuiSlider-markLabel': {
+        top: "-32px"
+    }
+})
 
 function gByteLabel(gb: number, maxPrec = 10) {
     const units = ["GB", "TB"]
@@ -35,69 +92,184 @@ function gByteLabel(gb: number, maxPrec = 10) {
         scaledValue /= 1000
     }
 
-    return `${scaledValue.toFixed(Math.min(unitIndex, maxPrec))}${
-        units[unitIndex]
-    }`
+    return `${scaledValue.toFixed(Math.min(unitIndex, maxPrec))}${units[unitIndex]}`
 }
-
-const ChecklistItem = ({ children, bullet = false }) => (
-    <div className="pricing-page-checklist-item">
-        {bullet ? (
-            <BlueBullet className="pricing-page-tile-checkmark-image" />
-        ) : (
-            <BlueCheckmark className="pricing-page-tile-checkmark-image" />
-        )}
-        <p className="pricing-page-tile-checklist-item-text">{children}</p>
-    </div>
-)
 
 export const currencyFormatter = Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
 })
 
-const roundTo = (num: number, decimals: number) =>
-    Math.round((num + Number.EPSILON) * 10 ** decimals) / 10 ** decimals
+const gbPoints = [
+    2,
+    250,
+    500,
+    1000,
+    2000
+]
 
-export const calculateDataPrice = (gbs: number): number => {
-    let gb_calc: string | number =
-        Math.min(1000, gbs) * 0.5 + Math.max(0, (gbs - 1001) * 0.2)
-    return roundTo(gb_calc, 2)
-}
+const scale = idx => {
 
-export const calculateTaskPrice = (tasks: number): number => tasks * 100
+    const previousMarkIndex = Math.floor(idx - 1);
+    const previousMark = gbPoints[previousMarkIndex];
 
-export const calculatePrice = (tasks: number, gbs: number) => {
-    let gb_calc = calculateDataPrice(gbs)
+    if (idx === previousMarkIndex) {
+        return previousMark;
+    }
 
-    let task_calc = calculateTaskPrice(tasks)
-    return (
-        <>
-            <span className="pricing-page-price-bold">
-                {currencyFormatter.format(task_calc + gb_calc)}
-            </span>
-            /month
-        </>
-    )
-}
+    const nextMark = gbPoints[previousMarkIndex + 1];
+
+    if (!nextMark) {
+        return previousMark
+    }
+
+    const frac = ((idx - 1) - previousMarkIndex) * (nextMark - previousMark)
+
+    return previousMark + frac;
+};
+
+const marks = gbPoints.map((_, index) => ({
+    value: index + 1,
+    label: gByteLabel(scale(index + 1))
+}));
+
+
+export const calculatePrice = (gb: number, connectors: number) => ({
+    estuary: 2.0 * gb + 100 * connectors,
+    fivetran: (1590 + 45.7 * gb + -0.0517 * gb ** 2 + 2.79 * 10 ** -5 * gb ** 3 + -5.37 * 10 ** -9 * gb ** 4),
+    confluent: connectors * 150 + (1.73 * gb + 1100)
+})
+
+
+const frequentlyQuestions = [
+    {
+        title: "How is my my bill calculated?",
+        description: `There are two components to your monthly bill. Primarily, your bill is  calculated based on the amount of
+        data that is Sourced, Transformed, and Delivered by Flow to your destinations. The activity of each of these
+        ‘tasks’ are summed on a monthly basis. Secondarily, there is a charge of $0.14/hour per active connector.
+        For a given connector running all month, this typically equates to about ~$100/month/connector. in a
+        standard 720 hour month.   There is no storage fee as Estuary does not store your data, it will be hosted
+        in your own cloud storage. In the free tier, you are given 10GB of data to move at no charge and up t
+        o 2 connectors.`,
+    },
+    {
+        title: "Do you offer discounted rates?",
+        description: `Discounts are based on two variables - volume commitments and contract duration.`,
+    },
+    {
+        title: "How does Pay-as-you-Go pricing work?",
+        description: `For customers that are just starting out, or don’t want to commit to a specific volume of data or time
+        you can use Estuary and pay for actual consumption on a monthly basis. Your bill will be computed
+        at the end of each month based on the amount of data transfer and number of active connectors.
+        Billing is done through Stripe, and you’ll be able to add a credit card.`,
+    },
+    {
+        title: "How does pre-pay work?",
+        description: `Customers that want to pay for a fixed amount of data transfer can pay up front and then amortize
+        that usage over time (no more than 12 months). The more data transfer paid up front, the greater the
+        discount on the Pay-As-You-Go price.`,
+    },
+    {
+        title: "How does the Free Trial work?",
+        description: `Flow can be used for free indefinitely. With the only gate being the 10GB of data transfer each month
+        usage over 2 connectors. For customers on our Cloud Plan, there is a 30-day free trial upon request.`,
+    },
+    {
+        title: "What are my billing options?",
+        description: `The free tier does not require a credit card nor any billing information. The Cloud Plan can be paid via
+        credit card, debit card, or 30-day Invoice. The Enterprise tier is paid via invoice.`,
+    },
+    {
+        title: "Where is my data stored?",
+        description:
+            "In the free tier, your data will be stored securely stored in Estuary’s cloud storage. Estuary will only retain this data for a limited window. In the Cloud Plan and beyond, your data will be stored in your cloud bucket for whatever length you set.",
+    },
+]
 
 const PricingPage = () => {
+    const relatedPost = useStaticQuery(graphql`
+        {
+            allStrapiBlogPost(
+                filter: {
+                    tags: { elemMatch: { Name: { eq: "billing articles" } } }
+                }
+            ) {
+                nodes {
+                    title: Title
+                    Slug
+                    hero: Hero {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData
+                            }
+                        }
+                    }
+                }
+            }
+            allStrapiProductComparisonPage(
+                    filter: {Published: {}, Slug: {eq: "vs-fivetran"}}
+                ) {
+                    nodes {
+                    their_name
+                    Slug
+                    logo: DescriptivePicture {
+                        localFile {
+                        childImageSharp {
+                            gatsbyImageData(
+                            layout: CONSTRAINED
+                            width: 400
+                            placeholder: BLURRED
+                            aspectRatio: 1.7
+                            formats: [AUTO, WEBP, AVIF]
+                            )
+                        }
+                        }
+                    }
+                    }
+                }
+             }   
+    `)
+
+    const [selectedPlan, setSelectedPlan] = useState("free");
+    const [selectedGbs, setSelectedGbs] = useState(1);
+    const [selectedConnectors, setSelectedConnectors] = useState(2);
+    const [planTab, setPlanTab] = useState(0);
+
+
+    const prices = React.useMemo(() => calculatePrice(scale(selectedGbs), selectedConnectors), [selectedGbs, selectedConnectors])
+
     const theme = useTheme()
-    const isMedium = useMediaQuery(theme.breakpoints.between(811,1100))
+    const isSmall = useMediaQuery(theme.breakpoints.down(1350));
 
-    const x_factor = isMedium ? 0.0016 : 0.0024
+    const handlePlanTabChange = (event, newTab) => {
+        setPlanTab(newTab);
+        console.log(newTab)
+    };
 
-    const sliderScale = x => 1 / (1 + Math.E ** (x * x_factor * -1))
-    const inverseSliderScale = x => Math.log(x / (1 - x)) / x_factor
-    const marks = (
-        isMedium ? [1, 500, 1000, 5000] : [1, 250, 600, 1000, 5000]
-    ).map(v => ({
-        label: gByteLabel(v, 0),
-        value: sliderScale(v),
-    }))
-    console.log(marks)
-    const [selectedGB, setSelectedGB] = React.useState(1)
-    const [selectedTasks, setSelectedTasks] = React.useState(1)
+
+    const ChecklistItem = ({ children, white = false }) => (
+        <div className="pricing-page-checklist-item">
+            {white ? (
+                <>
+                    <WhiteCheckmark className="pricing-page-tile-checkmark-image" />
+                    <p className="pricing-page-tile-checklist-item-text text-white">{children}</p>
+                </>
+            ) : (
+                <>
+                    <BlackCheckmark className="pricing-page-tile-checkmark-image" />
+                    <p className="pricing-page-tile-checklist-item-text">{children}</p>
+                </>
+            )}
+        </div>
+    )
+
+
+    const PricingPlansMobile = () => (
+        <div>
+            mobile plan views
+
+        </div>
+    )
 
     return (
         <Layout headerTheme="light">
@@ -106,407 +278,518 @@ const PricingPage = () => {
                     <div className="pricing-page-top">
                         <div className="pricing-page-top-left">
                             <h1 className="product-flow-section-one-h1">
-                                Pricing Tiers
+                                Simply priced, <br /> pay as you go
                             </h1>
                             <p className="pricing-page-subheader-text">
-                                Predictable pricing that scales with your
-                                business.
+                                Get instant back-fills without instant
+                                bad-bills. We price predictably, on{" "}
+                                <strong>GB of change data</strong> moved per
+                                month and{" "}
+                                <strong>active connectors.</strong> Put
+                                away the TI-83 trying to calculate ‘monthly
+                                active rows’.
                             </p>
-                            <p className="pricing-page-subheader-text">
-                                No charge for storing data. Since we don't store
-                                your data, storage is in your own cloud storage
-                                bucket at low cloud storage rates
-                            </p>
+                            <div className="main-section-buttons">
+                                <OutboundLink
+                                    target="_blank"
+                                    href="https://dashboard.estuary.dev/register"
+                                    className="section-one-try-it-button"
+                                >
+                                    Build free pipeline
+                                </OutboundLink>
+                                <OutboundLink
+                                    target="_blank"
+                                    href="/about/#contact-us"
+                                    className="section-one-demo-button"
+                                >
+                                    Contact Us
+                                </OutboundLink>
+                            </div>
                         </div>
                         <div className="pricing-page-top-right">
-                            <FlowLogo className="product-flow-section-one-image" />
+                            <StaticImage
+                                placeholder="none"
+                                alt="pricing logo"
+                                src="../images/dude_desk_plant.png"
+                                layout="fixed"
+                                className="icon-image pricing-landing-image"
+                            />
                         </div>
-                    </div>
-
-                    <div className="pricing-page-tiles-wrapper">
-                        <div className="pricing-page-tile">
-                            <PricingOpenSource className="pricing-page-tile-icon icon-wrapper" />
-                            <p className="pricing-page-tile-name">Free</p>
-                            <p className="pricing-page-tile-price-subtext">
-                                Free for up to two tasks and 10 GB/Mo. No credit
-                                card required.
-                            </p>
-                            <p className="pricing-page-price">
-                                <span className="pricing-page-price-bold">
-                                    $0
-                                </span>
-                                /month
-                            </p>
-                            <div className="pricing-page-checklist-wrapper">
-                                <ChecklistItem>
-                                    Millisecond latency
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    UI for creating, testing and monitoring
-                                    pipelines
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    Incremental transfers for much lower CDC
-                                    costs
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    Create and access entities{" "}
-                                    <OutboundLink href="https://docs.estuary.dev/concepts/flowctl/">
-                                        programatically
-                                    </OutboundLink>
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    Use up to 50 collections, 2 total tasks
-                                    (sources, sestinations and/or
-                                    transformations)
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    Up to 50 collections
-                                </ChecklistItem>
-                            </div>
-                            <Link
-                                className="pricing-page-tile-button"
-                                to="https://github.com/estuary/flow"
-                            >
-                                Get started
-                            </Link>
-                        </div>
-                        <div className="pricing-page-tile">
-                            <PricingCloud className="pricing-page-tile-icon icon-wrapper" />
-                            <p className="pricing-page-tile-name">Cloud</p>
-                            <p className="pricing-page-tile-price-subtext">
-                                <b>Sources & Destinations</b>: $0.14/hr - $100/month
-                                <br />
-                                <b>Data</b>: $0.50/GB up to 1TB, then $0.20/GB
-                            </p>
-                            <p className="pricing-page-price">
-                                {calculatePrice(
-                                    selectedTasks,
-                                    selectedGB
-                                )}
-                            </p>
-                            <Stack
-                                margin="1rem 0 2rem 0"
-                                justifyContent="center"
-                            >
-                                <Stack
-                                    spacing={2}
-                                    alignItems="center"
-                                    direction="column"
-                                    marginBottom={"2em"}
-                                >
-                                    <Typography component="div">
-                                        {isMedium ? "Tasks" : "Sources & Destinations"}:{" "}
-                                        <Typography
-                                            display="inline"
-                                            fontWeight="bold"
-                                        >
-                                            {currencyFormatter.format(
-                                                selectedTasks * 100
-                                            )}
-                                        </Typography>
-                                    </Typography>
-                                    <Slider
-                                        value={selectedTasks}
-                                        onChange={(_, val) =>
-                                            setSelectedTasks(
-                                                typeof val === "number"
-                                                    ? val
-                                                    : val[0]
-                                            )
-                                        }
-                                        marks={[1,2, 3, 4, 5, 6, 7, 8, 9, 10].map(
-                                            id => ({
-                                                value: id,
-                                                label: id,
-                                            })
-                                        )}
-                                        min={1}
-                                        max={10}
-                                        step={1}
-                                        valueLabelDisplay="auto"
-                                        valueLabelFormat={v => `${v} tasks`}
-                                        style={{ marginTop: 0 }}
-                                    />
-                                </Stack>
-                                <Stack
-                                    spacing={2}
-                                    alignItems="center"
-                                    direction="column"
-                                    marginBottom="1.75rem"
-                                >
-                                    <Typography>
-                                        Data:{" "}
-                                        <Typography
-                                            display="inline"
-                                            fontWeight="bold"
-                                        >
-                                            {currencyFormatter.format(
-                                                calculateDataPrice(
-                                                        selectedGB
-                                                )
-                                            )}
-                                        </Typography>
-                                    </Typography>
-                                    <Slider
-                                        value={sliderScale(selectedGB)}
-                                        onChange={(_, val) =>
-                                            setSelectedGB(
-                                                    Math.round(
-                                                        inverseSliderScale(
-                                                            val || val[0]
-                                                        )
-                                                    )
-                                            )
-                                        }
-                                        min={marks[0].value}
-                                        max={marks[marks.length - 1].value}
-                                        step={marks[0].value / 1000}
-                                        marks={marks}
-                                        valueLabelDisplay="auto"
-                                        valueLabelFormat={v =>
-                                            gByteLabel(inverseSliderScale(v))
-                                        }
-                                        style={{ marginTop: 0 }}
-                                    />
-                                </Stack>
-                                <Typography
-                                    variant="caption"
-                                    style={{
-                                        lineHeight: "1.1",
-                                        letterSpacing: "0.02133em",
-                                    }}
-                                >
-                                    *A task represents a source, destination or
-                                    transformation.
-                                </Typography>
-                            </Stack>
-                            <div className="pricing-page-checklist-wrapper">
-                                <p style={{ marginTop: 0 }}>
-                                    Everything in Flow Free plus:
-                                </p>
-                                <ChecklistItem>99.9% SLA</ChecklistItem>
-                                <ChecklistItem>
-                                    Limitless horizontal scaling
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    Unlimited collections, sources and
-                                    destinations
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    Pay as you go, monthly and annual payment
-                                    options
-                                </ChecklistItem>
-                                <ChecklistItem>Free 30-day trial</ChecklistItem>
-                                <ChecklistItem>
-                                    9x5 Customer Support - Slack + email
-                                </ChecklistItem>
-                            </div>
-                            <p className="pricing-page-tile-price-subtext">
-                                Users typically save 70-80% over other solutions
-                                while enabling real-time data.
-                            </p>
+                        <div className="main-section-buttons-mobile">
                             <OutboundLink
                                 target="_blank"
                                 href="https://dashboard.estuary.dev/register"
-                                className="pricing-page-tile-button"
+                                className="section-one-try-it-button"
                             >
-                                Try it free
+                                Build free pipeline
                             </OutboundLink>
                         </div>
-                        <div className="pricing-page-tile">
-                            <PricingEnterprise className="pricing-page-tile-icon icon-wrapper" />
-                            <p className="pricing-page-tile-name">Enterprise</p>
-                            <p className="pricing-page-tile-price-subtext">
-                                For large or custom deployments of Flow.
-                            </p>
-                            <p className="pricing-page-price">
-                                <span className="pricing-page-price-bold">
-                                    Custom
-                                </span>
-                            </p>
-                            <div className="pricing-page-checklist-wrapper-custom">
-                                <p>Everything in Flow Cloud plus:</p>
-                                <ChecklistItem>
-                                    Certificates of SOC2 & HIPAA compliance
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    Provisioned servers
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    9x5 Support standard, 24x7 support available
-                                </ChecklistItem>
-                                <ChecklistItem>
-                                    Customer Success Manager
-                                </ChecklistItem>
-                                <div className="pricing-page-checklist-item">
-                                    <div className="pricing-page-tile-coming-soon-image">
-                                        <p>Coming Soon</p>
+                    </div>
+
+                    {/* Plans */}
+                    <div className="plan-container">
+                        <div className="heading">
+                            <h2>Plans</h2>
+                        </div>
+                        {/* {isSmall ? (
+                            <PlanTabs />
+                        ) : ( */}
+                        <div className="pricing-page-tiles-wrapper">
+                            <div className="pricing-page-tile">
+                                <PricingOpenSource className="pricing-page-tile-icon" />
+                                <PurpleRectangle className="pricing-page-rectangle" />
+                                <p className="pricing-page-tile-name">Free</p>
+                                <p className="pricing-page-price">
+                                    <span className="pricing-page-price">
+                                        $0/GB
+                                    </span>
+                                </p>
+                                <div className="pricing-page-checklist-wrapper">
+                                    <ChecklistItem>
+                                        Up to 10GB / mo for any 2 connectors
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        Millisecond Latency
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        UI & CLI for building & monitoring pipelines
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        Limited Data Retention in Estuary Cloud
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        Incremental Syncing for lower CDC cost
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        Streaming Infrastructure
+                                    </ChecklistItem>
+                                </div>
+                                <Link
+                                    className="pricing-page-tile-button"
+                                    to="https://dashboard.estuary.dev/register"
+                                >
+                                    Get started
+                                </Link>
+                            </div>
+                            <div className="pricing-page-tile-purple">
+                                <p className="pricing-page-corner-text">30-Day <br /> Free Trial</p>
+                                <PricingCloud className="pricing-page-tile-icon" />
+                                <WhiteRectangle className="pricing-page-rectangle" />
+                                <p className="pricing-page-tile-name text-white">Cloud</p>
+                                <div className="pricing-page-checklist-wrapper">
+                                    <p className="pricing-page-price text-white">
+                                        $1/GB
+                                    </p>
+                                    <ChecklistItem white>
+                                        $1/GB change data moved +$.14/hour/connector
+                                    </ChecklistItem>
+                                    <ChecklistItem white>All features of Free plan, plus... </ChecklistItem>
+                                    <ChecklistItem white>
+                                        Data stored in your cloud
+                                    </ChecklistItem>
+                                    <ChecklistItem white>99.9% uptime SLA</ChecklistItem>
+
+
+                                    <ChecklistItem white>
+                                        Unlimited Connectors
+                                    </ChecklistItem>
+                                    <ChecklistItem white>
+                                        9x5 Customer Support via Slack/Email
+                                    </ChecklistItem>
+                                </div>
+                                <OutboundLink
+                                    target="_blank"
+                                    href="https://dashboard.estuary.dev/register"
+                                    className="pricing-page-tile-button-white"
+                                >
+                                    Try it free
+                                </OutboundLink>
+                            </div>
+                            <div className="pricing-page-tile">
+                                <PricingEnterprise className="pricing-page-tile-icon" />
+                                <PurpleRectangle className="pricing-page-rectangle" />
+                                <p className="pricing-page-tile-name">Enterprise</p>
+                                <p className="pricing-page-price">
+                                    <span className="pricing-page-price">
+                                        Custom Pricing
+                                    </span>
+                                </p>
+                                <div className="pricing-page-checklist-wrapper-custom">
+                                    <ChecklistItem>
+                                        All features of Free + Cloud, plus...
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        SOC2 & HIPPA Certificates
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        Customer Success Manager
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        24x7 support available
+                                    </ChecklistItem>
+                                    <ChecklistItem>
+                                        Provisioned servers
+                                    </ChecklistItem>
+
+                                </div>
+                                <Link
+                                    className="pricing-page-tile-button"
+                                    to="/about#contact-us"
+                                >
+                                    Contact us
+                                </Link>
+                            </div>
+                        </div>
+                        {/* )} */}
+
+
+
+                    </div>
+
+                    {/* Cost Calculator */}
+
+                    <div className="cost-calculator">
+                        <div className="heading">
+                            <h2>Price Comparison</h2>
+                        </div>
+                        <div className="cost-calculator-container">
+                            <div className="cost-calculator-left">
+                                <div className="cost-calculator-subcontainer">
+                                    <div className="cost-calculator-title">
+                                        <p className="cost-calculator-left-title zero-margin-bottom">Calculator</p>
+                                        <p className="cost-calculator-subtitle">{gByteLabel(scale(selectedGbs))} of Data Moved</p>
+                                    
+                                    </div>
+                                    <SliderComponent
+                                        value={selectedGbs}
+                                        min={1}
+                                        max={gbPoints.length}
+                                        step={0.0001}
+                                        valueLabelFormat={val => gByteLabel(scale(val))}
+                                        valueLabelDisplay="auto"
+                                        marks={marks}
+                                        // scale={scale}
+                                        onChange={(_, val: number) => setSelectedGbs(val)}
+                                    />
+                                </div>
+                                <div className="content-bottom">
+                                    <div className="cost-calculator-title">
+                                        <p className="cost-calculator-subtitle">Number of Connectors</p>
+                                        {/* <ContextToolTip
+                                            placement="top-start"
+                                            title={(<Typography className="context-tooltip-text">
+                                                A connector is defined as any unique database connection. For example, 3 connectors to Postgres and 1 to Salesforce would be 4 active connectors that are billed at $.14/hour (about $100/month)
+                                            </Typography>)} >
+                                            <QuestionMarkIcon id="num-connectors" className="question-mark" />
+                                        </ContextToolTip> */}
+                                    </div>
+                                    <div className="count-input">
+                                        <div className="btn-left" onClick={() => setSelectedConnectors(c => Math.max(0, c - 1))}>
+                                            <svg
+                                                width="15"
+                                                height="2"
+                                                viewBox="0 0 15 2"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <rect
+                                                    width="15"
+                                                    height="2"
+                                                    rx="1"
+                                                    fill="#ffffff"
+                                                />
+                                            </svg>
+                                        </div>
+                                        <input className="cost-calculator-connector-input" type="number" value={selectedConnectors} onChange={evt => setSelectedConnectors(+evt.target.value)} />
+                                        <div className="btn-right" onClick={() => setSelectedConnectors(c => Math.max(0, c + 1))}>
+                                            <PlusSign />
+                                        </div>
+
                                     </div>
                                 </div>
-                                <ChecklistItem bullet>
-                                    Advanced SSO (OAuth / SAML / SCIM)
-                                </ChecklistItem>
-                                <ChecklistItem bullet>
-                                    Custom VPC deployment
-                                </ChecklistItem>
                             </div>
-                            <p className="pricing-page-tile-price-subtext">
-                                Want to try Flow for free for 30 days, with no
-                                limit on data transfer?
-                            </p>
-                            <Link
-                                className="pricing-page-tile-button"
-                                to="/about#contact-us"
-                            >
-                                Contact us
-                            </Link>
+                            <div className="cost-calculator-results-wrapper">
+                                <p className="results-title zero-margin-bottom">
+                                    Results
+                                </p>
+                                <div className="results-text-wrapper">
+                                    <p className="results-title zero-margin-bottom">{currencyFormatter.format(prices.estuary)} / Month</p>
+                                    <ContextToolTip
+                                        placement="top-start"
+                                        title={(<Typography className="context-tooltip-text">
+                                            ‘Data moved' is defined as any incremental
+                                            upsert event. You are only billed on the bytes
+                                            of moving that particular new event. For example, a single
+                                            database row being backfilled or updated will be billed based on the total size of
+                                            the corresponding JSON document. One connector can operate on many tables inside a DB.
+                                        </Typography>)} >
+                                        <QuestionMarkIconWhite id="change-data" className="question-mark" />
+                                    </ContextToolTip>
+                                </div>
+                                <p className="results-subtext zero-margin-bottom">
+                                    {gByteLabel(scale(selectedGbs))} of data moved
+                                </p>
+                                <p className="results-subtext">
+                                    {selectedConnectors} connectors
+                                </p>
+
+                            </div>
+                            <div className="cost-calculator-right">
+                                <div className="comparisons-wrapper">
+                                    <div className="cost-calculator-right-wrapper">
+                                        <p className="cost-calculator-left-title zero-margin-bottom">
+                                            Comparisons
+                                        </p>
+                                    </div>
+                                    <div className="content-bottom">
+                                        <div className="cost-calculator-right-wrapper">
+                                            <div className="comparisons-competition">
+                                                <p className="comparisons-subtext zero-margin-bottom">
+                                                    The Competition
+                                                </p>
+                                                <ContextToolTip
+                                                    placement="top-start"
+                                                    title={(<Typography className="context-tooltip-text">
+                                                        ‘Change Data’ is defined as any incremental
+                                                        upsert event. You are only billed on the bytes
+                                                        of moving that particular new event. For example, a single
+                                                        database row being backfilled or updated will be billed based on the total size of
+                                                        the corresponding JSON document. One connector can operate on many tables inside a DB.
+                                                    </Typography>)} >
+                                                    <QuestionMarkIcon id="change-data" className="question-mark-dark" />
+                                                </ContextToolTip>
+                                            </div>
+
+                                        </div>
+                                        <div className="comparisons-competitor">
+                                            <p className="zero-margin-bottom">Fivetran</p>
+                                            <p className="zero-margin-bottom">{currencyFormatter.format(prices.fivetran)} / Mo</p>
+                                        </div>
+                                        <div className="comparisons-competitor">
+                                            <p className="zero-margin-bottom">Confluent</p>
+                                            <p className="zero-margin-bottom">{currencyFormatter.format(prices.confluent)} / Mo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="pricing-page-faq">
-                        <h2 className="pricing-page-faq-title">
-                            Frequently Asked Questions
-                        </h2>
-                        <div className="pricing-page-faq-qa-wrapper">
-                            <p className="pricing-page-faq-question">
-                                How is my monthly bill calculated?
-                            </p>
-                            <p className="pricing-page-faq-answer">
-                                Your bill is calculated based on the amount of
-                                data that is Captured, Transformed and
-                                Materialized by Flow to your destinations. Each
-                                of these are “tasks” and activity from all tasks
-                                are summed on a monthly basis. Unlike other
-                                platforms, Flow doesn’t store data and you’ll
-                                only pay on data that is actively moved during
-                                that month. In the free tier, you are given 10
-                                GB of streaming data at no charge, at which
-                                point the product will stop capturing and
-                                materializing additional data.
-                            </p>
+
+                    <div className="pricing-comparison-wrapper">
+                        <h2 className="pricing-comparison-header">Pricing Examples</h2>
+                        {isSmall ? (
+                            <div className="pricing-comparison-row">
+                                <div>
+                                    <StaticImage
+                                        placeholder="none"
+                                        alt="pricing logo"
+                                        src="../svgs/pricing__example_1.png"
+                                        layout="constrained"
+                                        className="pricing-example-image" />
+                                </div>
+
+                                <div>
+                                    <div className="pricing-comparison-text">
+                                        <p className="pricing-comparison-card-header">Streaming ETL</p>
+                                        <p className="pricing-comparison-card-subheader">Only pay once for source and target data</p>
+                                        <p className="pricing-comparison-card-body">Capture data from any source once. Estuary stores it all in your cloud storage. You’re only billed once for each source, target, and the data you move at $1/GB and $0.14/connector/hour.</p>
+                                    </div>
+                                </div>
+
+
+                                <div>
+                                    <StaticImage
+                                        placeholder="none"
+                                        alt="pricing logo"
+                                        src="../svgs/pricing__example_1.png"
+                                        layout="constrained"
+                                        className="pricing-example-image" />
+                                </div>
+                                <div>
+                                    <div className="pricing-comparison-text">
+                                        <p className="pricing-comparison-card-header">Add New Targets</p>
+                                        <p className="pricing-comparison-card-subheader">Only pay once for new target data</p>
+                                        <p className="pricing-comparison-card-body">Add a new target, or add more data to an existing target, at any time. You only pay once for the additional targets and data sent to them at $1/GB and $0.14/connector/hour.</p>
+                                    </div>
+                                    {/* <PricingComparisonOne/> */}
+
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="pricing-comparison-row">
+                                <div>
+                                    <StaticImage
+                                        placeholder="none"
+                                        alt="pricing logo"
+                                        src="../svgs/pricing__example_1.png"
+                                        layout="fixed"
+                                        className="pricing-example-image" />
+                                </div>
+                                <div>
+                                    {/* <PricingExampleOne /> */}
+                                    {/* <PricingExampleTwo className="pricing-example-image" /> */}
+
+                                    <StaticImage
+                                        placeholder="none"
+                                        alt="pricing logo"
+                                        src="../svgs/pricing_example__2.png"
+                                        layout="fixed"
+                                        className="pricing-example-image" />
+                                </div>
+                                <div>
+                                    <div className="pricing-comparison-text">
+                                        <p className="pricing-comparison-card-header">Streaming ETL</p>
+                                        <p className="pricing-comparison-card-subheader">Only pay once for source and target data</p>
+                                        <p className="pricing-comparison-card-body">Capture data from any source once. Estuary stores it all in your cloud storage. You’re only billed once for each source, target, and the data you move at $1/GB and $0.14/connector/hour.</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="pricing-comparison-text">
+                                        <p className="pricing-comparison-card-header">Add New Targets</p>
+                                        <p className="pricing-comparison-card-subheader">Only pay once for new target data</p>
+                                        <p className="pricing-comparison-card-body">Add a new target, or add more data to an existing target, at any time. You only pay once for the additional targets and data sent to them at $1/GB and $0.14/connector/hour.</p>
+                                    </div>
+                                    {/* <PricingComparisonOne/> */}
+
+                                </div>
+                            </div>
+
+                        )
+                        }
+
+                    </div>
+
+                    {/* Frequently question */}
+                    <div className="frequently-question">
+                        <div className="heading">
+                            <h2>Frequently asked questions</h2>
                         </div>
-                        <div className="pricing-page-faq-qa-wrapper">
-                            <p className="pricing-page-faq-question">
-                                How can I get Flow discounts?
-                            </p>
-                            <p className="pricing-page-faq-answer">
-                                Discounts are based on two things - volume
-                                commitments and contract duration. Please
-                                contact us to learn more about the discounts
-                                available for your use case.
-                            </p>
+                        <div className="frequently-container">
+                            <div className="question">
+
+                                {frequentlyQuestions.map((item, index) => (
+                                    <>
+                                        <Accordion defaultExpanded={true}>
+                                            <AccordionSummary
+                                                expandIcon={<ExpandMoreIcon sx={{ color: "#27272A", fontSize: "2rem" }} />}
+                                                aria-controls="panel1a-content"
+                                                id="panel1a-header"
+                                                className="faq-question"
+                                            >
+                                                <Typography className="faq-text">{item.title}</Typography>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                                <Typography className="faq-text" sx={{ lineHeight: "2.5rem", color: "#3F3F46" }}>
+                                                    {item.description}
+                                                </Typography>
+                                            </AccordionDetails>
+                                        </Accordion>
+                                    </>
+
+                                ))}
+                            </div>
                         </div>
-                        <div className="pricing-page-faq-qa-wrapper">
-                            <p className="pricing-page-faq-question">
-                                How does Pay as you Go (PAYG) pricing work?
-                            </p>
-                            <p className="pricing-page-faq-answer">
-                                For customers that are just starting out, or
-                                don’t want to commit to a specific volume of
-                                data or time commitment, you can simply use Flow
-                                and pay for actual consumption on a monthly
-                                basis. You enter your credit card information
-                                and at the end of each month, your bill is
-                                computed based on the amount of data transfer.
-                            </p>
+
+                    </div>
+
+                    <div className="related-post">
+                        <div className="heading">
+                            <h2>Related Posts</h2>
                         </div>
-                        <div className="pricing-page-faq-qa-wrapper">
-                            <p className="pricing-page-faq-question">
-                                How does prepay work?
-                            </p>
-                            <p className="pricing-page-faq-answer">
-                                Customers that want to pay for a fixed amount of
-                                data transfer can pay up front and then burn
-                                down that usage over time (no more than 12
-                                months). The more data transfer that is paid for
-                                up front, the larger the discount from the PAYG
-                                price.
-                            </p>
-                        </div>
-                        <div className="pricing-page-faq-qa-wrapper">
-                            <p className="pricing-page-faq-question">
-                                How long can I trial Flow?
-                            </p>
-                            <p className="pricing-page-faq-answer">
-                                Flow can be used for free indefinitely, with the
-                                only gate that you are limited to 10 GB of data
-                                transfer each month. For customers with larger
-                                needs, we do offer a 30 day free trial upon
-                                request. Please contact us to learn more and to
-                                qualify.
-                            </p>
-                        </div>
-                        <div className="pricing-page-faq-qa-wrapper">
-                            <p className="pricing-page-faq-question">
-                                What if I need more time than 30 days to trial
-                                Flow?
-                            </p>
-                            <p className="pricing-page-faq-answer">
-                                Your bill is calculated based on the amount of
-                                data that is Captured, Transformed and
-                                Materialized by Flow to your destinations. Each
-                                of these are “tasks” and activity from all tasks
-                                are summed on a monthly basis. Unlike other
-                                platforms, Flow doesn’t store data and you’ll
-                                only pay on data that is actively moved during
-                                that month. In the free tier, you are given 10
-                                GB of streaming data at no charge, at which
-                                point the product will stop capturing and
-                                materializing additional data.
-                            </p>
-                        </div>
-                        <div className="pricing-page-faq-qa-wrapper">
-                            <p className="pricing-page-faq-question">
-                                What are my billing options?
-                            </p>
-                            <p className="pricing-page-faq-answer">
-                                The Free tier does not require a credit card or
-                                any billing information. The Standard tier can
-                                be paid via credit card, debit card (for
-                                prepay), or Invoice. The Enterprise tier is paid
-                                for via Invoice.
-                            </p>
-                        </div>
-                        <div className="pricing-page-faq-qa-wrapper">
-                            <p className="pricing-page-faq-question">
-                                How do you keep the costs down with very large
-                                data sets?
-                            </p>
-                            <p className="pricing-page-faq-answer">
-                                If your dataset is very large, we are happy to
-                                create a custom pricing to meet all of your
-                                needs.
-                            </p>
+                        <div className="related-index-body">
+                            {relatedPost?.allStrapiBlogPost?.nodes &&
+                                relatedPost?.allStrapiBlogPost?.nodes?.map(
+                                    (post: any, index: number) => (
+                                        <>
+                                            <Link
+                                                to={`/${post.Slug}`}
+                                                className="related-post-card"
+                                            >
+                                                <GatsbyImage
+                                                    image={
+                                                        post?.hero?.localFile
+                                                            ?.childImageSharp
+                                                            ?.gatsbyImageData
+                                                    }
+                                                    alt="debezium alternatives"
+                                                    className="icon-image popular-articles-image related-post-image"
+                                                />
+                                                <div className="related-post-card-title">
+                                                    {post.title}
+                                                </div>
+                                            </Link>
+                                        </>
+                                    )
+                                )}
+                            {relatedPost?.allStrapiProductComparisonPage?.nodes &&
+                                relatedPost?.allStrapiProductComparisonPage?.nodes?.map(
+                                    (post: any, index: number) => (
+                                        <>
+                                            <Link
+                                                to={`/${post.Slug}`}
+                                                className="related-post-card"
+                                            >
+                                                <GatsbyImage
+                                                    image={
+                                                        post?.logo?.localFile
+                                                            ?.childImageSharp
+                                                            ?.gatsbyImageData
+                                                    }
+                                                    alt="debezium alternatives"
+                                                    className="icon-image popular-articles-image related-post-image"
+                                                />
+                                                <div className="related-post-card-title">
+                                                    Estuary Flow vs. {post.their_name}
+                                                </div>
+                                            </Link>
+                                        </>
+                                    )
+                                )}
                         </div>
                     </div>
-                    <div className="pricing-page-quote-box">
-                        <GraphicQuote className="pricing-page-tile-graphic-quote-image" />
-                        <p className="pricing-page-quote-box-quote">
-                            “This tool is 1000x times better than LogStash or
-                            Elastic Enterprise Data Ingestion Tool, which has
-                            many issues.”
-                        </p>
-                        <div className="pricing-page-quote-image-wrapper">
-                            <StaticImage
-                                placeholder="none"
-                                alt="data flow image"
-                                src="../images/pompato-color.svg"
-                                layout="fixed"
-                                className="pricing-page-tile-coming-soon-image"
-                            />
-                            <p className="pricing-page-quote-source-name">
-                                Pompato
-                            </p>
+
+                    <div className="start-move-demo">
+                        <div className="start-move-demo-container">
+                            <div className="start-container">
+                                <h2>Start moving your data the faster way</h2>
+                                <p>Start a 30-day free trial with Estuary</p>
+                            </div>
+                            <div className="buttons-container">
+                                <OutboundLink
+                                    target="_blank"
+                                    href="https://dashboard.estuary.dev/register"
+                                    className="build-button"
+                                >
+                                    Build a pipeline
+                                </OutboundLink>
+                                <OutboundLink
+                                    target="_blank"
+                                    href="/about#contact-us"
+                                    className="demo-button"
+                                >
+                                    Contact Us
+                                </OutboundLink>
+                            </div>
+                            <div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </Layout>
+            </div >
+        </Layout >
     )
 }
 
 export const Head = ({ data: { post } }) => {
-    return <Seo title={"Pricing"} description={"Reduce your data costs and latency with managed streaming CDC and ETL pipelines."} />
+    return (
+        <Seo
+            title={"Pricing"}
+            description={
+                "Reduce your data costs and latency with managed streaming CDC and ETL pipelines."
+            }
+        />
+    )
 }
 
 export default PricingPage
