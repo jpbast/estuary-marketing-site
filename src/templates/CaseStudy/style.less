@@ -1,5 +1,8 @@
 .case-study {
-    
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0 5rem;
+
     @media(max-width: 767px) {
         padding: 2rem;
     }
@@ -7,12 +10,15 @@
 
 .case-study-hero {
     display: flex;
+    align-items: center;
     gap: 120px;
 
     .content {
         display: flex;
         flex-direction: column;
         gap: 12px;
+
+        flex: 2
     }
 }
 
@@ -38,5 +44,5 @@
 }
 
 .case-study-logo {
-    width: 40%;
+    flex: 1
 }

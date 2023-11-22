@@ -9,6 +9,8 @@ import reltime from "dayjs/plugin/relativeTime"
 import Header from './Head'
 import Wrapper from './Wrapper'
 
+import { ProcessedPost } from '../../components/BlogPostProcessor'
+
 dayjs.extend(reltime)
 
 const CaseStudyTemplate = ({ data: { caseStudy, relatedStudies } }) => {
