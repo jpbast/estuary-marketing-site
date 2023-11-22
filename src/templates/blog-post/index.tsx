@@ -5,6 +5,7 @@ import dayjs from "dayjs"
 import reltime from "dayjs/plugin/relativeTime"
 
 import Body from "./Body"
+import Header from "./Head"
 import Wrapper from "./Wrapper"
 
 import RelatedPosts from "../../components/RelatedPosts"
@@ -34,6 +35,8 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
 }
 
 export default BlogPostTemplate
+
+export const Head = Header
 
 export const pageQuery = graphql`
     query BlogPostBySlug(
