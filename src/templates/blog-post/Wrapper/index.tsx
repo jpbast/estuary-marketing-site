@@ -6,7 +6,7 @@ import Bio from "../../../components/bio"
 
 const BlogPostWrapper = ({ post, children }) => {
     return (
-        <Layout headerTheme="light">
+        <Layout headerTheme="light" fixedHeader>
             <article
                 className="blog-post"
                 itemScope
