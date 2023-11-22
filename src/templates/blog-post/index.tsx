@@ -28,7 +28,7 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
 
     return (
         <Wrapper post={post}>
-            <Body data={post?.body?.data} sticky={windowWidth > 767} />
+            <Body data={post?.body?.data} sticky={windowWidth > 810} small={windowWidth < 1200} />
             <RelatedPosts />
         </Wrapper>
     )

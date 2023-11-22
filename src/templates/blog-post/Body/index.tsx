@@ -5,7 +5,7 @@ import RenderToc from "../../../components/BlogPostToc"
 import PanelCTA from "../../../components/PanelCTA"
 import { ProcessedPost } from "../../../components/BlogPostProcessor"
 
-const BlogPostBody = ({ data, sticky }) => {
+const BlogPostBody = ({ data, sticky, small }) => {
     if (!data) return null;
 
     return (
@@ -17,6 +17,7 @@ const BlogPostBody = ({ data, sticky }) => {
                     className="post-sidebar"
                 >
                     <RenderToc items={data.childHtmlRehype.tableOfContents} />
+                    {small && <PanelCTA />}
                 </StickyBox>
             )}
             {!sticky && <RenderToc items={data.childHtmlRehype.tableOfContents} />}
@@ -25,7 +26,7 @@ const BlogPostBody = ({ data, sticky }) => {
                 body={data.childHtmlRehype.html}
             />
 
-            {sticky && (
+            {sticky && !small && (
                 <StickyBox
                     offsetBottom={16}
                     offsetTop={16}
