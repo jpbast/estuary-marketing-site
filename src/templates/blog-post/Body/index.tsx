@@ -8,7 +8,7 @@ import { ProcessedPost } from "../../../components/BlogPostProcessor"
 const BlogPostBody = ({ data, sticky, small }) => {
     if (!data) return null;
 
-    const offsetTop = window?.innerHeight / 2 - 200 || 16
+    const offsetTop = typeof window !== 'undefined' ? window?.innerHeight / 2 - 200 : 16
 
     return (
         <section className="blog-post-content">
