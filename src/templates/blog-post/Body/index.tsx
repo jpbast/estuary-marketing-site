@@ -8,12 +8,14 @@ import { ProcessedPost } from "../../../components/BlogPostProcessor"
 const BlogPostBody = ({ data, sticky, small }) => {
     if (!data) return null;
 
+    const offsetTop = window.innerHeight / 2 - 200 || 16
+
     return (
         <section className="blog-post-content">
             {sticky && (
                 <StickyBox
                     offsetBottom={16}
-                    offsetTop={16}
+                    offsetTop={offsetTop}
                     className="post-sidebar"
                 >
                     <RenderToc items={data.childHtmlRehype.tableOfContents} />
@@ -29,7 +31,7 @@ const BlogPostBody = ({ data, sticky, small }) => {
             {sticky && !small && (
                 <StickyBox
                     offsetBottom={16}
-                    offsetTop={16}
+                    offsetTop={offsetTop}
                     className="post-sidebar-right"
                 >
                     <PanelCTA />

@@ -48,28 +48,27 @@ const RelatedPosts = () => {
                 {popularArticles?.nodes &&
                     popularArticles?.nodes?.map(
                         (post: any, index: number) => (
-                            <>
-                                <Link
-                                    to={`/${post.Slug}`}
-                                    className="related-post-card"
-                                >
-                                    <GatsbyImage
-                                        image={
-                                            post?.hero?.localFile
-                                                ?.childImageSharp
-                                                ?.gatsbyImageData
-                                        }
-                                        alt="debezium alternatives"
-                                        className="icon-image popular-articles-image related-post-image"
-                                    />
-                                    <div className="related-post-card-title">
-                                        {post.title}
-                                    </div>
-                                    <div className="related-post-card-description">
-                                        {post.description}
-                                    </div>
-                                </Link>
-                            </>
+                            <Link
+                                to={`/${post.Slug}`}
+                                className="related-post-card"
+                                key={index}
+                            >
+                                <GatsbyImage
+                                    image={
+                                        post?.hero?.localFile
+                                            ?.childImageSharp
+                                            ?.gatsbyImageData
+                                    }
+                                    alt="debezium alternatives"
+                                    className="icon-image popular-articles-image related-post-image"
+                                />
+                                <div className="related-post-card-title">
+                                    {post.title}
+                                </div>
+                                <div className="related-post-card-description">
+                                    {post.description}
+                                </div>
+                            </Link>
                         )
                     )}
             </div>
