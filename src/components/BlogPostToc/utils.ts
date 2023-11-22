@@ -7,6 +7,6 @@ const getPositionById = (id: string) => {
 
 export const flatItems: FlatItems = (items) => items.reduce((acc, { items, ...item }: TocItem) => {
     acc.push({ ...item, position: getPositionById(item.id), root: true })
-    if (items) acc.push(...items.map((i) => ({ ...i, position: getPositionById(i.id) })))
+    if (items && item.heading.toLocaleLowerCase().includes('method')) acc.push(...items.map((i) => ({ ...i, position: getPositionById(i.id) })))
     return acc;
 }, [])
