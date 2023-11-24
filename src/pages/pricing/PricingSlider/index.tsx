@@ -2,14 +2,15 @@ import { Slider, styled } from "@mui/material"
 
 const PricingSlider = styled(Slider)({
     color: "#5272EB",
-    width: "87%",
-    margin: "auto",
-    borderRadius: "3px",
-    marginLeft: "25px",
-    marginTop: "50px",
+    width: "100%",
+    marginTop: 50,
+    padding: "18px 0 !important",
+    borderRadius: 3,
+    boxSizing: "border-box",
+
     "& .MuiSlider-thumb": {
-        height: 36,
-        width: 36,
+        height: 40,
+        width: 40,
         backgroundColor: "#5272EB",
         border: "6px solid white",
         boxShadow: "0px 2px 7px rgba(0, 0, 0, 0.25)",
@@ -21,13 +22,15 @@ const PricingSlider = styled(Slider)({
         },
     },
     '& .MuiSlider-track': {
-        height: 28,
+        height: 16,
     },
     '& .MuiSlider-rail': {
         color: '#D9D9D9',
         opacity: 1,
-        height: 28,
-        width: '100.5%'
+        height: 16,
+        width: '101%',
+        borderRadius: 3,
+        left: 0,
     },
     '& .MuiSlider-mark': {
         color: '#D9D9D9',
@@ -40,7 +43,12 @@ const PricingSlider = styled(Slider)({
         }
     },
     '& .MuiSlider-markLabel': {
-        top: "-32px"
+        top: "-24px",
+        fontSize: 13,
+        fontWeight: 500,
+        color: "#3F3F46",
+        fontFamily: "Inter"
+
     }
 })
 

@@ -1,14 +1,13 @@
-import React from "react"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 
 import BlackCheckmark from "../../../svgs/checkmark-black.svg"
 import WhiteCheckmark from "../../../svgs/light-checkmark.svg"
 import PricingOpenSource from "../../../svgs/pricing-page-open-source.svg"
 import PurpleRectangle from "../../../svgs/purple_rectangle.svg"
-import WhiteRectangle from "../../../svgs/white_rectangle.svg"
 import PricingCloud from "../../../svgs/cloud-pricing.svg"
 import PricingEnterprise from "../../../svgs/pricing-page-enterprise.svg"
+import clsx from "clsx"
 
 const ChecklistItem = ({ children, white = false }) => (
     <div className="pricing-page-checklist-item">
@@ -26,7 +25,40 @@ const ChecklistItem = ({ children, white = false }) => (
     </div>
 )
 
+const Card = ({ Icon, title, price, items, href, linkLabel, showTrial = false, smallPrice = false, selected = false, onClick }) => {
+    return (
+        <div className="pricing-page-tile-container">
+            <div className={clsx("pricing-page-tile", showTrial && "pricing-page-tile-blue", selected && "pricing-page-tile-selected")}>
+                <div className={clsx("card-header", showTrial && "card-header-blue")} onClick={onClick}>
+                    {showTrial && <p className="pricing-page-corner-text">30-Day <br /> Free Trial</p>}
+                    <Icon className="pricing-page-tile-icon" />
+                    <PurpleRectangle className="pricing-page-rectangle" />
+                    <p className="pricing-page-tile-name">{title}</p>
+                    <p className={clsx("pricing-page-price", smallPrice && "pricing-page-price-small")}>{price}</p>
+                </div>
+                <div className={clsx("pricing-page-checklist-wrapper", selected && "pricing-page-checklist-wrapper-selected")}>
+                    {items.map((item, index) => (
+                        <ChecklistItem white={showTrial} key={index}>
+                            {item}
+                        </ChecklistItem>
+                    ))}
+
+                    <div className="tile-button-container">
+                        <Link
+                            className="pricing-page-tile-button"
+                            to={href}
+                        >
+                            {linkLabel}
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 const PricingPlans = () => {
+    const [selected, setSelected] = useState(2)
 
     return (
         <div className="plan-container">
@@ -34,110 +66,58 @@ const PricingPlans = () => {
                 <h2>Plans</h2>
             </div>
             <div className="pricing-page-tiles-wrapper">
-                <div className="pricing-page-tile">
-                    <PricingOpenSource className="pricing-page-tile-icon" />
-                    <PurpleRectangle className="pricing-page-rectangle" />
-                    <p className="pricing-page-tile-name">Free</p>
-                    <p className="pricing-page-price">
-                        <span className="pricing-page-price">
-                            $0/GB
-                        </span>
-                    </p>
-                    <div className="pricing-page-checklist-wrapper">
-                        <ChecklistItem>
-                            Up to 10GB / mo for any 2 connectors
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            Millisecond Latency
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            UI & CLI for building & monitoring pipelines
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            Limited Data Retention in Estuary Cloud
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            Incremental Syncing for lower CDC cost
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            Streaming Infrastructure
-                        </ChecklistItem>
-                    </div>
-                    <Link
-                        className="pricing-page-tile-button"
-                        to="https://dashboard.estuary.dev/register"
-                    >
-                        Get started
-                    </Link>
-                </div>
-                <div className="pricing-page-tile-purple">
-                    <p className="pricing-page-corner-text">30-Day <br /> Free Trial</p>
-                    <PricingCloud className="pricing-page-tile-icon" />
-                    <WhiteRectangle className="pricing-page-rectangle" />
-                    <p className="pricing-page-tile-name text-white">Cloud</p>
-                    <div className="pricing-page-checklist-wrapper">
-                        <p className="pricing-page-price text-white">
-                            $1/GB
-                        </p>
-                        <ChecklistItem white>
-                            $1/GB change data moved +$.14/hour/connector
-                        </ChecklistItem>
-                        <ChecklistItem white>All features of Free plan, plus... </ChecklistItem>
-                        <ChecklistItem white>
-                            Data stored in your cloud
-                        </ChecklistItem>
-                        <ChecklistItem white>99.9% uptime SLA</ChecklistItem>
-
-
-                        <ChecklistItem white>
-                            Unlimited Connectors
-                        </ChecklistItem>
-                        <ChecklistItem white>
-                            9x5 Customer Support via Slack/Email
-                        </ChecklistItem>
-                    </div>
-                    <OutboundLink
-                        target="_blank"
-                        href="https://dashboard.estuary.dev/register"
-                        className="pricing-page-tile-button-white"
-                    >
-                        Try it free
-                    </OutboundLink>
-                </div>
-                <div className="pricing-page-tile">
-                    <PricingEnterprise className="pricing-page-tile-icon" />
-                    <PurpleRectangle className="pricing-page-rectangle" />
-                    <p className="pricing-page-tile-name">Enterprise</p>
-                    <p className="pricing-page-price">
-                        <span className="pricing-page-price">
-                            Custom Pricing
-                        </span>
-                    </p>
-                    <div className="pricing-page-checklist-wrapper-custom">
-                        <ChecklistItem>
-                            All features of Free + Cloud, plus...
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            SOC2 & HIPPA Certificates
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            Customer Success Manager
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            24x7 support available
-                        </ChecklistItem>
-                        <ChecklistItem>
-                            Provisioned servers
-                        </ChecklistItem>
-
-                    </div>
-                    <Link
-                        className="pricing-page-tile-button"
-                        to="/about#contact-us"
-                    >
-                        Contact us
-                    </Link>
-                </div>
+                <Card 
+                    selected={selected === 1}
+                    Icon={PricingOpenSource}
+                    title="Free"
+                    price="$0/GB"
+                    href="https://dashboard.estuary.dev/register"
+                    linkLabel="Get started"
+                    onClick={() => setSelected(1)}
+                    items={[
+                        'Up to 10GB / mo for any 2 connectors',
+                        'Millisecond Latency',
+                        'UI & CLI for building & monitoring pipelines',
+                        'Limited Data Retention in Estuary Cloud',
+                        'Incremental Syncing for lower CDC cost',
+                        'Streaming Infrastructure'
+                    ]}
+                />
+                <Card
+                    selected={selected === 2}
+                    showTrial
+                    Icon={PricingCloud}
+                    title="Cloud"
+                    price="$1/GB"
+                    href="https://dashboard.estuary.dev/register"
+                    linkLabel="Try it free"
+                    onClick={() => setSelected(2)}
+                    items={[
+                        '$1/GB change data moved +$.14/hour/connector',
+                        'All features of Free plan, plus...',
+                        'Data stored in your cloud',
+                        '99.9% uptime SLA',
+                        'Unlimited Connectors',
+                        '9x5 Customer Support via Slack/Email'
+                    ]}
+                />
+                <Card
+                    selected={selected === 3}
+                    Icon={PricingEnterprise}
+                    title="Enterprise"
+                    price="Custom Pricing"
+                    smallPrice
+                    href="/about#contact-us"
+                    linkLabel="Contact us"
+                    onClick={() => setSelected(3)}
+                    items={[
+                        'All features of Free + Cloud, plus...',
+                        'SOC2 & HIPPA Certificates',
+                        'Customer Success Manager',
+                        '24x7 support available',
+                        'Provisioned servers',
+                    ]}
+                />
             </div>
         </div>
     )

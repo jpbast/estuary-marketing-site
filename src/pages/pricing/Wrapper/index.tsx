@@ -5,9 +5,7 @@ const PricingWrapper = ({ children }) => {
     return (
         <Layout headerTheme="light">
             <div className="pricing-page">
-                <div className="pricing-page-background-image-wrapper">
-                    {children}
-                </div>
+                {children}
             </div>
         </Layout >
     )

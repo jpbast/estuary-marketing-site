@@ -25,27 +25,29 @@ const PricingCostCalculator = () => {
     return (
         <div className="cost-calculator">
             <div className="heading">
-                <h2>Price Comparison</h2>
+                <h2>Pricing Comparison</h2>
             </div>
             <div className="cost-calculator-container">
                 <div className="cost-calculator-left">
                     <div className="cost-calculator-subcontainer">
                         <div className="cost-calculator-title">
-                            <p className="cost-calculator-left-title zero-margin-bottom">Calculator</p>
-                            <p className="cost-calculator-subtitle">{gByteLabel(scale(selectedGbs))} of Data Moved</p>
+                            <p className="cost-calculator-left-title">Calculator</p>
+                            <p className="cost-calculator-subtitle">{gByteLabel(scale(selectedGbs))} of Change Data</p>
                         
                         </div>
-                        <SliderComponent
-                            value={selectedGbs}
-                            min={1}
-                            max={gbPoints.length}
-                            step={0.0001}
-                            valueLabelFormat={val => gByteLabel(scale(val))}
-                            valueLabelDisplay="auto"
-                            marks={marks}
-                            // scale={scale}
-                            onChange={(_, val: number) => setSelectedGbs(val)}
-                        />
+                        <div className="cost-calculator-slider">
+                            <SliderComponent
+                                value={selectedGbs}
+                                min={1}
+                                max={gbPoints.length}
+                                step={0.0001}
+                                valueLabelFormat={val => gByteLabel(scale(val))}
+                                valueLabelDisplay="auto"
+                                marks={marks}
+                                // scale={scale}
+                                onChange={(_, val: number) => setSelectedGbs(val)}
+                            />
+                        </div>
                     </div>
                     <div className="content-bottom">
                         <div className="cost-calculator-title">
@@ -77,11 +79,11 @@ const PricingCostCalculator = () => {
                     </div>
                 </div>
                 <div className="cost-calculator-results-wrapper">
-                    <p className="results-title zero-margin-bottom">
+                    <p className="results-title">
                         Results
                     </p>
                     <div className="results-text-wrapper">
-                        <p className="results-title zero-margin-bottom">{currencyFormatter.format(prices.estuary)} / Month</p>
+                        <p className="results-subtitle">{currencyFormatter.format(prices.estuary)} / Month</p>
                         <ContextToolTip
                             placement="top-start"
                             title={(<Typography className="context-tooltip-text">
@@ -90,7 +92,7 @@ const PricingCostCalculator = () => {
                             <QuestionMarkIconWhite id="change-data" className="question-mark" />
                         </ContextToolTip>
                     </div>
-                    <p className="results-subtext zero-margin-bottom">
+                    <p className="results-subtext">
                         {gByteLabel(scale(selectedGbs))} of data moved
                     </p>
                     <p className="results-subtext">
@@ -101,14 +103,14 @@ const PricingCostCalculator = () => {
                 <div className="cost-calculator-right">
                     <div className="comparisons-wrapper">
                         <div className="cost-calculator-right-wrapper">
-                            <p className="cost-calculator-left-title zero-margin-bottom">
+                            <p className="cost-calculator-left-title">
                                 Comparisons
                             </p>
                         </div>
                         <div className="content-bottom">
                             <div className="cost-calculator-right-wrapper">
                                 <div className="comparisons-competition">
-                                    <p className="comparisons-subtext zero-margin-bottom">
+                                    <p className="comparisons-subtext">
                                         The Competition
                                     </p>
                                     <ContextToolTip
@@ -119,16 +121,15 @@ const PricingCostCalculator = () => {
                                         <QuestionMarkIcon id="change-data" className="question-mark-dark" />
                                     </ContextToolTip>
                                 </div>
-
                             </div>
-                            <div className="comparisons-competitor">
-                                <p className="zero-margin-bottom">Fivetran</p>
-                                <p className="zero-margin-bottom">{currencyFormatter.format(prices.fivetran)} / Mo</p>
-                            </div>
-                            <div className="comparisons-competitor">
-                                <p className="zero-margin-bottom">Confluent</p>
-                                <p className="zero-margin-bottom">{currencyFormatter.format(prices.confluent)} / Mo</p>
-                            </div>
+                        </div>
+                        <div className="comparisons-competitor">
+                            <p>Fivetran</p>
+                            <p>{currencyFormatter.format(prices.fivetran)} / Mo</p>
+                        </div>
+                        <div className="comparisons-competitor">
+                            <p>Confluent</p>
+                            <p>{currencyFormatter.format(prices.confluent)} / Mo</p>
                         </div>
                     </div>
                 </div>

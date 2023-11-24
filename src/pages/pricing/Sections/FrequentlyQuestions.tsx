@@ -16,7 +16,6 @@ const PricingFrequentlyQuestions = () => {
             </div>
             <div className="frequently-container">
                 <div className="question">
-
                     {frequentlyQuestions.map((item, index) => (
                         <Accordion defaultExpanded={true} key={index}>
                             <AccordionSummary
@@ -28,12 +27,11 @@ const PricingFrequentlyQuestions = () => {
                                 <Typography className="faq-text">{item.title}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <Typography className="faq-text" sx={{ lineHeight: "2.5rem", color: "#3F3F46" }}>
+                                <Typography className="faq-description" sx={{ lineHeight: "2.5rem", color: "#3F3F46" }}>
                                     {item.description}
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-
                     ))}
                 </div>
             </div>

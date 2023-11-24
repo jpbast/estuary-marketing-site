@@ -1,3 +1,5 @@
+import "./style.less"
+
 import React from "react"
 
 import Header from "./Head"
