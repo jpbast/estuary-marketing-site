@@ -43,8 +43,8 @@ const PricingHero = () => {
                     placeholder="none"
                     alt="pricing logo"
                     src="../../../images/dude_desk_plant.png"
-                    width={400}
-                    height={400}
+                    width={500}
+                    height={500}
                     loading="eager"
                     className="icon-image pricing-landing-image"
                 />

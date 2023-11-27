@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { SvgIconProps, Typography, createSvgIcon, useMediaQuery, useTheme } from "@mui/material"
+import { SvgIconProps, Typography, createSvgIcon } from "@mui/material"
 
 import QuestionMarkSvg from "../../../svgs/question-mark.svg"
 import QuestionMarkSvgWhite from "../../../svgs/question-mark-white.svg"
@@ -87,7 +87,7 @@ const PricingCostCalculator = () => {
                         <ContextToolTip
                             placement="top-start"
                             title={(<Typography className="context-tooltip-text">
-                                Competitor pricing estimates are based on publicly available data as of October 2023.
+                                'Data moved' is defined as any incremental upsert event. You are only billed on the bytes of moving that particular new event. For example, a single database row being backfilled or updated will be billed based on the total size of the corresponding JSON document. One connector can operate on many tables inside a DB.
                             </Typography>)} >
                             <QuestionMarkIconWhite id="change-data" className="question-mark" />
                         </ContextToolTip>

@@ -74,7 +74,7 @@
 
         h2 {
             color: #000;
-            font-family: Inter;
+            font-family: "Inter", sans-serif;
             font-size: 30px;
             font-style: normal;
             font-weight: 500;
@@ -97,6 +97,11 @@
                 border: 1px solid #D9D9D9;
                 padding: 10px;
                 padding-bottom: 5px;
+
+                svg {
+                    width: 28px;
+                    height: 28px;
+                }
 
                 path {
                     fill: #000;
@@ -155,11 +160,6 @@
 
             .pricing-page-checklist-wrapper, .pricing-page-corner-text, .pricing-page-rectangle {
                 display: none;
-            }
-
-            .pricing-page-tile-icon {
-                width: 28px;
-                height: 28px;
             }
 
             .pricing-page-checklist-wrapper-selected {
@@ -462,10 +462,6 @@
             box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
             padding-bottom: 60px;
             flex: 1;
-
-            .no-box-shadow {
-                scale: 1.02;
-            }
         }
 
         .pricing-comparison-text {
@@ -474,7 +470,7 @@
             .pricing-comparison-card-header {
                 color: #3F3F46;
                 text-align: center;
-                font-family: Inter;
+                font-family: "Inter", sans-serif;
                 font-size: 28px;
                 font-style: normal;
                 font-weight: 400;
@@ -487,7 +483,7 @@
             .pricing-comparison-card-subheader {
                 color: var(--Secondary-Text, #3F3F46);
                 text-align: center;
-                font-family: Inter;
+                font-family: "Inter", sans-serif;
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 400;
@@ -499,7 +495,7 @@
             .pricing-comparison-card-body {
                 color: var(--Secondary-Text, #3F3F46);
                 text-align: center;
-                font-family: Inter;
+                font-family: "Inter", sans-serif;
                 font-size: 14px;
                 font-style: normal;
                 font-weight: 400;
@@ -521,7 +517,7 @@
         
         h2 {
             color: #3F3F46;
-            font-family: Inter;
+            font-family: "Inter", sans-serif;
             font-size: 30px;
             font-style: normal;
             font-weight: 500;
@@ -535,7 +531,7 @@
 
             .faq-text {
                 color: #27272A;
-                font-family: Inter;
+                font-family: "Inter", sans-serif;
                 font-size: 13px;
                 font-style: normal;
                 font-weight: 500;
@@ -558,7 +554,7 @@
 
         .faq-description {
             color: #3F3F46;
-            font-family: Inter;
+            font-family: "Inter", sans-serif;
             font-size: 13px;
             font-style: normal;
             font-weight: 300;
@@ -567,8 +563,14 @@
     }
 
     @media (min-width: 1024px) {
-        max-width: 1350px;
-        margin: 0 auto;
+        background-image: url("../../images/product-flow-section-one-background.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        .pricing-page-container {
+            max-width: 1350px;
+            margin: 0 auto;
+        }
 
         .pricing-page-top {
             flex-direction: row;
@@ -587,7 +589,7 @@
                 font-size: 18px;
                 font-weight: 400;
                 line-height: 26.88px;
-                max-width: 500px;
+                max-width: 600px;
             }
 
             .main-section-buttons-mobile {
@@ -611,7 +613,7 @@
             }
 
             .pricing-page-tiles-wrapper {
-                gap: 50px;
+                gap: 20px;
                 min-height: auto;
 
                 .pricing-page-corner-text {
@@ -624,11 +626,6 @@
                     margin: 5px auto;
                 }
 
-                .pricing-page-tile-icon {
-                    width: 60px;
-                    height: 60px;
-                }
-
                 .pricing-page-tile-container {
                     display: flex;
                     flex-direction: column;
@@ -638,7 +635,7 @@
                 .pricing-page-tile {
                     box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.10);
                     border-radius: 7px;
-                    padding: 60px 40px;
+                    padding: 24px;
                     position: relative;
                     overflow: hidden;
                     display: flex;
@@ -648,6 +645,11 @@
                     .card-header {
                         border: none;
                         background-color: transparent;
+
+                        svg {
+                            width: inherit;
+                            height: inherit;
+                        }
 
                         path {
                             fill: #5072EB;
@@ -725,7 +727,7 @@
 
                 .pricing-page-tile-blue {
                     background-color: #5072EB;
-                    min-height: 800px;
+                    min-height: 700px;
 
                     .pricing-page-rectangle {
                         rect {
@@ -840,12 +842,19 @@
                 margin-bottom: 60px;
             }
 
+            .box-container {
+                padding-bottom: 0;
+            }
+
             .pricing-comparison-row {
                 flex-direction: row;
                 gap: 40px;
             }
 
             .pricing-comparison-text {
+                padding: 0 30px;
+                padding-bottom: 30px;
+
                 .pricing-comparison-card-header {
                     font-size: 34px;
                 }
@@ -853,7 +862,7 @@
         }
 
         .frequently-question {
-            max-width: 800px;
+            max-width: 100%;
             margin-bottom: 80px;
 
             h2 {
