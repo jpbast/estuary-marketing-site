@@ -1,7 +1,6 @@
 import * as React from "react"
 import Layout from "../components/layout"
 import SectionOne from "../components/SectionOne"
-import { useStaticQuery, graphql } from "gatsby"
 import SectionTwo from "../components/SectionTwo"
 import SectionThree from "../components/SectionThree"
 import SectionFour from "../components/SectionFour"
@@ -12,7 +11,7 @@ import Seo from "../components/seo"
 const IndexPage = () => {
     return (
         //@ts-ignore
-        <Layout headerTheme="dark" showTour>
+        <Layout headerTheme="dark" showTour fixedHeader>
             <SectionOne />
             <SectionTwo />
             <SectionThree />

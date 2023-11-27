@@ -120,17 +120,17 @@ const MenuBarsImage = () => (
     </svg>
 )
 
-const Header = (props: { theme: "light" | "dark" }) => {
+const Header = (props: { theme: "light" | "dark", fixedHeader?: boolean }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const navItems = useNavItems();
 
-    const theme = props.theme
+    const { theme, fixedHeader } = props
 
     return (
         <>
             {/* @ts-ignore */}
             <header
-                className={clsx("global-header", {
+                className={clsx("global-header", fixedHeader && "global-header-fixed", {
                     "global-header-light": theme === "light",
                     "global-header-dark": theme === "dark",
                 })}
