@@ -76,7 +76,7 @@
                 "destination": "/data-lake-architecture/",
                 "type": 301
             }
-            ]
+        ],
         "public": "public",
         "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
         "cleanUrls": true,
