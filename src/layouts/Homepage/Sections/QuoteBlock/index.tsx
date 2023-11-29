@@ -13,7 +13,7 @@ const SectionQuoteBlock = () => {
                         placeholder="none"
                         alt="Connect&Go"
                         layout="constrained"
-                        src="../../../../images/connectGo.png"
+                        src="../../../../images/quote-block.png"
                     />
                 </div>
                 <p className="owner">Sr. Data Engineer   Thrive</p>
