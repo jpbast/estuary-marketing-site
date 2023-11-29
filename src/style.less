@@ -473,6 +473,7 @@ input {
     top: 0;
     width: 100%;
     z-index: 9999;
+    display: none;
 
     & a {
         font-size: 12px;
@@ -484,6 +485,10 @@ input {
         color: #fff;
         position: absolute;
         right: 5px;
+    }
+
+    @media (min-width: 1024px) {
+        display: flex;
     }
 }
 
@@ -3233,6 +3238,10 @@ table th {
 }
 
 @media (max-width: 1250px) {
+    .header-social-icon {
+        display: none;
+    }
+
     .connector-source-dest-image-wrapper {
         margin-top: 10%;
         margin-right: -5rem;
@@ -3254,15 +3263,42 @@ table th {
 
 @media (max-width: 1000px) {
 
-    .header-social-icon {
-        display: none;
-    }
-
     .connector-source-dest-image-wrapper {
         justify-content: center;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .global-header {
+        justify-content: space-between;
+        padding-left: 16px;
+        padding-right: 0;
+    }
+
+    .global-header-padder {
+        display: none;
+    }
+
+    .global-header-wrapper {
+        display: none;
+    }
+
+    .global-header-mobile-menu-wrapper {
+        display: flex;
+    }
+
+    .global-header-mobile-menu-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        background-color: #5072eb;
+        border: none;
+        margin: auto 16px auto 16px;
+        padding-top: 4px;
+        padding-right: 6px;
+        padding-left: 6px;
+        padding-bottom: 4px;
     }
 }
 
@@ -3319,37 +3355,6 @@ table th {
 
     .blog-post-header-vector {
         width: 4rem;
-    }
-
-    .global-header {
-        justify-content: space-between;
-        padding-left: 16px;
-        padding-right: 0;
-    }
-
-    .global-header-padder {
-        display: none;
-    }
-
-    .global-header-wrapper {
-        display: none;
-    }
-
-    .global-header-mobile-menu-wrapper {
-        display: flex;
-    }
-
-    .global-header-mobile-menu-button {
-        width: 40px;
-        height: 40px;
-        border-radius: 4px;
-        background-color: #5072eb;
-        border: none;
-        margin: auto 16px auto 16px;
-        padding-top: 4px;
-        padding-right: 6px;
-        padding-left: 6px;
-        padding-bottom: 4px;
     }
 
     .global-footer {
