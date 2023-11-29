@@ -37,17 +37,14 @@ const PricingSlider = styled(Slider)({
         backgroundColor: '#D9D9D9 !important',
         height: '15px',
         width: '3px',
-        top: '-20%',
-        "@media(max-width: 1250px)": {
-            top: "6%"
-        }
+        top: '6%',
     },
     '& .MuiSlider-markLabel': {
         top: "-24px",
         fontSize: 13,
         fontWeight: 500,
         color: "#3F3F46",
-        fontFamily: "Inter"
+        fontFamily: "Inter, sans-serif"
 
     }
 })
