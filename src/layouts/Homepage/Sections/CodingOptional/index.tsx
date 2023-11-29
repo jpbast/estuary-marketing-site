@@ -27,7 +27,7 @@ const CodingOptional = () => {
                     <li>Automatic schema inference</li>
                     <li>SQL & Typescript support</li>
                 </ul>
-                <OutboundLink href="/pricing" showArrow small>View Connectors</OutboundLink>
+                <OutboundLink href="/integrations" showArrow small>View Connectors</OutboundLink>
             </div>
         </div>
     )

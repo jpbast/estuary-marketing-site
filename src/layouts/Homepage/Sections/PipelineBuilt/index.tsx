@@ -5,23 +5,24 @@ import { StaticImage } from "gatsby-plugin-image"
 import clsx from "clsx"
 
 import Clock from "../../../../svgs/clock.svg"
-import OutboundLink from "../../../../components/OutboundLink"
+import ActionLink from "../../../../components/ActionLink"
 
 const PipelineBuilt = () => {
     const [showVideo, setShowVideo] = useState(false)
     const videoRef = useRef(null)
+    const thumbRef = useRef(null)
 
-    const onClick = (ev) => {
+    const onClick = () => {
         if (!showVideo) {
-            videoRef.current.width = ev.target.width
-            videoRef.current.height = ev.target.height
+            videoRef.current.width = thumbRef.current.clientWidth
+            videoRef.current.height = thumbRef.current.clientHeight
             setShowVideo(true)
         }
     }
 
     return (
         <div className="section-pipeline-built">
-            <div className="image-container" onClick={onClick}>
+            <div className="image-container" onClick={onClick} ref={thumbRef}>
                 {!showVideo && <StaticImage
                     placeholder="none"
                     alt="Coding optional"
@@ -36,7 +37,7 @@ const PipelineBuilt = () => {
                 </div>
                 <p className="title">Pipelines built in minutes</p>
                 <p className="description">Use the UI to quickly build end-to-end pipelines or use the CLI to automate and version-control as part of data ops</p>
-                <OutboundLink href="/pricing" showArrow small>View Demo</OutboundLink>
+                <ActionLink onClick={onClick} showArrow small>View Demo</ActionLink>
             </div>
         </div>
     )

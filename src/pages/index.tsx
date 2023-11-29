@@ -12,6 +12,7 @@ import SectionConnect from "../layouts/Homepage/Sections/Connection"
 import SectionCodingOptional from "../layouts/Homepage/Sections/CodingOptional"
 import SectionPipelineBuilt from "../layouts/Homepage/Sections/PipelineBuilt"
 import SectionCutPipeline from "../layouts/Homepage/Sections/CutPipeline"
+import SectionQuoteBlock from "../layouts/Homepage/Sections/QuoteBlock"
 
 const IndexPage = () => {
     return (
@@ -22,6 +23,7 @@ const IndexPage = () => {
             <SectionCodingOptional />
             <SectionPipelineBuilt />
             <SectionCutPipeline />
+            <SectionQuoteBlock />
             <SectionTwo />
             <SectionThree />
             <SectionFour />
