@@ -16,21 +16,7 @@ dayjs.extend(reltime)
 const CaseStudyTemplate = ({ data: { caseStudy, relatedStudies } }) => {
     return (
         <Wrapper caseStudy={caseStudy}>
-            {/* {caseStudy.body && (
-                <section className="blog-post-content">
-                    <ProcessedPost
-                        body={caseStudy.body.data.childHtmlRehype.html}
-                    />
-                </section>
-            )} */}
-            {/* <div className="case-study-related-wrapper">
-                <h2 className="case-study-related-header">
-                    More of Our Exemplary Work
-                </h2>
-                {relatedStudies.nodes.slice(0, 3).map(study => (
-                    <CaseStudyPostCard {...study} />
-                ))}
-            </div> */}
+            
         </Wrapper>
     )
 }
@@ -47,16 +33,10 @@ export const pageQuery = graphql`
             }
         }
         caseStudy: strapiCaseStudy(id: { eq: $id }) {
-            body: Body {
-                data {
-                    Body
-                    childHtmlRehype {
-                        html
-                    }
-                }
-            }
-            Description
+            machineReadablePublishDate: publishedAt(formatString: "YYYY-MM-DD")
             Slug
+            Title
+            Description
             Logo {
                 localFile {
                     childImageSharp {
@@ -70,37 +50,6 @@ export const pageQuery = graphql`
                         }
                     }
                 }
-            }
-            Title
-            machineReadablePublishDate: publishedAt(formatString: "YYYY-MM-DD")
-        }
-        relatedStudies: allStrapiCaseStudy(filter: { id: { ne: $id } }) {
-            nodes {
-                body: Body {
-                    data {
-                        Body
-                        childHtmlRehype {
-                            html
-                        }
-                    }
-                }
-                Description
-                Slug
-                Logo {
-                    localFile {
-                        childImageSharp {
-                            gatsbyImageData(
-                                layout: FULL_WIDTH
-                                placeholder: BLURRED
-                                formats: [AUTO, WEBP, AVIF]
-                            )
-                            meta_img: fixed(width: 500) {
-                                src
-                            }
-                        }
-                    }
-                }
-                Title
             }
         }
     }

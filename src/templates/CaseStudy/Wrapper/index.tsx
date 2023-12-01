@@ -11,24 +11,19 @@ const CaseStudyWrapper = ({ caseStudy, children }) => {
                 itemScope
                 itemType="http://schema.org/Article"
             >
-                <header className="case-study-hero">
+                <header className="above-the-fold">
                     <div className="content">
-                        <h2 className="case-study-header">Case Study</h2>
-                        <h1 className="case-study-title">
-                            {caseStudy && caseStudy.Description}
-                        </h1>
+                        <h2>{caseStudy.Title}</h2>
+                        <h1>{caseStudy.Description}</h1>
                     </div>
-                    <div className="case-study-logo">
-                        {caseStudy.Logo && (
-                            <GatsbyImage
-                                alt={caseStudy.Title}
-                                image={
-                                    caseStudy.Logo.localFile.childImageSharp
-                                        .gatsbyImageData
-                                }
-                                loading="eager"
-                            />
-                        )}
+                    <div className="logo">
+                        <GatsbyImage
+                            alt={caseStudy.Title}
+                            image={
+                                caseStudy.Logo.localFile.childImageSharp.gatsbyImageData
+                            }
+                            loading="eager"
+                        />
                     </div>
                 </header>
                 {children}
