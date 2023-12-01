@@ -3,7 +3,8 @@ import ColoredLogo from "../svgs/colored-logo.svg"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import { calculatePrice, currencyFormatter } from "./pricing"
+
+import { currencyFormatter, calculatePrice } from "../layouts/Pricing/utils"
 
 export const Step0 = ({ activePage, setState }) => {
     return (

@@ -134,7 +134,7 @@ const SectionOne = () => {
                     </div>
                 </div>
                 <div className="section-one-right">
-                    {isMobile || isSmall ? animFallback : <AnimatedHero />}
+                    {isMobile || isSmall ? null : <AnimatedHero />}
                 </div>
             </div>
             <div className="custom-slides slide-container">
