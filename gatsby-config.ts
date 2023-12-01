@@ -27,7 +27,23 @@ const strapiConfig = {
         "job-posting",
         "product-comparison-page",
         "employee",
-        "case-study",
+        {
+            singularName: "case-study",
+            queryParams: {
+                populate: {
+                    Logo: {
+                        populate: '*',
+                    },
+                    About: {
+                        populate: {
+                            Topics: {
+                                populate: '*'
+                            }
+                        }
+                    }
+                }
+            }
+        },
     ],
     singleTypes: [],
     // remoteFileHeaders: {
@@ -54,6 +70,18 @@ const rehypeSelectors = {
     },
     [`STRAPI_CASE_STUDY_BODY_TEXTNODE`]: {
         extractor: node => node.Body,
+        pluginOpts: {
+            enableToc: false,
+        },
+    },
+    [`STRAPI_CASE_STUDY_SIDECONTENT_TEXTNODE`]: {
+        extractor: node => node.SideContent,
+        pluginOpts: {
+            enableToc: false,
+        },
+    },
+    [`STRAPI__COMPONENT_CASE_STUDY_CASE_STUDY_ABOUT_DESCRIPTION_TEXTNODE`]: {
+        extractor: node => node.Description,
         pluginOpts: {
             enableToc: false,
         },

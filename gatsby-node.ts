@@ -17,7 +17,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 const blog = path.resolve(`./src/templates/blog.tsx`)
 const comparisonTemplate = path.resolve(`./src/templates/product-comparison.tsx`)
-const caseStudyTemplate = path.resolve(`./src/templates/CaseStudy/index.tsx`)
+const caseStudyTemplate = path.resolve(`./src/layouts/CaseStudy/index.tsx`)
 
 const connector = path.resolve(`./src/templates/connector.tsx`)
 const connection = path.resolve(`./src/templates/connection.tsx`)
