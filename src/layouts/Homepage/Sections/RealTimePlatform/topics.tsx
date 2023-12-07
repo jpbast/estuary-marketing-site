@@ -17,7 +17,7 @@ export const ImageTopic2 = () => <StaticImage
 />
 export const ImageTopic3 = () => <StaticImage 
     placeholder="none"
-    alt="Integration for Apps"
+    alt="Data Integration"
     layout="constrained"
     loading="lazy"
     src="../../../../images/real-time-section-3.png"

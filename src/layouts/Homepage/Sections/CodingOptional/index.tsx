@@ -3,7 +3,7 @@ import "./styles.less"
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
-import SnapingFingers from "../../../../svgs/snaping-fingers.svg"
+import BashTerminal from "../../../../svgs/bash-terminal.svg"
 import OutboundLink from "../../../../components/OutboundLink"
 
 const CodingOptional = () => {
@@ -19,9 +19,9 @@ const CodingOptional = () => {
             </div>
             <div className="content">
                 <div className="icon-container">
-                    <SnapingFingers />
+                    <BashTerminal />
                 </div>
-                <p className="title">Coding Optional</p>
+                <p className="title">Code or No-Code</p>
                 <ul className="topics">
                     <li>Streaming connectors for DB, SaaS, and more</li>
                     <li>Automatic schema inference</li>

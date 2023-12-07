@@ -16,7 +16,7 @@ const SectionQuoteBlock = () => {
                         src="../../../../images/quote-block.png"
                     />
                 </div>
-                <p className="owner">Sr. Data Engineer   Thrive</p>
+                <p className="owner">Tony Tushar, Principal Data Consultant , Soli & Co</p>
             </div>
         </div>
     )
