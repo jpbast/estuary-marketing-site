@@ -29,7 +29,7 @@ const PipelineBuilt = () => {
                     layout="constrained"
                     src="../../../../images/landing-video-thumb.png"
                 />}
-                <iframe className={clsx(!showVideo && 'hide')} ref={videoRef} src="https://player.vimeo.com/video/801686488?h=66de62b836&title=0&byline=0&portrait=0&autoplay=1" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+                <iframe className={clsx(!showVideo && 'hide')} ref={videoRef} src="https://player.vimeo.com/video/801686488?h=66de62b836&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
             </div>
             <div className="content">
                 <div className="icon-container">
