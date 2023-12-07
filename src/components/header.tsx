@@ -26,7 +26,7 @@ const useNavItems = (): NavItem[] => {
         title: "Product",
         children: [
             isDesktop && {
-                title: "Why Flow",
+                title: "Product Tour",
                 path: "/why"
             },
             {
@@ -70,7 +70,7 @@ const useNavItems = (): NavItem[] => {
             },
             {
                 title: "Blog",
-                path: "/blog",
+                path: "/blog/data-engineering",
             },
             {
                 title: "Comparisons",
