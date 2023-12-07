@@ -516,6 +516,7 @@ input {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .section-one-left {
@@ -529,7 +530,9 @@ input {
 
     @media (max-width: 900px) {
         & h1 {
-            font-size: var(--fontSize-4);
+            font-size: 30px;
+            line-height: 60px;
+            margin-top: 10px;
         }
     }
 }
@@ -548,7 +551,7 @@ input {
     display: flex;
     gap: 15px;
     flex-direction: column;
-    margin-top: 60px;
+    margin-top: 20px;
 
     @media (min-width: 600px) {
         flex-direction: row;
@@ -3104,13 +3107,17 @@ table th {
     }
 
     .section-one-right-image {
-        margin-left: 0px;
+        margin-left: 16px;
+        margin-top: 50px;
+        overflow: hidden;
+        max-height: 210px;
 
         &> :first-child {
             overflow: visible;
-            max-height: 55vw;
-            min-height: 14rem;
+            max-height: 36vw;
+            min-height: 18rem;
             left: unset;
+            top: -30px;
             object-fit: contain !important;
 
             & img {

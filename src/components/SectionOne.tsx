@@ -109,13 +109,10 @@ const SectionOne = () => {
         <div className="section-one">
             <div className="section-one-wrapper">
                 <div className="section-one-left">
-                    <h1>Real-time ETL & CDC</h1>
-                    <h1>for apps, analytics, and AI.</h1>
-                    <h1>Up in <span style={{ wordBreak: "break-word", hyphens: "auto" }}>minutes.</span></h1>
+                    {isSmall && isSmall && <AnimatedHero />}
+                    <h1>Real-time ETL & CDC,</h1>
+                    <h1>up in <span style={{ wordBreak: "break-word", hyphens: "auto" }}>minutes.</span></h1>
                     <div className="section-one-subtext-wrapper">
-                        <p className="section-one-subtext">
-                            Streaming CDC with SQL and Typescript transforms, all at a fraction of the cost of the alternatives
-                        </p>
                         <div className="section-one-container-cta">
                             <OutboundLink
                                 target="_blank"
@@ -134,7 +131,7 @@ const SectionOne = () => {
                     </div>
                 </div>
                 <div className="section-one-right">
-                    {isMobile || isSmall ? null : <AnimatedHero />}
+                    {!isMobile && !isSmall && <AnimatedHero />}
                 </div>
             </div>
             <div className="custom-slides slide-container">
