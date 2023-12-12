@@ -18,10 +18,12 @@ const CutPipeline = () => {
                 />
             </div>
             <div className="content">
-                <div className="icon-container">
-                    <StackedMoney />
+                <div className="title-container">
+                    <div className="icon-container">
+                        <StackedMoney />
+                    </div>
+                    <p className="title">Cut pipeline costs by 2-5x</p>
                 </div>
-                <p className="title">Cut pipeline costs by 2-5x</p>
                 <p className="description">Estuary customers save up to 5x on their pipeline costs and increase by productivity by 4x</p>
                 <OutboundLink href="/pricing" showArrow small>Calculate your savings</OutboundLink>
             </div>

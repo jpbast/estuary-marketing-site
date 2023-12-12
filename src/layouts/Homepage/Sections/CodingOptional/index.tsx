@@ -18,10 +18,12 @@ const CodingOptional = () => {
                 />
             </div>
             <div className="content">
-                <div className="icon-container">
-                    <BashTerminal />
+                <div className="title-container">
+                    <div className="icon-container">
+                        <BashTerminal />
+                    </div>
+                    <p className="title">Code or No-Code</p>
                 </div>
-                <p className="title">Code or No-Code</p>
                 <ul className="topics">
                     <li>Streaming connectors for DB, SaaS, and more</li>
                     <li>Automatic schema inference</li>
