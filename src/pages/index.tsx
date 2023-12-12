@@ -8,6 +8,7 @@ import SectionFive from "../components/SectionFive"
 import SectionSix from "../components/SectionSix"
 import Seo from "../components/seo"
 
+import SectionMoveTransformData from "../layouts/Homepage/Sections/MoveTransformData"
 import SectionConnect from "../layouts/Homepage/Sections/Connection"
 import SectionCodingOptional from "../layouts/Homepage/Sections/CodingOptional"
 import SectionPipelineBuilt from "../layouts/Homepage/Sections/PipelineBuilt"
@@ -20,6 +21,7 @@ const IndexPage = () => {
         //@ts-ignore
         <Layout headerTheme="dark" showTour fixedHeader>
             <SectionOne />
+            <SectionMoveTransformData />
             <SectionConnect />
             <SectionCodingOptional />
             <SectionPipelineBuilt />
