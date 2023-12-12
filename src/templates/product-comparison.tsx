@@ -200,12 +200,17 @@ export const Head = ({
         thisPage: { their_name },
     },
 }) => {
+    const title = `Estuary Vs ${their_name}`
     return (
         <Seo
-            title={`Estuary Vs ${their_name}`}
+            title={title}
             description={
                 "Estuary allows enterprises of any size to deploy true real-time pipelines that scale for high-volume use cases — without making difficult trade-offs or investing in complex infrastructure."
             }
+            metadata={{
+                type: 'ProductComparison',
+                headline: title
+            }}
         />
     )
 }

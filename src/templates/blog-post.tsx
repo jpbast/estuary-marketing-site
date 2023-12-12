@@ -152,29 +152,16 @@ export const Head = ({
                 title={post.title}
                 description={post.description ?? ""}
                 url={`${siteUrl}/${post.slug}`}
-                image={
-                    post.hero &&
-                    `${siteUrl}${post.hero.localFile.childImageSharp.meta_img.src}`
-                }
-            />
-            <script type="application/ld+json">
-                {JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "BlogPosting",
+                metadata={{
+                    type: "BlogPosting",
                     mainEntityOfPage: {
                         "@type": "WebPage",
                         "@id": `${siteUrl}/${post.slug}`,
                     },
                     headline: post.title,
-                    description: post.description ?? "",
-                    image:
-                        post.hero &&
-                        `${siteUrl}${post.hero.localFile.childImageSharp.meta_img.src}`,
-                    author:
-                        post.authors.length > 1
-                            ? mappedAuthors
-                            : mappedAuthors[0],
                     keywords: postTags,
+                    datePublished: post.machineReadablePublishDate,
+                    author: post.authors.length > 1 ? mappedAuthors : mappedAuthors[0],
                     publisher: {
                         "@type": "Organization",
                         name: "Estuary",
@@ -183,9 +170,12 @@ export const Head = ({
                             url: `${siteUrl}${logoUrl}`,
                         },
                     },
-                    datePublished: post.machineReadablePublishDate,
-                })}
-            </script>
+                }}
+                image={
+                    post.hero &&
+                    `${siteUrl}${post.hero.localFile.childImageSharp.meta_img.src}`
+                }
+            />
         </>
     )
 }

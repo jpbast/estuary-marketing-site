@@ -168,6 +168,9 @@ export const Head = ({ data: { post } }) => {
             description={
                 "More about Estuary and related technologies, straight from the team. Our blog breaks down basic concepts and takes you into the minds of our engineers."
             }
+            metadata={{
+                type: "Blog",
+            }}
         />
     )
 }

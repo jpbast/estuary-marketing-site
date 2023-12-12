@@ -540,6 +540,10 @@ export const Head = () => {
             description={
                 "Estuary helps your team get the most out of the ever-expanding list of valuable databases, warehouses, and other tools so you can focus on insights instead of pipelines."
             }
+            metadata={{
+                type: 'About',
+                headline: 'About',
+            }}
         />
     )
 }

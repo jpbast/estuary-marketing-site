@@ -18,7 +18,14 @@ const Integrations = () => {
 }
 
 export const Head = () => {
-    return <Seo title={"Integrations"} description={description} />
+    return <Seo
+        title={"Integrations"}
+        description={description}
+        metadata={{
+            type: 'Integrations',
+            headline: 'Integrations'
+        }}
+    />
 }
 
 export default Integrations

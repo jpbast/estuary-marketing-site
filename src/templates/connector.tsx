@@ -78,10 +78,15 @@ export const Head = ({
         postgres: { connector },
     },
 }) => {
+    const title = connector.title?.["en-US"]
     return (
         <Seo
-            title={connector.title?.["en-US"]}
+            title={title}
             description={connector.shortDescription?.["en-US"]}
+            metadata={{
+                type: 'Connector',
+                headline: title,
+            }}
         />
     )
 }
