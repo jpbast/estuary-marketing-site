@@ -112,6 +112,10 @@ const SectionOne = () => {
                     {isSmall && isSmall && <AnimatedHero />}
                     <h1>Real-time ETL & CDC,</h1>
                     <h1>up in <span style={{ wordBreak: "break-word", hyphens: "auto" }}>minutes.</span></h1>
+                    <p className="section-one-description">
+                        Connect and transform streaming and batch data with custom 
+                        <span className="break-line"> no-code connectors,  SQL, and Typescript from within your cloud storage.</span>
+                    </p>
                     <div className="section-one-subtext-wrapper">
                         <div className="section-one-container-cta">
                             <OutboundLink
