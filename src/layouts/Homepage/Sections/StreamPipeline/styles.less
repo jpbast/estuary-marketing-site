@@ -1,0 +1,70 @@
+.section-stream-pipeline {
+    margin: 20px 0;
+    padding: 75px 100px;
+    background-color: #071929;
+    color: #B7B7B7;
+
+    .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 0 25px;
+        display: flex;
+        align-items: center;
+    }
+
+    .content {
+        flex: 1;
+    }
+
+    .title {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 600;
+        line-height: normal;
+
+        .break-line {
+            display: block;
+        }
+    }
+
+    .topics {
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+
+        .topic {
+            display: flex;
+            gap: 27px;
+            align-items: center;
+
+            .icon {
+                width: 27px;
+                height: 27px;
+            }
+
+            .text {
+                margin: 0;
+                font-size: 27px;
+                font-weight: 700;
+            }
+        }
+    }
+
+
+    @media (min-width: 1024px) {
+        .container {
+            max-width: 900px;
+            padding: 0;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        margin-left: 40px;
+        margin-right: 40px;
+        border-radius: 19px;
+
+        .container {
+            max-width: 1350px;
+        }
+    }
+}

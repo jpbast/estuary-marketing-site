@@ -15,6 +15,7 @@ import SectionPipelineBuilt from "../layouts/Homepage/Sections/PipelineBuilt"
 import SectionCutPipeline from "../layouts/Homepage/Sections/CutPipeline"
 import SectionQuoteBlock from "../layouts/Homepage/Sections/QuoteBlock"
 import SectionRealTimePlatform from "../layouts/Homepage/Sections/RealTimePlatform"
+import SectionStreamPipeline from "../layouts/Homepage/Sections/StreamPipeline"
 
 const IndexPage = () => {
     return (
@@ -27,7 +28,8 @@ const IndexPage = () => {
             <SectionPipelineBuilt />
             <SectionCutPipeline />
             <SectionQuoteBlock />
-            <SectionRealTimePlatform />
+            {/* <SectionRealTimePlatform /> */}
+            <SectionStreamPipeline />
             <SectionTwo />
             <SectionThree />
             <SectionFour />
