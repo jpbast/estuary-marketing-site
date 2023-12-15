@@ -84,7 +84,6 @@ export const Head = ({
             title={title}
             description={connector.shortDescription?.["en-US"]}
             metadata={{
-                type: 'Connector',
                 headline: title,
             }}
         />

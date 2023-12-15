@@ -10,7 +10,6 @@ export const Head = ({ data: { post } }) => {
                 "Reduce your data costs and latency with managed streaming CDC and ETL pipelines."
             }
             metadata={{
-                type: 'Pricing',
                 headline: 'Pricing'
             }}
         >

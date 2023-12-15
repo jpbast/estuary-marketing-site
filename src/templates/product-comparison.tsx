@@ -208,7 +208,6 @@ export const Head = ({
                 "Estuary allows enterprises of any size to deploy true real-time pipelines that scale for high-volume use cases — without making difficult trade-offs or investing in complex infrastructure."
             }
             metadata={{
-                type: 'ProductComparison',
                 headline: title
             }}
         />

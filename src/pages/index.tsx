@@ -28,7 +28,6 @@ export const Head = ({ data: { post } }) => {
         title={"Real-time ETL"}
         description={"Managed streaming data pipelines, streaming SQL & turnkey connectivity to clouds, databases, and apps"}
         metadata={{
-            type: 'Homepage',
             headline: 'Real-time ETL',
         }}
     />

@@ -22,7 +22,6 @@ export const Head = () => {
         title={"Integrations"}
         description={description}
         metadata={{
-            type: 'Integrations',
             headline: 'Integrations'
         }}
     />
