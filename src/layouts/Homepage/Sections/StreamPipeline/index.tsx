@@ -2,7 +2,7 @@ import "./styles.less"
 
 import React from "react"
 
-import Checkmark from "../../../../svgs/light-checkmark.svg"
+import Checkmark from "../../../../svgs/light-checkmark-2.svg"
 import OutboundLink from "../../../../components/OutboundLink"
 
 const Buttons = () => {

@@ -16,6 +16,7 @@ import SectionCutPipeline from "../layouts/Homepage/Sections/CutPipeline"
 import SectionQuoteBlock from "../layouts/Homepage/Sections/QuoteBlock"
 import SectionRealTimePlatform from "../layouts/Homepage/Sections/RealTimePlatform"
 import SectionStreamPipeline from "../layouts/Homepage/Sections/StreamPipeline"
+import SectionComparison from "../layouts/Homepage/Sections/Comparison"
 
 const IndexPage = () => {
     return (
@@ -28,8 +29,9 @@ const IndexPage = () => {
             <SectionPipelineBuilt />
             <SectionCutPipeline />
             <SectionQuoteBlock />
-            {/* <SectionRealTimePlatform /> */}
+            <SectionRealTimePlatform />
             <SectionStreamPipeline />
+            <SectionComparison />
             <SectionTwo />
             <SectionThree />
             <SectionFour />
