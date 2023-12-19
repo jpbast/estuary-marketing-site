@@ -3,6 +3,16 @@ import "./styles.less"
 import React from "react"
 
 import Checkmark from "../../../../svgs/light-checkmark.svg"
+import OutboundLink from "../../../../components/OutboundLink"
+
+const Buttons = () => {
+    return (
+        <>
+            <OutboundLink href="https://dashboard.estuary.dev/register" button>Build a pipeline</OutboundLink>
+            <OutboundLink href="/pricing" showArrow neutral>More on our Pricing</OutboundLink>
+        </>
+    )
+}
 
 const SectionStreamPipeline = () => {
     return (
@@ -14,6 +24,9 @@ const SectionStreamPipeline = () => {
                         <span className="break-line">Simple to deploy.</span>
                         <span className="break-line">Simply Priced. </span>
                     </p>
+                    <div className="buttons buttons-desktop">
+                        <Buttons />
+                    </div>
                 </div>
                 <div className="topics">
                     <div className="topic">
@@ -28,6 +41,9 @@ const SectionStreamPipeline = () => {
                         <Checkmark className="icon" />
                         <p className="text">&#060;100ms latency on streaming sinks/sources</p>
                     </div>
+                </div>
+                <div className="buttons buttons-mobile">
+                    <Buttons />
                 </div>
             </div>
         </div>

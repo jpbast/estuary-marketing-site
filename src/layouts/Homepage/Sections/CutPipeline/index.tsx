@@ -14,7 +14,7 @@ const CutPipeline = () => {
                     placeholder="none"
                     alt="Coding optional"
                     layout="constrained"
-                    src="../../../../images/sand-dollars-charts.png"
+                    src="../../../../images/pricing-calculator.png"
                 />
             </div>
             <div className="content">

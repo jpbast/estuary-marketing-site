@@ -6,8 +6,8 @@ import clsx from "clsx"
 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
-const OutboundLink = ({ target = "_blank", href, showArrow = false, small = false, children }) => {
-    return <Outbound className={clsx('outbound-link', small && 'outbound-link-small')} target={target} href={href}>{children} {showArrow && <ArrowForwardIcon />}</Outbound>
+const OutboundLink = ({ target = "_blank", href, showArrow = false, small = false, children, neutral = false, button = false }) => {
+    return <Outbound className={clsx(button ? 'outbound-link-button' : 'outbound-link', neutral && 'outbound-link-neutral', small && 'outbound-link-small')} target={target} href={href}>{children} {showArrow && <ArrowForwardIcon />}</Outbound>
 }
 
 export default OutboundLink

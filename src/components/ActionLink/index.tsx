@@ -1,4 +1,4 @@
-import "./styles.less"
+import "../OutboundLink/styles.less"
 
 import React from "react"
 import clsx from "clsx"
