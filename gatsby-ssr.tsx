@@ -8,6 +8,9 @@
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
 
-exports.onRenderBody = ({ setHtmlAttributes }) => {
+exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: `en` })
+  setHeadComponents([
+    <script src="https://cmp.osano.com/16CPXbTOi1sXx4D3/1e6b223c-ed10-4c4b-a442-48fea69f76af/osano.js"></script>,
+  ])
 }
