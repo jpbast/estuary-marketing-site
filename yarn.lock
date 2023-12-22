@@ -6777,6 +6777,13 @@ gatsby-plugin-google-gtag@^5.9.0:
     "@babel/runtime" "^7.20.13"
     minimatch "^3.1.2"
 
+gatsby-plugin-hotjar@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-hotjar/-/gatsby-plugin-hotjar-1.1.1.tgz#b910209c80fb2a0df9e0dc1b52de7270d9831b31"
+  integrity sha512-zEuZuZPokvBZvfKg7W0MjPoydFnD8NqhgB0Rm32A7HTWu44vvH+UYt0NsvnyINYmICS9ftv+y/k3WAAzkAIUNw==
+  dependencies:
+    babel-runtime "^6.26.0"
+
 gatsby-plugin-image@^3.11.0:
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-3.11.0.tgz#4d322ecf80bfa304a1400e6b06a9d7199154dcca"
@@ -6992,6 +6999,11 @@ gatsby-plugin-utils@^4.8.0:
     import-from "^4.0.0"
     joi "^17.7.0"
     mime "^3.0.0"
+
+gatsby-plugin-vwo-smartcode@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-vwo-smartcode/-/gatsby-plugin-vwo-smartcode-1.0.1.tgz#9cf5de9f731045c42ad00e83498e5d7032aef688"
+  integrity sha512-/7X97w1So9QSTyYBwhKsdr5f5mLSSQFHY+ae1TjIdsjOt008HaQZz3aGF21Bl2VzxiUXWeq3MBrmmXhafNm1MA==
 
 gatsby-plugin-webpack-bundle-analyser-v2@^1.1.30:
   version "1.1.30"
