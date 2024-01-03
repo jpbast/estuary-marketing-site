@@ -1,8 +1,5 @@
 import * as React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import List from "@mui/material/List"
-import { StaticImage } from "gatsby-plugin-image"
-import { NavItem, NavMenuList, NavMenuTopLevel } from "./CascadingMenu"
 import { useState } from "react"
 import ColoredLogo from "../svgs/colored-logo.svg"
 import SlackIcon from "../svgs/slack-outline.svg"
@@ -11,7 +8,9 @@ import clsx from "clsx"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import { isDesktop } from "react-device-detect"
 
-const useNavItems = (): NavItem[] => {
+import HeaderNavbar from "./HeaderNavbar"
+
+const useNavItems = () => {
     const queryResults = useStaticQuery(graphql`
         query GetNavData {
             allStrapiProductComparisonPage {
@@ -110,17 +109,8 @@ const useNavItems = (): NavItem[] => {
         ],
     },
     {
-        title: "Company",
-        children: [
-            {
-                title: "About Estuary",
-                path: "/about",
-            },
-            {
-                title: "Careers",
-                path: "/about#careers",
-            },
-        ],
+        title: "Docs",
+        path: "/docs",
     },
 ]
 };
@@ -140,20 +130,17 @@ const MenuBarsImage = () => (
     </svg>
 )
 
-const Header = (props: { theme: "light" | "dark" }) => {
+const Header = (props: { fixedHeader?: boolean }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const navItems = useNavItems();
 
-    const theme = props.theme
+    const { fixedHeader } = props
 
     return (
         <>
             {/* @ts-ignore */}
             <header
-                className={clsx("global-header", {
-                    "global-header-light": theme === "light",
-                    "global-header-dark": theme === "dark",
-                })}
+                className={clsx("global-header global-header-dark", fixedHeader && "global-header-fixed")}
             >
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
@@ -166,11 +153,7 @@ const Header = (props: { theme: "light" | "dark" }) => {
                 <div style={{ flex: "1 2 140px" }} />
                 <div className="global-header-wrapper">
                     <div className="global-header-link-wrapper">
-                        {navItems.map(item => (
-                            <React.Fragment key={`${item.path}-${item.title}`}>
-                                <NavMenuTopLevel item={item} />
-                            </React.Fragment>
-                        ))}
+                        <HeaderNavbar />
                     </div>
                     <div className="global-header-login-try">
                         <OutboundLink
@@ -216,20 +199,6 @@ const Header = (props: { theme: "light" | "dark" }) => {
                 </div>
                 <div className="global-header-padder" />
             </header>
-            {mobileMenuOpen ? (
-                <List
-                    className={clsx("global-header-mobile-menu-list", {
-                        "global-header-mobile-menu-list-light":
-                            theme === "light",
-                        "global-header-mobile-menu-list-dark": theme === "dark",
-                    })}
-                    component="nav"
-                >
-                    {navItems.map(item => (
-                        <NavMenuList key={`${item.path}-${item.title}`} item={item} />
-                    ))}
-                </List>
-            ) : null}
         </>
     )
 }

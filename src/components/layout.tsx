@@ -1,16 +1,18 @@
 import * as React from "react"
+import clsx from "clsx"
+
 import Header from "./header"
 import Footer from "./footer"
 import TakeATour from "./TakeATour"
 
-const Layout = ({headerTheme, showTour = false, children}: {headerTheme: "light"|"dark", showTour?: boolean, children: React.ReactNode|React.ReactNode[]}) => {
+const Layout = ({headerTheme, fixedHeader = true, showTour = false, children}: {headerTheme: "light"|"dark", fixedHeader?: boolean, showTour?: boolean, children: React.ReactNode|React.ReactNode[]}) => {
   const [closeTour, setCloseTour] = React.useState(typeof window !== 'undefined' && !!localStorage.getItem('@estuary/closeTour'))
 
   return (
     <div className="global-wrapper">
       {showTour && !closeTour && <TakeATour onClose={() => setCloseTour(true)} />}
-      <Header theme={headerTheme}/>
-      <main>{children}</main>
+      <Header fixedHeader={fixedHeader} />
+      <main className={clsx(fixedHeader && "global-main-fixed-header")}>{children}</main>
       <Footer />
     </div>
   )
