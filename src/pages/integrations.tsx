@@ -21,9 +21,6 @@ export const Head = () => {
     return <Seo
         title={"Integrations"}
         description={description}
-        metadata={{
-            headline: 'Integrations'
-        }}
     />
 }
 

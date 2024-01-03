@@ -14,15 +14,6 @@ export interface SeoProps {
     title: string
     description?: string
     image?: string
-    metadata?: {
-        type?: string
-        keywords?: any
-        headline?: string
-        datePublished?: any
-        mainEntityOfPage?: any
-        author?: any
-        publisher?: any
-    }
     url?: string
     children?: React.ReactElement
 }
@@ -31,7 +22,6 @@ const Seo: React.FC<SeoProps> = ({
     description,
     title,
     image,
-    metadata,
     url,
     children,
 }) => {
@@ -97,19 +87,13 @@ const Seo: React.FC<SeoProps> = ({
             <script type="application/ld+json">
                 {JSON.stringify({
                     "@context": "https://schema.org/",
-                    "@type": metadata?.type || "Organization",
+                    "@type": "Organization",
                     name: "Estuary",
                     alternateName: "Estuary Flow",
                     description: "Estuary helps organizations gain real-time access to their data without having to manage infrastructure. Capture data from SaaS or technology sources, transform it and materialize it back into the same types of systems all with millisecond latency.",
                     image,
                     logo: site.siteMetadata?.siteUrl + logoUrl,
                     url: url || site.siteMetadata?.siteUrl || "https://estuary.dev/",
-                    keywords: metadata?.keywords,
-                    headline: metadata?.headline,
-                    datePublished: metadata?.datePublished,
-                    mainEntityOfPage: metadata?.mainEntityOfPage,
-                    author: metadata?.author,
-                    publisher: metadata?.publisher,
                     telephone: "",
                     sameAs: ["https://twitter.com/EstuaryDev","https://www.linkedin.com/company/estuary-tech/","https://www.youtube.com/channel/UCJ9JIjh7uaUdjcFR6xTkJXQ","https://www.crunchbase.com/organization/estuary"],
                     address: {
@@ -118,7 +102,7 @@ const Seo: React.FC<SeoProps> = ({
                         addressLocality: "New York, NY",
                         postalCode: "10001",
                         addressCountry: "US"
-                    }
+                    },
                 })}
             </script>
         </>

@@ -27,9 +27,6 @@ export const Head = ({ data: { post } }) => {
     return <Seo 
         title={"Real-time ETL"}
         description={"Managed streaming data pipelines, streaming SQL & turnkey connectivity to clouds, databases, and apps"}
-        metadata={{
-            headline: 'Real-time ETL',
-        }}
     />
 }
 

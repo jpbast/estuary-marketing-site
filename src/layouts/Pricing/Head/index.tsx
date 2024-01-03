@@ -9,9 +9,6 @@ export const Head = ({ data: { post } }) => {
             description={
                 "Reduce your data costs and latency with managed streaming CDC and ETL pipelines."
             }
-            metadata={{
-                headline: 'Pricing'
-            }}
         >
             <script src="https://tag.clearbitscripts.com/v1/pk_4817f0c2cea3e0595f4602d5c2a8e556/tags.js" referrerPolicy="strict-origin-when-cross-origin" />
         </Seo>

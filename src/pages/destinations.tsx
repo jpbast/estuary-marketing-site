@@ -21,9 +21,6 @@ export const Head = () => {
     return <Seo 
         title={"Destinations"}
         description={"Stream your data anywhere with efficient, low latency pipelines to all your destinations."}
-        metadata={{
-            headline: 'Destinations'
-        }}
     />
 }
 

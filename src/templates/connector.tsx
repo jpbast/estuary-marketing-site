@@ -83,9 +83,6 @@ export const Head = ({
         <Seo
             title={title}
             description={connector.shortDescription?.["en-US"]}
-            metadata={{
-                headline: title,
-            }}
         />
     )
 }
