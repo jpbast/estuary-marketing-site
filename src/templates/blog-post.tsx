@@ -185,7 +185,7 @@ export const Head = ({
                     },
                     datePublished: post.machineReadablePublishDate,
                 })}
-            </script>
+            </script>            
         </>
     )
 }

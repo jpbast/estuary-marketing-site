@@ -49,9 +49,10 @@ export const Head = ({
         destination: { connector: destination_connector },
     },
 }) => {
+    const title = `${source_connector.title?.["en-US"]} to ${destination_connector.title?.["en-US"]}`
     return (
         <Seo
-            title={`${source_connector.title?.["en-US"]} to ${destination_connector.title?.["en-US"]}`}
+            title={title}
             description={`Estuary helps move data from ${source_connector.title?.["en-US"]} to ${destination_connector.title?.["en-US"]} in minutes with millisecond latency.`}
         />
     )

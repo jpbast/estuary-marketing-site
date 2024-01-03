@@ -284,7 +284,10 @@ const ProductPage = () => {
 }
 
 export const Head = () => {
-    return <Seo title={"Flow"} description={"Flow is the first real-time Data Operations platform. Set up pipelines with both historical and real-time data in minutes."} />
+    return <Seo
+        title={"Flow"}
+        description={"Flow is the first real-time Data Operations platform. Set up pipelines with both historical and real-time data in minutes."}
+    />
 }
 
 export default ProductPage
