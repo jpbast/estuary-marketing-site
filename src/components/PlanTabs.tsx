@@ -144,7 +144,7 @@ export default function BasicTabs() {
             All features of Free + Cloud, plus...
           </ChecklistItem>
           <ChecklistItem>
-            SOC2 & HIPPA Certificates
+            SOC2 & HIPAA Certificates
           </ChecklistItem>
           <ChecklistItem>
             Customer Success Manager
