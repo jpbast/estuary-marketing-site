@@ -274,6 +274,10 @@ input {
     /* padding: var(--spacing-10) var(--spacing-5); */
 }
 
+.global-header-mobile-wrapper {
+    display: none;
+}
+
 .global-header {
     position: relative;
     display: flex;
@@ -285,6 +289,14 @@ input {
     .global-header-links {
         display: flex;
         gap: 35px;
+
+        @media (min-width: 1024px) {
+            gap: 20px;
+        }
+
+        @media (min-width: 1280px) {
+            gap: 35px;
+        }
 
         .global-header-link {
             padding: 2px 15px;
@@ -338,6 +350,27 @@ input {
         .content {
             display: flex;
             flex-direction: column;
+            min-width: max-content;
+        }
+
+        .container-image {
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            color: #FFF;
+            text-align: center;
+            
+            display: block;
+            width: max-content;
+            margin: 0 auto;
+            margin-top: 14px;
+            background-color: #5072EB;
+            padding: 7px 45px;
+            border-radius: 4px;
         }
 
         .card-item {
@@ -366,12 +399,14 @@ input {
                 align-items: center;
             }
 
-            &:hover {
-                border-radius: 2px;
-                background: #F8F8F8;
-
-                .title {
-                    color: #5072EB;
+            @media (min-width: 1024px) {
+                &:hover {
+                    border-radius: 2px;
+                    background: #F8F8F8;
+    
+                    .title {
+                        color: #5072EB;
+                    }
                 }
             }
         }
@@ -462,6 +497,16 @@ input {
 .global-header-logo {
     margin-right: 5px;
     margin-top: 4px;
+
+    @media (min-width: 1024px) {
+        width: 17px !important;
+        height: 25px !important;
+    }
+
+    @media (min-width: 1280px) {
+        width: 27px !important;
+        height: 35px !important;
+    }
 }
 
 .global-header-title {
@@ -472,6 +517,14 @@ input {
     font-style: normal;
     font-weight: 600;
     margin: 31px 0;
+
+    @media (min-width: 1024px) {
+        font-size: 18px;
+    }
+
+    @media (min-width: 1280px) {
+        font-size: 33px;
+    }
 }
 
 .global-header-title-light {}
@@ -3059,7 +3112,10 @@ table th {
 
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
+    main {
+        margin-top: 100px;
+    }
 
     .connector-source-dest-image-wrapper {
         justify-content: center;
@@ -3072,17 +3128,99 @@ table th {
         justify-content: space-between;
         padding-left: 16px;
         padding-right: 0;
+
+        .hide-on-mobile {
+            display: none;
+        }
     }
 
-    .global-header-padder {
+    .global-header-padder, .global-header-login-try {
         display: none;
     }
 
-    .global-header-wrapper {
+    .global-header .header-card {
+        background-color: #04192b;
+        flex-direction: column;
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 0;
+        transform: none;
+        gap: 0;
+
+        > div {
+            padding: 0px 32px;
+
+            .content {
+                padding: 0px 16px;
+
+                .card-item {
+                    padding: 4px 0;
+                }
+            }
+        }
+
+        > div:first-of-type {
+            .content {
+                padding: 0;
+            }
+        }
+
+        .card-item {
+            padding: 12px 0px;
+
+            .icon, .description {
+                display: none;
+            }
+    
+            .title {
+                color: #FFF;
+            }
+        }
+
+        .no-padding {
+            padding: 0px 16px;
+        }
+
+    }
+
+    .global-header .global-header-links .global-header-link.active {
+        background-color: #04192b;
+    }
+
+    .global-header-link-wrapper {
         display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: #04192b;
+
+        .global-header-links {
+            flex-direction: column;
+            padding: 8px 0px;
+            gap: 0;
+            width: 100%;
+
+            .global-header-link {
+                padding: 12px 16px;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        &.is-open {
+            display: flex;
+        }
+
     }
 
     .global-header-mobile-menu-wrapper {
+        display: flex;
+    }
+
+    .global-header-mobile-wrapper {
         display: flex;
     }
 

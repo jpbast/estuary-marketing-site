@@ -2,15 +2,16 @@ import React, { useState, useRef, useEffect } from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 import Chevron from "@mui/icons-material/ChevronRight"
 
-import { products, compare } from "./items"
+import { read, listen, tour } from "./items"
 
 import Card from "../Card"
 import CardItem from "../CardItem"
 
-const HeaderNavbarProduct = () => {
+const HeaderNavbarResources = () => {
   const [active, setActive] = useState(false)
   const wrapperRef = useRef(null);
 
@@ -35,25 +36,26 @@ const HeaderNavbarProduct = () => {
   return (
       <>
         <Link className={clsx("global-header-link", active && "active")} to="#" onClick={onClick}>
-          Product
+          Resources
           <Chevron className="menu-chevron" fontSize="small" />
         </Link>
         <Card customRef={wrapperRef} show={active}>
-          <CardItem title="PRODUCT" onlyContent items={products} />
-          <CardItem title="COMPARE" items={compare} />
-          <CardItem className="hide-on-mobile" title="CASE STUDY">
-            <StaticImage className="container-image" src="../../../images/CONNECT&GO.png" width={270} height={170} alt="book" />
-            <Link
+          <CardItem title="READ" onlyContent items={read} />
+          <CardItem className="no-padding" title="LISTEN" onlyContent items={listen} />
+          <CardItem className="hide-on-mobile" title="TOUR" items={tour} />
+          <CardItem className="hide-on-mobile" title="WEBINAR">
+            <StaticImage className="container-image" src="../../../images/snapshot 1.png" width={270} height={170} alt="book" />
+            <OutboundLink
               target="_blank"
-              to="/customers/connectngo"
+              href="https://dashboard.estuary.dev/register"
               className="cta-button"
-          >
-              Read Customer Story
-          </Link>
+            >
+              Watch Estuary 101
+            </OutboundLink>
           </CardItem>
         </Card>
       </>
   )
 }
 
-export default HeaderNavbarProduct
+export default HeaderNavbarResources

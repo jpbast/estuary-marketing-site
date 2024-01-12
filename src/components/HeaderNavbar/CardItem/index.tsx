@@ -1,9 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const ItemLink = ({ name, description, Image, to }) => {
+  const LinkElement: any = to[0] === '/' ? Link : OutboundLink
+  const linkProps = to[0] === '/' ? { to } : { href: to }
+
   return (
-    <Link to={to}>
+    <LinkElement {...linkProps}>
       <div className="card-item">
         {Image && <div className="icon"><Image /></div>}
         <div>
@@ -11,16 +15,17 @@ const ItemLink = ({ name, description, Image, to }) => {
           {description && <p className="description">{description}</p>}
         </div>
       </div>
-    </Link>
+    </LinkElement>
   )
 }
 
-const HeaderCardItem = ({ title, items }) => {
+const HeaderCardItem = ({ title, items = [], children, onlyContent, ...props }: any) => {
   return (
-    <div>
-      <p className="card-title">{title}</p>
+    <div {...props}>
+      {!onlyContent && <p className="card-title">{title}</p>}
       <div className="content">
         {items.map((item, index) => <ItemLink key={index} {...item} />)}
+        {children}
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import ColoredLogo from "../svgs/colored-logo.svg"
 import SlackIcon from "../svgs/slack-outline.svg"
 import GithubIcon from "../svgs/github-outline.svg"
@@ -133,14 +133,29 @@ const MenuBarsImage = () => (
 const Header = (props: { fixedHeader?: boolean }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const navItems = useNavItems();
+    const wrapperRef = useRef(null);
 
     const { fixedHeader } = props
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+          if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            setMobileMenuOpen(false)
+          }
+        }
+    
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+      }, [wrapperRef]);
 
     return (
         <>
             {/* @ts-ignore */}
             <header
                 className={clsx("global-header global-header-dark", fixedHeader && "global-header-fixed")}
+                ref={wrapperRef}
             >
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
@@ -152,7 +167,7 @@ const Header = (props: { fixedHeader?: boolean }) => {
                 </Link>
                 <div style={{ flex: "1 2 140px" }} />
                 <div className="global-header-wrapper">
-                    <div className="global-header-link-wrapper">
+                    <div className={clsx('global-header-link-wrapper', mobileMenuOpen && 'is-open')}>
                         <HeaderNavbar />
                     </div>
                     <div className="global-header-login-try">
@@ -172,13 +187,13 @@ const Header = (props: { fixedHeader?: boolean }) => {
                         >
                             <GithubIcon className="social-icon" />
                         </OutboundLink>
-                        <Link
+                        <OutboundLink
                             className="global-header-link"
-                            to="https://dashboard.estuary.dev"
+                            href="https://dashboard.estuary.dev"
                             style={{marginRight:"1rem"}}
                         >
                             Log in
-                        </Link>
+                        </OutboundLink>
                         <OutboundLink
                             target="_blank"
                             href="https://dashboard.estuary.dev/register"

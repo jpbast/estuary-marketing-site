@@ -1,9 +1,9 @@
 import React from "react"
 import clsx from "clsx"
 
-const HeaderCard = ({ show, children }) => {
+const HeaderCard = ({ show, children, customRef }) => {
   return (
-    <div className={clsx("header-card", show && "show")}>
+    <div ref={customRef} className={clsx("header-card", show && "show")}>
       {children}
     </div>
   )
