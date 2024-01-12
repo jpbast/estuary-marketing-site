@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import { isDesktop } from "react-device-detect"
 
 import Chevron from "@mui/icons-material/ChevronRight"
 
@@ -10,35 +11,45 @@ import { products, compare } from "./items"
 import Card from "../Card"
 import CardItem from "../CardItem"
 
-const HeaderNavbarProduct = () => {
-  const [active, setActive] = useState(false)
+const HeaderNavbarProduct = ({ active, setActive }) => {
   const wrapperRef = useRef(null);
 
   const onClick = (ev) => {
     ev.preventDefault()
-    setActive((prev) => !prev)
+    if (!isDesktop) setActive((prev) => prev === 'product' ? '' : 'product')
+  }
+
+  const onMouseEnter = (ev) => {
+    ev.preventDefault()
+    if (isDesktop) setActive('product')
+  }
+
+  const onMouseLeave = (ev) => {
+    ev.preventDefault()
+    if (isDesktop) setActive('')
   }
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target) && !event.target.className?.includes?.('active')) {
-        setActive(false)
+      if (isDesktop && wrapperRef.current && !wrapperRef.current.contains(event.target) && !event.target.className?.includes?.('active')) {
+        setActive('')
       }
     }
 
-    if (active) document.addEventListener("mousedown", handleClickOutside);
+    if (active) document.addEventListener("mousedown", handleClickOutside)
+
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside)
     };
   }, [active]);
 
   return (
       <>
-        <Link className={clsx("global-header-link", active && "active")} to="#" onClick={onClick}>
+        <Link className={clsx("global-header-link", active && "active")} to="#" onClick={onClick} onMouseEnter={onMouseEnter}>
           Product
           <Chevron className="menu-chevron" fontSize="small" />
         </Link>
-        <Card customRef={wrapperRef} show={active}>
+        <Card customRef={wrapperRef} show={active} onMouseLeave={onMouseLeave}>
           <CardItem title="PRODUCT" onlyContent items={products} />
           <CardItem title="COMPARE" items={compare} />
           <CardItem className="hide-on-mobile" title="CASE STUDY">
