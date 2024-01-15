@@ -132,14 +132,6 @@ const cfg: GatsbyConfig = {
             },
         },
         {
-            resolve: "gatsby-plugin-hotjar",
-            options: {
-                includeInDevelopment: true, // optional parameter to include script in development
-                id: "3439470",
-                sv: 6,
-            },
-        },
-        {
             resolve: "gatsby-plugin-preconnect",
             options: {
                 domains: [
