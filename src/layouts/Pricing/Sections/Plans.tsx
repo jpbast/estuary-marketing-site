@@ -66,7 +66,7 @@ const PricingPlans = () => {
                 <h2>Plans</h2>
             </div>
             <div className="pricing-page-tiles-wrapper">
-                <Card 
+                <Card
                     selected={selected === 1}
                     Icon={PricingOpenSource}
                     title="Free"
@@ -112,7 +112,7 @@ const PricingPlans = () => {
                     onClick={() => setSelected(3)}
                     items={[
                         'All features of Free + Cloud, plus...',
-                        'SOC2 & HIPPA Certificates',
+                        'SOC2 & HIPAA Certificates',
                         'Customer Success Manager',
                         '24x7 support available',
                         'Provisioned servers',
