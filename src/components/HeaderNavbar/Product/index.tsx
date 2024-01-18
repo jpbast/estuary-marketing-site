@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import { isDesktop } from "react-device-detect"
 
 import Chevron from "@mui/icons-material/ChevronRight"
+import NavbarImage from "../../../svgs/navbar-image-1.svg"
 
 import { products, compare } from "./items"
 
@@ -53,7 +53,7 @@ const HeaderNavbarProduct = ({ active, setActive }) => {
           <CardItem title="PRODUCT" onlyContent items={products} />
           <CardItem title="COMPARE" items={compare} />
           <CardItem className="hide-on-mobile" title="CASE STUDY">
-            <StaticImage className="container-image" src="../../../images/CONNECT&GO.png" width={270} height={170} alt="book" />
+          <NavbarImage />
             <Link
               target="_blank"
               to="/customers/connectngo"

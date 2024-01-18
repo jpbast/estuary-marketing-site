@@ -11,10 +11,6 @@ export const read = [
     name: "About Us",
     to: "/about",
   },
-  {
-    name: "Case Studies",
-    to: "/customers/connectngo",
-  },
 ]
 
 export const listen = [
@@ -40,5 +36,20 @@ export const tour = [
   {
     name: "Real-time 101 [30 min]",
     to: "https://try.estuary.dev/webinar-estuary101-ondemand",
+  },
+]
+
+export const caseStudies = [
+  {
+    name: "True Platform",
+    to: "/customers/casestudy/trueplatform/",
+  },
+  {
+    name: "Soli & Company",
+    to: "/customers/casestudy/soli_&_company/",
+  },
+  {
+    name: "Connect&GO",
+    to: "/customers/connectngo/",
   },
 ]

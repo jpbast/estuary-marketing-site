@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import { isDesktop } from "react-device-detect"
 
 import Chevron from "@mui/icons-material/ChevronRight"
+import NavbarImage from "../../../svgs/navbar-image-2.svg"
 
-import { read, listen, tour } from "./items"
+import { read, listen, tour, caseStudies } from "./items"
 
 import Card from "../Card"
 import CardItem from "../CardItem"
@@ -53,8 +53,9 @@ const HeaderNavbarResources = ({ active, setActive }) => {
           <CardItem title="READ" onlyContent items={read} />
           <CardItem className="no-padding" title="LISTEN" onlyContent items={listen} />
           <CardItem className="hide-on-mobile" title="TOUR" items={tour} />
+          <CardItem className="hide-on-mobile" title="CASE STUDIES" items={caseStudies} />
           <CardItem className="hide-on-mobile" title="WEBINAR">
-            <StaticImage className="container-image" src="../../../images/snapshot 1.png" width={270} height={170} alt="book" />
+            <NavbarImage />
             <OutboundLink
               target="_blank"
               href="https://try.estuary.dev/webinar-estuary101-ondemand"
