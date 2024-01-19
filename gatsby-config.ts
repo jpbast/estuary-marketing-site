@@ -126,12 +126,6 @@ const cfg: GatsbyConfig = {
             },
         },
         {
-            resolve: "gatsby-plugin-vwo-smartcode",
-            options: {
-                vwoAccountId: "707377",
-            },
-        },
-        {
             resolve: "gatsby-plugin-preconnect",
             options: {
                 domains: [
