@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 import StickyBox from "react-sticky-box"
 
 import dayjs from "dayjs"
@@ -47,12 +48,12 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
 
             <div className="sidebar-cta">
                 <h3>Start streaming your data for free</h3>
-                <Link
-                    to="https://dashboard.estuary.dev/register"
+                <OutboundLink
+                    href="https://dashboard.estuary.dev/register"
                     className="pipeline-link"
                 >
                     Build a Pipeline
-                </Link>
+                </OutboundLink>
             </div>
         </>
     )
@@ -114,12 +115,12 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                 )}
                 <div className="sidebar-cta mobile-only">
                     <h3>Start streaming your data for free</h3>
-                    <Link
-                        to="https://dashboard.estuary.dev/register"
+                    <OutboundLink
+                        href="https://dashboard.estuary.dev/register"
                         className="pipeline-link"
                     >
                         Build a Pipeline
-                    </Link>
+                    </OutboundLink>
                 </div>
             </article>
         </Layout>

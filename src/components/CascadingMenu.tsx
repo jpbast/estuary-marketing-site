@@ -177,6 +177,7 @@ export const NavMenuTopLevel = ({ item }: { item: NavItem }) => {
 
 export const NavMenuList = ({ item }: { item: NavItem }) => {
     const [open, setOpen] = useState(false)
+
     let button = (
         <ListItemButton
             onClick={() => {
