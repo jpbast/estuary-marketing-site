@@ -85,7 +85,17 @@
                 "source": "/stream-data-postgres-to-snowflake", 
                 "destination": "/postgres-to-snowflake",
                 "type": 301
-            }
+            },
+            {
+                "source": "/cloud-etl-tool",
+                "destination": "/cloud-etl-tools",
+                "type": 301
+            },
+            {   
+                "source": "/airbyte-vs-fivetran-vs-estuary",
+                "destination": "airbyte-vs-fivetran",
+                "type": 301
+            }   
         ],
         "public": "public",
         "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
