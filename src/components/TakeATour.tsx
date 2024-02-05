@@ -16,7 +16,7 @@ const TakeATour = ({ onClose }) => {
                 target="_blank"
                 href="https://try.estuary.dev/intro_to_cdc_webinar/"
             >
-                TCDC Best Practices - Join our February 13th webinar
+                CDC Best Practices - Join our February 13th webinar
             </OutboundLink>
             <IconButton onClick={onClick}>
                 <CloseIcon color="inherit" fontSize="small" />
