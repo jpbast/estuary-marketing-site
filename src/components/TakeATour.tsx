@@ -14,9 +14,9 @@ const TakeATour = ({ onClose }) => {
         <div className="take-a-tour">
             <OutboundLink
                 target="_blank"
-                href="/why"
+                href="https://try.estuary.dev/intro_to_cdc_webinar/"
             >
-                Take a Product Tour
+                TCDC Best Practices - Join our February 13th webinar
             </OutboundLink>
             <IconButton onClick={onClick}>
                 <CloseIcon color="inherit" fontSize="small" />
