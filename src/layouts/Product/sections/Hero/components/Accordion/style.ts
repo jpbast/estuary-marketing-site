@@ -69,7 +69,7 @@ export const Title = styled.p`
     @media (min-width: 1280px) {
         font-size: 24px;
         line-height: 30px;
-    }    
+    }
 `
 
 export const Description : any = styled.p`
@@ -89,6 +89,8 @@ export const ContainerDescription: any = styled.div`
     overflow: hidden;
     margin: 0;
     padding-bottom: 24px;
+    flex-direction: column;
+    gap: 20px;
     opacity: ${({ open }: any) => open ? '100' : '0' };
     display: ${({ open }: any) => open ? 'flex' : 'none' };
 

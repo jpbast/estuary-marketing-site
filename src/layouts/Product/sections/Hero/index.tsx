@@ -27,19 +27,7 @@ const ProductHero = () => {
                         <Button target="_blank" href="https://dashboard.estuary.dev/register">Build a Pipeline</Button>
                         <Button target="_blank" href="https://dashboard.estuary.dev/register" $secondary>View Pricing</Button>
                     </ContainerButton>
-                    <Accordion
-                        title="What is Real-time ETL & CDC?"
-                        text="Real-time ETL provides all the convenience of using connectors and a managed platform to move data, but with Millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBs, etc. No need to wait for hourly/daily updates to derive business value from data. ETL means that you can choose your mode of operation.  Simple ELT for analytics or powerful transformations for real-time data products."
-                    />
-                    <Accordion
-                        title="How is Estuary Different?"
-                        text="Real-time ETL provides all the convenience of using connectors and a managed platform to move data, but with Millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBs, etc. No need to wait for hourly/daily updates to derive business value from data. ETL means that you can choose your mode of operation.  Simple ELT for analytics or powerful transformations for real-time data products."
-                    />
-                    <Accordion
-                        title="Who shouldn’t use Estuary?"
-                        text="Real-time ETL provides all the convenience of using connectors and a managed platform to move data, but with Millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBs, etc. No need to wait for hourly/daily updates to derive business value from data. ETL means that you can choose your mode of operation.  Simple ELT for analytics or powerful transformations for real-time data products."
-                        $last
-                    />
+                    <Accordion />
                 </ContainerContent>
             </ContainerHeader>
             <Cards />
