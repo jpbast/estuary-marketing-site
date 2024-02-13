@@ -1,22 +1,21 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 
 import Accordion from "./components/Accordion";
 import Cards from "./components/Cards";
 
-import { Container, ContainerHeader, ContainerImage, Title, ContainerButton, Button, Description, Image, ContainerContent } from "./style"
+import { Container, ContainerHeader, ContainerImage, Title, ContainerButton, Button, Description, ContainerContent } from "./style"
 
 const ProductHero = () => {
     return (
         <Container>
             <ContainerHeader>
                 <ContainerImage>
-                    <Image
+                    <StaticImage
                         placeholder="none"
                         src="../../../../images/lp-product/hero.png"
                         alt="Hero"
-                        width={768}
-                        height={841}
-                        quality={100}
+                        layout="constrained"
                     />
                 </ContainerImage>
                 <ContainerContent>

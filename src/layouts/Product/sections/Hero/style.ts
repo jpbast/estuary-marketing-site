@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components"
-import { StaticImage } from "gatsby-plugin-image"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 export const Container = styled.div`
     padding: 40px 20px;
 
     @media (min-width: 1280px) {
-        padding: 0px 90px;
+        padding: 20px 90px;
+        padding-bottom: 60px;
     }
 `
 
@@ -16,17 +16,16 @@ export const ContainerHeader = styled.div`
 
     @media (min-width: 1024px) {
         flex-direction: row;
-        padding: 20px 90px;
     }
 `
 
 export const ContainerImage = styled.div`
     position: relative;
     flex: 1;
-`
 
-export const Image = styled(StaticImage)`
-
+    > div {
+        margin-right: 60px;
+    }
 `
 
 export const ContainerContent = styled.div`
@@ -103,7 +102,7 @@ export const Button: any = styled<any>(OutboundLink)`
 
     @media (min-width: 1024px) {
         width: fit-content;
-        padding: 16px 24px;
+        padding: 8px 24px;
         font-size: 16px;
     }
 `
