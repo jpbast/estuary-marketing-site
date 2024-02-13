@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components"
-import { StaticImage } from "gatsby-plugin-image"
 
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 
@@ -11,8 +10,9 @@ export const Container = styled.div`
     flex-direction: column;
     background-color: #F9FAFC;
 
-    @media (min-width: 1280px) {
+    @media (min-width: 1024px) {
         flex-direction: row-reverse;
+        align-items: center;
         padding: 100px 90px;
         background-image: url(${VectorImage});
         background-size: cover;
@@ -24,6 +24,17 @@ export const Container = styled.div`
 export const ContainerImage = styled.div`
     position: relative;
     flex: 1;
+    max-width: 335px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+
+    @media (min-width: 1024px) {
+        max-width: 100%;
+
+        > div {
+            margin-left: 60px;
+        }
+    }
 `
 
 export const ContainerContent = styled.div`
@@ -93,7 +104,7 @@ export const Button: any = styled<any>(OutboundLink)`
         color: #04192b;
     `}
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1280px) {
         width: fit-content;
         padding: 12px 62px;
         font-size: 16px;

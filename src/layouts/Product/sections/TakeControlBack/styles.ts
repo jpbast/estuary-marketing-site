@@ -5,12 +5,12 @@ import { OutboundLink } from "gatsby-plugin-google-gtag"
 export const Container = styled.div`
     padding: 40px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     @media (min-width: 1024px) {
         flex-direction: row;
         gap: 80px;
-        padding: 80px 90px;
+        padding: 100px 90px;
         align-items: center;
     }
 `
@@ -18,7 +18,17 @@ export const Container = styled.div`
 export const ContainerImage = styled.div`
     position: relative;
     flex: 1;
-    max-width: 678px;
+    max-width: 335px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+
+    @media (min-width: 1024px) {
+        max-width: 100%;
+
+        > div {
+            margin-left: 60px;
+        }
+    }
 `
 
 export const ContainerContent = styled.div`

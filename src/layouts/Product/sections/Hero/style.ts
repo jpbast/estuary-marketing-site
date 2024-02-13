@@ -22,9 +22,15 @@ export const ContainerHeader = styled.div`
 export const ContainerImage = styled.div`
     position: relative;
     flex: 1;
+    max-width: 335px;
+    margin: 0 auto;
+    
+    @media (min-width: 1024px) {
+        max-width: 100%;
 
-    > div {
-        margin-right: 60px;
+        > div {
+            margin-right: 60px;
+        }
     }
 `
 
@@ -34,9 +40,10 @@ export const ContainerContent = styled.div`
     flex: 1;
     gap: 20px;
     max-width: 912px;
+    margin-top: 40px;
 
     @media (min-width: 1280px) {
-        
+        margin-top: 0;
     }
 `
 
@@ -73,6 +80,7 @@ export const ContainerButton = styled.div`
     display: flex;
     gap: 24px;
     max-width: 331px;
+    margin-bottom: 28px;
 
     @media (min-width: 1024px) {
         max-width: 340px;

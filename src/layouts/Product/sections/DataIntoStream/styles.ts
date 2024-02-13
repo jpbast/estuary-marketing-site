@@ -9,14 +9,28 @@ export const Container = styled.div`
 
     @media (min-width: 1024px) {
         flex-direction: row;
-        padding: 80px 90px;
         align-items: center;
+    }
+
+    @media (min-width: 1280px) {
+        padding: 60px 90px;
     }
 `
 
 export const ContainerImage = styled.div`
     position: relative;
     flex: 1;
+    max-width: 335px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+
+    @media (min-width: 1024px) {
+        max-width: 100%;
+
+        > div {
+            margin-right: 60px;
+        }
+    }
 `
 
 export const ContainerContent = styled.div`
