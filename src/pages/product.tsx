@@ -1,6 +1,7 @@
 import React from "react"
 
 import Wrapper from "../layouts/Product/components/Wrapper"
+import Header from "../layouts/Product/components/Head"
 
 import Hero from "../layouts/Product/sections/Hero"
 import DataIntoStream from "../layouts/Product/sections/DataIntoStream"
@@ -19,5 +20,7 @@ const Product = () => {
         </Wrapper >
     )
 }
+
+export const Head = Header
 
 export default Product
