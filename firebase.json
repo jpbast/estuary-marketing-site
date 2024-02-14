@@ -7,11 +7,6 @@
                 "type": 301
             },
             {
-                "source": "/cloud-etl-tools", 
-                "destination": "/cloud-etl-tool",
-                "type": 301
-            },
-            {
                 "source": "/how-to-create-data-pipeline-automation", 
                 "destination": "/data-pipeline-automation",
                 "type": 301
