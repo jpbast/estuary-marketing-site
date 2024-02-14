@@ -25,16 +25,13 @@ const Accordion: any = () => {
     return (
         <>
             <Item title="What is Real-time ETL & CDC?" index={1} selected={selected} setOpen={setSelected}>
-                <Description>Real-time ETL provides all the convenience of using connectors and a managed platform to move data, but with Millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBs, etc. No need to wait for hourly/daily updates to derive business value from data.</Description>
-                <Description>ETL means that you can choose your mode of operation.  Simple ELT for analytics or powerful transformations for real-time data products.</Description>
+                <Description>Real-time ETL & CDC means all the turn-key ability of using managed connectors to ETL/ELT data, but with millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBS, and more.</Description>
             </Item>
             <Item title="How is Estuary Different?" index={2} selected={selected} setOpen={setSelected}>
-                <Description>Real-time ETL provides all the convenience of using connectors and a managed platform to move data, but with Millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBs, etc. No need to wait for hourly/daily updates to derive business value from data.</Description>
-                <Description>Real-time ETL provides all the convenience of using connectors and a managed platform to move data, but with Millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBs, etc. No need to wait for hourly/daily updates to derive business value from data.</Description>
+                <Description>Estuary makes streaming change data accessible to the whole data team. Simply point a connector at your source, and view real-time updates in your destinations. Easily backfill and manage streaming and history data from a real-time copy of your data stored in cloud.</Description>
             </Item>
             <Item title="Who shouldn’t use Estuary?" index={3} selected={selected} setOpen={setSelected}>
-                <Description>Real-time ETL provides all the convenience of using connectors and a managed platform to move data, but with Millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBs, etc. No need to wait for hourly/daily updates to derive business value from data.</Description>
-                <Description>ETL means that you can choose your mode of operation.  Simple ELT for analytics or powerful transformations for real-time data products.</Description>
+                <Description>Teams with low-velocity data and no business case for faster insight or operations would find less value in the usage of streaming connectors. Teams with a very manageable cost with their existing batch ELT solution will also find less value.</Description>
             </Item>
         </>
     )
