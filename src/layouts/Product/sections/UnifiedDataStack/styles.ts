@@ -1,9 +1,6 @@
 import styled from "styled-components"
 
 import { OutboundLink } from "gatsby-plugin-google-gtag"
-import { Link } from "gatsby"
-
-import VectorImage from "../../../../images/lp-product/Vector.png"
 
 export const Container = styled.div`
     padding: 40px 20px;
@@ -12,16 +9,12 @@ export const Container = styled.div`
     background-color: #F9FAFC;
 
     @media (min-width: 1024px) {
-        flex-direction: row-reverse;
+        flex-direction: row;
         align-items: center;
-        background-image: url(${VectorImage});
-        background-size: cover;
-        background-position: top;
-        background-repeat: no-repeat;
     }
 
     @media (min-width: 1280px) {
-        padding: 100px 90px;
+        padding: 60px 90px;
     }
 `
 
@@ -36,7 +29,7 @@ export const ContainerImage = styled.div`
         max-width: 100%;
 
         > div {
-            margin-left: 60px;
+            margin-right: 60px;
         }
     }
 `
@@ -44,17 +37,8 @@ export const ContainerImage = styled.div`
 export const ContainerContent = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     flex: 1;
-`
-
-export const ContainerIcons = styled.div`
-    display: none;
-
-    @media (min-width: 1280px) {
-        display: flex;
-        gap: 60px;
-    }
 `
 
 export const Title = styled.p`
@@ -62,6 +46,11 @@ export const Title = styled.p`
     font-size: 36px;
     line-height: 43px;
     margin: 0;
+    color: #47506D;
+
+    span {
+        color: #5072EB;
+    }
 
     @media (min-width: 1280px) {
         font-size: 60px;
@@ -70,59 +59,69 @@ export const Title = styled.p`
 `
 
 export const Description = styled.p`
-    font-weight: 400;
     font-size: 16px;
+    font-weight: 500;
     line-height: 30px;
+    color: #47506D;
     margin: 0;
 
     @media (min-width: 1280px) {
-        font-size: 20px;
+        font-size: 24px;
     }
 `
 
-export const ContainerButton = styled.div`
+export const ContainerTopics = styled.ul`
+    list-style-type: none;
+    margin: 0;
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
 
     @media (min-width: 1280px) {
         gap: 24px;
-        flex-direction: row;
-        margin-top: 20px;
+    }
+`
+
+export const Topic = styled.li`
+    padding-left: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    margin: 0;
+    color: #47506D;
+
+    @media (min-width: 1280px) {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    &::before {
+        position: absolute;
+        left: 0;
+        content: '✓';
+        color: #5072EB;
+        font-size: 20px;
+        font-weight: 700;
+
+        @media (min-width: 1280px) {
+            font-size: 24px;
+        }
     }
 `
 
 export const Button = styled(OutboundLink)`
     width: 100%;
-    font-weight: 500;
+    margin-top: 20px;
     text-align: center;
     border-radius: 4px;
     padding: 12px 24px;
-    border: 2px solid #625eff;
-    background-color: #FFF;
-    color: #04192b;
-
-    @media (min-width: 1280px) {
-        width: fit-content;
-        padding: 12px 62px;
-        font-size: 16px;
-    }
-`
-
-export const ActionLink = styled(Link)`
-    width: 100%;
-    text-align: center;
-    border-radius: 4px;
-    padding: 12px 16px;
-    border: 2px solid #5072EB;
     background-color: #5072EB;
-    font-size: 16px;
-    font-weight: 500;
     color: #FFF;
 
     @media (min-width: 1024px) {
         width: fit-content;
-        padding: 12px 24px;
+        padding: 12px 62px;
         font-size: 16px;
     }
 `

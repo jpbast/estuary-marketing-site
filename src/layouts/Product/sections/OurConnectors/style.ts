@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { Link } from "gatsby"
 import VectorImage from "../../../../images/lp-product/vector-ourconnectors.png"
 
 export const Container = styled.div`
@@ -12,11 +12,14 @@ export const Container = styled.div`
     @media (min-width: 1024px) {
         flex-direction: row;
         align-items: center;
-        padding: 100px 90px;
         background-image: url(${VectorImage});
         background-size: cover;
         background-position: top;
         background-repeat: no-repeat;
+    }
+
+    @media (min-width: 1280px) {
+        padding: 100px 90px;
     }
 `
 
@@ -107,7 +110,7 @@ export const Topic = styled.li`
     }
 `
 
-export const Button = styled(OutboundLink)`
+export const Button = styled(Link)`
     width: 100%;
     margin-top: 20px;
     text-align: center;

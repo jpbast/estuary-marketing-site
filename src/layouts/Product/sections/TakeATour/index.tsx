@@ -1,7 +1,7 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
-import { Container, ContainerIcons, ContainerContent, ContainerImage, Title, Description, ContainerButton, Button } from "./styles"
+import { Container, ContainerIcons, ContainerContent, ContainerImage, Title, Description, ContainerButton, Button, ActionLink } from "./styles"
 
 const TakeATour = () => {
     return (
@@ -40,10 +40,10 @@ const TakeATour = () => {
                 <Title>TAKE A TOUR</Title>
                 <Description>Learn more about how estuary can help with real-time replication.</Description>
                 <ContainerButton>
-                    <Button target="_blank" href="https://dashboard.estuary.dev/register">
+                    <ActionLink target="_blank" to="/why">
                         Self-Guided Tour [1 min]
-                    </Button>
-                    <Button target="_blank" $secondary href="https://dashboard.estuary.dev/register">
+                    </ActionLink>
+                    <Button target="_blank" href="https://try.estuary.dev/webinar-estuary101-ondemand">
                         Product Overview [30 min]
                     </Button>
                 </ContainerButton>

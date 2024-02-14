@@ -14,6 +14,7 @@ export const Container = styled.div`
 `
 
 export const Button: any = styled.div`
+    user-select: none;
     display: flex;
     flex-direction: row;
     align-items: center;

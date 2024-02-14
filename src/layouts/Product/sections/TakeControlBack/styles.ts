@@ -10,8 +10,11 @@ export const Container = styled.div`
     @media (min-width: 1024px) {
         flex-direction: row;
         gap: 80px;
-        padding: 100px 90px;
         align-items: center;
+    }
+
+    @media (min-width: 1280px) {
+        padding: 100px 90px;
     }
 `
 

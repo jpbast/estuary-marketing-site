@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { Link } from "gatsby"
 
 export const Container = styled.div`
     padding: 40px 20px;
@@ -91,7 +92,7 @@ export const ContainerButton = styled.div`
     }
 `
 
-export const Button: any = styled<any>(OutboundLink)`
+export const Button = styled(OutboundLink)`
     width: 100%;
     text-align: center;
     border-radius: 4px;
@@ -102,11 +103,23 @@ export const Button: any = styled<any>(OutboundLink)`
     font-weight: 500;
     color: #FFF;
 
-    ${({ $secondary }) => $secondary && css`
-        background-color: #FFF;
-        border: 2px solid #625eff;
-        color: #04192b;
-    `}
+    @media (min-width: 1024px) {
+        width: fit-content;
+        padding: 8px 24px;
+        font-size: 16px;
+    }
+`
+
+export const ActionLink = styled(Link)`
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    padding: 12px 16px;
+    border: 2px solid #625eff;
+    background-color: #FFF;
+    font-size: 16px;
+    font-weight: 500;
+    color: #04192b;
 
     @media (min-width: 1024px) {
         width: fit-content;

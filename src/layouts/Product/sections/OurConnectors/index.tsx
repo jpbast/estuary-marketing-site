@@ -34,7 +34,7 @@ const OurConnectors = () => {
                     <Topic>Capture using log-based CDC or SaaS systems in real-time with custom-built Estuary connectors</Topic>
                     <Topic>Bring your own connector through open protocol</Topic>
                 </ContainerTopics>
-                <Button target="_blank" href="#">
+                <Button target="_blank" to="/integrations">
                     View connectors
                 </Button>
             </ContainerContent>

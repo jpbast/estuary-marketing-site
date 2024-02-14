@@ -8,6 +8,8 @@ import DataIntoStream from "../layouts/Product/sections/DataIntoStream"
 import TakeATour from "../layouts/Product/sections/TakeATour"
 import OurConnectors from "../layouts/Product/sections/OurConnectors"
 import TakeControlBack from "../layouts/Product/sections/TakeControlBack"
+import TheAutomation from "../layouts/Product/sections/TheAutomation"
+import UnifiedDataStack from "../layouts/Product/sections/UnifiedDataStack"
 
 const Product = () => {
     return (
@@ -17,6 +19,8 @@ const Product = () => {
             <TakeATour />
             <OurConnectors />
             <TakeControlBack />
+            <TheAutomation />
+            <UnifiedDataStack />
         </Wrapper >
     )
 }
