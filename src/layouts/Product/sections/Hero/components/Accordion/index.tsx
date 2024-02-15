@@ -28,7 +28,7 @@ const Accordion: any = () => {
                 <Description>Real-time ETL & CDC means all the turn-key ability of using managed connectors to ETL/ELT data, but with millisecond refreshes in your data warehouse, databases, SaaS apps, vector DBS, and more.</Description>
             </Item>
             <Item title="How is Estuary Different?" index={2} selected={selected} setOpen={setSelected}>
-                <Description>Estuary makes streaming change data accessible to the whole data team. Simply point a connector at your source, and view real-time updates in your destinations. Easily backfill and manage streaming and history data from a real-time copy of your data stored in cloud.</Description>
+                <Description>Estuary makes streaming change data accessible to the whole data team. Simply point a connector at your source, and view real-time updates in your destinations. Access every source and destination you need by using Estuary connectors, or by bringing your own.</Description>
             </Item>
             <Item title="Who shouldn’t use Estuary?" index={3} selected={selected} setOpen={setSelected}>
                 <Description>Teams with low-velocity data and no business case for faster insight or operations would find less value in the usage of streaming connectors. Teams with a very manageable cost with their existing batch ELT solution will also find less value.</Description>

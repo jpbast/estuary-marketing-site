@@ -2,11 +2,14 @@ import styled from "styled-components"
 
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 
+export const Wrapper = styled.div`
+    background-color: #F9FAFC;
+`
+
 export const Container = styled.div`
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    background-color: #F9FAFC;
 
     @media (min-width: 1024px) {
         flex-direction: row;
@@ -15,6 +18,8 @@ export const Container = styled.div`
 
     @media (min-width: 1280px) {
         padding: 60px 90px;
+        max-width: 1920px;
+        margin: 0 auto;
     }
 `
 

@@ -32,6 +32,8 @@ export const Head = styled.thead`
     font-size: 20px;
 `
 
+export const TableLine = styled.tr``
+
 export const LineHead = styled.th`
     border: none;
     background-color: #EEF1FD;
@@ -45,6 +47,10 @@ export const Body = styled.tbody`
     font-size: 20px;
     text-align: center;
     background-color: #F6F8FE;
+
+    tr {
+        background-color: #F6F8FE;
+    }
 
     td:first-of-type {
         text-align: left;

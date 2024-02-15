@@ -9,14 +9,14 @@ const TheAutomationCards = () => {
     return (
         <Container>
             <ContainerCards>
-                <Card title="Automated Schema Drift" description="Ensure that your destination matches your source, even if you change primary keys." $reverseDesktop>
+                <Card title="Schema Evolution" description="Ensure that your destination matches your source, even if you change primary keys." $reverseDesktop>
                     <StaticImage
                         alt="icon-1"
                         src="../../../../../../images/lp-product/TheAutomation/icon-1.png"
                         layout="constrained"
                     />
                 </Card>
-                <Card title="Automated Backfills" description="Automatically backfill data and transition to streaming mode.">
+                <Card title="Automated Backfills" description="Backfill unbounded historical data that seamlessly transitions to real-time streaming.">
                     <StaticImage
                         alt="icon-2"
                         src="../../../../../../images/lp-product/TheAutomation/icon-2.png"
@@ -39,7 +39,7 @@ const TheAutomationCards = () => {
                         layout="constrained"
                     />
                 </Card>
-                <Card title="Cleaned Data" description="Captured data is de-duped and stored in your cloud." $reverse>
+                <Card title="Cleaned Data" description="Captured data is validated, de-duped, and stored in your bucket." $reverse>
                     <StaticImage
                         alt="icon-5"
                         src="../../../../../../images/lp-product/TheAutomation/icon-5.png"

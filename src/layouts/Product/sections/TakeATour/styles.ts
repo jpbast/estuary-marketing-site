@@ -5,23 +5,28 @@ import { Link } from "gatsby"
 
 import VectorImage from "../../../../images/lp-product/Vector.png"
 
+export const Wrapper = styled.div`
+    background-image: url(${VectorImage});
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-color: #F9FAFC;
+`
+
 export const Container = styled.div`
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    background-color: #F9FAFC;
 
     @media (min-width: 1024px) {
         flex-direction: row-reverse;
         align-items: center;
-        background-image: url(${VectorImage});
-        background-size: cover;
-        background-position: top;
-        background-repeat: no-repeat;
     }
 
     @media (min-width: 1280px) {
         padding: 100px 90px;
+        max-width: 1920px;
+        margin: 0 auto;
     }
 `
 

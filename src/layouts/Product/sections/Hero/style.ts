@@ -8,6 +8,8 @@ export const Container = styled.div`
     @media (min-width: 1280px) {
         padding: 20px 90px;
         padding-bottom: 60px;
+        max-width: 1920px;
+        margin: 0 auto;
     }
 `
 
@@ -17,6 +19,10 @@ export const ContainerHeader = styled.div`
 
     @media (min-width: 1024px) {
         flex-direction: row;
+    }
+
+    @media (min-width: 1280px) {
+        padding-bottom: 60px;
     }
 `
 
@@ -45,6 +51,7 @@ export const ContainerContent = styled.div`
 
     @media (min-width: 1280px) {
         margin-top: 0;
+        justify-content: center;
     }
 `
 
@@ -59,8 +66,16 @@ export const Title = styled.h1`
     }
 
     @media (min-width: 1280px) {
-        font-size: 60px;
+        font-size: 52px;
         line-height: 72px;
+
+        span {
+            display: block;
+        }
+    }
+
+    @media (min-width: 1550px) {
+        font-size: 60px;
     }
 `
 
