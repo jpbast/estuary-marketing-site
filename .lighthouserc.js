@@ -1,7 +1,25 @@
+require('dotenv').config();
+
 module.exports = {
     ci: {
         collect: {
-            staticDistDir: "public"
+            // staticDistDir: "public",
+            preset: "lighthouse:recommended",
+            startServerCommand: "npm run serve",
+            url: [
+                "http://localhost:9000",
+                "http://localhost:9000/404.html",
+                "http://localhost:9000/product.html",
+                "http://localhost:9000/about.html",
+                "http://localhost:9000/pricing.html",
+                "http://localhost:9000/integrations.html",
+                "http://localhost:9000/source/postgres/index.html",
+                "http://localhost:9000/integrations/postgres-to-elasticsearch/index.html",
+                "http://localhost:9000/vs-fivetran.html",
+                "http://localhost:9000/blog.html",
+                "http://localhost:9000/chatgpt-for-sales.html",
+                "http://localhost:9000/customers/connectngo/index.html",
+            ]
         },
         upload: {
             target: "lhci",
