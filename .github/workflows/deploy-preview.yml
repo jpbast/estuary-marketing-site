@@ -45,6 +45,9 @@ jobs:
           lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+          LHCI_BASIC_AUTH_USERNAME: ${{ secrets.LHCI_BASIC_AUTH_USERNAME }}
+          LHCI_BASIC_AUTH_PASSWORD: ${{ secrets.LHCI_BASIC_AUTH_PASSWORD }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         id: firebase
         with:
