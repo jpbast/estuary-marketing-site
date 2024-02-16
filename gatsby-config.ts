@@ -229,6 +229,7 @@ const cfg: GatsbyConfig = {
             },
         },
         `gatsby-plugin-less`,
+        `gatsby-plugin-styled-components`,
         {
             resolve: "gatsby-plugin-local-search",
             options: {
