@@ -132,7 +132,6 @@ const MenuBarsImage = () => (
 
 const Header = (props: { fixedHeader?: boolean }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const navItems = useNavItems();
     const wrapperRef = useRef(null);
 
     const { fixedHeader } = props
