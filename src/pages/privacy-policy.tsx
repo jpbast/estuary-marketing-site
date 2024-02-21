@@ -1,6 +1,6 @@
 import * as React from "react";
 import Layout from "../components/layout";
-import { OutboundLink } from "gatsby-plugin-google-gtag";
+import { OutboundLink } from "../components/OutboundLink";
 
 const PrivacyPolicy = () => {
     return (

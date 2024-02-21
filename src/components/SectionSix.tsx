@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import Slider from "./Slider"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 
 const SectionSix = () => {
     return (

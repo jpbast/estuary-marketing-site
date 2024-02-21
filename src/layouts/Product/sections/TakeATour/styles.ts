@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../../../../components/OutboundLink"
 import { Link } from "gatsby"
 
 import VectorImage from "../../../../images/lp-product/Vector.png"

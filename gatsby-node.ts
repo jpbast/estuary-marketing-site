@@ -1,6 +1,7 @@
 import { GatsbyNode, graphql } from "gatsby"
 import { createRemoteFileNode } from "gatsby-source-filesystem"
 import { normalizeConnector } from "./src/utils"
+import {copyLibFiles} from "@builder.io/partytown/utils";
 import pg from "pg"
 import { SUPABASE_CONNECTION_STRING } from "./config"
 
@@ -411,3 +412,7 @@ export const createResolvers: GatsbyNode["createResolvers"] = async ({
         },
     })
 }
+
+export const onPreBuild = async () => {
+  await copyLibFiles(path.join(__dirname, 'static', '~partytown'));
+};

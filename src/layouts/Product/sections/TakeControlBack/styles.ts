@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../../../../components/OutboundLink"
 
 export const Container = styled.div`
     padding: 40px 20px;

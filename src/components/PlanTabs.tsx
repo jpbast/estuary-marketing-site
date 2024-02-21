@@ -9,7 +9,7 @@ import PricingOpenSource from "../svgs/pricing-open-source-black.svg"
 import BlackCheckmark from "../svgs/checkmark-black.svg"
 import WhiteCheckmark from "../svgs/light-checkmark.svg"
 import { Link } from "gatsby"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 
 
 function CustomTabPanel(props) {

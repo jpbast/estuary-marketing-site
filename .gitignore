@@ -7,6 +7,9 @@ yarn-error.log*
 
 .lighthouseci/
 
+# Partytown
+static/~partytown
+
 # Runtime data
 pids
 *.pid

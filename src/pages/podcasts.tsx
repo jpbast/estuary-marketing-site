@@ -8,7 +8,7 @@ import WatchYoutubeButton from "../svgs/youtube-watch.svg"
 import SubscribeYoutubeButton from "../svgs/subscribe-youtube.svg"
 import SubscribeYoutubeImage from "../svgs/subscribe-image.svg"
 import { StaticImage } from "gatsby-plugin-image"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 
 const LpPodcats = () => {
     return (

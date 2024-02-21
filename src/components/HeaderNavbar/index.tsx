@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../../components/OutboundLink"
 
 import LinkProduct from "./Product"
 import LinkResources from "./Resources"

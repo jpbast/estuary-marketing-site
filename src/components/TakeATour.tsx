@@ -1,5 +1,5 @@
 import * as React from "react"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'

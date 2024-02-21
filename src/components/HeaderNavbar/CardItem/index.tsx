@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../../../components/OutboundLink"
 import { isDesktop } from "react-device-detect"
 
 const ItemLink = ({ name, description, Image, to }) => {

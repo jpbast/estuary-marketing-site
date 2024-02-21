@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { StaticImage } from "gatsby-plugin-image"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../../../components/OutboundLink"
 
 import HubspotModal from "../../../components/HubspotModal"
 

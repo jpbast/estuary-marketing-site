@@ -5,7 +5,7 @@ import ColoredLogo from "../svgs/colored-logo.svg"
 import SlackIcon from "../svgs/slack-outline.svg"
 import GithubIcon from "../svgs/github-outline.svg"
 import clsx from "clsx"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 import { isDesktop } from "react-device-detect"
 
 import HeaderNavbar from "./HeaderNavbar"

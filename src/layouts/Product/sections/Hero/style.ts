@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../../../../components/OutboundLink"
 import { Link } from "gatsby"
 
 export const Container = styled.div`
