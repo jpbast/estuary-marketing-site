@@ -19,7 +19,7 @@ import { RenderToc } from "../components/BlogPostToc"
 
 dayjs.extend(reltime)
 
-const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
+const BlogPostTemplate = ({ data: { post }, pageContext }) => {
     const postTags = post.tags.filter(tag => tag.type === "tag")
     const [windowWidth, setWindowWidth] = useState(
         typeof window === "undefined" ? 1500 : window.innerWidth
@@ -196,8 +196,6 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
     query BlogPostBySlug(
         $id: String!
-        $previousPostId: String
-        $nextPostId: String
     ) {
         site {
             siteMetadata {
@@ -256,42 +254,6 @@ export const pageQuery = graphql`
             tags: tags {
                 name: Name
                 type: Type
-            }
-        }
-        previous: strapiBlogPost(id: { eq: $previousPostId }) {
-            title: Title
-            slug: Slug
-            authors {
-                name: Name
-                picture: Picture {
-                    localFile {
-                        childImageSharp {
-                            gatsbyImageData(
-                                layout: CONSTRAINED
-                                placeholder: BLURRED
-                            )
-                        }
-                    }
-                }
-                link: Link
-            }
-        }
-        next: strapiBlogPost(id: { eq: $nextPostId }) {
-            title: Title
-            slug: Slug
-            authors {
-                name: Name
-                picture: Picture {
-                    localFile {
-                        childImageSharp {
-                            gatsbyImageData(
-                                layout: CONSTRAINED
-                                placeholder: BLURRED
-                            )
-                        }
-                    }
-                }
-                link: Link
             }
         }
     }
