@@ -13,7 +13,7 @@ import HubspotForm from "react-hubspot-form"
 import { ProcessedPost } from "../components/BlogPostProcessor"
 import Seo from "../components/seo"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 
 // const jobs = [
 //     {

@@ -3,7 +3,7 @@ import loadable from "@loadable/component"
 import { StaticImage } from "gatsby-plugin-image"
 import { useEffect, useState } from "react"
 import ReactPlayer from "react-player/lazy"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 
 const SectionThree = () => {
     const [hasWindow, setHasWindow] = useState(false)

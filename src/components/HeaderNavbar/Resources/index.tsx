@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../../../components/OutboundLink"
 import { isDesktop } from "react-device-detect"
 
 import Chevron from "@mui/icons-material/ChevronRight"

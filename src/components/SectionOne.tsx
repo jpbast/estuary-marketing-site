@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import type { LottieRef } from "lottie-react"
 import { useMediaQuery, useTheme } from "@mui/material"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 import Marquee from "react-fast-marquee";
 
 import HubspotModal from "./HubspotModal"

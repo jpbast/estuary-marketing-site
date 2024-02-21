@@ -5,7 +5,7 @@ import SlackIcon from "../svgs/slack-outline.svg"
 import GithubIcon from "../svgs/github-outline.svg"
 import LinkedinIcon from "../svgs/linkedin-outline.svg"
 import TwitterIcon from "../svgs/twitter-outline.svg"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 
 const Footer = () => {
     return (
