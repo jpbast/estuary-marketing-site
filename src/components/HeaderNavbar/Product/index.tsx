@@ -8,63 +8,80 @@ import NavbarImage from "../../../svgs/navbar-image-1.svg"
 
 import { products, compare } from "./items"
 
-import Card from "../Card"
 import CardItem from "../CardItem"
 
+const Card = React.lazy(() => import("../Card"))
+
 const HeaderNavbarProduct = ({ active, setActive }) => {
-  const wrapperRef = useRef(null);
+    const wrapperRef = useRef(null)
 
-  const onClick = (ev) => {
-    ev.preventDefault()
-    if (!isDesktop) setActive((prev) => prev === 'product' ? '' : 'product')
-  }
-
-  const onMouseEnter = (ev) => {
-    ev.preventDefault()
-    if (isDesktop) setActive('product')
-  }
-
-  const onMouseLeave = (ev) => {
-    ev.preventDefault()
-    if (isDesktop) setActive('')
-  }
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (isDesktop && wrapperRef.current && !wrapperRef.current.contains(event.target) && !event.target.className?.includes?.('active')) {
-        setActive('')
-      }
+    const onClick = ev => {
+        ev.preventDefault()
+        if (!isDesktop) setActive(prev => (prev === "product" ? "" : "product"))
     }
 
-    if (active) document.addEventListener("mousedown", handleClickOutside)
+    const onMouseEnter = ev => {
+        ev.preventDefault()
+        if (isDesktop) setActive("product")
+    }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    };
-  }, [active]);
+    const onMouseLeave = ev => {
+        ev.preventDefault()
+        if (isDesktop) setActive("")
+    }
 
-  return (
-      <>
-        <Link className={clsx("global-header-link", active && "active")} to="#" onClick={onClick} onMouseEnter={onMouseEnter}>
-          Product
-          <Chevron className="menu-chevron" fontSize="small" />
-        </Link>
-        <Card customRef={wrapperRef} show={active} onMouseLeave={onMouseLeave}>
-          <CardItem title="PRODUCT" onlyContent items={products} />
-          <CardItem title="COMPARE" items={compare} />
-          <CardItem className="hide-on-mobile" title="CASE STUDY">
-          <NavbarImage />
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (
+                isDesktop &&
+                wrapperRef.current &&
+                !wrapperRef.current.contains(event.target) &&
+                !event.target.className?.includes?.("active")
+            ) {
+                setActive("")
+            }
+        }
+
+        if (active) document.addEventListener("mousedown", handleClickOutside)
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [active])
+
+    return (
+        <>
             <Link
-              target="_blank"
-              to="/customers/connectngo"
-              className="cta-button"
-          >
-              Read Customer Story
-          </Link>
-          </CardItem>
-        </Card>
-      </>
-  )
+                className={clsx("global-header-link", active && "active")}
+                to="#"
+                onClick={onClick}
+                onMouseEnter={onMouseEnter}
+            >
+                Product
+                <Chevron className="menu-chevron" fontSize="small" />
+            </Link>
+            <React.Suspense fallback={<div>Loading...</div>}>
+                <Card
+                    customRef={wrapperRef}
+                    show={active}
+                    onMouseLeave={onMouseLeave}
+                >
+                    <CardItem title="PRODUCT" onlyContent items={products} />
+                    <CardItem title="COMPARE" items={compare} />
+                    <CardItem className="hide-on-mobile" title="CASE STUDY">
+                        <NavbarImage />
+                        <Link
+                            target="_blank"
+                            to="/customers/connectngo"
+                            className="cta-button"
+                        >
+                            Read Customer Story
+                        </Link>
+                    </CardItem>
+                </Card>
+            </React.Suspense>
+        </>
+    )
 }
 
 export default HeaderNavbarProduct
