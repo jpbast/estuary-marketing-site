@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { OutboundLink } from "../../../components/OutboundLink"
-import { isDesktop } from "react-device-detect"
+import clsx from "clsx"
 
 const ItemLink = ({ name, description, Image, to }) => {
   const LinkElement: any = to[0] === '/' ? Link : OutboundLink
@@ -20,10 +20,12 @@ const ItemLink = ({ name, description, Image, to }) => {
   )
 }
 
+// Always show the title on desktop
+// Hide the title on mobile if onlyContent is true
 const HeaderCardItem = ({ title, items = [], children, onlyContent, ...props }: any) => {
   return (
     <div {...props}>
-      {(!onlyContent || isDesktop) && <p className="card-title">{title}</p>}
+      <p className={clsx({"card-title": true, "hide-on-mobile": onlyContent})}>{title}</p>
       <div className="content">
         {items.map((item, index) => <ItemLink key={index} {...item} />)}
         {children}

@@ -233,6 +233,7 @@ export const Connectors = ({
                     {(query.length > 0 ? results : mappedConnectors).map(
                         connector => (
                             <ConnectorCard
+                                key={connector.id}
                                 {...connector}
                                 logo={logosByConnectorId[connector.id]}
                                 showType={showAllConnectors}

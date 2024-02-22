@@ -29,6 +29,6 @@ exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
         gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false })`
       }}
     />,
-    // <script key="osano-1" type="text/partytown" src="https://cmp.osano.com/16CPXbTOi1sXx4D3/1e6b223c-ed10-4c4b-a442-48fea69f76af/osano.js"></script>,
+    <script key="osano-1" src="https://cmp.osano.com/16CPXbTOi1sXx4D3/1e6b223c-ed10-4c4b-a442-48fea69f76af/osano.js"></script>,
   ])
 }
