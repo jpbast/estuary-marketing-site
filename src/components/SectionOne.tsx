@@ -28,11 +28,11 @@ const AnimatedHero = () => {
         typeof HeroAnimation
     > | null>(null)
 
-    React.useEffect(() => {
+    React.startTransition(() => {
         HeroAnimation.then(anim => {
             setHeroAnim(anim.default as any)
         })
-    }, [])
+    })
 
     const [lottieReady, setLottieReady] = React.useState(false)
     const lottieRef: LottieRef = React.useRef()
@@ -45,7 +45,7 @@ const AnimatedHero = () => {
     }, [lottieRef])
 
     return (
-        <React.Suspense fallback={animFallback}>
+        <> 
             {!(lottieReady && heroAnim) && animFallback}
             {heroAnim && (
                 <Lottie
@@ -63,7 +63,7 @@ const AnimatedHero = () => {
                     lottieRef={lottieRef}
                 />
             )}
-        </React.Suspense>
+        </>
     )
 }
 
@@ -100,11 +100,7 @@ const SectionOne = () => {
         }
     `)
 
-    const theme = useTheme();
-    const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
     const [open, setOpen] = React.useState(false)
-
-
     return (
         <div className="section-one">
             <div className="section-one-wrapper">
@@ -134,7 +130,9 @@ const SectionOne = () => {
                     </div>
                 </div>
                 <div className="section-one-right">
-                    {isMobile || isSmall ? null : <AnimatedHero />}
+                    <React.Suspense fallback={animFallback}>
+                        <AnimatedHero />
+                    </React.Suspense>
                 </div>
             </div>
             <div className="custom-slides slide-container">
