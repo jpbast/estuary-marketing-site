@@ -3,7 +3,7 @@ import clsx from "clsx"
 
 import Header from "./header"
 import Footer from "./footer"
-import TakeATour from "./TakeATour"
+const TakeATour = React.lazy(() => import("./TakeATour"))
 
 const Layout = ({
     headerTheme,
@@ -22,9 +22,11 @@ const Layout = ({
     )
     return (
         <div className="global-wrapper">
-            {showTour && !closeTour && (
-                <TakeATour onClose={() => setCloseTour(true)} />
-            )}
+            <React.Suspense fallback={null}>
+                {typeof window !== "undefined" && showTour && !closeTour && (
+                    <TakeATour onClose={() => setCloseTour(true)} />
+                )}
+            </React.Suspense>
             <Header fixedHeader={fixedHeader} />
             <main className={clsx(fixedHeader && "global-main-fixed-header")}>
                 {children}
