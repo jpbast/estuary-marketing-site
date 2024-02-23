@@ -88,7 +88,7 @@
             },
             {   
                 "source": "/airbyte-vs-fivetran-vs-estuary",
-                "destination": "airbyte-vs-fivetran",
+                "destination": "/airbyte-vs-fivetran",
                 "type": 301
             },
             {
@@ -98,12 +98,12 @@
             },
             {
                 "source": "/data-lake-architecture%20/",
-                "destination": "data-lake-architecture",
+                "destination": "/data-lake-architecture",
                 "type": 301
             },
             {
-                "source": "data%20ingestion-vs-data-integration/",
-                "destination": "data-ingestion-vs-data-integration",
+                "source": "/data%20ingestion-vs-data-integration/",
+                "destination": "/data-ingestion-vs-data-integration",
                 "type": 301
             }
         ],
