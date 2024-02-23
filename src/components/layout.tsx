@@ -16,17 +16,14 @@ const Layout = ({
     showTour?: boolean
     children: React.ReactNode | React.ReactNode[]
 }) => {
-    const [closeTour, setCloseTour] = React.useState(
-        typeof window !== "undefined" &&
-            !!localStorage.getItem("@estuary/closeTour")
-    )
+    const isSSR = typeof window === "undefined"
     return (
         <div className="global-wrapper">
-            <React.Suspense fallback={null}>
-                {typeof window !== "undefined" && showTour && !closeTour && (
-                    <TakeATour onClose={() => setCloseTour(true)} />
-                )}
-            </React.Suspense>
+            {!isSSR && (
+                <React.Suspense fallback={<div />}>
+                    {typeof window !== "undefined" && showTour && <TakeATour />}
+                </React.Suspense>
+            )}
             <Header fixedHeader={fixedHeader} />
             <main className={clsx(fixedHeader && "global-main-fixed-header")}>
                 {children}
