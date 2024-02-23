@@ -16,14 +16,11 @@ const Layout = ({
     showTour?: boolean
     children: React.ReactNode | React.ReactNode[]
 }) => {
-    const isSSR = typeof window === "undefined"
     return (
         <div className="global-wrapper">
-            {!isSSR && (
-                <React.Suspense fallback={<div />}>
-                    {typeof window !== "undefined" && showTour && <TakeATour />}
-                </React.Suspense>
-            )}
+            <React.Suspense fallback={null}>
+                <TakeATour />
+            </React.Suspense>
             <Header fixedHeader={fixedHeader} />
             <main className={clsx(fixedHeader && "global-main-fixed-header")}>
                 {children}

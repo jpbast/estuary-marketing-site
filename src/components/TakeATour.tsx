@@ -6,13 +6,18 @@ import CloseIcon from '@mui/icons-material/Close'
 
 const TakeATour = () => {
     const [closeTour, setCloseTour] = React.useState(
-        typeof window !== "undefined" &&
-            !!localStorage.getItem("@estuary/closeTour")
+        true
     )
     const onClick = React.useCallback(() => {
         localStorage.setItem('@estuary/closeTour', "1");
         setCloseTour(true)
     },[]);
+
+    React.useEffect(() => {
+        if(typeof window !== "undefined"){
+            setCloseTour(!!localStorage.getItem("@estuary/closeTour"))
+        }
+    }, [])
 
     if(closeTour){
         return null;
