@@ -49,8 +49,8 @@ jobs:
         run: |
           # Need to set these manually LHCI doesn't support multiple builds
           export LHCI_BUILD_CONTEXT__COMMIT_MESSAGE=$(git log --format=%s -n 1 HEAD) 
-          export LHCI_BUILD_CONTEXT__AUTHOR=$(git log --format=$aN <%aE> -n 1 HEAD)
-          export LHCI_BUILD_CONTEXT__COMMIT_TIME=$(git log -n1 --pretty=%cI HEAD)
+          export LHCI_BUILD_CONTEXT__AUTHOR=$(git log --format="$aN <%aE>" -n 1 HEAD)
+          export LHCI_BUILD_CONTEXT__COMMIT_TIME=$(git log -n1 --pretty="%cI" HEAD)
           npm install -g @lhci/cli@0.13.x
           lhci autorun
         env:
