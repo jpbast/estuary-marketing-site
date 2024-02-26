@@ -1,33 +1,18 @@
-import * as React from "react"
-import Layout from "../components/layout"
-import SectionOne from "../components/SectionOne"
-import { useStaticQuery, graphql } from "gatsby"
-import SectionTwo from "../components/SectionTwo"
-import SectionThree from "../components/SectionThree"
-import SectionFour from "../components/SectionFour"
-import SectionFive from "../components/SectionFive"
-import SectionSix from "../components/SectionSix"
-import Seo from "../components/seo"
+import React from "react"
 
-const IndexPage = () => {
+import Wrapper from "../layouts/Home/components/Wrapper"
+import Header from "../layouts/Home/components/Head"
+
+import Hero from "../layouts/Home/sections/Hero"
+
+const Home = () => {
     return (
-        //@ts-ignore
-        <Layout headerTheme="dark" showTour>
-            <SectionOne />
-            <SectionTwo />
-            <SectionThree />
-            <SectionFour />
-            <SectionFive />
-            <SectionSix />
-        </Layout>
+        <Wrapper>
+            <Hero />
+        </Wrapper>
     )
 }
 
-export const Head = ({ data: { post } }) => {
-    return <Seo 
-        title={"Real-time ETL"}
-        description={"Managed streaming data pipelines, streaming SQL & turnkey connectivity to clouds, databases, and apps"}
-    />
-}
+export const Head = Header
 
-export default IndexPage
+export default Home
