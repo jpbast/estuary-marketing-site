@@ -50,7 +50,7 @@ jobs:
         uses: actions/github-script@v6
         with: 
           script: |
-            const lighthouseConfig = require('./lighthouserc.js');
+            const lighthouseConfig = require('./.lighthouserc.js');
         
             // Healthcheck
             await exec.exec('lhci', ['healthcheck', '--fatal']);
