@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-hubspot-form/dist/index.js b/node_modules/react-hubspot-form/dist/index.js
+index 7f1ffa5..9ef77d4 100644
+--- a/node_modules/react-hubspot-form/dist/index.js
++++ b/node_modules/react-hubspot-form/dist/index.js
+@@ -83,6 +83,7 @@ var HubspotForm = function (_React$Component) {
+ 				_this3.findFormElement();
+ 			};
+ 			script.src = '//js.hsforms.net/forms/v2.js';
++            script.type='text/partytown';
+ 			document.head.appendChild(script);
+ 		}
+ 	}, {
