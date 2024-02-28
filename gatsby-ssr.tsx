@@ -12,7 +12,7 @@ const { Partytown } = require('@builder.io/partytown/react');
  */
 
 const GA_ORIGIN = 'https://www.googletagmanager.com';
-const GA_MEASUREMENT_ID = 'G-P1PZPE4HHZ"';
+const GA_MEASUREMENT_ID = 'G-P1PZPE4HHZ';
 
 exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: `en` })
