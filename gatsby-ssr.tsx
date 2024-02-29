@@ -17,7 +17,7 @@ const GA_MEASUREMENT_ID = 'G-P1PZPE4HHZ';
 exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: `en` })
   setHeadComponents([
-    <Partytown key="partytown" forward={['gtag']} />,
+    <Partytown key="partytown" forward={['gtag', '_hsq.push']} />,
     <script key="google-analytics" type="text/partytown" src={`${GA_ORIGIN}/gtag/js?id=${GA_MEASUREMENT_ID}`} />,
     <script
       key="google-analytics-config"
