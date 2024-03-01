@@ -1,5 +1,5 @@
-import { FormControl, InputLabel, MenuItem, Select, } from "@mui/material"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { InputLabel, Select, } from "@mui/material"
+import { useStaticQuery, graphql } from "gatsby"
 import React, { useMemo, useState } from "react"
 import { normalizeConnector } from "../../../../../../utils"
 

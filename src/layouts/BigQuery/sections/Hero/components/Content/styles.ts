@@ -95,9 +95,12 @@ export const Topics = styled.ul`
     flex-direction: column;
     gap: 16px;
 
-    @media (min-width: 1280px) {
-        gap: 24px;
+    @media (min-width: 1024px) {
         flex-direction: row;
+    }
+
+    @media (min-width: 1500px) {
+        gap: 24px;
     }
 `
 

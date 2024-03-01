@@ -6,12 +6,11 @@ import { Link } from "gatsby"
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
 
     @media (min-width: 1080px){
         flex-direction: row;
     }
-
 `
 
 export const Form = styled(FormControl)`
@@ -30,6 +29,7 @@ export const Image = styled(GatsbyImage)`
 `
 
 export const Button = styled(Link)`
+    display: block;
     width: 100%;
     text-align: center;
     border-radius: 4px;
@@ -38,8 +38,8 @@ export const Button = styled(Link)`
     color: #FFF;
 
     @media (min-width: 1024px) {
-        width: 93px;
-        height: 52px;
+        padding: 16px 24px;
+        max-width: 100px;
         font-size: 16px;
     }
 `

@@ -1,13 +1,24 @@
 import styled from "styled-components"
 
+import Vector from "../../../../../../images/lp-big-query/change-data/background.png"
+
 export const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 219px;
+    margin: 0 auto;
     max-width: 450px;
     flex: 1;
-    margin-bottom: 80px;
+
+    background-image: url(${Vector});
+    background-position: center 67%;
+    background-size: 80%;
+    background-repeat: no-repeat;
+
+    @media (min-width: 1280px){
+        background-size: 50%;
+    }
 
     @media (min-width: 1024px) {
         max-width: 100%;
