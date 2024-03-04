@@ -16,7 +16,7 @@ const RealTime = () => {
                 <ContainerImage>
                     <StaticImage
                         alt="Connection-1"
-                        src="../../../../images/BigQuery/RealTime/icons.png"
+                        src="../../../../images/lp-big-query/real-time/icons.png"
                         width={520}
                         height={240}
                         quality={100}

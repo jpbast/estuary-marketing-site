@@ -8,12 +8,12 @@ export const Container: any = styled.div`
     border: 1px solid #D7DCE5;
     background-color: #F9FAFC;
     border-radius: 100px;
-    padding: ${({ $reverse }: any) => ($reverse ? "20px 20px 20px 40px" : "20px 40px 20px 20px")};
+    padding: 20px 40px 20px 20px;
 
     @media (min-width: 1024px) {
         flex-direction: row;
-        padding: ${({ $reverseDesktop }: any) => ($reverseDesktop ? "16px 16px 16px 40px" : "16px 40px 16px 16px")};
-        max-width: 384px;
+        padding: 10px 16px;
+        max-width: 320px;
     }
 `
 
@@ -40,8 +40,8 @@ export const Title = styled.p`
     margin: 0;
 
     @media (min-width: 1280px) {
-        font-size: 16px;
-        line-height: 20px;
+        font-size: 14px;
+        line-height: 18px;
     }
 `
 
@@ -53,6 +53,7 @@ export const Description = styled.p`
     margin: 0;
     
     @media (min-width: 1280px) {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 26px;
     }
 `

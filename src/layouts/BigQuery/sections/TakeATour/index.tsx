@@ -11,7 +11,7 @@ const TakeATour = () => {
                     <ContainerImage>
                         <StaticImage                    
                             alt="Laptop"
-                            src="../../../../images/BigQuery/TakeATour/video.png"
+                            src="../../../../images/lp-big-query/take-a-tour/video.png"
                             layout="constrained"
                         />
                     </ContainerImage>

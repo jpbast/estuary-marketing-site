@@ -21,6 +21,7 @@ export const Container = styled.div`
 
     @media (min-width: 1024px) {
         flex-direction: row;
+        align-items: center;
     }
 
     @media (min-width: 1280px) {
@@ -33,7 +34,6 @@ export const Container = styled.div`
 export const ContainerImage = styled.div`
     position: relative;
     margin: 0 auto;
-    padding-bottom: 40px;
     flex: 1;
 
     @media (min-width: 1024px) {
