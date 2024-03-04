@@ -1,18 +1,18 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
-import { Wrapper, Container, ContainerContent, Title, ContainerImage, Button } from "./style"
+import { Wrapper, Container, Content, Title, ContainerImage, Button } from "./style"
 
 const RealTime = () => {
     return (
         <Wrapper>
             <Container>
-                <ContainerContent>
-                    <Title>Deliver&<span> real-time</span> and<span> batch</span> data from DBs, SaaS, APIs, and more</Title>
+                <Content>
+                    <Title>Deliver <span>real-time</span> and <span>batch</span> data from DBs, SaaS, APIs, and more</Title>
                     <Button target="_blank" href="https://try.estuary.dev/webinar-estuary101-ondemand">
                         Build Free Pipeline
                     </Button>
-                </ContainerContent>
+                </Content>
                 <ContainerImage>
                     <StaticImage
                         alt="Connection-1"

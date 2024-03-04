@@ -53,10 +53,10 @@ export const ContainerImage = styled.div`
     }
 `
 
-export const ContainerContent = styled.div`
+export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 36px;
     flex: 1;
 `
 
@@ -65,7 +65,6 @@ export const Title = styled.p`
     font-size: 36px;
     line-height: 43px;
     margin: 0;
-    margin-bottom: 36px;
     color: #fff;
 
     span {
