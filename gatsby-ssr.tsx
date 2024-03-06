@@ -17,7 +17,14 @@ const GA_MEASUREMENT_ID = "G-P1PZPE4HHZ"
 exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
     setHtmlAttributes({ lang: `en` })
     setHeadComponents([
-        <Partytown key="partytown" forward={["gtag", "_hsq.push", "hbspt"]} />,
+        <Partytown
+            key="partytown"
+            forward={[
+                "gtag",
+                "_hsq.push",
+                ["hbspt.forms.create", { preserveBehavior: true }],
+            ]}
+        />,
         <script
             key="google-analytics"
             type="text/partytown"
