@@ -32,7 +32,7 @@ function OpenHubspotModal({
             >
                 {buttonLabel}
             </button>
-            <Dialog open={openDialog} fullWidth>
+            <Dialog open={openDialog} fullWidth style={{ zIndex: 10000 }}>
                 <DialogTitle
                     style={{ display: "flex", justifyContent: "space-between" }}
                 >
