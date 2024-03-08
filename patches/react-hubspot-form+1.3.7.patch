@@ -1,0 +1,15 @@
+diff --git a/node_modules/react-hubspot-form/dist/index.js b/node_modules/react-hubspot-form/dist/index.js
+index 7f1ffa5..382b390 100644
+--- a/node_modules/react-hubspot-form/dist/index.js
++++ b/node_modules/react-hubspot-form/dist/index.js
+@@ -61,8 +61,8 @@ var HubspotForm = function (_React$Component) {
+ 					target: '#' + this.el.getAttribute('id'),
+ 					onFormSubmit: function onFormSubmit($form) {
+ 						// ref: https://developers.hubspot.com/docs/methods/forms/advanced_form_options
+-						var formData = $form.serializeArray();
+-						_this2.props.onSubmit(formData);
++						// var formData = $form.serializeArray();
++						_this2.props.onSubmit($form.dataset);
+ 					}
+ 				});
+ 				window.hbspt.forms.create(options);
