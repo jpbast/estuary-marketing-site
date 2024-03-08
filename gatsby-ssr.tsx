@@ -22,7 +22,9 @@ exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
             forward={[
                 "gtag",
                 "_hsq.push",
-                ["hbspt.forms.create", { preserveBehavior: true }],
+                // TODO (partytown) - eventually we should see if we can
+                //  get the forms working through partytown
+                // ["hbspt.forms.create", { preserveBehavior: true }],
             ]}
         />,
         <script
