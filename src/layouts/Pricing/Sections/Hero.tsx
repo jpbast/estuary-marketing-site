@@ -1,13 +1,9 @@
 import React, { useState } from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import { OutboundLink } from "../../../components/OutboundLink"
-
-import HubspotModal from "../../../components/HubspotModal"
-import OpenHubspotModal from "../../../components/OpenHubspotModal"
+import OpenHubspotModal from "../../../components/HubSpot/OpenModal"
 
 const PricingHero = () => {
-    const [open, setOpen] = useState(false)
-
     return (
         <div className="pricing-page-top">
             <div>

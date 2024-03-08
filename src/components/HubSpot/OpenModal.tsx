@@ -8,7 +8,7 @@ import {
 } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import HubspotForm from "react-hubspot-form"
-import HubSpotFormWrapper from "./HubSpotFormWrapper"
+import HubSpotFormWrapper from "./FormWrapper"
 
 function OpenHubspotModal({
     buttonLabel,

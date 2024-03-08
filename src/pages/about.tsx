@@ -14,7 +14,7 @@ import { ProcessedPost } from "../components/BlogPostProcessor"
 import Seo from "../components/seo"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { OutboundLink } from "../components/OutboundLink"
-import HubSpotFormWrapper from "../components/HubSpotFormWrapper"
+import HubSpotFormWrapper from "../components/HubSpot/FormWrapper"
 
 // const jobs = [
 //     {

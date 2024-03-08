@@ -6,7 +6,7 @@ import type { LottieRef } from "lottie-react"
 import { useMediaQuery, useTheme } from "@mui/material"
 import { OutboundLink } from "../components/OutboundLink"
 import Marquee from "react-fast-marquee"
-import OpenHubspotModal from "./OpenHubspotModal"
+import OpenHubspotModal from "./HubSpot/OpenModal"
 
 const animFallback = (
     <div className="section-one-right-image">
