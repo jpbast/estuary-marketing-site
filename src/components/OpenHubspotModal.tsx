@@ -1,14 +1,14 @@
 import * as React from "react"
 import {
-    CircularProgress,
     Dialog,
     DialogContent,
     DialogTitle,
     IconButton,
+    LinearProgress,
 } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import HubspotForm from "react-hubspot-form"
-// import HubspotModal from "./HubspotModal"
+import HubSpotFormWrapper from "./HubSpotFormWrapper"
 
 function OpenHubspotModal({
     buttonLabel,
@@ -42,12 +42,7 @@ function OpenHubspotModal({
                     </IconButton>
                 </DialogTitle>
                 <DialogContent>
-                    <React.Suspense fallback={<CircularProgress />}>
-                        <HubspotForm
-                            portalId={"8635875"}
-                            formId={"698e6716-f38b-4bd5-9105-df9ba220e29b"}
-                        />
-                    </React.Suspense>
+                    <HubSpotFormWrapper />
                 </DialogContent>
             </Dialog>
         </>

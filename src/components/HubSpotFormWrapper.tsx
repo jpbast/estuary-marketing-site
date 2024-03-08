@@ -1,0 +1,18 @@
+import * as React from "react"
+import { LinearProgress } from "@mui/material"
+import HubspotForm from "react-hubspot-form"
+
+function HubSpotFormWrapper() {
+    return (
+        <HubspotForm
+            loading={<LinearProgress />}
+            portalId={"8635875"}
+            formId={"698e6716-f38b-4bd5-9105-df9ba220e29b"}
+            onSubmit={() => {
+                console.log("hubspot form submit")
+            }}
+        />
+    )
+}
+
+export default HubSpotFormWrapper
