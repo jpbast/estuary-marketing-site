@@ -37,7 +37,7 @@ export const wrapPageElement = ({ element }) => {
             <>
                 {element}
                 <Script
-                  src={`${GA_ORIGIN}/gtag/js?id=${GA_MEASUREMENT_ID}`}
+                  src={`/gtag.js?id=${GA_MEASUREMENT_ID}`}
                   strategy='off-main-thread'
                   forward={[`gtag`]}
                 />
