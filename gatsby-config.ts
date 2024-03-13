@@ -104,7 +104,6 @@ const cfg: GatsbyConfig = {
     flags: {
         PARALLEL_SOURCING: true,
     },
-    partytownProxiedURLs: [`https://www.googletagmanager.com/gtag/js?id=G-P1PZPE4HHZ`],
     // graphqlTypegen: true,
     plugins: [
         {
