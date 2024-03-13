@@ -105,6 +105,11 @@
                 "source": "/data%20ingestion-vs-data-integration/",
                 "destination": "/data-ingestion-vs-data-integration",
                 "type": 301
+            },
+            {
+                "source": "/blogs",
+                "destination": "/blog",
+                "type": 301
             }
         ],
         "public": "public",
