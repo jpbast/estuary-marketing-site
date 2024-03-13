@@ -11,7 +11,6 @@ const { Partytown } = require("@builder.io/partytown/react")
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
 
-const GA_ORIGIN = "https://www.googletagmanager.com"
 const GA_MEASUREMENT_ID = "G-P1PZPE4HHZ"
 
 exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
@@ -30,7 +29,7 @@ exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
         <script
             key="google-analytics"
             type="text/partytown"
-            src={`/gtag.js?id=${GA_MEASUREMENT_ID}`}
+            src={`/analytics.js?id=${GA_MEASUREMENT_ID}`}
         />,
         <script
             key="google-analytics-config"

@@ -3,6 +3,7 @@ import { createRemoteFileNode } from "gatsby-source-filesystem"
 import { normalizeConnector } from "./src/utils"
 import {copyLibFiles} from "@builder.io/partytown/utils";
 import pg from "pg"
+import { writeFile } from "fs/promises"
 import { SUPABASE_CONNECTION_STRING } from "./config"
 
 /**
@@ -414,5 +415,11 @@ export const createResolvers: GatsbyNode["createResolvers"] = async ({
 }
 
 export const onPreBuild = async () => {
-  await copyLibFiles(path.join(__dirname, 'static', '~partytown'));
+    await copyLibFiles(path.join(__dirname, 'static', '~partytown'));
+};
+
+export const onPreBootstrap = async () => {
+    const response = await fetch('https://google-analytics.com/analytics.js');
+    const buffer = Buffer.from(await response.arrayBuffer());
+    await writeFile(path.join(__dirname, 'static', 'analytics.js'), buffer);
 };

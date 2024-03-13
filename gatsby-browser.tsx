@@ -16,8 +16,6 @@ import { Script, ScriptStrategy } from "gatsby"
 import { useState } from "react"
 
 const ZD_KEY = "3271265c-16a8-4e0d-b1ab-72ed8fbe7e5a"
-const GA_ORIGIN = "https://www.googletagmanager.com"
-const GA_MEASUREMENT_ID = "G-P1PZPE4HHZ"
 
 export const wrapPageElement = ({ element }) => {
     const [dimensions,setDimensions] = useState({width:0,height:0})
@@ -36,20 +34,6 @@ export const wrapPageElement = ({ element }) => {
         return (
             <>
                 {element}
-                <Script
-                  src={`/gtag.js?id=${GA_MEASUREMENT_ID}`}
-                  strategy='off-main-thread'
-                  forward={[`gtag`]}
-                />
-                <Script
-                    strategy='off-main-thread'
-                    dangerouslySetInnerHTML={{
-                        __html: `window.dataLayer = window.dataLayer || [];
-                  window.gtag = function gtag(){ window.dataLayer.push(arguments);}
-                  gtag('js', new Date()); 
-                  gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false })`,
-                    }}
-                />
                 <Script
                     id="ze-snippet"
                     key="gatsby-plugin-zendesk-chat"

@@ -9,6 +9,7 @@ yarn-error.log*
 
 # Partytown
 static/~partytown
+static/analytics.js
 
 # Runtime data
 pids
