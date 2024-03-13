@@ -29,7 +29,7 @@ exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
         <script
             key="google-analytics"
             type="text/partytown"
-            src={`/analytics.js?id=${GA_MEASUREMENT_ID}`}
+            src={`/gtag.js?id=${GA_MEASUREMENT_ID}`}
         />,
         <script
             key="google-analytics-config"
