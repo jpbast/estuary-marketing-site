@@ -29,7 +29,7 @@ interface BlogIndexProps {
         blogPostIds: String[]
         tabCategories: Array<{
             Type: String
-            Slug: String
+            Slug: string
             Name: String
         }>
         categoryTitle: String
@@ -109,7 +109,7 @@ const BlogIndex = ({
                     <div className="blogs-index-tabs">
                         {tabCategories.map((category) => (
                             <Link
-                                key={`${category.Slug}`}
+                                key={category.Slug}
                                 to={`/blog/${category.Slug}`}
                                 className={clsx("blogs-index-tab", {
                                     "blogs-index-tab-active":
@@ -133,7 +133,7 @@ const BlogIndex = ({
                 </div>
                 <div className="blogs-index-body">
                     {(query.length > 0 ? results : posts).map((post) => (
-                        <BlogPostCard key={`${post.Slug}`} {...post} />
+                        <BlogPostCard key={post.Slug} {...post} />
                     ))}
                 </div>
             </BackgroundImageWrapper>
