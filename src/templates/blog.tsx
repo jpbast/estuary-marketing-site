@@ -107,8 +107,9 @@ const BlogIndex = ({
                 </div>
                 <div className="blogs-index-tab-bar">
                     <div className="blogs-index-tabs">
-                        {tabCategories.map(category => (
+                        {tabCategories.map((category, index) => (
                             <Link
+                                key={`${category.Slug}-${index}`}
                                 to={`/blog/${category.Slug}`}
                                 className={clsx("blogs-index-tab", {
                                     "blogs-index-tab-active":
@@ -131,8 +132,8 @@ const BlogIndex = ({
                     </div>
                 </div>
                 <div className="blogs-index-body">
-                    {(query.length > 0 ? results : posts).map(post => (
-                        <BlogPostCard {...post} />
+                    {(query.length > 0 ? results : posts).map((post, index) => (
+                        <BlogPostCard key={index} {...post} />
                     ))}
                 </div>
             </BackgroundImageWrapper>
