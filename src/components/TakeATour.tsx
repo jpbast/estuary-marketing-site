@@ -4,10 +4,23 @@ import { OutboundLink } from "../components/OutboundLink"
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 
-const TakeATour = ({ onClose }) => {
-    const onClick = () => {
-        localStorage.setItem('@estuary/closeTour', "1")
-        onClose?.()
+const TakeATour = () => {
+    const [closeTour, setCloseTour] = React.useState(
+        true
+    )
+    const onClick = React.useCallback(() => {
+        localStorage.setItem('@estuary/closeTour', "1");
+        setCloseTour(true)
+    },[]);
+
+    React.useEffect(() => {
+        if(typeof window !== "undefined"){
+            setCloseTour(!!localStorage.getItem("@estuary/closeTour"))
+        }
+    }, [])
+
+    if(closeTour){
+        return null;
     }
 
     return (

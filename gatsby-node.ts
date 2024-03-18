@@ -414,5 +414,5 @@ export const createResolvers: GatsbyNode["createResolvers"] = async ({
 }
 
 export const onPreBuild = async () => {
-  await copyLibFiles(path.join(__dirname, 'static', '~partytown'));
+    await copyLibFiles(path.join(__dirname, 'static', '~partytown'));
 };

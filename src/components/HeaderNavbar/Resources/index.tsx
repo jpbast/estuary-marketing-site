@@ -59,7 +59,7 @@ const HeaderNavbarResources = ({ active, setActive }) => {
                 Resources
                 <Chevron className="menu-chevron" fontSize="small" />
             </Link>
-            <React.Suspense fallback={<div>Loading...</div>}>
+            <React.Suspense fallback={null}>
                 <Card
                     customRef={wrapperRef}
                     show={active}
