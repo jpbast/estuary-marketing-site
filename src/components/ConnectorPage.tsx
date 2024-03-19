@@ -83,7 +83,7 @@ export const ConnectorPage = ({
                             <span>
                                 Estuary builds free, open-source connectors to{" "}
                                 {connector_type === "capture"
-                                    ? `extract data from ${source_mapped.title}`
+                                    ? `extract data from ${source_mapped.title} `
                                     : connector_type === "materialization"
                                     ? `write data to ${dest_mapped.title}`
                                     : `move data from ${source_mapped.title} to ${dest_mapped.title}`}
