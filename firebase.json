@@ -67,7 +67,7 @@
                 "type": 301
             },
             {
-                "source": "/data-lake-architecture%20", 
+                "source": "/data-lake-architecture ", 
                 "destination": "/data-lake-architecture",
                 "type": 301
             },
@@ -92,17 +92,17 @@
                 "type": 301
             },
             {
-                "source": "/data%20ingestion-vs-etl/",
+                "source": "/data ingestion-vs-etl/",
                 "destination": "/data-ingestion-vs-etl",
                 "type": 301
             },
             {
-                "source": "/data-lake-architecture%20/",
+                "source": "/data-lake-architecture /",
                 "destination": "/data-lake-architecture",
                 "type": 301
             },
             {
-                "source": "/data%20ingestion-vs-data-integration/",
+                "source": "/data ingestion-vs-data-integration/",
                 "destination": "/data-ingestion-vs-data-integration",
                 "type": 301
             }

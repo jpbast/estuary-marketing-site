@@ -110,8 +110,6 @@ const cfg: GatsbyConfig = {
             resolve: "gatsby-plugin-preconnect",
             options: {
                 domains: [
-                    "https://www.googletagmanager.com",
-                    "https://www.google-analytics.com",
                     "https://hs-banner.com",
                     "https://hs-scripts.com",
                 ],
