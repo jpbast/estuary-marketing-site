@@ -1,5 +1,5 @@
-import { Partytown } from '@builder.io/partytown/react';
-import React from 'react';
+const React = require('react');
+const { Partytown } = require('@builder.io/partytown/react');
 
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
