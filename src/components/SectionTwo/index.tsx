@@ -1,7 +1,7 @@
 import * as React from 'react';
 import SectionTwoHeader from './SectionTwoHeader';
-import SectionTwoTiles from './SectionTwoTiles';
 import SectionTwoHero from './SectionTwoHero';
+import SectionTwoTiles from './SectionTwoTiles';
 
 const SectionTwo = () => {
   return (
