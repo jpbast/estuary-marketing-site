@@ -26,7 +26,16 @@ exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
         // ["hbspt.forms.create", { preserveBehavior: true }],
       ]}
     />,
-    <script key="google-analytics" type="text/partytown" src={`/gtag.js?id=${GA_MEASUREMENT_ID}`} />,
+    <script
+      key="osano-1"
+      src="https://cmp.osano.com/16CPXbTOi1sXx4D3/1e6b223c-ed10-4c4b-a442-48fea69f76af/osano.js"
+    ></script>,
+    <script
+      key="google-analytics"
+      type="text/partytown"
+      src={`/gtag.js?id=${GA_MEASUREMENT_ID}`}
+      data-osano="ANALYTICS"
+    />,
     <script
       key="google-analytics-config"
       type="text/partytown"
@@ -37,9 +46,5 @@ exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
         gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false })`,
       }}
     />,
-    <script
-      key="osano-1"
-      src="https://cmp.osano.com/16CPXbTOi1sXx4D3/1e6b223c-ed10-4c4b-a442-48fea69f76af/osano.js"
-    ></script>,
   ]);
 };
