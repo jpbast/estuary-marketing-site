@@ -1,16 +1,16 @@
-import React from "react"
+import React from 'react';
 
-import Seo from "../../../../components/seo"
+import Seo from '../../../../components/seo';
 
 const BigQueryHead = () => {
-    return (
-        <>
-            <Seo
-                title="Flow"
-                description="Flow is the first real-time Data Operations platform. Set up pipelines with both historical and real-time data in minutes."
-            />
-        </>
-    )
-}
+  return (
+    <>
+      <Seo
+        title="Flow"
+        description="Flow is the first real-time Data Operations platform. Set up pipelines with both historical and real-time data in minutes."
+      />
+    </>
+  );
+};
 
-export default BigQueryHead
+export default BigQueryHead;

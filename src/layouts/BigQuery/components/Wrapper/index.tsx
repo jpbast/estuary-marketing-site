@@ -1,18 +1,15 @@
-import React from "react"
+import React from 'react';
 
-import Layout from "../../../../components/layout"
+import Layout from '../../../../components/layout';
 
 const BigQueryWrapper = ({ children }) => {
-    return (
-        <Layout headerTheme="light">
-            <article
-                itemScope
-                itemType="http://schema.org/Article"
-            >
-                {children}
-            </article>
-        </Layout>
-    )
-}
+  return (
+    <Layout headerTheme="light">
+      <article itemScope itemType="http://schema.org/Article">
+        {children}
+      </article>
+    </Layout>
+  );
+};
 
-export default BigQueryWrapper
+export default BigQueryWrapper;
