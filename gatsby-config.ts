@@ -27,6 +27,23 @@ const strapiConfig = {
         "job-posting",
         "product-comparison-page",
         "employee",
+        {
+            singularName: "case-study",
+            queryParams: {
+                populate: {
+                    Logo: {
+                        populate: '*',
+                    },
+                    About: {
+                        populate: {
+                            Topics: {
+                                populate: '*'
+                            }
+                        }
+                    }
+                }
+            }
+        },
     ],
     singleTypes: [],
     // remoteFileHeaders: {
@@ -48,8 +65,26 @@ const rehypeSelectors = {
         },
     },
     [`STRAPI_JOB_POSTING_DESCRIPTION_TEXTNODE`]: {
-        extractor: node => {debugger; return node.Description},
+        extractor: node => node.Description,
         pluginOpts: { enableToc: false },
+    },
+    [`STRAPI_CASE_STUDY_BODY_TEXTNODE`]: {
+        extractor: node => node.Body,
+        pluginOpts: {
+            enableToc: false,
+        },
+    },
+    [`STRAPI_CASE_STUDY_SIDECONTENT_TEXTNODE`]: {
+        extractor: node => node.SideContent,
+        pluginOpts: {
+            enableToc: false,
+        },
+    },
+    [`STRAPI__COMPONENT_CASE_STUDY_CASE_STUDY_ABOUT_DESCRIPTION_TEXTNODE`]: {
+        extractor: node => node.Description,
+        pluginOpts: {
+            enableToc: false,
+        },
     },
 }
 
@@ -72,30 +107,9 @@ const cfg: GatsbyConfig = {
     // graphqlTypegen: true,
     plugins: [
         {
-            resolve: `gatsby-plugin-google-gtag`,
-            options: {
-                // You can add multiple tracking ids and a pageview event will be fired for all of them.
-                trackingIds: ["G-P1PZPE4HHZ"],
-                // This object gets passed directly to the gtag config command
-                // This config will be shared across all trackingIds
-                gtagConfig: {
-                    anonymize_ip: true,
-                    ignore_referrer: true,
-                    cookie_expires: 0,
-                },
-                // This object is used for configuration specific to this plugin
-                pluginConfig: {
-                    head: true,
-                    respectDNT: true,
-                },
-            },
-        },
-        {
             resolve: "gatsby-plugin-preconnect",
             options: {
                 domains: [
-                    "https://www.googletagmanager.com",
-                    "https://www.google-analytics.com",
                     "https://hs-banner.com",
                     "https://hs-scripts.com",
                 ],
@@ -194,6 +208,7 @@ const cfg: GatsbyConfig = {
             },
         },
         `gatsby-plugin-less`,
+        `gatsby-plugin-styled-components`,
         {
             resolve: "gatsby-plugin-local-search",
             options: {

@@ -1,6 +1,6 @@
 import * as React from "react"
 import ColoredLogo from "../svgs/colored-logo.svg"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 

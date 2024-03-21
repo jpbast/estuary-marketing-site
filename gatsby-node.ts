@@ -1,6 +1,7 @@
 import { GatsbyNode, graphql } from "gatsby"
 import { createRemoteFileNode } from "gatsby-source-filesystem"
 import { normalizeConnector } from "./src/utils"
+import {copyLibFiles} from "@builder.io/partytown/utils";
 import pg from "pg"
 import { SUPABASE_CONNECTION_STRING } from "./config"
 
@@ -17,6 +18,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 const blog = path.resolve(`./src/templates/blog.tsx`)
 const comparisonTemplate = path.resolve(`./src/templates/product-comparison.tsx`)
+const caseStudyTemplate = path.resolve(`./src/layouts/CaseStudy/index.tsx`)
 
 const connector = path.resolve(`./src/templates/connector.tsx`)
 const connection = path.resolve(`./src/templates/connection.tsx`)
@@ -69,6 +71,37 @@ export const createPages: GatsbyNode["createPages"] = async ({
         }
     `)
 
+    const caseStudyPages = await graphql<{
+        allStrapiCaseStudy: {
+            nodes: {
+                Slug : string
+                id: string
+            }[]
+        }
+    }>(`
+        {
+            allStrapiCaseStudy {
+                nodes {
+                    id
+                    Slug
+                } 
+              }
+        }
+    `)
+
+
+    const allCaseStudies = caseStudyPages.data.allStrapiCaseStudy.nodes
+
+    allCaseStudies.forEach(node => {
+        createPage({
+            path: `customers/${node.Slug}`,
+            component: caseStudyTemplate,
+            context: {
+                id: node.id,
+            }
+        })
+    })
+
     // Get all strapi comparison pages
     const comparisonPages = await graphql<{
         allStrapiProductComparisonPage: {
@@ -87,7 +120,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
               }
         }
     `)
-    if (result.errors || comparisonPages.errors) {
+    if (result.errors || comparisonPages.errors || caseStudyPages.errors) {
         reporter.panicOnBuild(
             `There was an error loading your blog posts`,
             result.errors
@@ -379,3 +412,7 @@ export const createResolvers: GatsbyNode["createResolvers"] = async ({
         },
     })
 }
+
+export const onPreBuild = async () => {
+    await copyLibFiles(path.join(__dirname, 'static', '~partytown'));
+};

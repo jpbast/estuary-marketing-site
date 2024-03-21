@@ -1,26 +1,33 @@
 import * as React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import List from "@mui/material/List"
-import { StaticImage } from "gatsby-plugin-image"
-import { NavItem, NavMenuList, NavMenuTopLevel } from "./CascadingMenu"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import ColoredLogo from "../svgs/colored-logo.svg"
 import SlackIcon from "../svgs/slack-outline.svg"
 import GithubIcon from "../svgs/github-outline.svg"
 import clsx from "clsx"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 import { isDesktop } from "react-device-detect"
 
-const useNavItems = (): NavItem[] => {
-    const comparisons = useStaticQuery(graphql` 
-        query GetAllProductComparisons {
+import HeaderNavbar from "./HeaderNavbar"
+
+const useNavItems = () => {
+    const queryResults = useStaticQuery(graphql`
+        query GetNavData {
             allStrapiProductComparisonPage {
                 nodes {
                     Slug
                     their_name
                 }
             }
-        }`)
+            allStrapiCaseStudy {
+                nodes {
+                    Slug
+                    Title
+                }
+            }
+        }
+    `)
+
     return [
     {
         title: "Product",
@@ -73,11 +80,23 @@ const useNavItems = (): NavItem[] => {
                 path: "/blog/data-engineering",
             },
             {
+                title: "Case Study",
+                children: queryResults.allStrapiCaseStudy.nodes.map(
+                    caseStudy => ({
+                        title: caseStudy.Title,
+                        path: `/customers/${caseStudy.Slug}`,
+                    })
+                ),
+            },
+            {
                 title: "Comparisons",
-                children: comparisons.allStrapiProductComparisonPage.nodes.map(comparison => ({
-                    title: comparison.their_name,
-                    path: `/${comparison.Slug}`
-                }))
+                children:
+                    queryResults.allStrapiProductComparisonPage.nodes.map(
+                        comparison => ({
+                            title: comparison.their_name,
+                            path: `/${comparison.Slug}`,
+                        })
+                    ),
             },
             {
                 title: "Podcasts",
@@ -90,17 +109,8 @@ const useNavItems = (): NavItem[] => {
         ],
     },
     {
-        title: "Company",
-        children: [
-            {
-                title: "About Estuary",
-                path: "/about",
-            },
-            {
-                title: "Careers",
-                path: "/about#careers",
-            },
-        ],
+        title: "Docs",
+        path: "/docs",
     },
 ]
 };
@@ -120,20 +130,31 @@ const MenuBarsImage = () => (
     </svg>
 )
 
-const Header = (props: { theme: "light" | "dark", fixedHeader?: boolean }) => {
+const Header = (props: { fixedHeader?: boolean }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const navItems = useNavItems();
+    const wrapperRef = useRef(null);
 
-    const { theme, fixedHeader } = props
+    const { fixedHeader } = props
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+          if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            setMobileMenuOpen(false)
+          }
+        }
+    
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+      }, [wrapperRef]);
 
     return (
         <>
             {/* @ts-ignore */}
             <header
-                className={clsx("global-header", fixedHeader && "global-header-fixed", {
-                    "global-header-light": theme === "light",
-                    "global-header-dark": theme === "dark",
-                })}
+                className={clsx("global-header global-header-dark", fixedHeader && "global-header-fixed")}
+                ref={wrapperRef}
             >
                 <div className="global-header-padder" />
                 <Link className="global-header-logo-link" to="/">
@@ -145,12 +166,8 @@ const Header = (props: { theme: "light" | "dark", fixedHeader?: boolean }) => {
                 </Link>
                 <div style={{ flex: "1 2 140px" }} />
                 <div className="global-header-wrapper">
-                    <div className="global-header-link-wrapper">
-                        {navItems.map(item => (
-                            <React.Fragment key={`${item.path}-${item.title}`}>
-                                <NavMenuTopLevel item={item} />
-                            </React.Fragment>
-                        ))}
+                    <div className={clsx('global-header-link-wrapper', mobileMenuOpen && 'is-open')}>
+                        <HeaderNavbar />
                     </div>
                     <div className="global-header-login-try">
                         <OutboundLink
@@ -169,13 +186,13 @@ const Header = (props: { theme: "light" | "dark", fixedHeader?: boolean }) => {
                         >
                             <GithubIcon className="social-icon" />
                         </OutboundLink>
-                        <Link
+                        <OutboundLink
                             className="global-header-link"
-                            to="https://dashboard.estuary.dev"
+                            href="https://dashboard.estuary.dev"
                             style={{marginRight:"1rem"}}
                         >
                             Log in
-                        </Link>
+                        </OutboundLink>
                         <OutboundLink
                             target="_blank"
                             href="https://dashboard.estuary.dev/register"
@@ -196,20 +213,6 @@ const Header = (props: { theme: "light" | "dark", fixedHeader?: boolean }) => {
                 </div>
                 <div className="global-header-padder" />
             </header>
-            {mobileMenuOpen ? (
-                <List
-                    className={clsx("global-header-mobile-menu-list", {
-                        "global-header-mobile-menu-list-light":
-                            theme === "light",
-                        "global-header-mobile-menu-list-dark": theme === "dark",
-                    })}
-                    component="nav"
-                >
-                    {navItems.map(item => (
-                        <NavMenuList key={`${item.path}-${item.title}`} item={item} />
-                    ))}
-                </List>
-            ) : null}
         </>
     )
 }

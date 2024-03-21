@@ -11,7 +11,7 @@ import OperationalAnalytics from "../svgs/icon-operational-analytics.svg"
 import Customer360 from "../svgs/icon-customer-360.svg"
 import RealTimeAnalytics from "../svgs/icon-real-time-analytics.svg"
 import DataSharing from "../svgs/icon-data-sharing.svg"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 
 const SectionFour = () => {
     return (

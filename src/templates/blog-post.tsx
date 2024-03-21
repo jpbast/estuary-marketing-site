@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { OutboundLink } from "../components/OutboundLink"
 import StickyBox from "react-sticky-box"
 
 import dayjs from "dayjs"
@@ -18,7 +19,7 @@ import { RenderToc } from "../components/BlogPostToc"
 
 dayjs.extend(reltime)
 
-const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
+const BlogPostTemplate = ({ data: { post }, pageContext }) => {
     const postTags = post.tags.filter(tag => tag.type === "tag")
     const [windowWidth, setWindowWidth] = useState(
         typeof window === "undefined" ? 1500 : window.innerWidth
@@ -47,12 +48,12 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
 
             <div className="sidebar-cta">
                 <h3>Start streaming your data for free</h3>
-                <Link
-                    to="https://dashboard.estuary.dev/register"
+                <OutboundLink
+                    href="https://dashboard.estuary.dev/register"
                     className="pipeline-link"
                 >
                     Build a Pipeline
-                </Link>
+                </OutboundLink>
             </div>
         </>
     )
@@ -114,12 +115,12 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                 )}
                 <div className="sidebar-cta mobile-only">
                     <h3>Start streaming your data for free</h3>
-                    <Link
-                        to="https://dashboard.estuary.dev/register"
+                    <OutboundLink
+                        href="https://dashboard.estuary.dev/register"
                         className="pipeline-link"
                     >
                         Build a Pipeline
-                    </Link>
+                    </OutboundLink>
                 </div>
             </article>
         </Layout>
@@ -185,7 +186,7 @@ export const Head = ({
                     },
                     datePublished: post.machineReadablePublishDate,
                 })}
-            </script>
+            </script>            
         </>
     )
 }
@@ -195,8 +196,6 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
     query BlogPostBySlug(
         $id: String!
-        $previousPostId: String
-        $nextPostId: String
     ) {
         site {
             siteMetadata {
@@ -255,42 +254,6 @@ export const pageQuery = graphql`
             tags: tags {
                 name: Name
                 type: Type
-            }
-        }
-        previous: strapiBlogPost(id: { eq: $previousPostId }) {
-            title: Title
-            slug: Slug
-            authors {
-                name: Name
-                picture: Picture {
-                    localFile {
-                        childImageSharp {
-                            gatsbyImageData(
-                                layout: CONSTRAINED
-                                placeholder: BLURRED
-                            )
-                        }
-                    }
-                }
-                link: Link
-            }
-        }
-        next: strapiBlogPost(id: { eq: $nextPostId }) {
-            title: Title
-            slug: Slug
-            authors {
-                name: Name
-                picture: Picture {
-                    localFile {
-                        childImageSharp {
-                            gatsbyImageData(
-                                layout: CONSTRAINED
-                                placeholder: BLURRED
-                            )
-                        }
-                    }
-                }
-                link: Link
             }
         }
     }

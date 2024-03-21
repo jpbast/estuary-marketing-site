@@ -1,26 +1,18 @@
 import React, { useState } from "react"
 import { StaticImage } from "gatsby-plugin-image"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
-
-import HubspotModal from "../../../components/HubspotModal"
+import { OutboundLink } from "../../../components/OutboundLink"
+import OpenHubspotModal from "../../../components/HubSpot/OpenModal"
 
 const PricingHero = () => {
-    const [open, setOpen] = useState(false)
-
     return (
         <div className="pricing-page-top">
             <div>
-                <h1>
-                    Simply priced, pay as you go
-                </h1>
+                <h1>Simply priced, pay as you go</h1>
                 <p>
-                    Get instant back-fills without instant
-                    bad-bills. We price predictably, on{" "}
-                    <strong>GB of change data</strong> moved per
-                    month and{" "}
-                    <strong>active connectors.</strong> Put
-                    away the TI-83 trying to calculate ‘monthly
-                    active rows’.
+                    Get instant back-fills without instant bad-bills. We price
+                    predictably, on <strong>GB of change data</strong> moved per
+                    month and <strong>active connectors.</strong> Put away the
+                    TI-83 trying to calculate ‘monthly active rows’.
                 </p>
                 <div className="main-section-buttons">
                     <OutboundLink
@@ -30,12 +22,11 @@ const PricingHero = () => {
                     >
                         Build free pipeline
                     </OutboundLink>
-                    <button
-                        className="section-one-demo-button"
-                        onClick={() => setOpen(true)}
-                    >
-                        Contact Us
-                    </button>
+                    <OpenHubspotModal
+                        buttonLabel={"Contact Us"}
+                        buttonClass={"section-one-demo-button"}
+                        buttonId="pricing-hero-hubspot"
+                    />
                 </div>
             </div>
             <div className="image-container">
@@ -58,7 +49,6 @@ const PricingHero = () => {
                     Build free pipeline
                 </OutboundLink>
             </div>
-            <HubspotModal open={open} onClose={() => setOpen(false)} portalId="8635875" formId="698e6716-f38b-4bd5-9105-df9ba220e29b" />
         </div>
     )
 }

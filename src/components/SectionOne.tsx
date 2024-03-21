@@ -4,10 +4,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import type { LottieRef } from "lottie-react"
 import { useMediaQuery, useTheme } from "@mui/material"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
-import Marquee from "react-fast-marquee";
-
-import HubspotModal from "./HubspotModal"
+import { OutboundLink } from "../components/OutboundLink"
+import Marquee from "react-fast-marquee"
+import OpenHubspotModal from "./HubSpot/OpenModal"
 
 const animFallback = (
     <div className="section-one-right-image">
@@ -21,18 +20,24 @@ const animFallback = (
 )
 
 const AnimatedHero = () => {
-    const HeroAnimation = React.useMemo(() => import("../images/hero-animation.json"), []);
-    const Lottie = React.useMemo(() => React.lazy(() => import("lottie-react")), []);
+    const HeroAnimation = React.useMemo(
+        () => import("../images/hero-animation.json"),
+        []
+    )
+    const Lottie = React.useMemo(
+        () => React.lazy(() => import("lottie-react")),
+        []
+    )
 
     const [heroAnim, setHeroAnim] = React.useState<Awaited<
         typeof HeroAnimation
     > | null>(null)
 
-    React.useEffect(() => {
+    React.startTransition(() => {
         HeroAnimation.then(anim => {
             setHeroAnim(anim.default as any)
         })
-    }, [])
+    })
 
     const [lottieReady, setLottieReady] = React.useState(false)
     const lottieRef: LottieRef = React.useRef()
@@ -45,7 +50,7 @@ const AnimatedHero = () => {
     }, [lottieRef])
 
     return (
-        <React.Suspense fallback={animFallback}>
+        <>
             {!(lottieReady && heroAnim) && animFallback}
             {heroAnim && (
                 <Lottie
@@ -63,7 +68,7 @@ const AnimatedHero = () => {
                     lottieRef={lottieRef}
                 />
             )}
-        </React.Suspense>
+        </>
     )
 }
 
@@ -100,23 +105,25 @@ const SectionOne = () => {
         }
     `)
 
-    const theme = useTheme();
-    const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
-    const [open, setOpen] = React.useState(false)
-
-
     return (
         <div className="section-one">
             <div className="section-one-wrapper">
                 <div className="section-one-left">
-                    {isSmall && isSmall && <AnimatedHero />}
-                    <h1>Real-time ETL & CDC,</h1>
-                    <h1>up in <span style={{ wordBreak: "break-word", hyphens: "auto" }}>minutes.</span></h1>
-                    <p className="section-one-description">
-                        Connect and transform streaming and batch data with custom 
-                        <span className="break-line"> no-code connectors,  SQL, and Typescript from within your cloud storage.</span>
-                    </p>
+                    <h1>Real-time ETL & CDC</h1>
+                    <h1>for apps, analytics, and AI.</h1>
+                    <h1>
+                        Up in{" "}
+                        <span
+                            style={{ wordBreak: "break-word", hyphens: "auto" }}
+                        >
+                            minutes.
+                        </span>
+                    </h1>
                     <div className="section-one-subtext-wrapper">
+                        <p className="section-one-subtext">
+                            Streaming CDC with SQL and Typescript transforms,
+                            all at a fraction of the cost of the alternatives
+                        </p>
                         <div className="section-one-container-cta">
                             <OutboundLink
                                 target="_blank"
@@ -125,24 +132,26 @@ const SectionOne = () => {
                             >
                                 Build a pipeline
                             </OutboundLink>
-                            <button
-                                className="section-one-button-secondary"
-                                onClick={() => setOpen(true)}
-                            >
-                                Book Demo
-                            </button>
+                            <OpenHubspotModal
+                                buttonLabel={"Book Demo"}
+                                buttonClass={"section-one-button-secondary"}
+                                buttonId="section-one-hubspot"
+                            />
                         </div>
                     </div>
                 </div>
                 <div className="section-one-right">
-                    {!isMobile && !isSmall && <AnimatedHero />}
+                    <React.Suspense fallback={animFallback}>
+                        <AnimatedHero />
+                    </React.Suspense>
                 </div>
             </div>
             <div className="custom-slides slide-container">
-            <Marquee>
-                    {logos.allStrapiVanityLogo.nodes?.map((logo) =>
-                        logo.logo.localFile.internal.mediaType === "image/svg+xml" ? (
-                            <div className="custom-slider" key={logo.id} >
+                <Marquee>
+                    {logos.allStrapiVanityLogo.nodes?.map(logo =>
+                        logo.logo.localFile.internal.mediaType ===
+                        "image/svg+xml" ? (
+                            <div className="custom-slider" key={logo.id}>
                                 <div
                                     dangerouslySetInnerHTML={{
                                         __html: logo.logo.localFile.svg.content,
@@ -155,7 +164,8 @@ const SectionOne = () => {
                                     alt={`logo`}
                                     loading="eager"
                                     image={
-                                        logo.logo.localFile.childImageSharp.gatsbyImageData
+                                        logo.logo.localFile.childImageSharp
+                                            .gatsbyImageData
                                     }
                                 />
                             </div>
@@ -163,7 +173,6 @@ const SectionOne = () => {
                     )}
                 </Marquee>
             </div>
-            <HubspotModal open={open} onClose={() => setOpen(false)} portalId="8635875" formId="698e6716-f38b-4bd5-9105-df9ba220e29b" />
         </div>
     )
 }

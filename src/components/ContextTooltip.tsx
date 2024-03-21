@@ -22,7 +22,7 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     },
 }))
 
-export const ContextToolTip = React.forwardRef((props: TooltipProps) => {
+export const ContextToolTip = React.forwardRef((props: TooltipProps, ref) => {
     const [open, setOpen] = useState(false)
 
     const handleTooltipClose = () => {
@@ -39,6 +39,7 @@ export const ContextToolTip = React.forwardRef((props: TooltipProps) => {
             onClick={handleTooltipOpen}
             onClose={handleTooltipClose}
             arrow
+            ref={ref}
             {...props}
         />
     )

@@ -9,7 +9,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import ReactPlayer from "react-player/lazy"
 import ColoredLogo from "../svgs/colored-logo.svg"
 import DbIcon from "../svgs/db2.svg"
-import { OutboundLink } from "gatsby-plugin-google-gtag"
+import { OutboundLink } from "../components/OutboundLink"
 import SectionTwoDataCaptureImg1 from "../svgs/product-flow-section-two-data-capture-image1.svg"
 import FlowLongtailSaas from "../svgs/product-flow-longtail-saas.svg"
 import { StaticImage } from "gatsby-plugin-image"
@@ -78,9 +78,10 @@ export const Head = ({
         postgres: { connector },
     },
 }) => {
+    const title = connector.title?.["en-US"]
     return (
         <Seo
-            title={connector.title?.["en-US"]}
+            title={title}
             description={connector.shortDescription?.["en-US"]}
         />
     )
