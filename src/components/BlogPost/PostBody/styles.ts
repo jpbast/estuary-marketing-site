@@ -49,6 +49,22 @@ export const PostSectionContainer = styled.div`
       }
     }
 
+    h1 {
+      color: #04192b;
+      font-size: 3rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 48px;
+
+      span {
+        color: #04192b;
+        font-size: 3rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 48px;
+      }
+    }
+
     h2 {
       color: #04192b;
       font-size: 2.3rem;
