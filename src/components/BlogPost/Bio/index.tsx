@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { OutboundLink } from '../../OutboundLink';
+import * as S from './styles';
 
 export interface BioAuthor {
   name: string;
@@ -76,9 +77,9 @@ const Bio = ({ authors }: BioProps) => {
     return null;
   }
   return (
-    <div className="bio">
+    <S.Container>
       <ul>{rendered}</ul>
-    </div>
+    </S.Container>
   );
 };
 
