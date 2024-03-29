@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import * as S from './styles';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
-import Bio from '../../bio';
+import Bio from '../Bio';
 import EastIcon from '@mui/icons-material/East';
 
 type Image = {

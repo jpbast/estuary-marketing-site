@@ -13,7 +13,7 @@ export const PostSectionContainer = styled.div`
   .dynamic-html {
     width: 100%;
     overflow: hidden;
-    padding-bottom: 220px;
+    padding-bottom: 190px;
 
     @media (max-width: 767px) {
       padding-bottom: 0;
@@ -143,7 +143,7 @@ export const BuildPipelineSticky = styled.div`
 `;
 
 export const PipelineContainer = styled.div`
-  margin-top: -220px;
+  margin-top: -190px;
   padding: 40px 286px 0px 286px; /* 286px is equal to 250px sticky side content + 36px gap */
 
   @media (max-width: 1128px) {

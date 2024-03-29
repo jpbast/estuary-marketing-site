@@ -9,7 +9,7 @@ import MailIcon from '../../../svgs/mail.svg';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { OutboundLink } from '../../OutboundLink';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { getInitials } from '../../bio';
+import { getInitials } from '../Bio';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 type NextStepsProps = {

@@ -1,6 +1,6 @@
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import Bio from '../../bio';
+import Bio from '../Bio';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import * as S from './styles';
 import ShareArticle from '../ShareArticle';
