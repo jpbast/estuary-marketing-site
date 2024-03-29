@@ -1486,6 +1486,11 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.1.6.tgz#22958c042e10b67463997bd6ea7115fe28cbcaf9"
   integrity sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==
 
+"@fontsource/inter@^5.0.17":
+  version "5.0.17"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-5.0.17.tgz#43fb1bc6bcfbfbfc3a9d19a59a4a7ab99fc1c645"
+  integrity sha512-2meBGx1kt7u5LwzGc5Sz5rka6ZDrydg6nT3x6Wkt310vHXUchIywrO8pooWMzZdHYcyFY/cv4lEpJZgMD94bCg==
+
 "@fontsource/merriweather@^4.5.14":
   version "4.5.14"
   resolved "https://registry.yarnpkg.com/@fontsource/merriweather/-/merriweather-4.5.14.tgz#17b634fe3892e25f345954fe34df252730b96080"
@@ -4727,6 +4732,11 @@ classnames@^2.2.6:
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
+classnames@^2.3.2:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
+
 cli-boxes@^2.2.0, cli-boxes@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-2.2.1.tgz#ddd5035d25094fce220e9cab40a45840a440318f"
@@ -5363,7 +5373,7 @@ dayjs@^1.11.7:
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
   integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
 
-debug@2, debug@2.6.9, debug@^2.6.0:
+debug@2, debug@2.6.9, debug@^2.1.3, debug@^2.6.0:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -9369,6 +9379,13 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+jsonp@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/jsonp/-/jsonp-0.2.1.tgz#a65b4fa0f10bda719a05441ea7b94c55f3e15bae"
+  integrity sha512-pfog5gdDxPdV4eP7Kg87M8/bHgshlZ5pybl+yKxAnCZ5O7lCIn7Ixydj03wOlnDQesky2BPyA91SQ+5Y/mNwzw==
+  dependencies:
+    debug "^2.1.3"
+
 jsonwebtoken@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-9.0.0.tgz#d0faf9ba1cc3a56255fe49c0961a67e520c1926d"
@@ -12004,6 +12021,14 @@ react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825:
     acorn "^6.2.1"
     loose-envify "^1.1.0"
     neo-async "^2.6.1"
+
+react-share@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-share/-/react-share-5.1.0.tgz#27eff763e5c233c8765cacf595b039093cb9b408"
+  integrity sha512-OvyfMtj/0UzH1wi90OdHhZVJ6WUC/+IeWvBwppeZozwIGyAjQgyR0QXlHOrxVHVECqnGvcpBaFTXVrqouTieaw==
+  dependencies:
+    classnames "^2.3.2"
+    jsonp "^0.2.1"
 
 react-side-effect@^2.1.0:
   version "2.1.2"
