@@ -63,9 +63,15 @@ export const Container = styled.header`
     .published-at-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 30px;
       flex-wrap: wrap;
+
+      @media (max-width: 767px) {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 16px;
+      }
     }
 
     .tags-container {

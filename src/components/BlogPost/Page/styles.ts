@@ -5,7 +5,8 @@ export const Container = styled.article`
   padding-bottom: 5rem;
 
   * {
-    font-family: 'Inter', sans-serif !important;
+    font-family: var(--fontFamily-sans) !important;
+    letter-spacing: normal;
   }
 
   .tags-wrap {

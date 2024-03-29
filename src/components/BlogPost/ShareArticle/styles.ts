@@ -31,12 +31,8 @@ export const Container = styled.div`
           display: flex;
           align-items: center;
           justify-content: center;
-        }
-
-        svg {
-          path {
-            fill: #47506d;
-          }
+          background-color: transparent;
+          cursor: pointer;
         }
       }
     }

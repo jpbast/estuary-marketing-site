@@ -6,6 +6,7 @@ import * as S from './styles';
 import ShareArticle from '../ShareArticle';
 import { Author } from '../../../typings/author';
 import { BlogPost } from '../Page';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 type BlogPostHeaderProps = {
   title: string;
@@ -43,10 +44,15 @@ const Header = ({ title, authors, publishedAt, hero, description, isMobile, tags
                 ))}
               </div>
             )}
-
-            <div className="blog-post-date">
-              <CalendarTodayOutlinedIcon fontSize="inherit" />
-              <span>{publishedAt}</span>
+            <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+              <div className="blog-post-date">
+                <CalendarTodayOutlinedIcon fontSize="inherit" />
+                <span>{publishedAt}</span>
+              </div>
+              <div className="blog-post-date">
+                <AccessTimeIcon fontSize="inherit" />
+                <span>10 min</span>
+              </div>
             </div>
           </div>
           <h1>{title}</h1>

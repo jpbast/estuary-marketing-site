@@ -2,6 +2,7 @@ import React from 'react';
 import XIcon from '../../../svgs/x.svg';
 import FacebookIcon from '../../../svgs/facebook.svg';
 import MailIcon from '../../../svgs/mail.svg';
+import LinkIcon from '../../../svgs/link-icon.svg';
 import * as S from './styles';
 import { OutboundLink } from '../../OutboundLink';
 import { FacebookShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
@@ -12,6 +13,14 @@ const ShareArticle: React.FC<ShareArticleProps> = () => {
   const url = window.location.href;
 
   const links = [
+    <button
+      onClick={() => {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url);
+      }}
+    >
+      <LinkIcon />
+    </button>,
     <TwitterShareButton url={url}>
       <XIcon />
     </TwitterShareButton>,

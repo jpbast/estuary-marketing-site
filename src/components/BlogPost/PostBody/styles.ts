@@ -19,9 +19,20 @@ export const PostSectionContainer = styled.div`
       padding-bottom: 0;
     }
 
+    a {
+      color: #5072eb;
+      text-decoration: none;
+
+      span,
+      u {
+        color: #5072eb;
+        text-decoration: none;
+      }
+    }
+
     p,
     li {
-      font-size: 1.3rem !important;
+      font-size: 1.25rem !important;
       color: #47506d !important;
 
       @media (max-width: 800px) {
@@ -29,7 +40,7 @@ export const PostSectionContainer = styled.div`
       }
 
       span {
-        font-size: 1.3rem !important;
+        font-size: 1.25rem !important;
         color: #47506d !important;
 
         @media (max-width: 800px) {
