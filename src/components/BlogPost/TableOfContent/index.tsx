@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AccordionDetails, AccordionSummary } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import * as S from './styles';
@@ -35,7 +35,8 @@ const Item = ({ item, depth, activeId }: ItemProps) => {
           onClick={(e) => {
             e.preventDefault();
             const el = document.getElementById(`${item.id}`);
-            window.scrollTo({ top: el.offsetTop - 200, behavior: 'smooth' });
+            window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+            window.history.pushState(null, null, `#${item.id}`);
           }}
           style={{
             margin: 0,

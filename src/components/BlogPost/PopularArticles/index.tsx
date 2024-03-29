@@ -52,8 +52,9 @@ const ArticleCard = ({ hero, title, tags, updatedAt, authors, slug }: Article) =
         />
         <div className="tags-row">
           {tagsParsed && <p>{tagsParsed}</p>}
-          <div>
+          <div className="date-container">
             <p>{updatedAt}</p>
+            <p>10 min</p>
           </div>
         </div>
         <h3>{title}</h3>

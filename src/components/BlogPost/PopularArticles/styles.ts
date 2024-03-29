@@ -62,22 +62,43 @@ export const ArticleCardContainer = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     gap: 10px;
+    flex-wrap: wrap;
+    flex: 1;
+
+    @media (max-width: 420px) {
+      gap: 6px;
+    }
 
     & > p {
+      flex: 1;
       font-weight: 600;
       font-size: 1rem;
       color: #625eff;
       line-height: 1.3;
+      min-width: 200px;
     }
 
-    div {
-      width: 100px;
-      flex-shrink: 0;
+    .date-container {
+      display: flex;
+      gap: 16px;
 
       p {
         font-size: 0.8rem;
         font-weight: 400;
         color: #878ea6;
+        position: relative;
+
+        &:first-of-type::after {
+          content: '';
+          position: absolute;
+          right: -10px;
+          width: 4px;
+          height: 4px;
+          background-color: #878ea6;
+          border-radius: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
       }
     }
   }
