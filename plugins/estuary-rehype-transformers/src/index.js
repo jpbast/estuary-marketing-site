@@ -14,6 +14,7 @@ let LANG_RE = /hljs language\-(.*)/;
 const transform = async ({ htmlAst, htmlNode, getNode }, opts) => {
     const parentNode = await getNode(htmlNode.parent)
     const pluginOptions = opts[parentNode.internal.type]
+    console.log('transform')
     let processor = unified()
         .use(rehypeHighlight, { detect: true })
         .use(rehypeSlug)
